@@ -2,16 +2,10 @@
 
 Mesh data types
 
-## Workflow
-
-### Config
+## Config
 
 There is a considerable amount of configuration, section to come.
 
-### stl to inp
+## Workflow
 
-```mermaid
-  graph LR;
-    .stl -- sculpt_stl_to_inp.py --> .inp
-```
-
+See [doc/README.md](doc/README.md)
