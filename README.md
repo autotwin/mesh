@@ -8,7 +8,7 @@ Mesh data types
 
 There is a considerable amount of configuration, section to come.
 
-### `.stl` to `.inp`
+### stl to inp
 
 ```mermaid
   graph LR;
