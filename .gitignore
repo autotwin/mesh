@@ -1,3 +1,12 @@
+# ignore Abaqus input mesh files .inp because they are large.
+# * Large files should be linked to a Google Drive resource.  
+# * Large files should not be committed to the GitHub repository.
+*.inp
+#
+# ignore Cubit generated .jou (journal) files; the contents should instead
+# be memorialized by the developer into "atmesh" input .yml files.
+*.jou
+#
 # macOS database files
 .DS_Store
 
