@@ -1,4 +1,4 @@
--e git+ssh://git@github.com/autotwin/mesh.git@9d790784a5b20d271a9a4f21dd7dc1284e6d7040#egg=atmesh
+-e git+ssh://git@github.com/autotwin/mesh.git@f33f9b6077ed08eaa5aaf33b8b2f84ea39493dca#egg=atmesh
 attrs==22.1.0
 bleach==5.0.1
 build==0.8.0
