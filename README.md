@@ -4,7 +4,7 @@ Mesh data types
 
 ## Config
 
-There is a considerable amount of configuration, section to come.
+See [config/README.md)(config/README.md)
 
 ## Workflow
 
