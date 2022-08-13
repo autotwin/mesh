@@ -3,6 +3,7 @@
 ## Overview
 
 * Configure the local machine with a virtual environment ("venv") named `autotwin_env`.  
+* Create a package distribution
 * Install the `atmesh` module in developer mode (aka "editable").
 * Assess unit tests and code coverage of the `atmesh` module.
 * Install the `atpixel` module in developer mode.
@@ -47,7 +48,7 @@ python3 -m pip install --upgrade build
 python3 -m build
 ```
 
-Upload to archive
+*Optional:* Upload to archive
 
 ```bash
 python3 -m pip install --upgrade twine
