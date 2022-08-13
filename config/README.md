@@ -1,6 +1,16 @@
 # Configuration
 
-From https://packaging.python.org/en/latest/tutorials/installing-packages/
+## Overview
+
+* Configure the local machine with a virtual environment ("venv") named `autotwin_env)`.  
+* Install the `atmesh` module in developer mode (aka "editable").
+* Assess unit tests and code coverage of the `atmesh` module.
+* Install the `atpixel` module in developer mode.
+* Assess unit tests and code coverage of the `atpxel` module.
+
+## Methods
+
+Reference: https://packaging.python.org/en/latest/tutorials/installing-packages/
 
 ```bash
 python3 -m pip install --upgrade pip setuptools wheel
@@ -16,7 +26,7 @@ source autotwin_env/bin/Activate.fish # for powershell
 pip list
 ```
 
-From https://packaging.python.org/en/latest/tutorials/packaging-projects/
+Reference: https://packaging.python.org/en/latest/tutorials/packaging-projects/
 
 ```bash
 packaging_tutorial/
@@ -30,7 +40,7 @@ packaging_tutorial/
 └── tests/
 ```
 
-Create a `pyproject.toml`
+Create a `pyproject.toml`, e.g., example `.toml` reference: https://peps.python.org/pep-0621/#example
 
 ```bash
 python3 -m pip install --upgrade build
@@ -44,13 +54,10 @@ python3 -m pip install --upgrade twine
 python3 -m twine upload --repository testpypi dist/*
 ```
 
-Installing from a local source tree, from
+Installing from a local source tree, reference:
 
-https://packaging.python.org/en/latest/tutorials/installing-packages/#installing-from-a-local-src-tree
-
-and 
-
-development mode: https://setuptools.pypa.io/en/latest/userguide/development_mode.html
+* https://packaging.python.org/en/latest/tutorials/installing-packages/#installing-from-a-local-src-tree, and
+* development mode: https://setuptools.pypa.io/en/latest/userguide/development_mode.html
 
 ```bash
 cd ~/autotwin/mesh
