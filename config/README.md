@@ -14,9 +14,13 @@
 Reference: https://packaging.python.org/en/latest/tutorials/installing-packages/
 
 ```bash
-python3 -m pip install --upgrade pip setuptools wheel
+cd ~/autotwin/mesh
 
-python3 -m venv autotwin_env  # create a virtual environment
+# python3 -m pip install --upgrade pip setuptools wheel
+/usr/local/bin/python3.7 -m pip install --upgrade pip setuptools wheel
+
+# python3 -m venv autotwin_env  # create a virtual environment
+/usr/local/bin/python3.7 -m venv autotwin_env  # create a virtual environment
 
 # activate the venv with one of the following:
 source autotwin_env/bin/activate # for bash shell
