@@ -2,15 +2,20 @@
 
 Prerequisites:
 * Python 3.7.4 is required to run Cubit 16.06 and Sculpt.
+* We actually use Python 3.7.9 successfully for now.
 
 Methods:
-> cd ~/autotwin/mesh/src
+> cd ~/autotwin/mesh/src/atmesh
 
 * Interactive Method
-> /usr/local/bin/python3.7 sculpt_stl_to_inp.py
+# > /usr/local/bin/python3.7 sculpt_stl_to_inp.py
+> python --version  
+  Python 3.7.9
+> python sculpt_stl_to_inp.py
 
 * Log Method
-> /usr/local/bin/python3.7 sculpt_stl_to_inp.py > sculpt_stl_to_inp.log
+# > /usr/local/bin/python3.7 sculpt_stl_to_inp.py > sculpt_stl_to_inp.log
+> python sculpt_stl_to_inp.py > sculpt_stl_to_inp.log
 
 """
 import sys
@@ -26,12 +31,12 @@ print(f"{atmesh} This is {Path(__file__).resolve()}")
 # user input file begin
 user_input = {
     "cubit_path"   : "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS",
-    # "working_dir"  : "~/autotwin/mesh/tests/files",
-    "working_dir"  : "~/autotwin/mesh/data",
-    # "stl_path_file": "~/autotwin/mesh/tests/files/sphere.stl",
-    "stl_path_file": "~/autotwin/mesh/data/bunny_20cm.stl",
-    # "inp_path_file": "~/autotwin/mesh/tests/files/sphere.inp",
-    "inp_path_file": "~/autotwin/mesh/data/bunny_20cm.inp",
+    "working_dir"  : "~/autotwin/mesh/tests/files",
+    "stl_path_file": "~/autotwin/mesh/tests/files/sphere.stl",
+    "inp_path_file": "~/autotwin/mesh/tests/files/sphere.inp",
+    # "working_dir"  : "~/autotwin/mesh/data",
+    # "stl_path_file": "~/autotwin/mesh/data/bunny_20cm.stl",
+    # "inp_path_file": "~/autotwin/mesh/data/bunny_20cm.inp",
 }
 # user input file end
 
