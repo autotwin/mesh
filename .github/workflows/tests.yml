@@ -51,3 +51,7 @@ jobs:
         name: codecov-umbrella # optional
         fail_ci_if_error: true # optional (default = false)
         verbose: true # optional (default = false)
+    - name: Test with Black
+      run: |
+        black --check src/atmesh --diff
+        black --check tests --diff
