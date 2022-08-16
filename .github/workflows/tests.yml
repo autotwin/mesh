@@ -1,4 +1,4 @@
-name: pytest
+name: tests
 
 # reference:
 # https://github.com/pybind/python_example/blob/master/.github/workflows/pip.yml
