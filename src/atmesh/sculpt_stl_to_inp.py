@@ -30,8 +30,8 @@ print(f"{atmesh} This is {Path(__file__).resolve()}")
 
 # user input file begin
 user_input = {
-    "cubit_path"   : "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS",
-    "working_dir"  : "~/autotwin/mesh/tests/files",
+    "cubit_path": "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS",
+    "working_dir": "~/autotwin/mesh/tests/files",
     "stl_path_file": "~/autotwin/mesh/tests/files/sphere.stl",
     "inp_path_file": "~/autotwin/mesh/tests/files/sphere.inp",
     # "working_dir"  : "~/autotwin/mesh/data",
@@ -75,6 +75,7 @@ for item in sys.path:
 try:
     print(f"{atmesh} Import cubit module initiatied:")
     import cubit
+
     cubit.init
     print(f"{atmesh} Import cubit module completed.")
 
@@ -90,7 +91,7 @@ try:
     print(f"{atmesh} stl import completed.")
 
     print(f"{atmesh} Sculpt parallel initiated:")
-    cc = 'sculpt parallel'
+    cc = "sculpt parallel"
     cubit.cmd(cc)
     print(f"{atmesh} Sculpt parallel completed.")
 
