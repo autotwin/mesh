@@ -1,6 +1,3 @@
-# ignore the autowin_env virtual environment
-autotwin_env/
-#
 # ignore Abaqus input mesh files .inp because they are large.
 # * Large files should be linked to a Google Drive resource.  
 # * Large files should not be committed to the GitHub repository.
