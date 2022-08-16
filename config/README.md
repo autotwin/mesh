@@ -12,7 +12,7 @@
 ## Methods
 
 * Reference: https://packaging.python.org/en/latest/tutorials/installing-packages/
-* Instead of any `python3` install, Python 3.7 is used specifically for compatibility with Cubit. 
+* Instead of any `python3` install, `python3.7` is used specifically for compatibility with Cubit version 16.06.
 * Prerequisites:
   * The `autotwin` directory is created within the home `~` directory, and 
   * The `atmesh` and `atpixel` repos are cloned into that `autotwin` folder.
@@ -43,8 +43,8 @@ Package    Version
 pip        20.1.1
 setuptools 47.1.0
 WARNING: You are using pip version 20.1.1; however, version 22.2.2 is available.
-You should consider upgrading via the '/Users/cbh/autotwin/mesh/autotwin_env/bin/python3.7 -m pip install --upgrade pip' command.
-(autotwin_env) cbh@atlas/Users/cbh/autotwin/mesh>
+You should consider upgrading via the '/Users/cbh/autotwin/autotwin_env/bin/python3.7 -m pip install --upgrade pip' command.
+(autotwin_env) cbh@atlas/Users/cbh/autotwin>
 
 python -m pip install --upgrade pip
 
@@ -319,4 +319,5 @@ TOTAL                        10      1    90%
 (autotwin_env) cbh@atlas/Users/cbh/autotwin/pixel>
 ```
 
-Success!  The `venv` and the `atmesh` and `atpixel` modules are now installed.
+Success!  The `venv` virtual environment `automesh_env` has been created, 
+and the `atmesh` and `atpixel` modules are now installed and tested.
