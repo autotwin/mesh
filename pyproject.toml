@@ -14,7 +14,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "atmesh"
-version = "0.0.2a3"
+version = "0.0.3"
 authors = [
   { name="Chad Hovey", email="chovey@sandia.gov" },
   { name="Emma Lejeune", email="elejeune@bu.edu" },
@@ -29,7 +29,6 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-    "black",
     "flake8",
     "matplotlib",
     "pytest",

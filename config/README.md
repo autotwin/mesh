@@ -3,7 +3,7 @@
 ## Overview
 
 * Configure the local machine with a virtual environment ("venv") named `autotwin_env`.  
-* Create a package distribution
+* Create a `pyproject.toml` to configure each package `atmesh` and `atpixel`.
 * Install the `atmesh` module in developer mode (aka "editable").
 * Assess unit tests and code coverage of the `atmesh` module.
 * Install the `atpixel` module in developer mode.
@@ -11,10 +11,16 @@
 
 ## Methods
 
-Reference: https://packaging.python.org/en/latest/tutorials/installing-packages/
+* Reference: https://packaging.python.org/en/latest/tutorials/installing-packages/
+* Instead of any `python3` install, Python 3.7 is used specifically for compatibility with Cubit. 
+* Prerequisites:
+  * The `autotwin` directory is created within the home `~` directory, and 
+  * The `atmesh` and `atpixel` repos are cloned into that `autotwin` folder.
+
+### Within the `autotwin` folder, install the `venv`
 
 ```bash
-cd ~/autotwin/mesh
+cd ~/autotwin
 
 # python3 -m pip install --upgrade pip setuptools wheel
 /usr/local/bin/python3.7 -m pip install --upgrade pip setuptools wheel
@@ -50,7 +56,13 @@ Installing collected packages: pip
     Uninstalling pip-20.1.1:
       Successfully uninstalled pip-20.1.1
 Successfully installed pip-22.2.2
-(autotwin_env) cbh@atlas/Users/cbh/autotwin/mesh>
+(autotwin_env) cbh@atlas/Users/cbh/autotwin>
+```
+
+### Install `atmesh` as a developer
+
+```bash
+(autotwin_env) cbh@atlas/Users/cbh/autotwin> cd mesh
 ```
 
 Reference: https://packaging.python.org/en/latest/tutorials/packaging-projects/
@@ -79,13 +91,14 @@ Installing from a local source tree, reference:
 python -m pip install -e .  # note: `-e .` = `--editable .`
 ```
 
-Post-install package status:
+At the time of this writing, the current version of `atmesh` is shown below.  
+Your version may be newer.  Post-install package status:
 
 ```bash
-(autotwin_env) cbh@atlas/Users/cbh/autotwin/mesh> pip list          (base)
+(autotwin_env) cbh@atlas/Users/cbh/autotwin/mesh> pip list
 Package         Version Editable project location
 --------------- ------- -------------------------
-atmesh          0.0.2a2 /Users/cbh/autotwin/mesh
+atmesh          0.0.3   /Users/cbh/autotwin/mesh
 attrs           22.1.0
 coverage        6.4.3
 cycler          0.11.0
@@ -130,16 +143,16 @@ source autotwin_env/bin/Activate.fish # for powershell
 Example: activate the venv in fish shell:
 
 ```bash
-cbh@atlas/Users/cbh/autotwin/mesh> source autotwin_env/bin/activate.fish
+cbh@atlas/Users/cbh/autotwin/mesh> source ../autotwin_env/bin/activate.fish
 (autotwin_env) cbh@atlas/Users/cbh/autotwin/mesh>
 ```
 
-Test
+Run from the REPL:
 
 ```bash
-(autotwin_env) cbh@atlas/Users/cbh/autotwin/mesh> python --version                     (base)
+(autotwin_env) cbh@atlas/Users/cbh/autotwin/mesh> python --version
 Python 3.7.9
-(autotwin_env) cbh@atlas/Users/cbh/autotwin/mesh> python                                                                                       (base)
+(autotwin_env) cbh@atlas/Users/cbh/autotwin/mesh> python
 Python 3.7.9 (v3.7.9:13c94747c7, Aug 15 2020, 01:31:08)
 [Clang 6.0 (clang-600.0.57)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
@@ -151,10 +164,10 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> quit()
 ```
 
-And pytest
+Run the tests with `pytest`:
 
 ```bash
-(autotwin_env) cbh@atlas/Users/cbh/autotwin/mesh> pytest -v                                                                                    (base)
+(autotwin_env) cbh@atlas/Users/cbh/autotwin/mesh> pytest -v
 ================================================================ test session starts =================================================================
 platform darwin -- Python 3.7.9, pytest-7.1.2, pluggy-1.0.0 -- /Users/cbh/autotwin/mesh/autotwin_env/bin/python
 cachedir: .pytest_cache
@@ -174,7 +187,7 @@ tests/test_hello.py::test_bubble_sort PASSED                                    
 And `pytest-cov` (coverage) with line numbers missing coverage:
 
 ```bash
-(autotwin_env) cbh@atlas/Users/cbh/autotwin/mesh> pytest --cov=atmesh --cov-report term-missing                                                (base)
+(autotwin_env) cbh@atlas/Users/cbh/autotwin/mesh> pytest --cov=atmesh --cov-report term-missing
 ================================================================ test session starts =================================================================
 platform darwin -- Python 3.7.9, pytest-7.1.2, pluggy-1.0.0
 rootdir: /Users/cbh/autotwin/mesh
@@ -198,14 +211,14 @@ TOTAL                                68     61    10%
 (autotwin_env) cbh@atlas/Users/cbh/autotwin/mesh>
 ```
 
-Install the `atpixel` module:
+### Install `atpixel` as a developer
 
 ```bash
 (autotwin_env) cbh@atlas/Users/cbh/autotwin/mesh> cd ../pixel/
-(autotwin_env) cbh@atlas/Users/cbh/autotwin/pixel> pip list         (base)
+(autotwin_env) cbh@atlas/Users/cbh/autotwin/pixel> pip list
 Package         Version Editable project location
 --------------- ------- -------------------------
-atmesh          0.0.2a2 /Users/cbh/autotwin/mesh
+atmesh          0.0.3   /Users/cbh/autotwin/mesh
 attrs           22.1.0
 coverage        6.4.3
 cycler          0.11.0
@@ -237,11 +250,11 @@ Obtaining file:///Users/cbh/autotwin/pixel
 Successfully built atpixel
 Installing collected packages: atpixel
 Successfully installed atpixel-0.0.1a1
-(autotwin_env) cbh@atlas/Users/cbh/autotwin/pixel> pip list         (base)
+(autotwin_env) cbh@atlas/Users/cbh/autotwin/pixel> pip list
 Package         Version Editable project location
 --------------- ------- -------------------------
-atmesh          0.0.2a2 /Users/cbh/autotwin/mesh
-atpixel         0.0.1a1 /Users/cbh/autotwin/pixel
+atmesh          0.0.3   /Users/cbh/autotwin/mesh
+atpixel         0.0.2   /Users/cbh/autotwin/pixel
 attrs           22.1.0
 coverage        6.4.3
 cycler          0.11.0
@@ -262,12 +275,16 @@ python-dateutil 2.8.2
 setuptools      56.0.0
 six             1.16.0
 tomli           2.0.1
-(autotwin_env) cbh@atlas/Users/cbh/autotwin/pixel>                  (base)
+(autotwin_env) cbh@atlas/Users/cbh/autotwin/pixel>
 ```
 
-Try `atpixel` module:
+At the time of this writing, the current versions of `atmesh` and `atpixel` 
+are shown above.  Your versions may be newer.
+
+Run from the REPL:
+
 ```bash
-(autotwin_env) cbh@atlas/Users/cbh/autotwin/pixel> python                                                                                      (base)
+(autotwin_env) cbh@atlas/Users/cbh/autotwin/pixel> python
 Python 3.7.9 (v3.7.9:13c94747c7, Aug 15 2020, 01:31:08)
 [Clang 6.0 (clang-600.0.57)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
@@ -277,10 +294,10 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> quit()
 ```
 
-Test `atpixel` module:
+Run the tests with `pytest`:
 
 ```bash
-(autotwin_env) cbh@atlas/Users/cbh/autotwin/pixel> pytest --cov=atpixel --cov-report term-missing                                              (base)
+(autotwin_env) cbh@atlas/Users/cbh/autotwin/pixel> pytest --cov=atpixel --cov-report term-missing
 ================================================================ test session starts =================================================================
 platform darwin -- Python 3.7.9, pytest-7.1.2, pluggy-1.0.0
 rootdir: /Users/cbh/autotwin/pixel
@@ -302,3 +319,4 @@ TOTAL                        10      1    90%
 (autotwin_env) cbh@atlas/Users/cbh/autotwin/pixel>
 ```
 
+Success!  The `venv` and the `atmesh` and `atpixel` modules are now installed.
