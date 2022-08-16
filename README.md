@@ -7,6 +7,8 @@ Mesh data types
 [![license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/sandialabs/sibl#license) 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
+[![pytest](https://github.com/autotwim/mesh/workflows/pytest/badge.svg)](https://github.com/autotwin/mesh/actions)
+
 ## Config
 
 See [config/README.md](config/README.md)
