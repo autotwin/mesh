@@ -9,6 +9,8 @@ Mesh data types
 
 [![tests](https://github.com/autotwin/mesh/workflows/tests/badge.svg)](https://github.com/autotwin/mesh/actions)
 
+[![codecov](https://codecov.io/gh/autotwin/mesh/branch/main/graph/badge.svg)](https://codecov.io/gh/autotwin/mesh)
+
 ## Config
 
 See [config/README.md](config/README.md)
