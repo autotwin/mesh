@@ -11,6 +11,9 @@ Mesh data types
 
 [![codecov](https://codecov.io/gh/autotwin/mesh/branch/main/graph/badge.svg)](https://codecov.io/gh/autotwin/mesh)
 
+[![codecov](https://codecov.io/gh/autotwin/mesh/branch/main/graph/badge.svg?token=XY0UAVX3OD)](https://codecov.io/gh/autotwin/mesh)
+
+
 ## Config
 
 See [config/README.md](config/README.md)
