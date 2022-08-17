@@ -9,7 +9,7 @@ Methods:
 
 * Interactive Method
 # > /usr/local/bin/python3.7 sculpt_stl_to_inp.py
-> python --version  
+> python --version
   Python 3.7.9
 > python sculpt_stl_to_inp.py
 

@@ -18,4 +18,7 @@ See [config/README.md](config/README.md)
 
 See [doc/README.md](doc/README.md)
 
+## Future Reading
+
+* https://github.com/pyenv/pyenv
 

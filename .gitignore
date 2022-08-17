@@ -1,5 +1,5 @@
 # ignore the local venv 
-atmesh_env/
+atmeshenv/
 #
 # ignore Abaqus input mesh files .inp because they are large.
 # * Large files should be linked to a Google Drive resource.  
