@@ -54,8 +54,31 @@ export facets "/Users/cbh/autotwin/mesh/tests/files/sphere_size_factor_10.fac"  
 
 ## `atmesh`
 
-To come.
 
+> Listing 1. Manually generated octahedron base `octahedron_base.obj`.
+
+```bash
+v 1.0 0.0 0.0
+v 0.0 1.0 0.0
+v -1.0 0.0 0.0
+v 0.0 -1.0 0.0
+v 0.0 0.0 1.0
+v 0.0 0.0 -1.0
+f 1 2 5
+f 2 3 5
+f 3 4 5
+f 4 1 5
+f 2 1 6
+f 3 2 6
+f 4 3 6
+f 1 4 6
+```
+
+
+name | image | file size | vertices | faces |
+--- | --- | --- | --- | --- |
+[`octa_loop0.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop00.stl) | ![loop0](https://github.com/autotwin/data/blob/main/octa/octa_loop00.png) | 2.1kB | 6 | 8 |
+[`octa_loop1.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop01.stl) | ![loop1](https://github.com/autotwin/data/blob/main/octa/octa_loop01.png) | 8.3kB | 18 | 32 |
 
 ## References
 
