@@ -82,9 +82,11 @@ name | image | file size | vertices | faces |
 [`octa_loop2.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop02.stl) | ![loop2](https://github.com/autotwin/data/blob/main/octa/octa_loop02.png) | 33kB | 66 | 128 |
 [`octa_loop3.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop03.stl) | ![loop3](https://github.com/autotwin/data/blob/main/octa/octa_loop03.png) | 132kB | 258 | 512 |
 [`octa_loop4.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop04.stl) | ![loop4](https://github.com/autotwin/data/blob/main/octa/octa_loop04.png) | 526kB | 1,026 | 2,048 |
-[`octa_loop5.stl`]() | ![loop5](https://github.com/autotwin/data/blob/main/octa/octa_loop05.png) | 2.1MB | 4,098 | 8,192 |
-[`octa_loop6.stl`]() | ![loop6](https://github.com/autotwin/data/blob/main/octa/octa_loop06.png) |  | 16,098 | 32,192 |
-[`octa_loop7.stl`]() | ![loop7](https://github.com/autotwin/data/blob/main/octa/octa_loop07.png) | 8.1MB | 64,362 | 128,720 |
+[`octa_loop5.stl`]() `G` | ![loop5](https://github.com/autotwin/data/blob/main/octa/octa_loop05.png) | 2.1MB | 4,098 | 8,192 |
+[`octa_loop6.stl`]() `G` | ![loop6](https://github.com/autotwin/data/blob/main/octa/octa_loop06.png) | 8.1MB  | 16,098 | 32,192 |
+[`octa_loop7.stl`]() `G` | ![loop7](https://github.com/autotwin/data/blob/main/octa/octa_loop07.png) | 32MB | 64,362 | 128,720 |
+
+> Items with `G` are not on the repository; they are on Google Drive because of their large file size.
 
 ## References
 
