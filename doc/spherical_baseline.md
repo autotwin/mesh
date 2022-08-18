@@ -76,9 +76,12 @@ f 1 4 6
 
 
 name | image | file size | vertices | faces |
---- | --- | --- | --- | --- |
+--- | --- | ---: | ---: | ---: |
 [`octa_loop0.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop00.stl) | ![loop0](https://github.com/autotwin/data/blob/main/octa/octa_loop00.png) | 2.1kB | 6 | 8 |
 [`octa_loop1.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop01.stl) | ![loop1](https://github.com/autotwin/data/blob/main/octa/octa_loop01.png) | 8.3kB | 18 | 32 |
+[`octa_loop2.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop02.stl) | ![loop2](https://github.com/autotwin/data/blob/main/octa/octa_loop02.png) | 33kB | 66 | 128 |
+[`octa_loop3.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop03.stl) | ![loop3](https://github.com/autotwin/data/blob/main/octa/octa_loop03.png) | 132kB | 258 | 512 |
+[`octa_loop4.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop04.stl) | ![loop4](https://github.com/autotwin/data/blob/main/octa/octa_loop04.png) | 526kB | 1,026 | 2,048 |
 
 ## References
 
