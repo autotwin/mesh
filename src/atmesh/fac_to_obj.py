@@ -88,8 +88,6 @@ def translate(*, path_file_input: str) -> bool:
 
 def main(argv):
 
-    breakpoint()
-
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
@@ -100,11 +98,7 @@ def main(argv):
     args = parser.parse_args()
     facet_file = args.facet_file
 
-    translated = translate(path_file_input=facet_file)
-
-    success = "success: translation completed"
-    failure = "error: translation unsucessful"
-    print(success if translated else failure)
+    translate(path_file_input=facet_file)
 
 
 if __name__ == "__main__":
