@@ -7,8 +7,9 @@ For coverage:
 (atmeshenv) ~/autotwin/mesh> pytest tests/test_fac_to_obj.py --cov=src/atmesh --cov-report term-missing
 """
 
-from pathlib import Path
 import hashlib
+from pathlib import Path
+import sys
 
 import pytest
 
@@ -28,6 +29,9 @@ def test_file_bad():
     assert error.typename == "FileNotFoundError"
 
 
+@pytest.mark.skipif(
+    sys.platform == "win32", reason="Windows md5 not the same as Linux and macOS"
+)
 def test_cube_translation():
     """Given an exemplar input file ~/autotwin/mesh/tests/files/cube.fac,
     check that it is translated into ~/autotwin/mesh/cube.obj and
