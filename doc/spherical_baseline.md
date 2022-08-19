@@ -136,10 +136,10 @@ view iso # isometric x, y, z camera
 quality volume 1 scaled jacobian global draw histogram draw mesh list
 ```
 
-| iter  | image                                                                    |    cells | nodes `nnp` | elements `nel` | element density `nel`$/ V$ |
-| :---: | ------------------------------------------------------------------------ | -------: | ----------: | -------------: | -------------------------: |
-|   0   | ![sculp00](https://github.com/autotwin/data/blob/main/octa/sculpt00.png) | 35x35x35 |     $8,696$ |        $7,343$ |                    $5,507$ |
-|   0   | i0                                                                       | 35x35x35 |     $8,696$ |        $7,343$ |                    $5,507$ |
+| iter  | image                                                                     |    cells | nodes `nnp` | elements `nel` | element density `nel`$/ V$ |
+| :---: | ------------------------------------------------------------------------- | -------: | ----------: | -------------: | -------------------------: |
+|   0   | ![sculpt00](https://github.com/autotwin/data/blob/main/octa/sculpt00.png) | 35x35x35 |     $8,696$ |        $7,343$ |                    $5,507$ |
+|   1   | ![sculpt01](https://github.com/autotwin/data/blob/main/octa/sculpt01.png) | 28x28x28 |     $8,133$ |        $6,960$ |                    $2,365$ |
 
 ## References
 
