@@ -121,14 +121,14 @@ for example:
 * on `iter 7`: $16,386 + 49,152 = 65,538$.
 
 
-> Surface area of a sphere is $A = 4 \pi r^2$, and when $r=1$, $A \approx 12.566371$.  
+> Surface area of a sphere is $A = 4 \pi r^2$, and when $r=1$, $A \approx 12.566371$.
 > Volume of a sphere is $\frac{4}{3} \pi r^3$, and when $r=1$, $V \approx 4.188790$.
 
 > Meshes and computations created with MeshLab 2022.02, Subdivision Surfaces LS3 Loop, Boyé S, Guennebaud G, Schlick C. Least squares subdivision surfaces. In *Computer Graphics Forum* 2010 Sep (Vol. 29, No. 7, pp. 2021-2028). Oxford, UK: Blackwell Publishing Ltd.[^cs468]
 
 ### Mesh Metrics
 
-Pytnon
+Python
 
 ```bash
 (atmeshenv) ~/autotwin/mesh/src/atmesh> python sculpt_stl_to_inp.py
@@ -148,6 +148,7 @@ quality volume 1 scaled jacobian global draw histogram draw mesh list
 | :---: | ------------------------------------------------------------------------- | -------: | ----------: | -------------: | -------------------------: |
 |   0   | ![sculpt00](https://github.com/autotwin/data/blob/main/octa/sculpt00.png) | 35x35x35 |     $8,696$ |        $7,343$ |                    $5,507$ |
 |   1   | ![sculpt01](https://github.com/autotwin/data/blob/main/octa/sculpt01.png) | 28x28x28 |     $8,133$ |        $6,960$ |                    $2,365$ |
+|   2   | ![sculpt02](https://github.com/autotwin/data/blob/main/octa/sculpt02.png) | 26x26x26 |     $7,833$ |        $6,744$ |                    $1,762$ |
 
 ## References
 
