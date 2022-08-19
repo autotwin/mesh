@@ -83,8 +83,8 @@ name | image | file size | vertices | faces |
 [`octa_loop3.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop03.stl) | ![loop3](https://github.com/autotwin/data/blob/main/octa/octa_loop03.png) | 132kB | 258 | $8 \cdot 4^3 = 512$ |
 [`octa_loop4.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop04.stl) | ![loop4](https://github.com/autotwin/data/blob/main/octa/octa_loop04.png) | 526kB | 1,026 | $8 \cdot 4^4 = 2,048$ |
 [`octa_loop5.stl`](https://drive.google.com/file/d/1EtlgQH40alzRsy5u-mcUiKF1UjI4uTux/view?usp=sharing) `G` | ![loop5](https://github.com/autotwin/data/blob/main/octa/octa_loop05.png) | 2.1MB | 4,098 | $8 \cdot 4^5 = 8,192$ |
-[`octa_loop6.stl`](https://drive.google.com/file/d/1oUuHunLHgbF2BIY2qkEKzQXsBh0RZqc0/view?usp=sharing) `G` | ![loop6](https://github.com/autotwin/data/blob/main/octa/octa_loop06.png) | 8.1MB  | 16,098 | $8 \cdot 4^6 = 32,768 \neq 32,192$ |
-[`octa_loop7.stl`](https://drive.google.com/file/d/15z9_C09LAXwFgarI-HPwSQpgPYKk1oAM/view?usp=sharing) `G` | ![loop7](https://github.com/autotwin/data/blob/main/octa/octa_loop07.png) | 32MB | 64,362 | $8 \cdot 4^7 = 131,072 \neq 128,720$ |
+[`octa_loop6.stl`](https://drive.google.com/file/d/1oUuHunLHgbF2BIY2qkEKzQXsBh0RZqc0/view?usp=sharing) `G` | ![loop6](https://github.com/autotwin/data/blob/main/octa/octa_loop06.png) | 8.6MB  | 16,368 | $8 \cdot 4^6 = 32,768$ |
+[`octa_loop7.stl`](https://drive.google.com/file/d/15z9_C09LAXwFgarI-HPwSQpgPYKk1oAM/view?usp=sharing) `G` | ![loop7](https://github.com/autotwin/data/blob/main/octa/octa_loop07.png) | 33MB | 65,538 | $8 \cdot 4^7 = 131,072$ |
 
 > Items with `G` are not on the repository; they are on Google Drive because of their large file size.
 
