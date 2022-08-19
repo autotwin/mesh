@@ -128,6 +128,19 @@ for example:
 
 > Meshes and computations created with MeshLab 2022.02, Subdivision Surfaces LS3 Loop, Boyé S, Guennebaud G, Schlick C. Least squares subdivision surfaces. In *Computer Graphics Forum* 2010 Sep (Vol. 29, No. 7, pp. 2021-2028). Oxford, UK: Blackwell Publishing Ltd.[^cs468]
 
+```bash
+Cubit>
+graphics perspective off  # orthogonal, not perspective view
+up 0 0 1  # z-axis points up
+view iso # isometric x, y, z camera
+quality volume 1 scaled jacobian global draw histogram draw mesh list
+```
+
+| iter  | image                                                                    |    cells | nodes `nnp` | elements `nel` | element density `nel`$/ V$ |
+| :---: | ------------------------------------------------------------------------ | -------: | ----------: | -------------: | -------------------------: |
+|   0   | ![sculp00](https://github.com/autotwin/data/blob/main/octa/sculpt00.png) | 35x35x35 |     $8,696$ |        $7,343$ |                    $5,507$ |
+|   0   | i0                                                                       | 35x35x35 |     $8,696$ |        $7,343$ |                    $5,507$ |
+
 ## References
 
 [^cs468]: Stanford cs468-10-fall Subdivision http://graphics.stanford.edu/courses/cs468-10-fall/LectureSlides/10_Subdivision.pdf
