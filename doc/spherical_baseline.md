@@ -158,6 +158,8 @@ quality volume 1 scaled jacobian global draw histogram draw mesh list
 |   3   | ![sculpt03](https://github.com/autotwin/data/blob/main/octa/sculpt03.png) | 26x26x26 |       7,731 |          6,672 |                      1,630 |
 |   4   | ![sculpt04](https://github.com/autotwin/data/blob/main/octa/sculpt04.png) | 26x26x26 |       7,731 |          6,672 |                      1,600 |
 |   5   | ![sculpt05](https://github.com/autotwin/data/blob/main/octa/sculpt05.png) | 26x26x26 |       7,731 |          6,672 |                      1,596 |
+|   6   | ![sculpt06](https://github.com/autotwin/data/blob/main/octa/sculpt06.png) | 26x26x26 |       7,731 |          6,672 |                      1,595 |
+|   7   | ![sculpt07](https://github.com/autotwin/data/blob/main/octa/sculpt07.png) | 26x26x26 |       7,731 |          6,672 |                      1,595 |
 
 ## References
 
