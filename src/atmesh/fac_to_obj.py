@@ -7,6 +7,12 @@ Methods:
 
 Outputs:
 <file_name>.obj
+
+Example:
+~/autotwin/mesh> source atmeshenv/bin/activate.fish
+(atmeshenv) ~/autotwin/mesh> python src/atmesh/fac_to_obj.py tests/files/cube.fac
+
+produces cube.obj
 """
 
 import argparse
@@ -22,10 +28,10 @@ def translate(*, path_file_input: str) -> bool:
     Parameters:
         path_file_input is path and file name as a string; the tilde (~) for
             $HOME is allowed (and encouraged to not tie input string to specific
-            users).  Example: "~/some_path/to_an_input_file/<file_name.fac"
+            users).  Example: "~/some_path/to_an_input_file/<file_name>.fac"
 
     Outputs:
-        Example: "~/some_path/to_an_input_file/<file_name.obj"
+        Example: "~/some_path/to_an_input_file/<file_name>.obj"
 
     Returns:
         True if the translation was successful, False otherwise.
@@ -102,12 +108,7 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    """Runs the module from the command line.
-    Example:
-    (atmeshenv) ~/autotwin/mesh> python src/atmesh/fac_to_obj.py tests/files/cube.fac
-
-    # produces cube.obj
-    """
+    """Runs the module from the command line."""
     main(sys.argv[1:])
 
 

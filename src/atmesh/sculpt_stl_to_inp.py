@@ -17,6 +17,10 @@ Methods:
 # > /usr/local/bin/python3.7 sculpt_stl_to_inp.py > sculpt_stl_to_inp.log
 > python sculpt_stl_to_inp.py > sculpt_stl_to_inp.log
 
+Example:
+~/autotwin/mesh> source atmeshenv/bin/activate.fish # (atmeshenv) uses Python 3.7
+(atmeshenv) cbh@atlas/Users/cbh/autotwin/mesh> cd src/atmesh
+
 """
 import sys
 from pathlib import Path
@@ -31,9 +35,15 @@ print(f"{atmesh} This is {Path(__file__).resolve()}")
 # user input file begin
 user_input = {
     "cubit_path": "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS",
+    #
     "working_dir": "~/autotwin/mesh/tests/files",
     "stl_path_file": "~/autotwin/mesh/tests/files/sphere.stl",
     "inp_path_file": "~/autotwin/mesh/tests/files/sphere.inp",
+    #
+    # "working_dir": "~/autotwin/mesh/tests/files",
+    # "stl_path_file": "~/autotwin/mesh/tests/files/sphere.stl",
+    # "inp_path_file": "~/autotwin/mesh/tests/files/sphere.inp",
+    #
     # "working_dir"  : "~/autotwin/mesh/data",
     # "stl_path_file": "~/autotwin/mesh/data/bunny_20cm.stl",
     # "inp_path_file": "~/autotwin/mesh/data/bunny_20cm.inp",
@@ -100,6 +110,9 @@ try:
     cc = 'export abaqus "' + inp_path_file + '" overwrite'
     cubit.cmd(cc)
     print(f"{atmesh} Abaqus file export completed.")
+
+    # print(f"{atmesh} Script: {Path(__file__).resolve()} has completed.")
+    print(f"{atmesh} Done.")
 
 except ModuleNotFoundError as err:
     print("unable to import cubit")
