@@ -30,7 +30,7 @@ def test_file_bad():
 
 
 @pytest.mark.skipif(
-    sys.platform == "win32", reason="Windows md5 not the same as Linux and macOS"
+    sys.platform == "win32", reason="Windows md5 is not the same as Linux and macOS"
 )
 def test_cube_translation():
     """Given an exemplar input file ~/autotwin/mesh/tests/files/cube.fac,
