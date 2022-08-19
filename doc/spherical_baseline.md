@@ -83,6 +83,24 @@ f 4 3 6
 f 1 4 6
 ```
 
+*File Name, Image, File Size*
+
+
+| name                                                                                                       | image                                                                     | file size |
+| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | --------: |
+| [`octa_loop0.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop00.stl)                        | ![loop0](https://github.com/autotwin/data/blob/main/octa/octa_loop00.png) |     2.1kB |
+| [`octa_loop1.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop01.stl)                        | ![loop1](https://github.com/autotwin/data/blob/main/octa/octa_loop01.png) |     8.3kB |
+| [`octa_loop2.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop02.stl)                        | ![loop2](https://github.com/autotwin/data/blob/main/octa/octa_loop02.png) |      33kB |
+| [`octa_loop3.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop03.stl)                        | ![loop3](https://github.com/autotwin/data/blob/main/octa/octa_loop03.png) |     132kB |
+| [`octa_loop4.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop04.stl)                        | ![loop4](https://github.com/autotwin/data/blob/main/octa/octa_loop04.png) |     526kB |
+| [`octa_loop5.stl`](https://drive.google.com/file/d/1EtlgQH40alzRsy5u-mcUiKF1UjI4uTux/view?usp=sharing) `G` | ![loop5](https://github.com/autotwin/data/blob/main/octa/octa_loop05.png) |     2.1MB |
+| [`octa_loop6.stl`](https://drive.google.com/file/d/1oUuHunLHgbF2BIY2qkEKzQXsBh0RZqc0/view?usp=sharing) `G` | ![loop6](https://github.com/autotwin/data/blob/main/octa/octa_loop06.png) |     8.6MB |
+| [`octa_loop7.stl`](https://drive.google.com/file/d/15z9_C09LAXwFgarI-HPwSQpgPYKk1oAM/view?usp=sharing) `G` | ![loop7](https://github.com/autotwin/data/blob/main/octa/octa_loop07.png) |      33MB |
+
+> Items with `G` are not on the repository; they are on Google Drive because of their large file size.  
+
+
+*Geometric Metrics*
 
 | name                                                                                                       | image                                                                     | file size |               vertices $v$ |               faces $f$ |                                         edges $e$ | surface area $A$ | volume $V$ | face density $f/A$ |
 | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | --------: | -------------------------: | ----------------------: | ------------------------------------------------: | ---------------: | ---------: | -----------------: |
@@ -95,7 +113,7 @@ f 1 4 6
 | [`octa_loop6.stl`](https://drive.google.com/file/d/1oUuHunLHgbF2BIY2qkEKzQXsBh0RZqc0/view?usp=sharing) `G` | ![loop6](https://github.com/autotwin/data/blob/main/octa/octa_loop06.png) |     8.6MB |  $4,098 + 12,288 = 16,386$ |  $8 \cdot 4^6 = 32,768$ |           $2\cdot 12,288 + 3\cdot 8,192 = 49,152$ |      `12.557285` | `4.183937` |         `2609.481` |
 | [`octa_loop7.stl`](https://drive.google.com/file/d/15z9_C09LAXwFgarI-HPwSQpgPYKk1oAM/view?usp=sharing) `G` | ![loop7](https://github.com/autotwin/data/blob/main/octa/octa_loop07.png) |      33MB | $16,386 + 49,152 = 65,538$ | $8 \cdot 4^7 = 131,072$ |         $2\cdot 49,152 + 3\cdot 32,768 = 196,608$ |      `12.554407` | `4.182833` |         `10440.32` |
 
-> Items with `G` are not on the repository; they are on Google Drive because of their large file size.  
+
 
 > Surface area of a sphere is $A = 4 \pi r^2$, and when $r=1$, $A \approx 12.566371$.  
 > Volume of a sphere is $\frac{4}{3} \pi r^3$, and when $r=1$, $V \approx 4.188790$.
