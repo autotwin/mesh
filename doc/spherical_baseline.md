@@ -78,13 +78,13 @@ f 1 4 6
 name | image | file size | vertices | faces |
 --- | --- | ---: | ---: | ---: |
 [`octa_loop0.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop00.stl) | ![loop0](https://github.com/autotwin/data/blob/main/octa/octa_loop00.png) | 2.1kB | 6 | $8 * 4^0 = 8$ |
-[`octa_loop1.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop01.stl) | ![loop1](https://github.com/autotwin/data/blob/main/octa/octa_loop01.png) | 8.3kB | 18 | 32 |
-[`octa_loop2.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop02.stl) | ![loop2](https://github.com/autotwin/data/blob/main/octa/octa_loop02.png) | 33kB | 66 | 128 |
-[`octa_loop3.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop03.stl) | ![loop3](https://github.com/autotwin/data/blob/main/octa/octa_loop03.png) | 132kB | 258 | 512 |
-[`octa_loop4.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop04.stl) | ![loop4](https://github.com/autotwin/data/blob/main/octa/octa_loop04.png) | 526kB | 1,026 | 2,048 |
-[`octa_loop5.stl`](https://drive.google.com/file/d/1EtlgQH40alzRsy5u-mcUiKF1UjI4uTux/view?usp=sharing) `G` | ![loop5](https://github.com/autotwin/data/blob/main/octa/octa_loop05.png) | 2.1MB | 4,098 | 8,192 |
-[`octa_loop6.stl`](https://drive.google.com/file/d/1oUuHunLHgbF2BIY2qkEKzQXsBh0RZqc0/view?usp=sharing) `G` | ![loop6](https://github.com/autotwin/data/blob/main/octa/octa_loop06.png) | 8.1MB  | 16,098 | 32,192 |
-[`octa_loop7.stl`](https://drive.google.com/file/d/15z9_C09LAXwFgarI-HPwSQpgPYKk1oAM/view?usp=sharing) `G` | ![loop7](https://github.com/autotwin/data/blob/main/octa/octa_loop07.png) | 32MB | 64,362 | 128,720 |
+[`octa_loop1.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop01.stl) | ![loop1](https://github.com/autotwin/data/blob/main/octa/octa_loop01.png) | 8.3kB | 18 | $8 * 4^1 = 32$ |
+[`octa_loop2.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop02.stl) | ![loop2](https://github.com/autotwin/data/blob/main/octa/octa_loop02.png) | 33kB | 66 | $8 * 4^2 = 128$ |
+[`octa_loop3.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop03.stl) | ![loop3](https://github.com/autotwin/data/blob/main/octa/octa_loop03.png) | 132kB | 258 | $8 * 4^3 = 512$ |
+[`octa_loop4.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop04.stl) | ![loop4](https://github.com/autotwin/data/blob/main/octa/octa_loop04.png) | 526kB | 1,026 | $8 * 4^4 = 2,048$ |
+[`octa_loop5.stl`](https://drive.google.com/file/d/1EtlgQH40alzRsy5u-mcUiKF1UjI4uTux/view?usp=sharing) `G` | ![loop5](https://github.com/autotwin/data/blob/main/octa/octa_loop05.png) | 2.1MB | 4,098 | $8 * 4^5 = 8,192$ |
+[`octa_loop6.stl`](https://drive.google.com/file/d/1oUuHunLHgbF2BIY2qkEKzQXsBh0RZqc0/view?usp=sharing) `G` | ![loop6](https://github.com/autotwin/data/blob/main/octa/octa_loop06.png) | 8.1MB  | 16,098 | $8 * 4^6 = 32,768 \neq 32,192$ |
+[`octa_loop7.stl`](https://drive.google.com/file/d/15z9_C09LAXwFgarI-HPwSQpgPYKk1oAM/view?usp=sharing) `G` | ![loop7](https://github.com/autotwin/data/blob/main/octa/octa_loop07.png) | 32MB | 64,362 | $8 * 4^7 = 131,072 \neq 128,720$ |
 
 > Items with `G` are not on the repository; they are on Google Drive because of their large file size.
 
