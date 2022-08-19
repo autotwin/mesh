@@ -36,9 +36,9 @@ print(f"{atmesh} This is {Path(__file__).resolve()}")
 user_input = {
     "cubit_path": "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS",
     #
-    "working_dir": "~/autotwin/mesh/tests/files",
-    "stl_path_file": "~/autotwin/mesh/tests/files/sphere.stl",
-    "inp_path_file": "~/autotwin/mesh/tests/files/sphere.inp",
+    "working_dir": "~/autotwin/data/octa",
+    "stl_path_file": "~/autotwin/data/octa/octa_loop07.stl",
+    "inp_path_file": "~/autotwin/data/octa/octa_loop07.inp",
     #
     # "working_dir": "~/autotwin/mesh/tests/files",
     # "stl_path_file": "~/autotwin/mesh/tests/files/sphere.stl",
