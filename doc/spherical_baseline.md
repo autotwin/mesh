@@ -55,7 +55,7 @@ export facets "/Users/cbh/autotwin/mesh/tests/files/sphere_size_factor_10.fac"  
 ## `atmesh`
 
 
-> Listing 1. Manually generated octahedron base `octahedron_base.obj`.
+> Listing 1. Manually generated octahedron base [`octahedron_base.obj`](https://github.com/autotwin/data/blob/main/octa/octa_base.obj).
 
 ```bash
 v 1.0 0.0 0.0
@@ -75,18 +75,23 @@ f 1 4 6
 ```
 
 
-name | image | file size | vertices | faces | edges
---- | --- | ---: | ---: | ---: | ---: |
-[`octa_loop0.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop00.stl) | ![loop0](https://github.com/autotwin/data/blob/main/octa/octa_loop00.png) | 2.1kB | 6 | $8 \cdot 4^0 = 8$ | 12 |
-[`octa_loop1.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop01.stl) | ![loop1](https://github.com/autotwin/data/blob/main/octa/octa_loop01.png) | 8.3kB | 6 + 12 = 18 | $8 \cdot 4^1 = 32$ | ? | 
-[`octa_loop2.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop02.stl) | ![loop2](https://github.com/autotwin/data/blob/main/octa/octa_loop02.png) | 33kB | 66 | $8 \cdot 4^2 = 128$ | ? | 
-[`octa_loop3.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop03.stl) | ![loop3](https://github.com/autotwin/data/blob/main/octa/octa_loop03.png) | 132kB | 258 | $8 \cdot 4^3 = 512$ | ? | 
-[`octa_loop4.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop04.stl) | ![loop4](https://github.com/autotwin/data/blob/main/octa/octa_loop04.png) | 526kB | 1,026 | $8 \cdot 4^4 = 2,048$ | ? |
-[`octa_loop5.stl`](https://drive.google.com/file/d/1EtlgQH40alzRsy5u-mcUiKF1UjI4uTux/view?usp=sharing) `G` | ![loop5](https://github.com/autotwin/data/blob/main/octa/octa_loop05.png) | 2.1MB | 4,098 | $8 \cdot 4^5 = 8,192$ | ? | 
-[`octa_loop6.stl`](https://drive.google.com/file/d/1oUuHunLHgbF2BIY2qkEKzQXsBh0RZqc0/view?usp=sharing) `G` | ![loop6](https://github.com/autotwin/data/blob/main/octa/octa_loop06.png) | 8.6MB  | 16,368 | $8 \cdot 4^6 = 32,768$ | ? | 
-[`octa_loop7.stl`](https://drive.google.com/file/d/15z9_C09LAXwFgarI-HPwSQpgPYKk1oAM/view?usp=sharing) `G` | ![loop7](https://github.com/autotwin/data/blob/main/octa/octa_loop07.png) | 33MB | 65,538 | $8 \cdot 4^7 = 131,072$ | ? |
+| name                                                                                                       | image                                                                     | file size |              vertices $v$ |               faces $f$ |                                         edges $e$ | surface area $A$ | volume $V$ |
+| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | --------: | ------------------------: | ----------------------: | ------------------------------------------------: | ---------------: | ---------: |
+| [`octa_loop0.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop00.stl)                        | ![loop0](https://github.com/autotwin/data/blob/main/octa/octa_loop00.png) |     2.1kB |                       $6$ |       $8 \cdot 4^0 = 8$ |                                              $12$ |       `6.928203` | `1.333333` |
+| [`octa_loop1.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop01.stl)                        | ![loop1](https://github.com/autotwin/data/blob/main/octa/octa_loop01.png) |     8.3kB |     $v + e = 6 + 12 = 18$ |      $8 \cdot 4^1 = 32$ | $2\cdot e + 3\cdot f = 2\cdot 12 + 3\cdot 8 = 48$ |      `10.417751` | `2.942809` |
+| [`octa_loop2.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop02.stl)                        | ![loop2](https://github.com/autotwin/data/blob/main/octa/octa_loop02.png) |      33kB |            $18 + 48 = 66$ |     $8 \cdot 4^2 = 128$ |                     $2\cdot 48 + 3\cdot 32 = 192$ |      `11.959619` | `3.828144` |
+| [`octa_loop3.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop03.stl)                        | ![loop3](https://github.com/autotwin/data/blob/main/octa/octa_loop03.png) |     132kB |          $66 + 192 = 258$ |     $8 \cdot 4^3 = 512$ |                   $2\cdot 192 + 3\cdot 128 = 768$ |      `12.405214` | `4.092582` |
+| [`octa_loop4.stl`](https://github.com/autotwin/data/blob/main/octa/octa_loop04.stl)                        | ![loop4](https://github.com/autotwin/data/blob/main/octa/octa_loop04.png) |     526kB |       $258 + 768 = 1,026$ |   $8 \cdot 4^4 = 2,048$ |                 $2\cdot 768 + 3\cdot 512 = 3,072$ |      `12.520864` | `4.161948` |
+| [`octa_loop5.stl`](https://drive.google.com/file/d/1EtlgQH40alzRsy5u-mcUiKF1UjI4uTux/view?usp=sharing) `G` | ![loop5](https://github.com/autotwin/data/blob/main/octa/octa_loop05.png) |     2.1MB |   $1,026 + 3,072 = 4,098$ |   $8 \cdot 4^5 = 8,192$ |            $2\cdot 3,072 + 3\cdot 2,048 = 12,288$ |      `12.550007` | `4.179526` |
+| [`octa_loop6.stl`](https://drive.google.com/file/d/1oUuHunLHgbF2BIY2qkEKzQXsBh0RZqc0/view?usp=sharing) `G` | ![loop6](https://github.com/autotwin/data/blob/main/octa/octa_loop06.png) |     8.6MB | $4,098 + 12,288 = 16,386$ |  $8 \cdot 4^6 = 32,768$ |           $2\cdot 12,288 + 3\cdot 8,192 = 49,152$ |      `12.557285` | `4.183937` |
+| [`octa_loop7.stl`](https://drive.google.com/file/d/15z9_C09LAXwFgarI-HPwSQpgPYKk1oAM/view?usp=sharing) `G` | ![loop7](https://github.com/autotwin/data/blob/main/octa/octa_loop07.png) |      33MB |                    65,538 | $8 \cdot 4^7 = 131,072$ |         $2\cdot 49,152 + 3\cdot 32,768 = 196,608$ |      `12.554407` | `4.182833` |
 
-> Items with `G` are not on the repository; they are on Google Drive because of their large file size.
+> Items with `G` are not on the repository; they are on Google Drive because of their large file size.  
+
+> Surface area of a sphere is $A = 4 \pi r^2$, and when $r=1$, $A \approx 12.566371$.  
+> Volume of a sphere is $\frac{4}{3} \pi r^3$, and when $r=1$, $V \approx 4.188790$.
+
+> Meshes and computations created with MeshLab 2022.02, Subdivision Surfaces LS3 Loop, Boyé S, Guennebaud G, Schlick C. Least squares subdivision surfaces. In *Computer Graphics Forum* 2010 Sep (Vol. 29, No. 7, pp. 2021-2028). Oxford, UK: Blackwell Publishing Ltd.[^cs468]
 
 ## References
 
