@@ -113,9 +113,9 @@ f 1 4 6
 |   6   | ![loop6](https://github.com/autotwin/data/blob/main/octa/octa_loop06.png) |  $4,098 + 12,288 = 16,386$ |  $8 \cdot 4^6 = 32,768$ |           $2\cdot 12,288 + 3\cdot 8,192 = 49,152$ |      `12.557285` | `4.183937` |         `2609.481` |
 |   7   | ![loop7](https://github.com/autotwin/data/blob/main/octa/octa_loop07.png) | $16,386 + 49,152 = 65,538$ | $8 \cdot 4^7 = 131,072$ |         $2\cdot 49,152 + 3\cdot 32,768 = 196,608$ |      `12.554407` | `4.182833` |         `10440.32` |
 
-Vertices of the current iteration $v_{i+1}$ are a sum of the vertices from the previous iteration $v_{i}$ plus the edge from the previous iteration $e_{i}$, 
+Vertices of the current iteration $v_{i+1}$ are a sum of the vertices from the previous iteration $v_{i}$ plus the edge from the previous iteration $e_{i}$, viz.
 
-$A = 4$
+$v_{i+1} = v_{i} + e_{i}$ for example on `iter 7`: $16,386 + 49,152 = 65,538$.
 
 
 > Surface area of a sphere is $A = 4 \pi r^2$, and when $r=1$, $A \approx 12.566371$.  
