@@ -157,7 +157,7 @@ quality volume 1 scaled jacobian global draw histogram draw mesh list
 
 ## References
 
-[^cs468]: Stanford cs468-10-fall Subdivision http://graphics.stanford.edu/courses/cs468-10-fall/LectureSlides/10_Subdivision.pdf
+[^cs468]: Stanford cs468-10-fall Subdivision http://graphics.stanford.edu/courses/cs468-10-fall/LectureSlides/10_Subdivision.pdf and [Google Drive repo copy](https://drive.google.com/file/d/1bg5YYrGWduuQ3CPM9FI5e6OyvKD_u8Iy/view?usp=sharing)
 
 * https://rosettacode.org/wiki/Catmull%E2%80%93Clark_subdivision_surface
 * https://docs.juliahub.com/Meshes/FuRcu/0.17.1/algorithms/refinement.html#Catmull-Clark
