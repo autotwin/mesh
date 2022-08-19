@@ -14,7 +14,7 @@ substeps:
 
 ## Hypothesis
 
-We hypothesize that an increase in `curvature` $\kappa$ ($\kappa = 1/r$) of a local feature in an analog physical object drives an increase in the *minimum* `resolution` of the numerical representation in terms of pixels in a digital image.
+We hypothesize that an increase in `curvature` $\kappa$ (where $\kappa = 1/r$) of a local feature in an analog physical object drives an increase in the *minimum* `resolution` of the numerical representation in terms of pixels in a digital image.
 
 Furthermore, we hypothesize that digital image density per unit radius of curvature is indicative of minimum isosurface face density (surface area) and minimum finite element mesh density (volume) to adequately represent a physical object in $\mathbb{R}^3$.
 
