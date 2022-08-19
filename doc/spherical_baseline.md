@@ -62,6 +62,7 @@ export facets "/Users/cbh/autotwin/mesh/tests/files/sphere_size_factor_10.fac"  
 
 ## `atmesh`
 
+We create a unit radius of curvature template that can be scaled to any physical radius of curvature.
 
 > Listing 1. Manually generated octahedron base [`octahedron_base.obj`](https://github.com/autotwin/data/blob/main/octa/octa_base.obj).
 
