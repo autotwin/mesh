@@ -14,9 +14,11 @@ substeps:
 
 ## Hypothesis
 
-We hypothesize that numerical representation of the underlying physical object in terms of pixels, isosurface, and mesh is driven by `resolution`, which is ulitimately driven by local `curvature` of physical object.
+We hypothesize that an increase in `curvature` $\kappa$ ($\kappa = 1/r$) of a local feature in an analog physical object drives an increase in the *minimum* `resolution` of the numerical representation in terms of pixels in a digital image.
 
-We further hypothesize that the volume and curvature metrics of the numerical representation (in pixels, tessellation, or finite elements) *converge* to a constant value equal to the true underlying analog ground truth (the physical system being imaged by CT/MR).
+Furthermore, we hypothesize that digital image density per unit radius of curvature is indicative of minimum isosurface face density (surface area) and minimum finite element mesh density (volume) to adequately represent a physical object in $\mathbb{R}^3$.
+
+We expect the volume and curvature metrics of the numerical representation (in pixels, tessellation, or finite elements) *converge* to a constant value equal to the true underlying analog ground truth (the physical system being imaged by CT/MR).
 
 ## Definitions
 
@@ -24,12 +26,18 @@ We further hypothesize that the volume and curvature metrics of the numerical re
   * `dicom`: number of pixels per unit length
   * `stl`: number of triangles per isosurface tessellation, and 
   * `inp`: number of finite elements in a mesh.
-* **Volume** is the $\mathbb{R}^3$ metric of space contained in the analytical domain $\Omega$.
-  * For a domain $\Omega$ that is manifold.
-  * For a domain $\Omega$ with watertight boundary $\partial \Omega$.
-* **Curvature** is defined as the local second derivative of the boundary $\partial \Omega$.
-* **Error** is the difference between the known ground truth value of volume and local curvature.
-* **Error rate** is the slope of error versus resolution.
+* **Volume**
+  * The $\mathbb{R}^3$ metric of space contained in the analytical domain $\Omega$.
+    * For a domain $\Omega$ that is manifold.
+    * For a domain $\Omega$ with watertight boundary $\partial \Omega$.
+* **Curvature**
+  * The local second derivative of the boundary $\partial \Omega$.
+* **Error**
+  * The difference between the known ground truth value of volume and local curvature.
+* **Error rate**
+  * The slope of error versus resolution.
+* **Stopping criteria**:
+  * A minimum resolution is sufficient when an incremental refinement in resolution produces an incremental change in a physical metrics (e.g., surface area, volume) that is below some acceptable tolerance $\epsilon$.
 
 ## Methods
 
