@@ -83,8 +83,7 @@ f 4 3 6
 f 1 4 6
 ```
 
-*File Name, Image, File Size*
-
+### File Name, Image, File Size
 
 | name                                                                                                       | image                                                                     | file size |
 | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | --------: |
@@ -99,8 +98,7 @@ f 1 4 6
 
 > Items with `G` are not on the repository; they are on Google Drive because of their large file size.  
 
-
-*Geometric Metrics*
+### Geometric Metrics
 
 | iter  | image                                                                     | vertices $v$ |               faces $f$ |                                         edges $e$ | surface area $A$ | volume $V$ | face density $f/A$ |
 | :---: | ------------------------------------------------------------------------- | -----------: | ----------------------: | ------------------------------------------------: | ---------------: | ---------: | -----------------: |
@@ -127,6 +125,16 @@ for example:
 > Volume of a sphere is $\frac{4}{3} \pi r^3$, and when $r=1$, $V \approx 4.188790$.
 
 > Meshes and computations created with MeshLab 2022.02, Subdivision Surfaces LS3 Loop, Boyé S, Guennebaud G, Schlick C. Least squares subdivision surfaces. In *Computer Graphics Forum* 2010 Sep (Vol. 29, No. 7, pp. 2021-2028). Oxford, UK: Blackwell Publishing Ltd.[^cs468]
+
+### Mesh Metrics
+
+Pytnon
+
+```bash
+(atmeshenv) ~/autotwin/mesh/src/atmesh> python sculpt_stl_to_inp.py
+```
+
+Cubit
 
 ```bash
 Cubit>
