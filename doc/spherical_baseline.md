@@ -127,6 +127,7 @@ $e_{i+1} = 2 \cdot e_i + 3 \cdot f_i$
 is shown in the table above.
 
 > Surface area of a sphere is $A = 4 \pi r^2$, and when $r=1$, $A \approx 12.566371$.
+
 > Volume of a sphere is $\frac{4}{3} \pi r^3$, and when $r=1$, $V \approx 4.188790$.
 
 > Meshes and computations created with MeshLab 2022.02, Subdivision Surfaces LS3 Loop, Boyé S, Guennebaud G, Schlick C. Least squares subdivision surfaces. In *Computer Graphics Forum* 2010 Sep (Vol. 29, No. 7, pp. 2021-2028). Oxford, UK: Blackwell Publishing Ltd.[^cs468]
