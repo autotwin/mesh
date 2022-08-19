@@ -102,16 +102,16 @@ f 1 4 6
 
 *Geometric Metrics*
 
-| iter | image                                                                     | file size |               vertices $v$ |               faces $f$ |                                         edges $e$ | surface area $A$ | volume $V$ | face density $f/A$ |
-| ---- | ------------------------------------------------------------------------- | --------: | -------------------------: | ----------------------: | ------------------------------------------------: | ---------------: | ---------: | -----------------: |
-| 0    | ![loop0](https://github.com/autotwin/data/blob/main/octa/octa_loop00.png) |     2.1kB |                        $6$ |       $8 \cdot 4^0 = 8$ |                                              $12$ |       `6.928203` | `1.333333` |         `1.154701` |
-| 1    | ![loop1](https://github.com/autotwin/data/blob/main/octa/octa_loop01.png) |     8.3kB |      $v + e = 6 + 12 = 18$ |      $8 \cdot 4^1 = 32$ | $2\cdot e + 3\cdot f = 2\cdot 12 + 3\cdot 8 = 48$ |      `10.417751` | `2.942809` |         `3.071680` |
-| 2    | ![loop2](https://github.com/autotwin/data/blob/main/octa/octa_loop02.png) |      33kB |             $18 + 48 = 66$ |     $8 \cdot 4^2 = 128$ |                     $2\cdot 48 + 3\cdot 32 = 192$ |      `11.959619` | `3.828144` |         `10.70268` |
-| 3    | ![loop3](https://github.com/autotwin/data/blob/main/octa/octa_loop03.png) |     132kB |           $66 + 192 = 258$ |     $8 \cdot 4^3 = 512$ |                   $2\cdot 192 + 3\cdot 128 = 768$ |      `12.405214` | `4.092582` |         `41.27297` |
-| 4    | ![loop4](https://github.com/autotwin/data/blob/main/octa/octa_loop04.png) |     526kB |        $258 + 768 = 1,026$ |   $8 \cdot 4^4 = 2,048$ |                 $2\cdot 768 + 3\cdot 512 = 3,072$ |      `12.520864` | `4.161948` |         `163.5670` |
-| 5    | ![loop5](https://github.com/autotwin/data/blob/main/octa/octa_loop05.png) |     2.1MB |    $1,026 + 3,072 = 4,098$ |   $8 \cdot 4^5 = 8,192$ |            $2\cdot 3,072 + 3\cdot 2,048 = 12,288$ |      `12.550007` | `4.179526` |         `652.7486` |
-| 6    | ![loop6](https://github.com/autotwin/data/blob/main/octa/octa_loop06.png) |     8.6MB |  $4,098 + 12,288 = 16,386$ |  $8 \cdot 4^6 = 32,768$ |           $2\cdot 12,288 + 3\cdot 8,192 = 49,152$ |      `12.557285` | `4.183937` |         `2609.481` |
-| 7    | ![loop7](https://github.com/autotwin/data/blob/main/octa/octa_loop07.png) |      33MB | $16,386 + 49,152 = 65,538$ | $8 \cdot 4^7 = 131,072$ |         $2\cdot 49,152 + 3\cdot 32,768 = 196,608$ |      `12.554407` | `4.182833` |         `10440.32` |
+| iter  | image                                                                     |               vertices $v$ |               faces $f$ |                                         edges $e$ | surface area $A$ | volume $V$ | face density $f/A$ |
+| :---: | ------------------------------------------------------------------------- | -------------------------: | ----------------------: | ------------------------------------------------: | ---------------: | ---------: | -----------------: |
+|   0   | ![loop0](https://github.com/autotwin/data/blob/main/octa/octa_loop00.png) |                        $6$ |       $8 \cdot 4^0 = 8$ |                                              $12$ |       `6.928203` | `1.333333` |         `1.154701` |
+|   1   | ![loop1](https://github.com/autotwin/data/blob/main/octa/octa_loop01.png) |      $v + e = 6 + 12 = 18$ |      $8 \cdot 4^1 = 32$ | $2\cdot e + 3\cdot f = 2\cdot 12 + 3\cdot 8 = 48$ |      `10.417751` | `2.942809` |         `3.071680` |
+|   2   | ![loop2](https://github.com/autotwin/data/blob/main/octa/octa_loop02.png) |             $18 + 48 = 66$ |     $8 \cdot 4^2 = 128$ |                     $2\cdot 48 + 3\cdot 32 = 192$ |      `11.959619` | `3.828144` |         `10.70268` |
+|   3   | ![loop3](https://github.com/autotwin/data/blob/main/octa/octa_loop03.png) |           $66 + 192 = 258$ |     $8 \cdot 4^3 = 512$ |                   $2\cdot 192 + 3\cdot 128 = 768$ |      `12.405214` | `4.092582` |         `41.27297` |
+|   4   | ![loop4](https://github.com/autotwin/data/blob/main/octa/octa_loop04.png) |        $258 + 768 = 1,026$ |   $8 \cdot 4^4 = 2,048$ |                 $2\cdot 768 + 3\cdot 512 = 3,072$ |      `12.520864` | `4.161948` |         `163.5670` |
+|   5   | ![loop5](https://github.com/autotwin/data/blob/main/octa/octa_loop05.png) |    $1,026 + 3,072 = 4,098$ |   $8 \cdot 4^5 = 8,192$ |            $2\cdot 3,072 + 3\cdot 2,048 = 12,288$ |      `12.550007` | `4.179526` |         `652.7486` |
+|   6   | ![loop6](https://github.com/autotwin/data/blob/main/octa/octa_loop06.png) |  $4,098 + 12,288 = 16,386$ |  $8 \cdot 4^6 = 32,768$ |           $2\cdot 12,288 + 3\cdot 8,192 = 49,152$ |      `12.557285` | `4.183937` |         `2609.481` |
+|   7   | ![loop7](https://github.com/autotwin/data/blob/main/octa/octa_loop07.png) | $16,386 + 49,152 = 65,538$ | $8 \cdot 4^7 = 131,072$ |         $2\cdot 49,152 + 3\cdot 32,768 = 196,608$ |      `12.554407` | `4.182833` |         `10440.32` |
 
 
 
