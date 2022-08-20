@@ -18,6 +18,7 @@ Methods:
 > python sculpt_stl_to_inp.py > sculpt_stl_to_inp.log
 
 Example:
+# activate the venv atmeshenv
 ~/autotwin/mesh> source atmeshenv/bin/activate.fish # (atmeshenv) uses Python 3.7
 (atmeshenv) ~/autotwin/mesh> cd src/atmesh
 (atmeshenv) ~/autotwin/mesh/src/atmesh> python sculpt_stl_to_inp.py

@@ -59,3 +59,11 @@ jobs:
       run: |
         black --check src/atmesh --diff
         black --check tests --diff
+    - name: Test with flake8
+      run: |
+        # E203 whitespace before ':'
+        # E501 line length exceeds 79 characters
+        # W503 line break occurred before a binary operator
+        # flake8 . --statistics
+        flake8 src/atmesh --ignore E203,E501,W503 --statistics
+        flake8 tests --ignore E203,E501,W503 --statistics
