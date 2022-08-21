@@ -9,11 +9,7 @@ pytest tests/test_hello.py -v --cov=src/atmesh --cov-report term-missing
 from atmesh import hello as hh
 
 
-def test_one():
-    assert True
-
-
-def test_two():
+def test_hello():
     known = "Hello world!"
     found = hh.hello()
 
@@ -25,7 +21,3 @@ def test_adios():
     found = hh.adios()
 
     assert found == known
-
-
-def test_bubble_sort():
-    assert hh.bubble_sort()
