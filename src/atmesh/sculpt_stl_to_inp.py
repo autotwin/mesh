@@ -20,13 +20,63 @@ Methods:
 Example:
 # activate the venv atmeshenv
 ~/autotwin/mesh> source atmeshenv/bin/activate.fish # (atmeshenv) uses Python 3.7
-(atmeshenv) ~/autotwin/mesh> cd src/atmesh
-(atmeshenv) ~/autotwin/mesh/src/atmesh> python sculpt_stl_to_inp.py <input_file>.yml
+(atmeshenv) ~/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py tests/files/sphere.yml
 """
 
 import argparse
 from pathlib import Path
 import sys
+
+import yaml
+
+
+def _yml_to_dict(*, yml_path_file: Path) -> dict:
+    """Given a valid Path to a yml input file, read it in and
+    return the result as a dictionary."""
+
+    # Compared to the lower() method, the casefold() method is stronger.
+    # It will convert more characters into lower case, and will find more matches
+    # on comparison of two strings that are both are converted
+    # using the casefold() method.
+    file_type = yml_path_file.suffix.casefold()
+
+    supported_types = (".yaml", ".yml")
+
+    if file_type not in supported_types:
+        raise TypeError("Only file types .yaml, and .yml are supported.")
+
+    try:
+        with open(yml_path_file, "r") as stream:
+            # See deprecation warning for plain yaml.load(input) at
+            # https://github.com/yaml/pyyaml/wiki/PyYAML-yaml.load(input)-Deprecation
+            db = yaml.load(stream, Loader=yaml.SafeLoader)
+    except yaml.YAMLError as error:
+        print(f"Error with YAML file: {error}")
+        # print(f"Could not open: {self.self.path_file_in}")
+        print(f"Could not open or decode: {yml_path_file}")
+        # raise yaml.YAMLError
+        raise OSError
+
+    version_specified = db.get("version")
+    version_implemented = 1.0
+
+    if version_specified != version_implemented:
+        raise ValueError(
+            f"Version mismatch: specified was {version_specified}, implemented is {version_implemented}"
+        )
+    else:
+        # manadating that files read in have at least these five keys
+        required_keys = (
+            "version",
+            "cubit_path",
+            "working_dir",
+            "stl_path_file",
+            "inp_path_file",
+        )
+        has_required_keys = all(tuple(map(lambda x: db.get(x), required_keys)))
+        if not has_required_keys:
+            raise KeyError(f"Input files must have these keys defined: {required_keys}")
+    return db
 
 
 def translate(*, path_file_input: str):
@@ -42,23 +92,7 @@ def translate(*, path_file_input: str):
     if not fin.is_file():
         raise FileNotFoundError(f"{atmesh} File not found: {str(fin)}")
 
-    # user input file begin
-    user_input = {
-        "cubit_path": "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS",
-        #
-        "working_dir": "~/autotwin/data/octa",
-        "stl_path_file": "~/autotwin/data/octa/octa_loop07.stl",
-        "inp_path_file": "~/autotwin/data/octa/octa_loop07.inp",
-        #
-        # "working_dir": "~/autotwin/mesh/tests/files",
-        # "stl_path_file": "~/autotwin/mesh/tests/files/sphere.stl",
-        # "inp_path_file": "~/autotwin/mesh/tests/files/sphere.inp",
-        #
-        # "working_dir"  : "~/autotwin/mesh/data",
-        # "stl_path_file": "~/autotwin/mesh/data/bunny_20cm.stl",
-        # "inp_path_file": "~/autotwin/mesh/data/bunny_20cm.inp",
-    }
-    # user input file end
+    user_input = _yml_to_dict(yml_path_file=fin)
 
     print(f"{atmesh} User input:")
     for key, value in user_input.items():
@@ -124,9 +158,10 @@ def translate(*, path_file_input: str):
         # print(f"{atmesh} Script: {Path(__file__).resolve()} has completed.")
         print(f"{atmesh} Done.")
 
-    except ModuleNotFoundError as err:
+    except ModuleNotFoundError as error:
         print("unable to import cubit")
-        print(f"{atmesh} {err}")
+        print(f"{atmesh} {error}")
+        raise ModuleNotFoundError
 
 
 if __name__ == "__main__":

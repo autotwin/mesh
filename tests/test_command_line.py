@@ -8,6 +8,6 @@ def test_say_hello():
 
 
 def test_version():
-    known = "0.0.4"
+    known = "0.0.5"
     found = cl.version()
     assert known == found
