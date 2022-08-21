@@ -58,7 +58,7 @@ def test_when_io_fails():
 
 
 @pytest.mark.skipif(
-    os.uname().nodename == "atlas.lan", reason="Skip on local development machine"
+    os.uname().nodename != "atlas.lan", reason="Only test on local development machine"
 )
 def test_import_cubit_fails():
     """Currently with CI/CD, we have no way to test Cubit and Sculpt, so test
