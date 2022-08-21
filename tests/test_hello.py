@@ -1,6 +1,6 @@
 """
 For coverage:
-pytest geo/tests/test_hello.py -v --cov=geo/src/ptg --cov-report term-missing
+pytest tests/test_hello.py -v --cov=src/atmesh --cov-report term-missing
 """
 
 # import .hello as hh

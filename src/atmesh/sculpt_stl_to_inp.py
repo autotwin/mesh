@@ -8,113 +8,132 @@ Methods:
 > cd ~/autotwin/mesh/src/atmesh
 
 * Interactive Method
-# > /usr/local/bin/python3.7 sculpt_stl_to_inp.py
+# > /usr/local/bin/python3.7 sculpt_stl_to_inp.py <input_file>.yml
 > python --version
   Python 3.7.9
-> python sculpt_stl_to_inp.py
+> python sculpt_stl_to_inp.py <input_file>.yml
 
 * Log Method
-# > /usr/local/bin/python3.7 sculpt_stl_to_inp.py > sculpt_stl_to_inp.log
-> python sculpt_stl_to_inp.py > sculpt_stl_to_inp.log
+# > /usr/local/bin/python3.7 sculpt_stl_to_inp.py <input_file>.yml > sculpt_stl_to_inp.log
+> python sculpt_stl_to_inp.py <input_file>.yml > sculpt_stl_to_inp.log
 
 Example:
 # activate the venv atmeshenv
 ~/autotwin/mesh> source atmeshenv/bin/activate.fish # (atmeshenv) uses Python 3.7
 (atmeshenv) ~/autotwin/mesh> cd src/atmesh
-(atmeshenv) ~/autotwin/mesh/src/atmesh> python sculpt_stl_to_inp.py
+(atmeshenv) ~/autotwin/mesh/src/atmesh> python sculpt_stl_to_inp.py <input_file>.yml
 """
-import sys
+
+import argparse
 from pathlib import Path
+import sys
 
-# from typing import Final # Final is new in Python 3.8, Cubit uses 3.7
 
-# atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
-atmesh: str = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
+def translate(*, path_file_input: str):
+    # from typing import Final # Final is new in Python 3.8, Cubit uses 3.7
 
-print(f"{atmesh} This is {Path(__file__).resolve()}")
+    # atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
+    atmesh: str = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
 
-# user input file begin
-user_input = {
-    "cubit_path": "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS",
-    #
-    "working_dir": "~/autotwin/data/octa",
-    "stl_path_file": "~/autotwin/data/octa/octa_loop07.stl",
-    "inp_path_file": "~/autotwin/data/octa/octa_loop07.inp",
-    #
-    # "working_dir": "~/autotwin/mesh/tests/files",
-    # "stl_path_file": "~/autotwin/mesh/tests/files/sphere.stl",
-    # "inp_path_file": "~/autotwin/mesh/tests/files/sphere.inp",
-    #
-    # "working_dir"  : "~/autotwin/mesh/data",
-    # "stl_path_file": "~/autotwin/mesh/data/bunny_20cm.stl",
-    # "inp_path_file": "~/autotwin/mesh/data/bunny_20cm.inp",
-}
-# user input file end
+    print(f"{atmesh} This is {Path(__file__).resolve()}")
 
-print(f"{atmesh} User input:")
-for key, value in user_input.items():
-    print(f"  {key}: {value}")
+    fin = Path(path_file_input).expanduser()
 
-cubit_path = user_input["cubit_path"]
-inp_path_file = user_input["inp_path_file"]
-stl_path_file = user_input["stl_path_file"]
-working_dir = user_input["working_dir"]
+    if not fin.is_file():
+        raise FileNotFoundError(f"{atmesh} File not found: {str(fin)}")
 
-for item in [cubit_path, working_dir]:
-    if not Path(item).expanduser().is_dir():
-        raise OSError(f"{atmesh} Path not found: {item}")
+    # user input file begin
+    user_input = {
+        "cubit_path": "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS",
+        #
+        "working_dir": "~/autotwin/data/octa",
+        "stl_path_file": "~/autotwin/data/octa/octa_loop07.stl",
+        "inp_path_file": "~/autotwin/data/octa/octa_loop07.inp",
+        #
+        # "working_dir": "~/autotwin/mesh/tests/files",
+        # "stl_path_file": "~/autotwin/mesh/tests/files/sphere.stl",
+        # "inp_path_file": "~/autotwin/mesh/tests/files/sphere.inp",
+        #
+        # "working_dir"  : "~/autotwin/mesh/data",
+        # "stl_path_file": "~/autotwin/mesh/data/bunny_20cm.stl",
+        # "inp_path_file": "~/autotwin/mesh/data/bunny_20cm.inp",
+    }
+    # user input file end
 
-for item in [stl_path_file]:
-    if not Path(item).expanduser().is_file():
-        raise OSError(f"{atmesh} File not found: {item}")
+    print(f"{atmesh} User input:")
+    for key, value in user_input.items():
+        print(f"  {key}: {value}")
 
-for item in [inp_path_file]:
-    if not Path(Path(item).expanduser().parent).is_dir():
-        raise OSError(f"{atmesh} Path not found: {item}")
+    cubit_path = user_input["cubit_path"]
+    inp_path_file = user_input["inp_path_file"]
+    stl_path_file = user_input["stl_path_file"]
+    working_dir = user_input["working_dir"]
 
-# append the cubit path to the system Python path
-print(f"{atmesh} Existing sys.path:")
-for item in sys.path:
-    print(f"  {item}")
+    for item in [cubit_path, working_dir]:
+        if not Path(item).expanduser().is_dir():
+            raise OSError(f"{atmesh} Path not found: {item}")
 
-sys.path.append(cubit_path)
+    for item in [stl_path_file]:
+        if not Path(item).expanduser().is_file():
+            raise OSError(f"{atmesh} File not found: {item}")
 
-print(f"{atmesh} Cubit path now added:")
-for item in sys.path:
-    print(f"  {item}")
+    for item in [inp_path_file]:
+        if not Path(Path(item).expanduser().parent).is_dir():
+            raise OSError(f"{atmesh} Path not found: {item}")
 
-try:
-    print(f"{atmesh} Import cubit module initiatied:")
-    import cubit
+    # append the cubit path to the system Python path
+    print(f"{atmesh} Existing sys.path:")
+    for item in sys.path:
+        print(f"  {item}")
 
-    cubit.init
-    print(f"{atmesh} Import cubit module completed.")
+    sys.path.append(cubit_path)
 
-    # cubit.cmd('cd "~/sibl-dev/sculpt/tests/sphere-python"')
-    cc = 'cd "' + working_dir + '"'
-    cubit.cmd(cc)
-    print(f"{atmesh} The Cubit Working Directory is set to: {working_dir}")
+    print(f"{atmesh} Cubit path now added:")
+    for item in sys.path:
+        print(f"  {item}")
 
-    print(f"{atmesh} stl import initiatied:")
-    print(f"{atmesh} Importing stl file: {stl_path_file}")
-    cc = 'import stl "' + stl_path_file + '"'
-    cubit.cmd(cc)
-    print(f"{atmesh} stl import completed.")
+    try:
+        print(f"{atmesh} Import cubit module initiatied:")
+        import cubit
 
-    print(f"{atmesh} Sculpt parallel initiated:")
-    cc = "sculpt parallel"
-    cubit.cmd(cc)
-    print(f"{atmesh} Sculpt parallel completed.")
+        cubit.init
+        print(f"{atmesh} Import cubit module completed.")
 
-    print(f"{atmesh} Abaqus file export initiated:")
-    print(f"{atmesh} Exporting inp file: {inp_path_file}")
-    cc = 'export abaqus "' + inp_path_file + '" overwrite'
-    cubit.cmd(cc)
-    print(f"{atmesh} Abaqus file export completed.")
+        # cubit.cmd('cd "~/sibl-dev/sculpt/tests/sphere-python"')
+        cc = 'cd "' + working_dir + '"'
+        cubit.cmd(cc)
+        print(f"{atmesh} The Cubit Working Directory is set to: {working_dir}")
 
-    # print(f"{atmesh} Script: {Path(__file__).resolve()} has completed.")
-    print(f"{atmesh} Done.")
+        print(f"{atmesh} stl import initiatied:")
+        print(f"{atmesh} Importing stl file: {stl_path_file}")
+        cc = 'import stl "' + stl_path_file + '"'
+        cubit.cmd(cc)
+        print(f"{atmesh} stl import completed.")
 
-except ModuleNotFoundError as err:
-    print("unable to import cubit")
-    print(f"{atmesh} {err}")
+        print(f"{atmesh} Sculpt parallel initiated:")
+        cc = "sculpt parallel"
+        cubit.cmd(cc)
+        print(f"{atmesh} Sculpt parallel completed.")
+
+        print(f"{atmesh} Abaqus file export initiated:")
+        print(f"{atmesh} Exporting inp file: {inp_path_file}")
+        cc = 'export abaqus "' + inp_path_file + '" overwrite'
+        cubit.cmd(cc)
+        print(f"{atmesh} Abaqus file export completed.")
+
+        # print(f"{atmesh} Script: {Path(__file__).resolve()} has completed.")
+        print(f"{atmesh} Done.")
+
+    except ModuleNotFoundError as err:
+        print("unable to import cubit")
+        print(f"{atmesh} {err}")
+
+
+if __name__ == "__main__":
+    """Runs the module from the command line."""
+    parser = argparse.ArgumentParser()
+    parser.add_argument("input_file", help="the .yml user input file")
+    args = parser.parse_args()
+    input_file = args.input_file
+
+    translate(path_file_input=input_file)

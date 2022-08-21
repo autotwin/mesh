@@ -1,8 +1,8 @@
 import pkg_resources  # part of setup tools
 
 
-def say_hello():
-    print("hello world!")
+def say_hello() -> str:
+    return "hello world!"
 
 
 def version() -> str:
