@@ -219,3 +219,39 @@ TOTAL                                68     61    10%
 
 Success!  The `venv` virtual environment `automesh_env` has been created, 
 and the `atmesh` module is now installed and tested.
+
+### Modify VS Code to find cubit imports
+
+In the user `settings.json`, add a reference to the Cubit install location.  
+
+Before:
+
+```bash
+    "python.autoComplete.extraPaths": [
+        "~/python_modules"
+    ],
+```
+
+After:
+
+```bash
+    "python.autoComplete.extraPaths": [
+        "~/python_modules",
+        "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
+    ],
+    "python.envFile": "${workspaceFolder}/.env",
+```
+
+And in the `~/autotwin/mesh/.env` file:
+
+```
+PYTHONPATH=/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
+```
+
+which, in `some_source_file.py` Python files, allows
+
+```python
+import cubit
+```
+
+to be found.
