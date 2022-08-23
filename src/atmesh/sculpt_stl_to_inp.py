@@ -17,10 +17,14 @@ Methods:
 # > /usr/local/bin/python3.7 sculpt_stl_to_inp.py <input_file>.yml > sculpt_stl_to_inp.log
 > python sculpt_stl_to_inp.py <input_file>.yml > sculpt_stl_to_inp.log
 
-Example:
+Example 1:
 # activate the venv atmeshenv
 ~/autotwin/mesh> source atmeshenv/bin/activate.fish # (atmeshenv) uses Python 3.7
 (atmeshenv) ~/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py tests/files/sphere.yml
+
+Example 2:
+# uses the same venv
+(atmeshenv) cbh@atlas/Users/cbh/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py ../data/octa/octa_loop00.yml
 """
 
 import argparse
