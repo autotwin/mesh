@@ -16,3 +16,4 @@
 pytest --cov=atmesh --cov-report term-missing
 # pytest --cov=atpixel  --cov-report term-missing
 
+sleep 5

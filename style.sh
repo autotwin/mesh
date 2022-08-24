@@ -45,4 +45,4 @@ echo "-----------------------------"
 echo "The script has now completed."
 echo "-----------------------------"
 
-
+sleep 5
