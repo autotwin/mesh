@@ -29,22 +29,24 @@ def test_when_io_fails():
         translator.translate(path_file_input=str(input_file))
     assert error.typename == "FileNotFoundError"
 
-    """If the user tries to run with a file type that is not a .yml or .yaml, then check that a TypeError is raised."""
+    # If the user tries to run with a file type that is not a .yml or .yaml,
+    # then check that a TypeError is raised.
 
     with pytest.raises(TypeError) as error:
         input_file = data_path.joinpath("sculpt_stl_to_inp_filetype.txt")
         translator.translate(path_file_input=str(input_file))
     assert error.typename == "TypeError"
 
-    """If the user tried to run the input yml version that is not the version curently implemented, then check that a ValueError is raised."""
+    # If the user tried to run the input yml version that is not the version
+    # curently implemented, then check that a ValueError is raised.
 
     with pytest.raises(ValueError) as error:
         input_file = data_path.joinpath("sculpt_stl_to_inp_bad_version.yml")
         translator.translate(path_file_input=str(input_file))
     assert error.typename == "ValueError"
 
-    """If the user tried to run the input yml that
-    does not have the correct keys, then test that a KeyError is raised."""
+    # If the user tried to run the input yml that
+    # does not have the correct keys, then test that a KeyError is raised.
 
     with pytest.raises(KeyError) as error:
         input_file = data_path.joinpath("sculpt_stl_to_inp_bad_keys.yml")

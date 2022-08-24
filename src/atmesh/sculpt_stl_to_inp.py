@@ -106,6 +106,7 @@ def translate(*, path_file_input: str):
     inp_path_file = user_input["inp_path_file"]
     stl_path_file = user_input["stl_path_file"]
     working_dir = user_input["working_dir"]
+    working_dir_str = str(Path(working_dir).expanduser())
 
     for item in [cubit_path, working_dir]:
         if not Path(item).expanduser().is_dir():
@@ -138,9 +139,9 @@ def translate(*, path_file_input: str):
         print(f"{atmesh} Import cubit module completed.")
 
         # cubit.cmd('cd "~/sibl-dev/sculpt/tests/sphere-python"')
-        cc = 'cd "' + working_dir + '"'
+        cc = 'cd "' + working_dir_str + '"'
         cubit.cmd(cc)
-        print(f"{atmesh} The Cubit Working Directory is set to: {working_dir}")
+        print(f"{atmesh} The Cubit Working Directory is set to: {working_dir_str}")
 
         print(f"{atmesh} stl import initiatied:")
         print(f"{atmesh} Importing stl file: {stl_path_file}")
