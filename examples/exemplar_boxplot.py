@@ -13,4 +13,8 @@ sorted_numbers = np.zeros([100,6])
 for iii in range(6):
     sorted_numbers[:,iii] = rand_nums[:,indeces[iii]]
 plt.boxplot(sorted_numbers)
-plt.savefig('exemplar_boxplot_output.png')
+plt.xticks([1,2,3,4,5,6],indeces)
+plt.title('Randomly Generated Distributions Sorted by Median')
+plt.xlabel('Case Number')
+plt.ylabel('Value')
+plt.savefig("boxplot_example.png")
