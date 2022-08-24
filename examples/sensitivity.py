@@ -29,7 +29,7 @@ def main():
     # ----------------
     # user input begin
     cubit_path = "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
-    working_dir = "~/autotwin/data/octa"
+    working_dir_str = str(Path("~/autotwin/data/octa").expanduser())
     stl_path_file = "~/autotwin/data/octa/octa_loop00.stl"
     # out_path_file - "~/autotwin/data/octa/octa_loop00_sensitivity.txt"
     fig_dict = {
@@ -64,8 +64,6 @@ def main():
     print(f"delta_bin: {delta_bin}")
     print(f"bins: {bins}")
 
-    breakpoint()
-
     fin = Path(stl_path_file).expanduser()
     input_path = fin.parent
     input_file_no_ext = fin.stem
@@ -93,9 +91,9 @@ def main():
     import cubit
 
     cubit.init
-    cc = 'cd "' + working_dir + '"'
+    cc = 'cd "' + working_dir_str + '"'
     cubit.cmd(cc)
-    print(f"{atmesh} The Cubit Working Directory is set to: {working_dir}")
+    print(f"{atmesh} The Cubit Working Directory is set to: {working_dir_str}")
 
     print(f"{atmesh} stl import initiatied:")
     print(f"{atmesh} Importing stl file: {stl_path_file}")
@@ -107,8 +105,6 @@ def main():
     cc = "sculpt parallel"
     cubit.cmd(cc)
     print(f"{atmesh} Sculpt parallel completed.")
-
-    # breakpoint()
 
     n_elements = cubit.get_hex_count()
     print(f"Number of elements: {n_elements}")
