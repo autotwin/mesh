@@ -176,6 +176,8 @@ def main():
     # ~/autotwin/data/octa/octa_loop03_sj.csv
     # ~/autotwin/data/octa/octa_loop04_sj.csv
 
+    # boxplot for each iii in stl_path_files
+
     # xabels as 'loop03' and 'loop04' reflected from stl_path_files
 
     print(f"{atmesh} Scipt completed.")
