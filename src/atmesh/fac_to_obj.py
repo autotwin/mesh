@@ -84,8 +84,8 @@ def translate(*, path_file_input: str) -> bool:
                 )  # prepend f, space between vertice numbers, newline
                 out_stream.write(line_out)
 
-    # If we reach this point, the input and output buffers are not closed
-    # and the function was successful.
+    # If we reach this point, the input and output buffers are
+    # now closed and the function was successful.
     print(f"{atmesh} Closed output file: {output_path_file_str}")
     print(f"{atmesh} Closed input file: {input_path_file_str}")
     success = True  # overwrite False default
