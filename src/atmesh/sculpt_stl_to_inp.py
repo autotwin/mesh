@@ -69,7 +69,7 @@ def _yml_to_dict(*, yml_path_file: Path) -> dict:
             f"Version mismatch: specified was {version_specified}, implemented is {version_implemented}"
         )
     else:
-        # manadating that files read in have at least these five keys
+        # require that input file has at least the following keys:
         required_keys = (
             "version",
             "cubit_path",
@@ -77,7 +77,10 @@ def _yml_to_dict(*, yml_path_file: Path) -> dict:
             "stl_path_file",
             "inp_path_file",
         )
-        has_required_keys = all(tuple(map(lambda x: db.get(x), required_keys)))
+        # has_required_keys = all(tuple(map(lambda x: db.get(x), required_keys)))
+        found_keys = tuple(db.keys())
+        keys_exist = tuple(map(lambda x: x in found_keys, required_keys))
+        has_required_keys = all(keys_exist)
         if not has_required_keys:
             raise KeyError(f"Input files must have these keys defined: {required_keys}")
     return db
