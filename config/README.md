@@ -2,6 +2,7 @@
 
 ## Overview
 
+* Install Cubit, which contains Sculpt, a part of the workflow.  Follow the [local installation](cubit-local-installation.md) instructions.
 * Configure the local machine with a virtual environment ("venv") named `autotwin_env`.  
 * Create a `pyproject.toml` to configure the `atmesh` package.
 * Install the `atmesh` module in developer mode (aka "editable").
