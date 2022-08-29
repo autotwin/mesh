@@ -1,4 +1,4 @@
-"""This module uses Cubit to convert a .stl file into a .inp file using Sculpt
+"""This module uses Cubit to convert a .stl file into a .inp file using Sculpt.
 
 Prerequisites:
 * Python 3.7.4 is required to run Cubit 16.06 and Sculpt.
@@ -24,7 +24,7 @@ Example 1:
 
 Example 2:
 # uses the same venv
-(atmeshenv) cbh@atlas/Users/cbh/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py ../data/octa/octa_loop00.yml
+(atmeshenv) ~/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py ../data/octa/octa_loop00.yml
 """
 
 import argparse

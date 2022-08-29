@@ -1,4 +1,5 @@
-"""This module is a unit test for .stl file input to .inp file output via Cubit and Sculp for translation.
+"""This module is a unit test for .stl file input to .inp file output via
+Cubit and Sculpt for translation.
 
 To run:
 (atmeshenv) ~/autotwin/mesh> pytest tests/test_sculpt_stl_to_inp -v

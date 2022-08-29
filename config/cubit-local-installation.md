@@ -125,8 +125,7 @@ unite vol all
 
 ![quick_test_cubit](figs/quick_test_cubit.png)
 
-
-hen run sculpt:
+Then run sculpt:
 
 ```bash
 sculpt parallel # (a macOS dialog will appear, click "Accept")
