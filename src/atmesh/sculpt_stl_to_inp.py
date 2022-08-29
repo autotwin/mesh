@@ -153,7 +153,10 @@ def translate(*, path_file_input: str):
         print(f"{atmesh} stl import completed.")
 
         print(f"{atmesh} Sculpt parallel initiated:")
-        cc = "sculpt parallel"
+        # cc = "sculpt parallel"
+        # cc = "sculpt parallel processors 3"
+        # cc = "sculpt parallel processors 2"
+        cc = "sculpt parallel processors 1"
         cubit.cmd(cc)
         print(f"{atmesh} Sculpt parallel completed.")
 
