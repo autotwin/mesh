@@ -12,6 +12,7 @@ For coverage:
 # import os
 from pathlib import Path
 import platform
+import sys
 
 import pytest
 
@@ -65,6 +66,36 @@ def test_when_io_fails():
     ("atlas" not in platform.uname().node) and ("1060600" not in platform.uname().node),
     reason="Run on Atlas and local machines only.",
 )
+def test_cubut_init():
+    """Given a path to the Cubit/Sculpt binary, check that cubit.init and the
+    current working directory can be set to the path of the test script.
+    """
+    cubit_path = "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
+    sys.path.append(cubit_path)
+
+    print("Import cubit module initiatied:")
+    import cubit
+
+    cubit.init
+    print("Import cubit module completed.")
+
+    # working_dir = Path(__file__).resolve()
+    working_dir = Path(__file__).parent
+    working_dir_str = str(working_dir)
+    print(f"This is {working_dir_str}")
+
+    cc = 'cd "' + working_dir_str + '"'
+    success = cubit.cmd(cc)
+    print(f"The Cubit Working Directory is set to: {working_dir_str}")
+
+    assert success
+
+
+# @pytest.mark.skipif(
+#     ("atlas" not in platform.uname().node) and ("1060600" not in platform.uname().node),
+#     reason="Run on Atlas and local machines only.",
+# )
+@pytest.mark.skip("work in progress")
 def test_import_cubit_fails():
     """Currently with CI/CD, we have no way to test Cubit and Sculpt, so test
     that a ModuleNotFoundError is raised."""
