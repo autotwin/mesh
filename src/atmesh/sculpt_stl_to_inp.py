@@ -64,7 +64,7 @@ def _yml_to_dict(*, yml_path_file: Path) -> dict:
     version_specified = db.get("version")
     version_implemented = 1.0
 
-    if version_specified != version_implemented:
+    if version_specified < version_implemented:
         raise ValueError(
             f"Version mismatch: specified was {version_specified}, implemented is {version_implemented}"
         )
@@ -111,6 +111,18 @@ def translate(*, path_file_input: str):
     working_dir = user_input["working_dir"]
     working_dir_str = str(Path(working_dir).expanduser())
 
+    journaling = user_input.get("journaling", False)
+    n_proc = user_input.get("n_proc", 4)  # number of parallel processors
+
+    # bounding_box = user_input.get("bounding_box", False)  # dict | False
+    bounding_box_specified = "bounding_box" in user_input
+    if bounding_box_specified:
+        bounding_box = user_input["bounding_box"]
+
+    cell_count_specified = "cell_count" in user_input
+    if cell_count_specified:
+        cell_count = user_input["cell_count"]
+
     for item in [cubit_path, working_dir]:
         if not Path(item).expanduser().is_dir():
             raise OSError(f"{atmesh} Path not found: {item}")
@@ -138,8 +150,12 @@ def translate(*, path_file_input: str):
         print(f"{atmesh} Import cubit module initiatied:")
         import cubit
 
-        cubit.init
-        print(f"{atmesh} Import cubit module completed.")
+        if journaling:
+            cubit.init
+            print(f"{atmesh} Import cubit module completed.  Journaling is ON.")
+        else:
+            cubit.init(["cubit", "-nojournal"])
+            print(f"{atmesh} Import cubit module completed.  Journaling is OFF.")
 
         # cubit.cmd('cd "~/sibl-dev/sculpt/tests/sphere-python"')
         cc = 'cd "' + working_dir_str + '"'
@@ -173,7 +189,29 @@ def translate(*, path_file_input: str):
         # cc = "sculpt parallel"
         # cc = "sculpt parallel processors 3"
         # cc = "sculpt parallel processors 2"
-        cc = "sculpt parallel processors 1"
+        # cc = "sculpt parallel processors "
+        # cc = f"sculpt parallel -j {n_proc}"
+        cc = f"sculpt parallel processors {n_proc}"
+
+        if bounding_box_specified and cell_count_specified:
+            nx = cell_count["nx"]
+            ny = cell_count["ny"]
+            nz = cell_count["nz"]
+
+            cc += f" nelx {nx} nely {ny} nelz {nz}"
+
+            xmin = bounding_box["xmin"]
+            xmax = bounding_box["xmax"]
+
+            ymin = bounding_box["ymin"]
+            ymax = bounding_box["ymax"]
+
+            zmin = bounding_box["zmin"]
+            zmax = bounding_box["zmax"]
+
+            cc += f" box location position {xmin} {ymin} {zmin} location position {xmax} {ymax} {zmax}"
+
+        print(f"{atmesh} Invoking Sculpt with Cubit command: {cc}")
         cubit.cmd(cc)
         print(f"{atmesh} Sculpt parallel completed.")
 
