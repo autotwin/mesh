@@ -152,6 +152,23 @@ def translate(*, path_file_input: str):
         cubit.cmd(cc)
         print(f"{atmesh} stl import completed.")
 
+        """Sculpt invocation
+        Default:
+        Input: /Applications/Cubit-16.06/Cubit.app/Contents/MacOS/psculpt
+          --num_procs   -j  4
+          --diatom_file -d  sculpt_parallel.diatom
+          --exodus_file -e  sculpt_parallel.diatom_result
+          --nelx        -x  26
+          --nely        -y  26
+          --nelz        -z  26
+          --xmin        -t  -0.624136
+          --ymin        -u  -0.624091
+          --zmin        -v  -0.624146
+          --xmax        -q  0.624042
+          --ymax        -r  0.624087
+          --zmax        -s  0.624033
+        """
+
         print(f"{atmesh} Sculpt parallel initiated:")
         # cc = "sculpt parallel"
         # cc = "sculpt parallel processors 3"
