@@ -17,22 +17,33 @@ To run:
 > python examples/sensitivity.py
 
 """
+from os import system
 import sys
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
+import platform
 
 
 def main():
+    if platform.system() == 'Windows':
+        cubit_path = "C:\\Program Files\\Cubit 16.06\\bin"
+        print('Running on Windows')
+    elif platform.system() == 'Mac':
+        cubit_path = "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
+    else:
+        cubit_path = input('OS not recognized. Please enter your Cubit directory: \n')
 
-    cubit_path = "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
     working_dir_str = str(Path("~/autotwin/data/octa").expanduser())
 
     # we will loop over and process the following input files
     stl_path_files = [
-        "~/autotwin/data/octa/octa_loop03.stl",
-        "~/autotwin/data/octa/octa_loop04.stl",
+        "~\\autotwin\\data\\octa\\octa_loop00.stl",
+        "~\\autotwin\\data\\octa\\octa_loop01.stl",
+        "~\\autotwin\\data\\octa\\octa_loop02.stl",
+        "~\\autotwin\\data\\octa\\octa_loop03.stl",
+        "~\\autotwin\\data\\octa\\octa_loop04.stl",
     ]
 
     # atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
@@ -55,7 +66,7 @@ def main():
     cc = 'cd "' + working_dir_str + '"'
     cubit.cmd(cc)
     print(f"{atmesh} The Cubit Working Directory is set to: {working_dir_str}")
-
+    qualities_cell = []
     for file_in in stl_path_files:
 
         # ----------------
@@ -143,30 +154,45 @@ def main():
         # If we reach this point, the input and output buffers are
         # now closed and the function was successful.
         print(f"{atmesh} Closed output file: {output_path_file_str}")
-
+        #qualities_cell = np.array(qualities_cell, [qualities])
+        qualities_cell.append(list(qualities))
         # Plot the histogram of minimum scaled Jacobians
-        fig = plt.figure(
-            figsize=(fig_dict["width"], fig_dict["height"]), dpi=fig_dict["dpi"]
-        )
+        #fig = plt.figure(
+        #    figsize=(fig_dict["width"], fig_dict["height"]), dpi=fig_dict["dpi"]
+        #)
         # ax_hist = fig.gca()
-        plt.hist(
-            qualities,
-            bins=bins,
-            **hist_kwargs,
-        )
-        plt.xlabel(fig_dict["xlabel"])
-        plt.ylabel(fig_dict["ylabel"])
-        plt.xlim(fig_dict["hist_x"])
-        plt.ylim(fig_dict["hist_y"])
+        #plt.hist(
+        #    qualities,
+        #    bins=bins,
+        #    **hist_kwargs,
+        #)
+        #plt.xlabel(fig_dict["xlabel"])
+        #plt.ylabel(fig_dict["ylabel"])
+        #plt.xlim(fig_dict["hist_x"])
+        #plt.ylim(fig_dict["hist_y"])
         # ax_hist.legend(loc=fig_dict["legend_loc"])
-        plt.grid(True)
+        #plt.grid(True)
 
-        if fig_dict["serialize"]:
+        #if fig_dict["serialize"]:
             # filename = script_name + "_convergence_log" + ".png"
             # pathfilename = Path.cwd().joinpath(filename)
             # fig.savefig(pathfilename, bbox_inches="tight", pad_inches=0)
-            fig.savefig(figure_path_file, bbox_inches="tight", pad_inches=0)
-            print(f"{atmesh} Serialized to {figure_path_file}")
+            #fig.savefig(figure_path_file, bbox_inches="tight", pad_inches=0)
+            #print(f"{atmesh} Serialized to {figure_path_file}")
+
+    plt.figure()
+    for iii in range(len(stl_path_files)):
+        plt.boxplot(qualities_cell[iii][:], positions=[iii+1])
+    plt.title('Box and Whisker Plot of Qualities')
+    plt.xlabel('Case Number')
+    plt.ylabel('Distribution')
+
+    path_file_in = Path(__file__)
+    stem = path_file_in.stem
+    fig_extension = ".png"
+    path_file_out = stem + fig_extension
+    plt.savefig(path_file_out)
+    #plt.show()
 
     # Now create a single plot the accumlates all the scaled
     # Jacobian data across all stl_path_files and plots their
