@@ -52,14 +52,14 @@ def main():
     hdarkgrayblack = tuple(map(lambda x: x / 256.0, (35.0,35.0,35.0)))  # RGB triple
 
     plt.rcParams.update({
-        "lines.color": "white",
+        "lines.color": "whitesmoke",
         "patch.edgecolor": "dimgray",
-        "text.color": "black",
+        "text.color": "darkorange",  # title color
         "axes.facecolor": "dimgray",
         "axes.edgecolor": "lightgray",
-        "axes.labelcolor": "white",
-        "xtick.color": "silver",
-        "ytick.color": "silver",
+        "axes.labelcolor": "red",  # axes label color
+        "xtick.color": "whitesmoke",
+        "ytick.color": "whitesmoke",
         "grid.color": "lightgray",
         "figure.facecolor": hdarkgrayblack,
         "figure.edgecolor": hdarkgrayblack,
@@ -107,7 +107,7 @@ def main():
         # stl_path_file = "~/autotwin/data/octa/octa_loop04.stl"
         stl_path_file = file_in
         fig_dict = {
-            "title": "Element Minimum Scaled Jacobian",
+            # "title": "Element Minimum Scaled Jacobian",
             "xlabel": "Minimum Scaled Jacobian",
             "ylabel": "Number of Elements",
             "hist_x": [0.4, 1.0],
@@ -115,10 +115,12 @@ def main():
             "legend_loc": "upper left",
             "height": 6.0,
             "width": 6.0,
-            "dpi": 200,
+            "dpi": 600,
             "serialize": True,
             "figure_shown": False,
         }
+        fig_dict["title"] = file_in
+        # breakpoint()
         hist_kwargs = {
             # "histtype": "step",
             "alpha": 0.9,
@@ -132,6 +134,7 @@ def main():
         # bins = [delta_bin * x for x in range(n_bins + 1)]
         bins = [xmin + delta_bin * x for x in range(n_bins + 1)]
         latex = True
+        # latex = False
         # user input end
         # --------------
         if latex:
@@ -203,6 +206,8 @@ def main():
             bins=bins,
             **hist_kwargs,
         )
+
+        plt.title(fig_dict["title"])
         plt.xlabel(fig_dict["xlabel"])
         plt.ylabel(fig_dict["ylabel"])
         plt.xlim(fig_dict["hist_x"])
