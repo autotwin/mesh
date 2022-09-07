@@ -64,7 +64,7 @@ def main():
         stl_path_file = file_in
         fig_dict = {
             "title": "Element Minimum Scaled Jacobian",
-            "xlabel": "Minimum Scaled Jaocibian",
+            "xlabel": "Minimum Scaled Jacobian",
             "ylabel": "Number of Elements",
             "hist_x": [0.4, 1.0],
             "hist_y": [0.6, 6000],
@@ -180,7 +180,7 @@ def main():
 
     # xabels as 'loop03' and 'loop04' reflected from stl_path_files
 
-    print(f"{atmesh} Scipt completed.")
+    print(f"{atmesh} Script completed.")
 
 
 if __name__ == "__main__":
