@@ -21,18 +21,62 @@ import sys
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+from matplotlib import rc
 import numpy as np
+
 
 
 def main():
 
+    plt.style.use("bmh")
+    # plt.style.use("ggplot")
+
+
+    # Original reference:
+    # https://stackoverflow.com/questions/48391568/matplotlib-creating-plot-for-black-background-presentation-slides
+    # plt.rcParams.update({
+    #     "lines.color": "white",
+    #     "patch.edgecolor": "white",
+    #     "text.color": "black",
+    #     "axes.facecolor": "white",
+    #     "axes.edgecolor": "lightgray",
+    #     "axes.labelcolor": "white",
+    #     "xtick.color": "white",
+    #     "ytick.color": "white",
+    #     "grid.color": "lightgray",
+    #     "figure.facecolor": "black",
+    #     "figure.edgecolor": "black",
+    #     "savefig.facecolor": "black",
+    #     "savefig.edgecolor": "black"})
+
+    hdarkgrayblack = tuple(map(lambda x: x / 256.0, (35.0,35.0,35.0)))  # RGB triple
+
+    plt.rcParams.update({
+        "lines.color": "white",
+        "patch.edgecolor": "dimgray",
+        "text.color": "black",
+        "axes.facecolor": "dimgray",
+        "axes.edgecolor": "lightgray",
+        "axes.labelcolor": "white",
+        "xtick.color": "silver",
+        "ytick.color": "silver",
+        "grid.color": "lightgray",
+        "figure.facecolor": hdarkgrayblack,
+        "figure.edgecolor": hdarkgrayblack,
+        "savefig.facecolor": hdarkgrayblack,
+        "savefig.edgecolor": hdarkgrayblack
+    })
+
     cubit_path = "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
-    working_dir_str = str(Path("~/autotwin/data/octa").expanduser())
+    # working_dir_str = str(Path("~/autotwin/data/octa").expanduser())
+    working_dir_str = str(Path("~/Dropbox/scratch/octa_subset").expanduser())
 
     # we will loop over and process the following input files
     stl_path_files = [
-        "~/autotwin/data/octa/octa_loop03.stl",
-        "~/autotwin/data/octa/octa_loop04.stl",
+        # "~/autotwin/data/octa/octa_loop03.stl",
+        # "~/autotwin/data/octa/octa_loop04.stl",
+        "~/Dropbox/scratch/octa_subset/octa_loop03.stl",
+        "~/Dropbox/scratch/octa_subset/octa_loop04.stl",
     ]
 
     # atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
@@ -87,8 +131,12 @@ def main():
         delta_bin = (xmax - xmin) / n_bins
         # bins = [delta_bin * x for x in range(n_bins + 1)]
         bins = [xmin + delta_bin * x for x in range(n_bins + 1)]
+        latex = True
         # user input end
         # --------------
+        if latex:
+            rc("font", **{"family": "serif", "serif": ["Computer Modern Roman"]})
+            rc("text", usetex=True)
 
         print(f"n_bins: {n_bins}")
         print(f"delta_bin: {delta_bin}")
@@ -143,6 +191,7 @@ def main():
         # If we reach this point, the input and output buffers are
         # now closed and the function was successful.
         print(f"{atmesh} Closed output file: {output_path_file_str}")
+
 
         # Plot the histogram of minimum scaled Jacobians
         fig = plt.figure(
