@@ -17,34 +17,84 @@ To run:
 > python examples/sensitivity.py
 
 """
-# from os import system  # unused import
 import sys
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 from matplotlib import rc
 import numpy as np
-import platform
+
 
 
 def main():
-    if platform.system() == "Windows":
-        cubit_path = "C:\\Program Files\\Cubit 16.06\\bin"
-        print("Running on Windows")
-    elif platform.system() == "Darwin":
-        cubit_path = "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
-    else:
-        cubit_path = input("OS not recognized. Please enter your Cubit directory: \n")
 
+    plt.style.use("bmh")
+    # plt.style.use("ggplot")
+
+
+    # Original reference:
+    # https://stackoverflow.com/questions/48391568/matplotlib-creating-plot-for-black-background-presentation-slides
+    # plt.rcParams.update({
+    #     "lines.color": "white",
+    #     "patch.edgecolor": "white",
+    #     "text.color": "black",
+    #     "axes.facecolor": "white",
+    #     "axes.edgecolor": "lightgray",
+    #     "axes.labelcolor": "white",
+    #     "xtick.color": "white",
+    #     "ytick.color": "white",
+    #     "grid.color": "lightgray",
+    #     "figure.facecolor": "black",
+    #     "figure.edgecolor": "black",
+    #     "savefig.facecolor": "black",
+    #     "savefig.edgecolor": "black"})
+
+    hdarkgrayblack = tuple(map(lambda x: x / 256.0, (35.0,35.0,35.0)))  # RGB triple
+
+    plt.rcParams.update({
+        "lines.color": "whitesmoke",
+        "patch.edgecolor": "dimgray",
+        "text.color": "darkorange",  # title color
+        "axes.facecolor": "dimgray",
+        "axes.edgecolor": "lightgray",
+        "axes.labelcolor": "red",  # axes label color
+        "xtick.color": "whitesmoke",
+        "ytick.color": "whitesmoke",
+        "grid.color": "lightgray",
+        "figure.facecolor": hdarkgrayblack,
+        "figure.edgecolor": hdarkgrayblack,
+        "savefig.facecolor": hdarkgrayblack,
+        "savefig.edgecolor": hdarkgrayblack
+    })
+
+    cubit_path = "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
+    # working_dir_str = str(Path("~/autotwin/data/octa").expanduser())
+    working_dir_str = str(Path("~/Dropbox/scratch/octa_subset").expanduser())
+
+
+    """
+<<<<<<< main
     working_dir_str = str(Path("~/autotwin/data/octa").expanduser())
 
     # we will loop over and process the following input files
     stl_path_files = [
-        working_dir_str + "/octa_loop00.stl",
-        working_dir_str + "/octa_loop01.stl",
-        working_dir_str + "/octa_loop02.stl",
-        working_dir_str + "/octa_loop03.stl",
-        working_dir_str + "/octa_loop04.stl",
+        "~\\autotwin\\data\\octa\\octa_loop00.stl",
+        "~\\autotwin\\data\\octa\\octa_loop01.stl",
+        "~\\autotwin\\data\\octa\\octa_loop02.stl",
+        "~\\autotwin\\data\\octa\\octa_loop03.stl",
+        "~\\autotwin\\data\\octa\\octa_loop04.stl",
+
+>>>>>>> main
+    """
+
+
+
+    # we will loop over and process the following input files
+    stl_path_files = [
+        # "~/autotwin/data/octa/octa_loop03.stl",
+        # "~/autotwin/data/octa/octa_loop04.stl",
+        "~/Dropbox/scratch/octa_subset/octa_loop03.stl",
+        "~/Dropbox/scratch/octa_subset/octa_loop04.stl",
     ]
 
     # atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
@@ -67,7 +117,7 @@ def main():
     cc = 'cd "' + working_dir_str + '"'
     cubit.cmd(cc)
     print(f"{atmesh} The Cubit Working Directory is set to: {working_dir_str}")
-    qualities_cell = []
+
     for file_in in stl_path_files:
 
         # ----------------
@@ -123,7 +173,6 @@ def main():
         figure_type = ".png"
         figure_file = input_file_no_ext + "_sj" + figure_type
         figure_path_file = input_path.joinpath(figure_file)
-        figure_path_file_str = str(figure_path_file)
 
         cc = "reset"
         cubit.cmd(cc)
@@ -164,8 +213,12 @@ def main():
         # now closed and the function was successful.
         print(f"{atmesh} Closed output file: {output_path_file_str}")
 
-        # qualities_cell = np.array(qualities_cell, [qualities])
+        """
+<<<<<<< main
+        #qualities_cell = np.array(qualities_cell, [qualities])
         qualities_cell.append(list(qualities))
+>>>>>>> main
+        """
 
         # Plot the histogram of minimum scaled Jacobians
         fig = plt.figure(
@@ -190,28 +243,8 @@ def main():
             # filename = script_name + "_convergence_log" + ".png"
             # pathfilename = Path.cwd().joinpath(filename)
             # fig.savefig(pathfilename, bbox_inches="tight", pad_inches=0)
-            fig.savefig(figure_path_file_str, bbox_inches="tight", pad_inches=0)
-            print(f"{atmesh} Serialized to {figure_path_file_str}")
-
-    # plt.figure()
-    fig = plt.figure()
-    # breakpoint()
-    for iii in range(len(stl_path_files)):
-        plt.boxplot(qualities_cell[iii][:], positions=[iii + 1])
-        # plt.boxplot(qualities_cell[iii][:], positions=[iii])
-    plt.title("Box and Whisker Plot of Qualities")
-    plt.xlabel("Case Number")
-    plt.ylabel("Distribution")
-
-    path_file_in = Path(__file__)
-    stem = path_file_in.stem
-    fig_extension = ".png"
-    # path_file_out = stem + fig_extension
-    path_file_out = working_dir_str + "/box_plots" + fig_extension
-    breakpoint()
-    plt.savefig(path_file_out)
-    print(f"{atmesh} Serialized to {path_file_out}")
-    # plt.show()
+            fig.savefig(figure_path_file, bbox_inches="tight", pad_inches=0)
+            print(f"{atmesh} Serialized to {figure_path_file}")
 
     # Now create a single plot the accumlates all the scaled
     # Jacobian data across all stl_path_files and plots their
