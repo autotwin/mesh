@@ -22,8 +22,10 @@ import sys
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+from matplotlib import rc
 import numpy as np
 import platform
+
 
 
 def main():
@@ -35,15 +37,7 @@ def main():
     else:
         cubit_path = input('OS not recognized. Please enter your Cubit directory: \n')
 
-    working_dir_str = str(Path("~/autotwin/data/octa").expanduser())
 
-    # we will loop over and process the following input files
-    stl_path_files = [
-        "~\\autotwin\\data\\octa\\octa_loop00.stl",
-        "~\\autotwin\\data\\octa\\octa_loop01.stl",
-        "~\\autotwin\\data\\octa\\octa_loop02.stl",
-        "~\\autotwin\\data\\octa\\octa_loop03.stl",
-        "~\\autotwin\\data\\octa\\octa_loop04.stl",
     ]
 
     # atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
@@ -74,18 +68,20 @@ def main():
         # stl_path_file = "~/autotwin/data/octa/octa_loop04.stl"
         stl_path_file = file_in
         fig_dict = {
-            "title": "Element Minimum Scaled Jacobian",
-            "xlabel": "Minimum Scaled Jaocibian",
+            # "title": "Element Minimum Scaled Jacobian",
+            "xlabel": "Minimum Scaled Jacobian",
             "ylabel": "Number of Elements",
             "hist_x": [0.4, 1.0],
             "hist_y": [0.6, 6000],
             "legend_loc": "upper left",
             "height": 6.0,
             "width": 6.0,
-            "dpi": 200,
+            "dpi": 600,
             "serialize": True,
             "figure_shown": False,
         }
+        fig_dict["title"] = file_in
+        # breakpoint()
         hist_kwargs = {
             # "histtype": "step",
             "alpha": 0.9,
@@ -98,8 +94,13 @@ def main():
         delta_bin = (xmax - xmin) / n_bins
         # bins = [delta_bin * x for x in range(n_bins + 1)]
         bins = [xmin + delta_bin * x for x in range(n_bins + 1)]
+        latex = True
+        # latex = False
         # user input end
         # --------------
+        if latex:
+            rc("font", **{"family": "serif", "serif": ["Computer Modern Roman"]})
+            rc("text", usetex=True)
 
         print(f"n_bins: {n_bins}")
         print(f"delta_bin: {delta_bin}")
@@ -154,8 +155,7 @@ def main():
         # If we reach this point, the input and output buffers are
         # now closed and the function was successful.
         print(f"{atmesh} Closed output file: {output_path_file_str}")
-        #qualities_cell = np.array(qualities_cell, [qualities])
-        qualities_cell.append(list(qualities))
+
         # Plot the histogram of minimum scaled Jacobians
         fig = plt.figure(
             figsize=(fig_dict["width"], fig_dict["height"]), dpi=fig_dict["dpi"]
@@ -166,6 +166,8 @@ def main():
             bins=bins,
             **hist_kwargs,
         )
+
+        plt.title(fig_dict["title"])
         plt.xlabel(fig_dict["xlabel"])
         plt.ylabel(fig_dict["ylabel"])
         plt.xlim(fig_dict["hist_x"])
@@ -206,7 +208,7 @@ def main():
 
     # xabels as 'loop03' and 'loop04' reflected from stl_path_files
 
-    print(f"{atmesh} Scipt completed.")
+    print(f"{atmesh} Script completed.")
 
 
 if __name__ == "__main__":
