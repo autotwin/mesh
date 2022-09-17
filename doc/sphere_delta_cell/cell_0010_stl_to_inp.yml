@@ -5,10 +5,12 @@ version: 1.1
 cubit_path: "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
 # working_dir: "~/autotwin/mesh/tests/files"
 working_dir: "~/Dropbox/scratch/2022-09-17"
+#
+# input .stl file
 stl_path_file: "~/autotwin/mesh/tests/files/sphere.stl"
-# inp_path_file: "~/autotwin/mesh/tests/files/sphere.inp"
-# inp_path_file: "~/Dropbox/scratch/2022-09-17/sphere_dcell_0010.inp"
-inp_path_file: "~/Dropbox/scratch/2022-09-17/sphere_dcell_0100.inp"
+#
+# output .inp file
+inp_path_file: "~/Dropbox/scratch/2022-09-17/sphere_delta_cell/0010.inp"
 #
 # optional (with default values)
 journaling: False  # boolean, True (default): Cubit writes cubit01.jou-style log files
@@ -21,6 +23,6 @@ bounding_box:
   zmin: -0.75
   zmax: 0.75
 cell_count:
-  nx: 100  # int, number of x-dimension cells in the bounding box, etc.
-  ny: 100
-  nz: 100
+  nx: 10  # int, number of x-dimension cells in the bounding box, etc.
+  ny: 10
+  nz: 10

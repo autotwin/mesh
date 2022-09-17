@@ -109,7 +109,8 @@ def translate(*, path_file_input: str) -> int:
         print(f"{atmesh} inp import completed.")
 
         n_elements = cubit.get_hex_count()
-        print(f"Number of elements: {n_elements}")
+        print(f"{atmesh} Number of elements: {n_elements}")
+        print(f"{atmesh} Calculating {n_elements} minimum scaled Jacobian values.")
 
         quality_metric = "Scaled Jacobian"
         qualities = []  # empty list to start

@@ -18,7 +18,27 @@ We anticipate that a threshold may occur where additional increases in element c
 
 * source [stl file](../tests/files/sphere.stl)
 * Cubit GUI - manual assessment to get approximate sculpt input parameters to feed to the Python driver script (below)
-* Python [driver script](../examples/sensitivity.py)
+* ~~Python [driver script](../examples/sensitivity.py)~~
+
+### Create `.inp` files
+
+```bash
+(atmeshenv) /Users/chovey/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py doc/sphere_delta_cell/cell_0010_stl_to_inp.yml
+```
+
+and so on for `cell_nnnn_stl_to_inp.yml` files.
+
+### Create minimum scaled Jacobian `.csv` files
+
+```bash
+(atmeshenv) chovey@s1060600/Users/chovey/autotwin/mesh>
+python src/atmesh/cubit_inp_to_minsj_csv.py doc/sphere_delta_cell/cell_0010_inp_to_minsj_csv.yml
+```
+
+and so on for `cell_nnnn_inp_to_minsj.csv` files.
+
+
+## Deprecated below:
 
 ## Cubit
 
