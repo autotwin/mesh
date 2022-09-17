@@ -77,7 +77,10 @@ def test_cubut_init():
     print("Import cubit module initiatied:")
     import cubit
 
-    cubit.init
+    # stop journaling for this test
+    # cubit.init  # journaling is ON
+    cubit.init(["cubit", "-nojournal"])  # journaling is OFF
+
     print("Import cubit module completed.")
 
     # working_dir = Path(__file__).resolve()
