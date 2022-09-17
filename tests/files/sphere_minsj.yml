@@ -5,7 +5,12 @@ version: 1.1
 cubit_path: "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
 working_dir: "~/autotwin/mesh/tests/files"
 # stl_path_file: "~/autotwin/mesh/tests/files/sphere.stl"
+#
+# input .inp file
 inp_path_file: "~/autotwin/mesh/tests/files/sphere_cell_0010.inp"
+#
+# output .csv file
+csv_path_file: "~/autotwin/mesh/tests/files/sphere_cell_0010_minsj.csv"
 #
 # optional (with default values)
 #

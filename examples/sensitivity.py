@@ -23,7 +23,8 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 from matplotlib import rc
-import numpy as np
+
+# import numpy as np
 import platform
 
 
@@ -150,7 +151,8 @@ def main():
             print(f"{atmesh} Opened output file for writing: {output_path_file_str}")
 
             # for i in np.arange(10):
-            for i in np.arange(n_elements):
+            # for i in np.arange(n_elements):
+            for i in range(n_elements):
 
                 en = i + 1  # element number = en, change from 0-index to 1-index
                 # print(f"Element {en}")

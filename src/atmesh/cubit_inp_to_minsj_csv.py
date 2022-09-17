@@ -8,7 +8,7 @@ Prerequisites:
 Methods (example):
 > cd ~/autotwin/mesh/src/mesh
 ~/autotwin/mesh> source atmeshenv/bin/activate.fish # (atmeshenv) uses Python 3.7
-(atmeshenv) ~/autotwin/mesh> python src/atmesh/cubit_inp_to_minsj.py tests/files/sphere_minsj.yml
+(atmeshenv) ~/autotwin/mesh> python src/atmesh/cubit_inp_to_minsj_csv.py tests/files/sphere_minsj.yml
 """
 
 import argparse
@@ -20,6 +20,16 @@ import atmesh.yml_to_dict as translator
 
 
 def translate(*, path_file_input: str) -> int:
+    """Given a fully qualified path to a .yml input file, converts
+    an the input .inp file (specified in the input file)
+    to the output .csv file (also specified in the input file) that
+    contains the element number and the element minimum scaled Jacobian
+    in comma separated value format.
+
+    Returns:
+        (int) The number of elements processed.
+    """
+
     # from typing import Final # Final is new in Python 3.8, Cubit uses 3.7
 
     # atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
@@ -34,7 +44,7 @@ def translate(*, path_file_input: str) -> int:
 
     # user_input = _yml_to_dict(yml_path_file=fin)
     # keys = ("version", "cubit_path", "working_dir", "stl_path_file", "inp_path_file")
-    keys = ("version", "cubit_path", "working_dir", "inp_path_file")
+    keys = ("version", "cubit_path", "working_dir", "inp_path_file", "csv_path_file")
     user_input = translator.yml_to_dict(
         yml_path_file=fin, version=1.1, required_keys=keys
     )
@@ -44,10 +54,15 @@ def translate(*, path_file_input: str) -> int:
         print(f"  {key}: {value}")
 
     cubit_path = user_input["cubit_path"]
-    inp_path_file = user_input["inp_path_file"]
-    inp_path_file_str = str(Path(inp_path_file).expanduser())
+
     working_dir = user_input["working_dir"]
     working_dir_str = str(Path(working_dir).expanduser())
+
+    inp_path_file = user_input["inp_path_file"]
+    inp_path_file_str = str(Path(inp_path_file).expanduser())
+
+    csv_path_file = user_input["csv_path_file"]
+    csv_path_file_str = str(Path(csv_path_file).expanduser())
 
     journaling = user_input.get("journaling", False)
 
@@ -93,9 +108,30 @@ def translate(*, path_file_input: str) -> int:
         cubit.cmd(cc)
         print(f"{atmesh} inp import completed.")
 
-        # TODO: start on hex count
         n_elements = cubit.get_hex_count()
         print(f"Number of elements: {n_elements}")
+
+        quality_metric = "Scaled Jacobian"
+        qualities = []  # empty list to start
+
+        with open(csv_path_file_str, "wt") as out_stream:
+            print(f"{atmesh} Opened output file for writing: {csv_path_file_str}")
+
+            # for i in np.arange(10):
+            # for i in np.arange(n_elements):
+            for i in range(n_elements):
+
+                en = i + 1  # element number = en, change from 0-index to 1-index
+                # print(f"Element {en}")
+                quality = cubit.get_quality_value("hex", int(en), quality_metric)
+                qualities.append(quality)
+                # print(f"{quality_metric} value: {quality}")
+                line_out = str(en) + ", " + str(quality) + "\n"
+                out_stream.write(line_out)
+
+        # If we reach this point, the input and output buffers are
+        # now closed and the function was successful.
+        print(f"{atmesh} Closed output file: {csv_path_file_str}")
 
         print(f"{atmesh} Done.")
 
