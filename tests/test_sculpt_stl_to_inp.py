@@ -3,6 +3,7 @@ Cubit and Sculpt for translation.
 
 To run:
 (atmeshenv) ~/autotwin/mesh> pytest tests/test_sculpt_stl_to_inp -v
+(atmeshenv) ~/autotwin/mesh> pytest tests/test_sculpt_stl_to_inp -vs  # --capture=no
 
 For coverage:
 (atmeshenv) ~/autotwin/mesh> pytest tests/test_sculpt_stl_to_inp.py --cov=src/atmesh --cov-report term-missing
