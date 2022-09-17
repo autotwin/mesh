@@ -1,6 +1,9 @@
-# Spherical Baseline
+# Octa Loop
 
 *The Curvature Effect*
+
+* Use Loop refinement to transform an octahedron into a sphere.
+* Examine changes in local curvature converging to a constant curvature as mesh density increases.
 
 ## Introduction
 

@@ -93,7 +93,7 @@ To come.
 
 ## Context
 
-* [Spherical Baseline](spherical_baseline.md)
+* [Spherical Baseline](octa_loop.md)
 
 ## References
 
