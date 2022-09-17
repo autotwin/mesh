@@ -31,59 +31,7 @@ import argparse
 from pathlib import Path
 import sys
 
-import yaml
-
-
-def _yml_to_dict(*, yml_path_file: Path) -> dict:
-    """Given a valid Path to a yml input file, read it in and
-    return the result as a dictionary."""
-
-    # Compared to the lower() method, the casefold() method is stronger.
-    # It will convert more characters into lower case, and will find more matches
-    # on comparison of two strings that are both are converted
-    # using the casefold() method.
-    file_type = yml_path_file.suffix.casefold()
-
-    supported_types = (".yaml", ".yml")
-
-    if file_type not in supported_types:
-        raise TypeError("Only file types .yaml, and .yml are supported.")
-
-    try:
-        with open(yml_path_file, "r") as stream:
-            # See deprecation warning for plain yaml.load(input) at
-            # https://github.com/yaml/pyyaml/wiki/PyYAML-yaml.load(input)-Deprecation
-            db = yaml.load(stream, Loader=yaml.SafeLoader)
-    except yaml.YAMLError as error:
-        print(f"Error with YAML file: {error}")
-        # print(f"Could not open: {self.self.path_file_in}")
-        print(f"Could not open or decode: {yml_path_file}")
-        # raise yaml.YAMLError
-        raise OSError
-
-    version_specified = db.get("version")
-    version_implemented = 1.0
-
-    if version_specified < version_implemented:
-        raise ValueError(
-            f"Version mismatch: specified was {version_specified}, implemented is {version_implemented}"
-        )
-    else:
-        # require that input file has at least the following keys:
-        required_keys = (
-            "version",
-            "cubit_path",
-            "working_dir",
-            "stl_path_file",
-            "inp_path_file",
-        )
-        # has_required_keys = all(tuple(map(lambda x: db.get(x), required_keys)))
-        found_keys = tuple(db.keys())
-        keys_exist = tuple(map(lambda x: x in found_keys, required_keys))
-        has_required_keys = all(keys_exist)
-        if not has_required_keys:
-            raise KeyError(f"Input files must have these keys defined: {required_keys}")
-    return db
+import atmesh.yml_to_dict as translator
 
 
 def translate(*, path_file_input: str):
@@ -99,7 +47,11 @@ def translate(*, path_file_input: str):
     if not fin.is_file():
         raise FileNotFoundError(f"{atmesh} File not found: {str(fin)}")
 
-    user_input = _yml_to_dict(yml_path_file=fin)
+    # user_input = _yml_to_dict(yml_path_file=fin)
+    keys = ("version", "cubit_path", "working_dir", "stl_path_file", "inp_path_file")
+    user_input = translator.yml_to_dict(
+        yml_path_file=fin, version=1.1, required_keys=keys
+    )
 
     print(f"{atmesh} User input:")
     for key, value in user_input.items():
