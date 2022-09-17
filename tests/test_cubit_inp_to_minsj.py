@@ -12,10 +12,17 @@ For coverage:
 
 # import os
 from pathlib import Path
+import platform
+
+import pytest
 
 import atmesh.cubit_inp_to_minsj as translator
 
 
+@pytest.mark.skipif(
+    ("atlas" not in platform.uname().node) and ("1060600" not in platform.uname().node),
+    reason="Run on Atlas and local machines only.",
+)
 def test_known_element_count():
     self_path_file = Path(__file__)
     self_path = self_path_file.resolve().parent
