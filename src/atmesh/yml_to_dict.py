@@ -55,16 +55,7 @@ def yml_to_dict(
             f"Version mismatch: specified was {version_specified}, implemented is {version_implemented}"
         )
     else:
-        # require that input file has at least the following keys:
-        # required_keys = (
-        #     "version",
-        #     "cubit_path",
-        #     "working_dir",
-        #     "stl_path_file",
-        #     "inp_path_file",
-        # )
-        # required_keys = required_keys
-        # has_required_keys = all(tuple(map(lambda x: db.get(x), required_keys)))
+        # check keys found in input file against required keys
         found_keys = tuple(db.keys())
         keys_exist = tuple(map(lambda x: x in found_keys, required_keys))
         has_required_keys = all(keys_exist)
