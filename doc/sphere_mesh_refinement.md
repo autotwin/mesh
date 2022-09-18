@@ -35,7 +35,7 @@ and so on for `cell_nnnn_stl_to_inp.yml` files.
 python src/atmesh/cubit_inp_to_minsj_csv.py doc/sphere_delta_cell/cell_0010_inp_to_minsj_csv.yml
 ```
 
-and so on for `cell_nnnn_inp_to_minsj.csv` files.
+and so on for `cell_nnnn_inp_to_minsj_csv.yml` files.
 
 
 ## Deprecated below:
