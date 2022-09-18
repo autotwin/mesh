@@ -2,17 +2,17 @@
 
 ## Introduction
 
-The Sculpt program within Cubit uses an isosurface input (`.stl` format)  to create an all-hex finite element mesh (`.inp` format).
+Sculpt uses an isosurface input (`.stl` format) to create an all-hex finite element mesh (e.g., in ABAQUS `.inp` format).
 
-We idenfity the Sculpt input parameters that lead to increasing levels of mesh refinement.  We use element count as a proxy for mesh refinement, since the Sculpt FE mesh is largely regular and uniform.  In general, the more refined the mesh, the higher the element count.
+For a fixed volume domain, increases in Sculpt *cell count* lead to increasing levels of mesh refinement.  We use element count as a proxy for mesh refinement, since the Sculpt FE mesh is largely regular and uniform.  In general, the more refined the mesh, the higher the element count.
 
-We examine how mesh qualities, measured as minimum scaled Jacobian population histograms, vary as a function of element count.
+We examine how mesh the population of element minimum scaled Jacobian quality metric changes as a function of element count.  We use box and whisker plots to normalize across populations.
 
 ## Hypothesis
 
-We hypothesize that increases in element count (aka refinement) will lead to increases in element quality, evidenced by migration of the minimum scaled Jacobian histogram away from zero and toward unity.
+We hypothesize that increases in element count (aka refinement) will lead to increases in element quality, evidenced by migration of the median and quartile values away from zero and toward unity.
 
-We anticipate that a threshold may occur where additional increases in element count no longer lead to improvements in mesh quality (e.g., the minimum scaled Jacobian histogram is no longer sensitve to element count).
+We anticipate that a threshold may occur where additional increases in element count no longer lead to improvements in mesh quality (e.g., the minimum scaled Jacobian histogram is no longer sensitive to element count).
 
 ## Methods
 
@@ -37,6 +37,11 @@ python src/atmesh/cubit_inp_to_minsj_csv.py doc/sphere_delta_cell/cell_0010_inp_
 
 and so on for `cell_nnnn_inp_to_minsj_csv.yml` files.
 
+### Create box and whisker plots
+
+```bash
+To come.
+```
 
 ## Deprecated below:
 
