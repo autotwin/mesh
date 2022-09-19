@@ -60,7 +60,7 @@ Using [box_plots.py](box_plots.py) to produce:
 Increasing refinement results in
 
 * Increase of the median MSJ quality value from just above 0.85 (case 1) to approximately 1.0 (case 5),
-* Initial broadening (case 1 to case 2) and then tightening (case 2 and onward) of the interquartile range (IQR - Q3 - Q1),
+* Initial broadening (case 1 to case 2) and then tightening (case 2 and onward) of the interquartile range (IQR = Q3 - Q1),
 * Increasing number of outliers (indicated in blue dots), and
 * Decrease in the minimum population value of MSJ.
 
