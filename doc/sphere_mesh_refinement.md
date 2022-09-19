@@ -28,13 +28,13 @@ We anticipate that a threshold may occur where additional increases in element c
 
 and so on for `cell_nnnn_stl_to_inp.yml` files.
 
-study | 1 | 2 | 3
+study | 1 | 2 | 3 | 4 | 5
 -- | --: | --: | --:
-`.yml` config | [cell_0010_stl_to_inp.yml](sphere_delta_cell/cell_0010_stl_to_inp.yml) | [cell_0050_stl_to_inp.yml](sphere_delta_cell/cell_0050_stl_to_inp.yml) | [cell_0100_stl_to_inp.yml](sphere_delta_cell/cell_0100_stl_to_inp.yml)
-image | ![0010](figs/0010.inp.png) | ![0050](figs/0050.inp.png) | ![0100](figs/0100.inp.png)
+`.yml` config | [cell_0010_stl_to_inp.yml](sphere_delta_cell/cell_0010_stl_to_inp.yml) | [cell_0020_stl_to_inp.yml](sphere_delta_cell/cell_0020_stl_to_inp.yml) | [cell_0040_stl_to_inp.yml](sphere_delta_cell/cell_0040_stl_to_inp.yml) | [cell_0050_stl_to_inp.yml](sphere_delta_cell/cell_0050_stl_to_inp.yml) | [cell_0100_stl_to_inp.yml](sphere_delta_cell/cell_0100_stl_to_inp.yml)
+image | ![0010](figs/0010.inp.png) | ![0020](figs/0020.inp.png) | ![0040](figs/0040.inp.png) | ![0050](figs/0050.inp.png) | ![0100](figs/0100.inp.png)
 n_cells | 10 | 50 | 100
-`filename` | `0010.inp` | `0050.inp` | `0100.inp`
-n_elements | 352 | 24,566 | 175,297
+`filename` | `0010.inp` | `0020.inp` | `0040.inp` | `0050.inp` | `0100.inp`
+n_elements | 352 | 2,048 | 13,288 | 24,566 | 175,297
 
 ### Create minimum scaled Jacobian `.csv` files
 
@@ -45,9 +45,9 @@ python src/atmesh/cubit_inp_to_minsj_csv.py doc/sphere_delta_cell/cell_0010_inp_
 
 and so on for `cell_nnnn_inp_to_minsj_csv.yml` files.
 
-study | 1 | 2 | 3
--- | --: | --: | --:
-`.yml` config | [cell_0010_inp_to_minsj_csv.yml](sphere_delta_cell/cell_0010_inp_to_minsj_csv.yml) | [cell_0050_inp_to_minsj_csv.yml](sphere_delta_cell/cell_0050_inp_to_minsj_csv.yml) | [cell_0100_inp_to_minsj_csv.yml](sphere_delta_cell/cell_0100_inp_to_minsj_csv.yml)
+study | 1 | 2 | 3 | 4 | 5
+-- | --: | --: | --: --: | --:
+`.yml` config | [cell_0010_inp_to_minsj_csv.yml](sphere_delta_cell/cell_0010_inp_to_minsj_csv.yml) | [cell_0020_inp_to_minsj_csv.yml](sphere_delta_cell/cell_0020_inp_to_minsj_csv.yml) | [cell_0040_inp_to_minsj_csv.yml](sphere_delta_cell/cell_0040_inp_to_minsj_csv.yml) | [cell_0050_inp_to_minsj_csv.yml](sphere_delta_cell/cell_0050_inp_to_minsj_csv.yml) | [cell_0100_inp_to_minsj_csv.yml](sphere_delta_cell/cell_0100_inp_to_minsj_csv.yml)
 
 ### Create box and whisker plots
 

@@ -29,6 +29,8 @@ def main():
     # user input begin
     path_file_data = (
         "~/Downloads/0010_minsj.csv",
+        "~/Downloads/0020_minsj.csv",
+        "~/Downloads/0040_minsj.csv",
         "~/Downloads/0050_minsj.csv",
         "~/Downloads/0100_minsj.csv",
     )
