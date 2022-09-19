@@ -66,13 +66,13 @@ Increasing refinement results in
 
 ### Significance
 
-* Mesh refinement (traditionally used to reach convergence of displement, stress, or strain results) may be contraindicated for all-element population MSJ quality improvement.
-* A tradeoff between between median MSJ and minimum MSJ is seen, indicating that a balance between a median MSJ and a minimum MSJ that is sufficiently near 1.0 (ideal) is required.
-* All median and minimum values found in the present studies are sufficient for solving involing time stepping. However, the bloat of elements at high resolution, with their concommitant longer solve times, indicate that excessive refinement should be avoided.
+* Mesh refinement (traditionally used to reach convergence of displacement, stress, or strain results) may be contraindicated for all-element population MSJ quality improvement.
+* A tradeoff between median MSJ and minimum MSJ is seen, indicating that a balance between a median MSJ and a minimum MSJ that is sufficiently near 1.0 (ideal) is required.
+* All median and minimum values found in the present studies are sufficient for solving involving time stepping. However, the bloat of elements at high resolution, with their associated longer solve times, indicate that excessive refinement should be avoided.
 
 ### Limitations
 
-* This study does not account for mesh convergence of solution variables, such as displement, stress, or strain.  Such convergence should be the primiary adjudicator for mesh refinement cessation.
+* This study does not account for mesh convergence of solution variables, such as displacement, stress, or strain.  Such convergence should be the primary adjudicator for mesh refinement cessation.
 * MSJ quality metrics do not indicate sufficient refinement has been achieved, thus their use is adjunct.
 
 ## Deprecated below:
