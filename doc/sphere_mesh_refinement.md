@@ -46,7 +46,7 @@ python src/atmesh/cubit_inp_to_minsj_csv.py doc/sphere_delta_cell/cell_0010_inp_
 and so on for `cell_nnnn_inp_to_minsj_csv.yml` files.
 
 study | 1 | 2 | 3 | 4 | 5
--- | --: | --: | --: --: | --:
+-- | --: | --: | --: | --: | --:
 `.yml` config | [cell_0010_inp_to_minsj_csv.yml](sphere_delta_cell/cell_0010_inp_to_minsj_csv.yml) | [cell_0020_inp_to_minsj_csv.yml](sphere_delta_cell/cell_0020_inp_to_minsj_csv.yml) | [cell_0040_inp_to_minsj_csv.yml](sphere_delta_cell/cell_0040_inp_to_minsj_csv.yml) | [cell_0050_inp_to_minsj_csv.yml](sphere_delta_cell/cell_0050_inp_to_minsj_csv.yml) | [cell_0100_inp_to_minsj_csv.yml](sphere_delta_cell/cell_0100_inp_to_minsj_csv.yml)
 
 ### Create box and whisker plots
@@ -54,6 +54,26 @@ study | 1 | 2 | 3 | 4 | 5
 Using [box_plots.py](box_plots.py) to produce:
 
 ![box_plots](figs/box_plots.png)
+
+### Results
+
+Increasing refinement results in
+
+* Increase of the median MSJ quality value from just above 0.85 (case 1) to approximately 1.0 (case 5),
+* Initial broadening (case 1 to case 2) and then tightening (case 2 and onward) of the interquartile range (IQR - Q3 - Q1),
+* Increasing number of outliers (indicated in blue dots), and
+* Decrease in the minimum population value of MSJ.
+
+### Significance
+
+* Mesh refinement (traditionally used to reach convergence of displement, stress, or strain results) may be contraindicated for all-element population MSJ quality improvement.
+* A tradeoff between between median MSJ and minimum MSJ is seen, indicating that a balance between a median MSJ and a minimum MSJ that is sufficiently near 1.0 (ideal) is required.
+* All median and minimum values found in the present studies are sufficient for solving involing time stepping. However, the bloat of elements at high resolution, with their concommitant longer solve times, indicate that excessive refinement should be avoided.
+
+### Limitations
+
+* This study does not account for mesh convergence of solution variables, such as displement, stress, or strain.  Such convergence should be the primiary adjudicator for mesh refinement cessation.
+* MSJ quality metrics do not indicate sufficient refinement has been achieved, thus their use is adjunct.
 
 ## Deprecated below:
 
