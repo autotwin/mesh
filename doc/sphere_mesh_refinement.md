@@ -51,9 +51,9 @@ study | 1 | 2 | 3
 
 ### Create box and whisker plots
 
-```bash
-To come.
-```
+Using [box_plots.py](box_plots.py) to produce:
+
+![box_plots](figs/box_plots.png)
 
 ## Deprecated below:
 
