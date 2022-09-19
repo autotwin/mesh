@@ -14,25 +14,22 @@ To run:
 
 # activate the venv at meshenv
 > source atmeshenv/bin/activate  # or activate.fish if using fish shell
-> python doc/boxplots.py
+> python doc/box_plots.py
 
 """
-# from os import system  # unused import
-# import sys
-# import csv
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 from matplotlib import rc
 
 import numpy as np
-# import platform
 
 
 def main():
     # user input begin
     path_file_data = (
         "~/Downloads/0010_minsj.csv",
+        "~/Downloads/0050_minsj.csv",
         "~/Downloads/0100_minsj.csv",
     )
     fig_dict = {
