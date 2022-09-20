@@ -86,5 +86,5 @@ Using [box_plots.py](box_plots.py) to produce:
 
 ### Results
 
-* Unlike the results in [sphere_mesh_refinement.md](sphere_mesh_refinement.md) wherein the minimum MSJ value descresed as refinement increased, the results here show the minimum MSJ to be approximately constant, at a value of approximately `0.2`, across all refinement cases.
+* Unlike the results in [sphere_mesh_refinement.md](sphere_mesh_refinement.md) wherein the minimum MSJ value decreased as refinement increased, the results here show the minimum MSJ to be approximately constant, at a value of approximately `0.2`, across all refinement cases.
 * Similar to the sphere study, the bunny study shows median MSJ values increase and IQR decrease (from case 2 onward) as the refinement increased.
