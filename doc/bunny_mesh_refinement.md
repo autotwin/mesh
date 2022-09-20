@@ -62,15 +62,6 @@ This gives cell dimension of
 
 ### Create `.inp` files
 
-Length scale characteristic dimenion `dx` is set as the bounding box dimension, e.g., `xmin` and `xmax` (and so on for `y` and `z`),
-
-* `dx = xmax - xmin`
-* case 1: `dx / 10`
-* case 2: `dx / (10 * 2) = dx / 20`
-* case 3: `dx / (10 * 2^2) = dx / 40`
-* case 4: `dx / (10 * 2^3) = dx / 80`
-* case 5: `dx / (10 * 2^4) = dx / 160`
-
 ```bash
 (atmeshenv) /Users/chovey/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py doc/bunny_delta_cell/cell_0010_stl_to_inp.yml
 ```
@@ -81,7 +72,7 @@ study | 0 | 1 | 2 | 3 | 4 | 5
 -- | --: | --: | --: | --: | --: | --:
 `.stl` and `.yml` config | [bunny.stl](https://github.com/autotwin/data/blob/main/stl/bunny_20cm.stl) | [cell_0010_stl_to_inp.yml](bunny_delta_cell/cell_0010_stl_to_inp.yml) | [cell_0020_stl_to_inp.yml](bunny_delta_cell/cell_0020_stl_to_inp.yml) | [cell_0040_stl_to_inp.yml](bunny_delta_cell/cell_0040_stl_to_inp.yml) | [cell_0080_stl_to_inp.yml](bunny_delta_cell/cell_0080_stl_to_inp.yml) | [cell_0160_stl_to_inp.yml](bunny_delta_cell/cell_0160_stl_to_inp.yml)
 image | ![bunny](https://github.com/autotwin/data/blob/main/figs/bunny.png) | ![0010](figs/bunny_0010.inp.png) | ![0020](figs/bunny_0020.inp.png) | ![0040](figs/bunny_0040.inp.png) | ![0080](figs/bunny_0080.inp.png) | ![0160](figs/bunny_0160.inp.png)
-n_cells | -- | 10 | 20 | 40 | 80 | 160
+n_cells stride | -- | 10 / len | 20 / len | 40 / len | 80 / len | 160 / len
 `filename` | -- |  `0010.inp` | `0020.inp` | `0040.inp` | `0080.inp` | `0160.inp`
 n_facets | 16,890 tri | -- | -- | -- | -- | --
 n_elements | -- | 439 | 2,906 | 18,102 | 124,041 | 905,694
@@ -92,3 +83,8 @@ volume | 1597.626598 | 1496.19 | 1589.35 | 1595.53 | 1597.74 | 1597.65
 Using [box_plots.py](box_plots.py) to produce:
 
 ![box_plots](figs/box_plots_bunny.png)
+
+### Results
+
+* Unlike the results in [sphere_mesh_refinement.md](sphere_mesh_refinement.md) wherein the minimum MSJ value descresed as refinement increased, the results here show the minimum MSJ to be approximately constant, at a value of approximately `0.2`, across all refinement cases.
+* Similar to the sphere study, the bunny study shows median MSJ values increase and IQR decrease (from case 2 onward) as the refinement increased.
