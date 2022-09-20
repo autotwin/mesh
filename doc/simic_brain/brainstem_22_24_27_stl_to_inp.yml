@@ -1,0 +1,29 @@
+# User input for use with atmesh.sculpt_stl_to_inp module
+#
+# required
+version: 1.1
+cubit_path: "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
+# working_dir: "~/autotwin/mesh/tests/files"
+# working_dir: "~/Dropbox/scratch/2022-09-17"
+working_dir: "~/Dropbox/scratch/simic"
+#
+# input .stl file
+stl_path_file: "~/Dropbox/scratch/simic/brainstem.stl"
+#
+# output .inp file
+inp_path_file: "~/Dropbox/scratch/simic/brainstem_22_24_27.inp"
+#
+# optional (with default values)
+journaling: False  # boolean, True (default): Cubit writes cubit01.jou-style log files
+n_proc: 2  # int, 4 (default): number of parallel processes, minimum is 1
+bounding_box:
+  xmin: -43.154  # float, position of the x-dimension minimum of the bounding box, etc.
+  xmax: 44.846
+  ymin: -26.715
+  ymax: 69.285
+  zmin: -87.308
+  zmax: 20.692
+cell_count:
+  nx: 22  # from manual interaction with Cubit GUI
+  ny: 24
+  nz: 27
