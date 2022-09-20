@@ -3,7 +3,6 @@ Jacobian ("quality") to changes in `.stl` face count, element count,
 Jacobi smoothing iteration, and Laplacian smoothing iteration.
 
 Prerequisites:
-* Install of Cubit version 16.06 with Sculpt.
 * Install Python 3.7.9.
 * Install the atmeshevn virtual environment.
 * Clone the autotwin/mesh repo.
@@ -28,11 +27,11 @@ import numpy as np
 def main():
     # user input begin
     path_file_data = (
-        "~/Downloads/0010_minsj.csv",
-        "~/Downloads/0020_minsj.csv",
-        "~/Downloads/0040_minsj.csv",
-        "~/Downloads/0050_minsj.csv",
-        "~/Downloads/0100_minsj.csv",
+        "~/Dropbox/scratch/2022-09-17/bunny_delta_cell/0010_minsj.csv",
+        "~/Dropbox/scratch/2022-09-17/bunny_delta_cell/0020_minsj.csv",
+        "~/Dropbox/scratch/2022-09-17/bunny_delta_cell/0040_minsj.csv",
+        "~/Dropbox/scratch/2022-09-17/bunny_delta_cell/0080_minsj.csv",
+        "~/Dropbox/scratch/2022-09-17/bunny_delta_cell/0160_minsj.csv",
     )
     fig_dict = {
         "title": "Element Minimum Scaled Jacobian vesus Element Count",
@@ -79,7 +78,7 @@ def main():
         fin = Path(item).expanduser()
 
         print(f"Reading file {fin}")
-        qual = np.genfromtxt(fname=fin, delimiter=',', usecols=(1,))
+        qual = np.genfromtxt(fname=fin, delimiter=",", usecols=(1,))
         counts.append(len(qual))
         qualities.append(qual)
 
@@ -96,10 +95,10 @@ def main():
     #     # plt.boxplot(qualities_cell[iii][:], positions=[iii])
     flierprops = dict(
         linestyle="none",
-        marker='.',
+        marker=".",
         markerfacecolor="blue",
         markeredgecolor="none",
-        markersize=3
+        markersize=3,
     )
     plt.boxplot(qualities, labels=counts, flierprops=flierprops)
     plt.title("Minimum Scaled Jacobian by Case Element Count")

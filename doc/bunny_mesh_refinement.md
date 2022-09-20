@@ -84,7 +84,11 @@ image | ![bunny](https://github.com/autotwin/data/blob/main/figs/bunny.png) | ![
 n_cells | -- | 10 | 20 | 40 | 80 | 160
 `filename` | -- |  `0010.inp` | `0020.inp` | `0040.inp` | `0080.inp` | `0160.inp`
 n_facets | 16,890 tri | -- | -- | -- | -- | --
-n_elements | -- | 432 | 2,906 | 18,102 | 124,041 | 905,694
+n_elements | -- | 439 | 2,906 | 18,102 | 124,041 | 905,694
 volume | 1597.626598 | 1496.19 | 1589.35 | 1595.53 | 1597.74 | 1597.65
 
+### Create box and whisker plots
 
+Using [box_plots.py](box_plots.py) to produce:
+
+![box_plots](figs/box_plots_bunny.png)

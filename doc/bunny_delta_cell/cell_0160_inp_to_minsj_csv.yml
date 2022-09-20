@@ -6,10 +6,10 @@ cubit_path: "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
 working_dir: "~/autotwin/mesh/tests/files"
 #
 # input .inp file
-inp_path_file: "~/Dropbox/scratch/2022-09-17/bunny_delta_cell/0010.inp"
+inp_path_file: "~/Dropbox/scratch/2022-09-17/bunny_delta_cell/0160.inp"
 #
 # output .csv file
-csv_path_file: "~/Dropbox/scratch/2022-09-17/bunny_delta_cell/0010_minsj.csv"
+csv_path_file: "~/Dropbox/scratch/2022-09-17/bunny_delta_cell/0160_minsj.csv"
 #
 # optional (with default values)
 #
