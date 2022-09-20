@@ -20,6 +20,35 @@ We anticipate that a threshold may occur where additional increases in element c
 * Cubit GUI - manual assessment to get approximate sculpt input parameters to feed to the Python driver script (below)
 * ~~Python [driver script](../examples/sensitivity.py)~~
 
+### Input `.stl` file
+
+From *MeshLab v2022.02d*, the following Geometry Metrics (Filters > Quality Measure and Computations > Compute Geometric Measures) are found:
+
+```bash
+Mesh Bounding Box Size 0.999235 0.998950 0.998893
+Mesh Bounding Box Diag 1.730363 
+Mesh Bounding Box min -0.499664 -0.499477 -0.499503
+Mesh Bounding Box max 0.499570 0.499473 0.499390
+Mesh Surface Area is 3.132934
+Mesh Total Len of 25335 Edges is 528.708996 Avg Len 0.020869
+Mesh Total Len of 25335 Edges is 528.708996 Avg Len 0.020869 (including faux edges))
+Thin shell (faces) barycenter: -0.000000 -0.000000 -0.000000
+Vertices barycenter 0.000220 -0.000875 0.000465
+Mesh Volume is 0.521246
+Center of Mass is 0.000000 -0.000000 0.000000
+Inertia Tensor is :
+| 0.051968 -0.000000 0.000000 |
+| -0.000000 0.051969 0.000000 |
+| 0.000000 0.000000 0.051968 |
+Principal axes are :
+| 0.168750 0.090078 -0.981534 |
+| -0.980220 -0.089130 -0.176704 |
+| -0.103401 0.991938 0.073256 |
+axis momenta are :
+| 0.051968 0.051968 0.051969 |
+Applied filter Compute Geometric Measures in 50 msec
+```
+
 ### Create `.inp` files
 
 ```bash
@@ -28,13 +57,15 @@ We anticipate that a threshold may occur where additional increases in element c
 
 and so on for `cell_nnnn_stl_to_inp.yml` files.
 
-study | 1 | 2 | 3 | 4 | 5
--- | --: | --: | --: | --: | --:
-`.yml` config | [cell_0010_stl_to_inp.yml](sphere_delta_cell/cell_0010_stl_to_inp.yml) | [cell_0020_stl_to_inp.yml](sphere_delta_cell/cell_0020_stl_to_inp.yml) | [cell_0040_stl_to_inp.yml](sphere_delta_cell/cell_0040_stl_to_inp.yml) | [cell_0050_stl_to_inp.yml](sphere_delta_cell/cell_0050_stl_to_inp.yml) | [cell_0100_stl_to_inp.yml](sphere_delta_cell/cell_0100_stl_to_inp.yml)
-image | ![0010](figs/0010.inp.png) | ![0020](figs/0020.inp.png) | ![0040](figs/0040.inp.png) | ![0050](figs/0050.inp.png) | ![0100](figs/0100.inp.png)
-n_cells | 10 | 20 | 40 | 50 | 100
-`filename` | `0010.inp` | `0020.inp` | `0040.inp` | `0050.inp` | `0100.inp`
-n_elements | 352 | 2,048 | 13,288 | 24,566 | 175,297
+study | 0 | 1 | 2 | 3 | 4 | 5
+-- | --: | --: | --: | --: | --: | --:
+`.stl` and `.yml` config | [sphere.stl](../tests/files/sphere.stl) | [cell_0010_stl_to_inp.yml](sphere_delta_cell/cell_0010_stl_to_inp.yml) | [cell_0020_stl_to_inp.yml](sphere_delta_cell/cell_0020_stl_to_inp.yml) | [cell_0040_stl_to_inp.yml](sphere_delta_cell/cell_0040_stl_to_inp.yml) | [cell_0050_stl_to_inp.yml](sphere_delta_cell/cell_0050_stl_to_inp.yml) | [cell_0100_stl_to_inp.yml](sphere_delta_cell/cell_0100_stl_to_inp.yml)
+image | ![sphere](figs/sphere.png) | ![0010](figs/0010.inp.png) | ![0020](figs/0020.inp.png) | ![0040](figs/0040.inp.png) | ![0050](figs/0050.inp.png) | ![0100](figs/0100.inp.png)
+n_cells | -- | 10 | 20 | 40 | 50 | 100
+`filename` | -- |  `0010.inp` | `0020.inp` | `0040.inp` | `0050.inp` | `0100.inp`
+n_facets | 16,890 tri | -- | -- | -- | -- | --
+n_elements | -- |352 | 2,048 | 13,288 | 24,566 | 175,297
+volume | 0.521246 | 0.520335 | 0.520678 | 0.521109 | 0.521256 | 0.521187 
 
 ### Create minimum scaled Jacobian `.csv` files
 

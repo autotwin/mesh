@@ -1,0 +1,17 @@
+# User input for use with atmesh.cubit_inp_to_minsj_csv.py module
+#
+# required
+version: 1.1
+cubit_path: "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
+working_dir: "~/autotwin/mesh/tests/files"
+#
+# input .inp file
+inp_path_file: "~/Dropbox/scratch/2022-09-17/sphere_delta_cell/0010.inp"
+#
+# output .csv file
+csv_path_file: "~/Dropbox/scratch/2022-09-17/sphere_delta_cell/0010_minsj.csv"
+#
+# optional (with default values)
+#
+# Cubit
+journaling: False # boolean, True (default): Cubit writes cubit01.jou-style log files
