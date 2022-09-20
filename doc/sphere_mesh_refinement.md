@@ -75,6 +75,8 @@ Increasing refinement results in
 * This study does not account for mesh convergence of solution variables, such as displacement, stress, or strain.  Such convergence should be the primary adjudicator for mesh refinement cessation.
 * MSJ quality metrics do not indicate sufficient refinement has been achieved, thus their use is adjunct.
 * The trends in the this study are limited to the sphere geometry at hand.  We warn that extapolation of the present results to other, more complex shapes, should be avoided.  Geometries should be assessed on a case-by-case basis.
+* The present study did not examine to what degree surface area and volume of the meshed geometries represent the fiducial surface area and volume indicated by the input `.stl` file.  These, in addition to local curvature, should be examined in future studies.
+* Decimation of the interior domain via dualization should also be considered.
 
 ## Deprecated below:
 
