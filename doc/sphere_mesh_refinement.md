@@ -165,28 +165,6 @@ Cubit>vol 1 visibility off
 
 ![sphere_cell_size_0p1.png](figs/sphere_cell_size_0p1.png)
 
-### Additional cell sizes to come...
-
-To come.
-
-
-## Results
-
-Histograms to come.
-
-## Discussion
-
-To come.
-
-## Conclusions
-
-To come.
-
 ## Context
 
 * [Spherical Baseline](octa_loop.md)
-
-## References
-
-To come.
-
