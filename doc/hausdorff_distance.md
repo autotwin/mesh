@@ -14,9 +14,7 @@ MeshLab
 * Import `sphere_radius_10.stl`
 * Filters, Sampling, Hausdorff distance, sample `sphere_radius_10.stl` target mesh `sphere_radius_5.stl`, sample vertices, number of samples 8,447.
 
-
 ![sphere_radius_5_in_sphere_radius_10](figs/sphere_radius_5_in_sphere_radius_10.png)
-
 
 ```bash
 Hausdorff Distance computed
@@ -53,7 +51,7 @@ MeshLab import `0010_shell.stl`, 194 vertices, 384 faces (each quad face generat
 :--: | :--: | :--: | :--: | :--: 
 ![sphere_v_0010](figs/sphere_v_0010.png) | ![sphere_v_0020](figs/sphere_v_0020.png) | ![sphere_v_0040](figs/sphere_v_0040.png) | ![sphere_v_0050](figs/sphere_v_0050.png) | ![sphere_v_0100](figs/sphere_v_0100.png)
 
-> Figure 1: The `sphere.stl` (small triangular tessilation) with overlay of (larger triangular mesh) in MeshLab (a) `0010_shell.stl` (b) `0020_shell.stl` (c) `0040_shell.stl` (d) `0050_shell.stl`, (e) `0100_shell.stl`.
+> Figure 1: The `sphere.stl` with overlay of (a) `0010_shell.stl` (b) `0020_shell.stl` (c) `0040_shell.stl` (d) `0050_shell.stl`, (e) `0100_shell.stl`.
 
 Sampled mesh: `sphere.stl`
 Target mesh: `0010_shell.stl`
