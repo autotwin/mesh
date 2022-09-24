@@ -88,6 +88,8 @@ Using [box_plots.py](box_plots.py) to produce:
 
 ### Results
 
+We used the [Hausdorff distance](hausdorff_distance.md) to verify the shape similarity of the surface of the hex meshes (represented by quadralaterals) to the underlying source triangular tessilation.
+
 Increasing refinement results in
 
 * Increase of the median MSJ quality value from just above 0.85 (case 1) to approximately 1.0 (case 5),
