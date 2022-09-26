@@ -20,7 +20,9 @@ import atmesh.cubit_inp_to_minsj_csv as translator
 
 
 @pytest.mark.skipif(
-    ("atlas" not in platform.uname().node) and ("1060600" not in platform.uname().node),
+    ("atlas" not in platform.uname().node)
+    and ("1060600" not in platform.uname().node)
+    and ("1088757" not in platform.uname().node),
     reason="Run on Atlas and local machines only.",
 )
 def test_known_element_count():

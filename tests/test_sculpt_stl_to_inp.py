@@ -64,7 +64,9 @@ def test_when_io_fails():
 
 
 @pytest.mark.skipif(
-    ("atlas" not in platform.uname().node) and ("1060600" not in platform.uname().node),
+    ("atlas" not in platform.uname().node)
+    and ("1060600" not in platform.uname().node)
+    and ("1088757" not in platform.uname().node),
     reason="Run on Atlas and local machines only.",
 )
 def test_cubut_init():
