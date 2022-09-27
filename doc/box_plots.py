@@ -27,11 +27,11 @@ import numpy as np
 def main():
     # user input begin
     path_file_data = (
-        "~/Dropbox/scratch/2022-09-17/bunny_delta_cell/0010_minsj.csv",
-        "~/Dropbox/scratch/2022-09-17/bunny_delta_cell/0020_minsj.csv",
-        "~/Dropbox/scratch/2022-09-17/bunny_delta_cell/0040_minsj.csv",
-        "~/Dropbox/scratch/2022-09-17/bunny_delta_cell/0080_minsj.csv",
-        "~/Dropbox/scratch/2022-09-17/bunny_delta_cell/0160_minsj.csv",
+        "~/Downloads/scratch/2022-09-17/bunny_delta_cell/0010_minsj.csv",
+        "~/Downloads/scratch/2022-09-17/bunny_delta_cell/0020_minsj.csv",
+        "~/Downloads/scratch/2022-09-17/bunny_delta_cell/0040_minsj.csv",
+        "~/Downloads/scratch/2022-09-17/bunny_delta_cell/0080_minsj.csv",
+        "~/Downloads/scratch/2022-09-17/bunny_delta_cell/0160_minsj.csv",
     )
     fig_dict = {
         "title": "Element Minimum Scaled Jacobian vesus Element Count",

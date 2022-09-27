@@ -11,10 +11,9 @@
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
-
 [project]
 name = "atmesh"
-version = "0.0.6"
+version = "0.0.7"
 authors = [
   { name="Chad Hovey", email="chovey@sandia.gov" },
   { name="Emma Lejeune", email="elejeune@bu.edu" },
@@ -36,6 +35,13 @@ dependencies = [
     "pytest-cov",
     "pyyaml"
 ]
+
+# Entry Points
+# https://setuptools.pypa.io/en/latest/userguide/entry_point.html
+[project.scripts]
+version="atmesh.command_line:version"
+cubit_inp_to_minsj_csv="atmesh.cubit_inp_to_minsj_csv:main"
+sculpt_stl_to_inp="atmesh.sculpt_stl_to_inp:main"
 
 [project.urls]
 "Homepage" = "https://github.com/autotwin/mesh"

@@ -60,13 +60,25 @@ This gives cell dimension of
 * y = (9.962146 + 9.956266) / 555 = 19.918412 / 555 = 0.0358890
 * z = (7.838363 + 7.809253) / 436 = 15.647616 / 436 = 0.0358890
 
-### Create `.inp` files
+### Create `.inp` and `_minsj.csv` files
 
 ```bash
-(atmeshenv) /Users/chovey/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py doc/bunny_delta_cell/cell_0010_stl_to_inp.yml
+# verify version 0.0.7 or later
+(atmeshenv) ~/autotwin/mesh/version
+autotwin mesh module version:
+0.0.7
+
+# create .inp file
+(atmeshenv) ~/autotwin/mesh> sculpt_stl_to_inp doc/bunny_delta_cell/cell_0010_stl_to_inp.yml
+
+# create _minsj.csv file
+(atmeshenv) ~/autotwin/mesh> cubit_inp_to_minsj_csv doc/bunny_delta_cell/cell_0010_inp_to_minsj_csv.yml
+
+# deprecated after version 0.0.7
+# (atmeshenv) /Users/chovey/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py doc/bunny_delta_cell/cell_0010_stl_to_inp.yml
 ```
 
-and so on for `cell_nnnn_stl_to_inp.yml` files.
+and so on for `cell_nnnn_stl_to_inp.yml` and other parameterized files.
 
 study | 0 | 1 | 2 | 3 | 4 | 5
 -- | --: | --: | --: | --: | --: | --:

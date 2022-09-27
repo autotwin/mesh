@@ -5,13 +5,15 @@ version: 1.1
 cubit_path: "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
 # working_dir: "~/autotwin/mesh/tests/files"
 # working_dir: "~/Dropbox/scratch/2022-09-17"
-working_dir: "~/Dropbox/scratch/simic"
+working_dir: "~/Downloads/scratch/simic"
 #
 # input .stl file
-stl_path_file: "~/Dropbox/scratch/simic/cerebellum.stl"
+# stl_path_file: "~/Dropbox/scratch/simic/cerebellum.stl"
+stl_path_file: "~/Downloads/scratch/simic/cerebellum.stl"
 #
 # output .inp file
-inp_path_file: "~/Dropbox/scratch/simic/cerebellum_120_90_70.inp"
+# inp_path_file: "~/Dropbox/scratch/simic/cerebellum_120_90_70.inp"
+inp_path_file: "~/Downloads/scratch/simic/cerebellum_120_90_70.inp"
 #
 # optional (with default values)
 journaling: False  # boolean, True (default): Cubit writes cubit01.jou-style log files

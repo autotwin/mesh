@@ -182,11 +182,14 @@ def translate(*, path_file_input: str):
         raise ModuleNotFoundError
 
 
-if __name__ == "__main__":
+def main():
     """Runs the module from the command line."""
     parser = argparse.ArgumentParser()
     parser.add_argument("input_file", help="the .yml user input file")
     args = parser.parse_args()
     input_file = args.input_file
-
     translate(path_file_input=input_file)
+
+
+if __name__ == "__main__":
+    main()

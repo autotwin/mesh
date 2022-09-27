@@ -52,7 +52,15 @@ Applied filter Compute Geometric Measures in 50 msec
 ### Create `.inp` files
 
 ```bash
-(atmeshenv) /Users/chovey/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py doc/sphere_delta_cell/cell_0010_stl_to_inp.yml
+# verify version 0.0.7 or later
+(atmeshenv) ~/autotwin/mesh/version
+autotwin mesh module version:
+0.0.7
+
+(atmeshenv) ~/autotwin/mesh> sculpt_stl_to_inp doc/sphere_delta_cell/cell_0010_stl_to_inp.yml
+
+# deprecated after version 0.0.7
+# (atmeshenv) /Users/chovey/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py doc/sphere_delta_cell/cell_0010_stl_to_inp.yml
 ```
 
 and so on for `cell_nnnn_stl_to_inp.yml` files.
@@ -70,8 +78,15 @@ volume | 0.521246 | 0.520335 | 0.520678 | 0.521109 | 0.521256 | 0.521187
 ### Create minimum scaled Jacobian `.csv` files
 
 ```bash
-(atmeshenv) chovey@s1060600/Users/chovey/autotwin/mesh>
-python src/atmesh/cubit_inp_to_minsj_csv.py doc/sphere_delta_cell/cell_0010_inp_to_minsj_csv.yml
+# verify version 0.0.7 or later
+(atmeshenv) ~/autotwin/mesh/version
+autotwin mesh module version:
+0.0.7
+
+(atmeshenv) ~/autotwin/mesh> cubit_inp_to_minsj_csv doc/sphere_delta_cell/cell_0010_inp_to_minsj_csv.yml
+
+# deprecated after version 0.0.7
+# (atmeshenv) chovey@s1060600/Users/chovey/autotwin/mesh> python src/atmesh/cubit_inp_to_minsj_csv.py doc/sphere_delta_cell/cell_0010_inp_to_minsj_csv.yml
 ```
 
 and so on for `cell_nnnn_inp_to_minsj_csv.yml` files.
