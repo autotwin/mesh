@@ -64,12 +64,12 @@ def test_when_io_fails():
 
 
 @pytest.mark.skipif(
-    ("atlas" not in platform.uname().node)
+    ("atlas" not in platform.uname().node.lower())
     and ("1060600" not in platform.uname().node)
     and ("1088757" not in platform.uname().node),
     reason="Run on Atlas and local machines only.",
 )
-def test_cubut_init():
+def test_cubit_init():
     """Given a path to the Cubit/Sculpt binary, check that cubit.init and the
     current working directory can be set to the path of the test script.
     """
@@ -98,7 +98,8 @@ def test_cubut_init():
 
 
 # @pytest.mark.skipif(
-#     ("atlas" not in platform.uname().node) and ("1060600" not in platform.uname().node),
+#     ("atlas" not in platform.uname().node.lower())
+#     and ("1060600" not in platform.uname().node),
 #     reason="Run on Atlas and local machines only.",
 # )
 @pytest.mark.skip("work in progress")
