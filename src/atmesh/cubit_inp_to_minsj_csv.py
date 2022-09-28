@@ -9,6 +9,27 @@ Methods (example):
 > cd ~/autotwin/mesh/src/mesh
 ~/autotwin/mesh> source atmeshenv/bin/activate.fish # (atmeshenv) uses Python 3.7
 (atmeshenv) ~/autotwin/mesh> python src/atmesh/cubit_inp_to_minsj_csv.py tests/files/sphere_minsj.yml
+
+Reference:
+Cubit Python Interface at Corform
+https://coreform.com/cubit_help/cubithelp.htm?#t=appendix%2Fpython%2Fnamespace_cubit_interface.htm
+get_elem_quality_stats()
+std::vector<double> CubitInterface::get_elem_quality_stats(const std::string& entity_type,
+    const std::vector< int >  id_list,
+    const std::string&  metric_name,
+    const double  single_threshold,
+    const bool  use_low_threshold,
+    const double  low_threshold,
+    const double  high_threshold,
+    const bool  make_group
+)
+
+Hex metrics:
+https://coreform.com/cubit_help/cubithelp.htm?#t=mesh_generation%2Fmesh_quality_assessment%2Fhexahedral_metrics.htm
+
+Examples:
+cubit.get_quality_value("hex", int(en), "Scaled Jacobian")
+cubit.get_quality_value("hex", int(en), "Element Volume")
 """
 
 import argparse
@@ -125,6 +146,7 @@ def translate(*, path_file_input: str) -> int:
                 en = i + 1  # element number = en, change from 0-index to 1-index
                 # print(f"Element {en}")
                 quality = cubit.get_quality_value("hex", int(en), quality_metric)
+                # breakpoint()
                 qualities.append(quality)
                 # print(f"{quality_metric} value: {quality}")
                 line_out = str(en) + ", " + str(quality) + "\n"
