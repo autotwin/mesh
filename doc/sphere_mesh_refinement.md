@@ -70,10 +70,13 @@ study | 0 | 1 | 2 | 3 | 4 | 5
 `.stl` and `.yml` config | [sphere.stl](../tests/files/sphere.stl) | [cell_0010_stl_to_inp.yml](sphere_delta_cell/cell_0010_stl_to_inp.yml) | [cell_0020_stl_to_inp.yml](sphere_delta_cell/cell_0020_stl_to_inp.yml) | [cell_0040_stl_to_inp.yml](sphere_delta_cell/cell_0040_stl_to_inp.yml) | [cell_0050_stl_to_inp.yml](sphere_delta_cell/cell_0050_stl_to_inp.yml) | [cell_0100_stl_to_inp.yml](sphere_delta_cell/cell_0100_stl_to_inp.yml)
 image | ![sphere](figs/sphere.png) | ![0010](figs/0010.inp.png) | ![0020](figs/0020.inp.png) | ![0040](figs/0040.inp.png) | ![0050](figs/0050.inp.png) | ![0100](figs/0100.inp.png)
 n_cells | -- | 10 | 20 | 40 | 50 | 100
+cell_size(*) | -- | 0.15 / side | 0.075 / side | 0.0375 / side | 0.03 / side |  0.015 / size
 `filename` | -- |  `0010.inp` | `0020.inp` | `0040.inp` | `0050.inp` | `0100.inp`
 n_facets | 16,890 tri | -- | -- | -- | -- | --
 n_elements | -- |352 | 2,048 | 13,288 | 24,566 | 175,297
 volume | 0.521246 | 0.520335 | 0.520678 | 0.521109 | 0.521256 | 0.521187 
+
+> (*) cell size is derived from the bounding box (0.15 x 0.15 x 0.15) divided by the cell count (e.g., 10 x 10 x 10).
 
 ### Create minimum scaled Jacobian `.csv` files
 

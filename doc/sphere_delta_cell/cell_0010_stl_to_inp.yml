@@ -28,3 +28,7 @@ cell_count:
   nx: 10  # int, number of x-dimension cells in the bounding box, etc.
   ny: 10
   nz: 10
+# cell size, derived from bounding box and cell count:
+# dx: = (0.75 + 0.75) / 10 = 0.15 lu (length units)
+# dy: 0.15 lu
+# dz: 0.15 lu
