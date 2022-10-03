@@ -85,10 +85,6 @@ Coloring Opt Iter: 6, Num Smooths: 170, Num bad: 0, Num poor: 96, Min SJ: 0.0758
 :--: | :--: 
 ![](figs/T1_Utah_SCI_outer_588_620.png) | ![](figs/T1_Utah_SCI_brain_588_620.png) 
 
-`cell_100_100_100.inp` | Min. Scaled Jacobian
-:--: | :--: 
-![](figs/cell_100_100_100_minsj.png) | ![](figs/cell_100_100_100_minsj_hist.png) 
-
 R | sup
 :--: | :--:
 ![](figs/right.png) | ![](figs/top.png) 
@@ -96,3 +92,27 @@ R | sup
 ant | L-inf-post
 :--: | :--:
 ![](figs/front.png) | ![](figs/iso.png) 
+
+`cell_100_100_100.inp` | Min. Scaled Jacobian
+:--: | :--: 
+![](figs/cell_100_100_100_minsj.png) | ![](figs/cell_100_100_100_minsj_hist.png) 
+
+```bash
+Cubit>quality volume 1  scaled jacobian global draw histogram draw mesh list
+
+ Hex quality, 244136 elements:
+  Scaled Jacobian ranges from 2.179e-01 to 1.000e+00 (244136 entities)
+       Red ranges from 2.179e-01 to 3.296e-01 (209 entities)
+   Magenta ranges from 3.296e-01 to 4.413e-01 (1630 entities)
+  DkYellow ranges from 4.413e-01 to 5.531e-01 (4043 entities)
+    Yellow ranges from 5.531e-01 to 6.648e-01 (6576 entities)
+     Green ranges from 6.648e-01 to 7.765e-01 (17601 entities)
+      Cyan ranges from 7.765e-01 to 8.883e-01 (13160 entities)
+      Blue ranges from 8.883e-01 to 1.000e+00 (200917 entities)
+
+Volume 1  Hex quality, 244136 elements:
+------------------------------------
+   Function Name    Average      Std Dev      Minimum   (id)       Maximum   (id)
+ ---------------    ---------    ---------    -----------------    --------------
+ Scaled Jacobian    9.436e-01    1.230e-01    2.179e-01 (52594)    1.000e+00 (19)
+```
