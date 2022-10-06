@@ -2,7 +2,9 @@
 
 ## Download
 
-
+* *2022-10-06: Upgrade Cubit from version 16.06 to 16.08.  All notes below, created for 16.06, remain relevant.*
+  * Removed `/Applications/Cubit-16.06`
+  * Installed `Cubit-16.08.0-Mac64.dmg` (379.5 MB)
 
 [Download](https://cubit.sandia.gov/) Cubit for the target local platform, e.g., macOS.
 * The [public Cubit page](https://cubit.sandia.gov/downloads/) directs Sandia users to download the latest version of Cubit [here](https://sharepoint.sandia.gov/sites/meshing).
