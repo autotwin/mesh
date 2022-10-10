@@ -116,3 +116,29 @@ Volume 1  Hex quality, 244136 elements:
  ---------------    ---------    ---------    -----------------    --------------
  Scaled Jacobian    9.436e-01    1.230e-01    2.179e-01 (52594)    1.000e+00 (19)
 ```
+
+### Cell Size Parameterization
+
+Input file for all studies: [T1_Utah_SCI_brain.stl](https://drive.google.com/drive/folders/19ul4aOjraVyYSeJfPZzSj-rAif6S4621) 
+
+study | 1 | 2 |
+-- | --: | --: |
+`.yml` config | [cell_050_050_050.yml](cell_050_050_050.yml) | [cell_100_100_100.yml](cell_100_100_100.yml) |
+image | ![050](figs/050.png) | ![100](figs/100.png) |
+n_cells | 50 | 100 |
+cell_size |  200 mm? / 50 cell =  4 mm/cell | 2 mm/cell |
+`filename` | `cell_050_050_050.inp` | `cell_100_100_100.inp` |
+n_elements | 32,248 | 244,136  |
+volume | 1.69348e+06 mm^3 = 1.69 L | 1.69322e+06 mm^3 = 1.69 L |
+
+The volume numbers make sense, as we are including part of the spine with the head volume.
+The expected head volume, is between 1 and 2 L:
+
+> *Living humans have a cranial capacity ranging from about 950 cc to 1800 cc, with the average about 1400 cc.*
+
+
+### Box and whisker plots
+
+Using [box_plots.py](../box_plots.py) to create
+
+![box_whisker](figs/box_plots.png)

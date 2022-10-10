@@ -27,16 +27,18 @@ import numpy as np
 def main():
     # user input begin
     path_file_data = (
-        "~/Downloads/scratch/2022-09-17/bunny_delta_cell/0010_minsj.csv",
-        "~/Downloads/scratch/2022-09-17/bunny_delta_cell/0020_minsj.csv",
-        "~/Downloads/scratch/2022-09-17/bunny_delta_cell/0040_minsj.csv",
-        "~/Downloads/scratch/2022-09-17/bunny_delta_cell/0080_minsj.csv",
-        "~/Downloads/scratch/2022-09-17/bunny_delta_cell/0160_minsj.csv",
+        # "~/Downloads/scratch/2022-09-17/bunny_delta_cell/0010_minsj.csv",
+        # "~/Downloads/scratch/2022-09-17/bunny_delta_cell/0020_minsj.csv",
+        # "~/Downloads/scratch/2022-09-17/bunny_delta_cell/0040_minsj.csv",
+        # "~/Downloads/scratch/2022-09-17/bunny_delta_cell/0080_minsj.csv",
+        # "~/Downloads/scratch/2022-09-17/bunny_delta_cell/0160_minsj.csv",
+        "~/Downloads/scratch/Utah_SCI_brain/cell_050_msj.csv",
+        "~/Downloads/scratch/Utah_SCI_brain/cell_100_msj.csv",
     )
     fig_dict = {
-        "title": "Element Minimum Scaled Jacobian vesus Element Count",
-        "xlabel": "Minimum Scaled Jacobian",
-        "ylabel": "Number of Elements",
+        "title": "Utah SCI Brain Mesh Refinement",
+        "xlabel": "Element Count",
+        "ylabel": "Minimum Scaled Jacobian Distribution",
         "hist_x": [0.4, 1.0],
         "hist_y": [0.6, 6000],
         "legend_loc": "upper left",
@@ -59,8 +61,8 @@ def main():
     delta_bin = (xmax - xmin) / n_bins
     # bins = [delta_bin * x for x in range(n_bins + 1)]
     bins = [xmin + delta_bin * x for x in range(n_bins + 1)]
-    latex = True
-    # latex = False
+    # latex = True
+    latex = False
     # user input end
     # --------------
     if latex:
@@ -101,9 +103,16 @@ def main():
         markersize=3,
     )
     plt.boxplot(qualities, labels=counts, flierprops=flierprops)
-    plt.title("Minimum Scaled Jacobian by Case Element Count")
-    plt.xlabel("Element Count")
-    plt.ylabel("Minimum Scaled Jacobian Distribution")
+
+    # plt.title("Minimum Scaled Jacobian by Case Element Count")
+    plt.title(fig_dict["title"])
+
+    # plt.xlabel("Element Count")
+    plt.xlabel(fig_dict["xlabel"])
+
+    # plt.ylabel("Minimum Scaled Jacobian Distribution")
+    plt.ylabel(fig_dict["ylabel"])
+
     # plt.show()
 
     if fig_dict["serialize"]:

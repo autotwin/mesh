@@ -1,0 +1,50 @@
+# User input for use with atmesh.sculpt_stl_to_inp module
+#
+# required
+version: 1.1
+cubit_path: "/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
+# working_dir: "~/autotwin/mesh/tests/files"
+# working_dir: "~/Dropbox/scratch/2022-09-17"
+# working_dir: "~/Dropbox/scratch/simic"
+working_dir: "~/Downloads/scratch/Utah_SCI_brain"
+#
+# input .stl file
+# stl_path_file: "~/Dropbox/scratch/simic/brainstem.stl"
+stl_path_file: "~/Downloads/scratch/Utah_SCI_brain/T1_Utah_SCI_brain.stl"
+#
+# output .inp file
+# inp_path_file: "~/Dropbox/scratch/simic/brainstem_22_24_27.inp"
+inp_path_file: "~/Downloads/scratch/Utah_SCI_brain/cell_050_050_050.inp"
+#
+# optional (with default values)
+journaling: False  # boolean, True (default): Cubit writes cubit01.jou-style log files
+n_proc: 2  # int, 4 (default): number of parallel processes, minimum is 1
+# 
+# MeshLab reported
+# Mesh Bounding Box Size 173.000000 179.000000 142.000000
+# Mesh Bounding Box Diag 286.590302 
+# Mesh Bounding Box min 35.500000 56.500000 41.500000
+# Mesh Bounding Box max 208.500000 235.500000 183.500000
+# center of bounding box is (122, 146, 112)
+# create plus/minus 100 length units each direction
+bounding_box:
+  xmin: 22.  # float, position x-dimension minimum of the bounding box, etc.
+  xmax: 222.
+  ymin: 46.
+  ymax: 246.
+  zmin: 12.
+  zmax: 212.
+cell_count:
+  nx: 50
+  ny: 50
+  nz: 50
+# from manual interaction with Cubit GUI
+#  --nelx        -x  64                           
+#  --nely        -y  66                           
+#  --nelz        -z  53                           
+#  --xmin        -t  26.000000                    
+#  --ymin        -u  47.000000                    
+#  --zmin        -v  33.000000                    
+#  --xmax        -q  218.000000                   
+#  --ymax        -r  245.000000                   
+#  --zmax        -s  192.000000       
