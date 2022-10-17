@@ -1,6 +1,6 @@
 # User input for use with atmesh.sculpt_stl_to_inp module
 version: 0.9  # bad version, we started with 1.0
-cubit_path: "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
+cubit_path: "/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
 working_dir: "~/autotwin/data/octa"
 stl_path_file: "~/autotwin/data/octa/octa_loop07.stl"
 inp_path_file: "~/autotwin/data/octa/octa_loop07.inp"

@@ -2,7 +2,7 @@
 of minimum scaled Jacobian of the mesh.
 
 Prerequisites:
-* Cubit 16.06
+* Cubit 16.08
 * Python 3.7.x
 
 Methods (example):

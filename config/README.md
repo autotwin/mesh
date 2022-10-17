@@ -16,6 +16,7 @@
 * Prerequisites:
   * The `autotwin` directory is created within the home `~` directory, and 
   * The `atmesh` repo is cloned into that `autotwin` folder.
+* VS Code [Using Python environments in VS Code](https://code.visualstudio.com/docs/python/environments)
 
 ### Within the `autotwin/mesh` folder, install the `venv`
 
@@ -26,13 +27,15 @@ cd ~/autotwin/mesh
 /usr/local/bin/python3.7 -m pip install --upgrade pip setuptools wheel
 
 # python3 -m venv autotwin_env  # create a virtual environment
-/usr/local/bin/python3.7 -m venv atmeshenv  # create a virtual environment
+# VS Code docs reference:
+# https://code.visualstudio.com/docs/python/environments#_create-a-virtual-environment
+/usr/local/bin/python3.7 -m venv .venv  # create a virtual environment
 
 # activate the venv with one of the following:
-source atmeshenv/bin/activate # for bash shell
-source atmeshenv/bin/activate.csh # for c shell
-source atmeshenv/bin/activate.fish # for fish shell
-source atmeshenv/bin/Activate.fish # for powershell
+source .venv/bin/activate # for bash shell
+source .venv/bin/activate.csh # for c shell
+source .venv/bin/activate.fish # for fish shell
+source .venv/bin/Activate.fish # for powershell
 
 python --version  # Python 3.7.9, which is the version required by Cubit
 
@@ -43,8 +46,8 @@ Package    Version
 pip        20.1.1
 setuptools 47.1.0
 WARNING: You are using pip version 20.1.1; however, version 22.2.2 is available.
-You should consider upgrading via the '/Users/cbh/autotwin/mesh/atmeshenv/bin/python3.7 -m pip install --upgrade pip' command.
-(atmeshenv) cbh@atlas/Users/cbh/autotwin/mesh>
+You should consider upgrading via the '/Users/cbh/autotwin/mesh/.venv/bin/python3.7 -m pip install --upgrade pip' command.
+(.venv) cbh@atlas/Users/cbh/autotwin/mesh>
 
 python -m pip install --upgrade pip
 
@@ -56,7 +59,7 @@ Installing collected packages: pip
     Uninstalling pip-20.1.1:
       Successfully uninstalled pip-20.1.1
 Successfully installed pip-22.2.2
-(autotwin_env) cbh@atlas/Users/cbh/autotwin/mesh>
+(.venv) cbh@atlas/Users/cbh/autotwin/mesh>
 ```
 
 ### Install `atmesh` as a developer
@@ -90,10 +93,10 @@ python -m pip install -e .  # note: `-e .` = `--editable .`
 At the time of this writing, the current version of `atmesh` is shown below.  Your version may be newer.  Post-install package status:
 
 ```bash
-(atmeshenv) cbh@atlas/Users/cbh/autotwin/mesh> pip list
+(.venv) cbh@atlas/Users/cbh/autotwin/mesh> pip list
 Package            Version Editable project location
 ------------------ ------- -------------------------
-atmesh             0.0.4   /Users/cbh/autotwin/mesh
+atmesh             0.0.7   /Users/cbh/autotwin/mesh
 attrs              22.1.0
 black              22.6.0
 click              8.1.3
@@ -131,36 +134,29 @@ zipp               3.8.1
 
 Note that `pytest` and `pytest-cov` are already installed since they are required in the `pyproject.toml` file.
 
-Deactivate any current `venv`:
+Deactivate/Reactivate method:  To deactivate any current `venv`:
 
 ```bash
 (some_current_venv) cbh@atlas/Users/cbh/autotwin/mesh> deactivate
 cbh@atlas/Users/cbh/autotwin/mesh> deactivate
 ```
 
-Activate the `atmeshenv` virtual environment:
+Deactivate/Reactivate method:  To activate the `.venv` virtual environment:
 
 ```bash
 # activate the venv with one of the following:
-source atmeshenv/bin/activate # for bash shell
-source atmeshenv/bin/activate.csh # for c shell
-source atmeshenv/bin/activate.fish # for fish shell
-source atmeshenv/bin/Activate.fish # for powershell
-```
-
-Example: activate the venv in fish shell:
-
-```bash
-cbh@atlas/Users/cbh/autotwin/mesh> source ../autotwin_env/bin/activate.fish
-(atmeshenv) cbh@atlas/Users/cbh/autotwin/mesh>
+source .venv/bin/activate # for bash shell
+source .venv/bin/activate.csh # for c shell
+source .venv/bin/activate.fish # for fish shell
+source .venv/bin/Activate.fish # for powershell
 ```
 
 Run from the REPL:
 
 ```bash
-(atmeshenv) cbh@atlas/Users/cbh/autotwin/mesh> python --version
+(.venv) cbh@atlas/Users/cbh/autotwin/mesh> python --version
 Python 3.7.9
-(atmeshenv) cbh@atlas/Users/cbh/autotwin/mesh> python
+(.venv) cbh@atlas/Users/cbh/autotwin/mesh> python
 Python 3.7.9 (v3.7.9:13c94747c7, Aug 15 2020, 01:31:08)
 [Clang 6.0 (clang-600.0.57)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
@@ -175,7 +171,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 Run the tests with `pytest`:
 
 ```bash
-(atmeshenv) cbh@atlas/Users/cbh/autotwin/mesh> pytest -v
+(.venv) cbh@atlas/Users/cbh/autotwin/mesh> pytest -v
 ================================================================ test session starts =================================================================
 platform darwin -- Python 3.7.9, pytest-7.1.2, pluggy-1.0.0 -- /Users/cbh/autotwin/mesh/autotwin_env/bin/python
 cachedir: .pytest_cache
@@ -194,7 +190,7 @@ tests/test_hello.py::test_bubble_sort PASSED                                    
 And `pytest-cov` (coverage) with line numbers missing coverage:
 
 ```bash
-(atmeshenv) cbh@atlas/Users/cbh/autotwin/mesh> pytest --cov=atmesh --cov-report term-missing
+(.venv) cbh@atlas/Users/cbh/autotwin/mesh> pytest --cov=atmesh --cov-report term-missing
 ================================================================ test session starts =================================================================
 platform darwin -- Python 3.7.9, pytest-7.1.2, pluggy-1.0.0
 rootdir: /Users/cbh/autotwin/mesh
@@ -215,15 +211,17 @@ TOTAL                                68     61    10%
 
 
 ================================================================= 4 passed in 0.04s ==================================================================
-(atmeshenv) cbh@atlas/Users/cbh/autotwin/mesh>
+(.venv) cbh@atlas/Users/cbh/autotwin/mesh>
 ```
 
-Success!  The `venv` virtual environment `automesh_env` has been created, 
+Success!  The `venv` virtual environment `.venv` has been created, 
 and the `atmesh` module is now installed and tested.
 
 ### Modify VS Code to find cubit imports
 
 In the user `settings.json`, add a reference to the Cubit install location.  
+
+Reference: Enable IntelliSense for custom package locations, https://code.visualstudio.com/docs/python/editing#_enable-intellisense-for-custom-package-locations
 
 Before:
 
@@ -238,12 +236,12 @@ After:
 ```bash
     "python.autoComplete.extraPaths": [
         "~/python_modules",
-        "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
+        "/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
     ],
-    "python.envFile": "${workspaceFolder}/.env",
+    "python.envFile": "${workspaceFolder}/.venv",
 ```
 
-And in the `~/autotwin/mesh/.env` file:
+And in the `~/autotwin/mesh/.venv` file:
 
 ```
 PYTHONPATH="/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"

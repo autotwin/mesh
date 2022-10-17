@@ -73,7 +73,8 @@ def test_cubit_init():
     """Given a path to the Cubit/Sculpt binary, check that cubit.init and the
     current working directory can be set to the path of the test script.
     """
-    cubit_path = "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
+    # cubit_path = "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
+    cubit_path = "/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
     sys.path.append(cubit_path)
 
     print("Import cubit module initiatied:")
