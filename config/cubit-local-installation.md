@@ -1,5 +1,7 @@
 # Cubit local installation
 
+* See also: [Sculpt API](../doc/sculpt-api.md)
+
 ## Download
 
 * *2022-10-06: Upgrade Cubit from version 16.06 to 16.08.  All notes below, created for 16.06, remain relevant.*
