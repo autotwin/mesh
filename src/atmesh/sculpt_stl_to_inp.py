@@ -1,7 +1,7 @@
 """This module uses Cubit to convert a .stl file into a .inp file using Sculpt.
 
 Prerequisites:
-* Python 3.7.4 is required to run Cubit 16.06 and Sculpt.
+* Python 3.7.4 is required to run Cubit 16.08 and Sculpt.
 * We actually use Python 3.7.9 successfully for now.
 
 Methods:
