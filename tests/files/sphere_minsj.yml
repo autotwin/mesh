@@ -4,7 +4,8 @@
 version: 1.2
 cubit_path: "/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
 working_dir: "~/autotwin/mesh/tests/files"
-# stl_path_file: "~/autotwin/mesh/tests/files/sphere.stl"
+# stl_path_files:
+#   - "~/autotwin/mesh/tests/files/sphere.stl"
 #
 # input .inp file
 inp_path_file: "~/autotwin/mesh/tests/files/sphere_cell_0010.inp"

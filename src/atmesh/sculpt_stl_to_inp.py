@@ -50,7 +50,7 @@ def translate(*, path_file_input: str) -> bool:
         raise FileNotFoundError(f"{atmesh} File not found: {str(fin)}")
 
     # user_input = _yml_to_dict(yml_path_file=fin)
-    keys = ("version", "cubit_path", "working_dir", "stl_path_file", "inp_path_file")
+    keys = ("version", "cubit_path", "working_dir", "stl_path_files", "inp_path_file")
     user_input = translator.yml_to_dict(
         yml_path_file=fin, version=cl.yml_version(), required_keys=keys
     )
@@ -61,7 +61,7 @@ def translate(*, path_file_input: str) -> bool:
 
     cubit_path = user_input["cubit_path"]
     inp_path_file = user_input["inp_path_file"]
-    stl_path_file = user_input["stl_path_file"]
+    stl_path_files = user_input["stl_path_files"]
     working_dir = user_input["working_dir"]
     working_dir_str = str(Path(working_dir).expanduser())
 
@@ -81,12 +81,12 @@ def translate(*, path_file_input: str) -> bool:
         if not Path(item).expanduser().is_dir():
             raise OSError(f"{atmesh} Path not found: {item}")
 
-    if not (isinstance(stl_path_file, list)):
+    if not (isinstance(stl_path_files, list)):
         raise TypeError(
             f"{atmesh} stl_path_file value must be a list of one or more string paths"
         )
 
-    for item in stl_path_file:
+    for item in stl_path_files:
         if not Path(item).expanduser().is_file():
             raise OSError(f"{atmesh} File not found: {item}")
 
@@ -122,7 +122,7 @@ def translate(*, path_file_input: str) -> bool:
         print(f"{atmesh} The Cubit Working Directory is set to: {working_dir_str}")
 
         print(f"{atmesh} stl import initiatied:")
-        for item in stl_path_file:
+        for item in stl_path_files:
             print(f"{atmesh} Importing stl file: {item}")
             cc = 'import stl "' + item + '"'
             cubit.cmd(cc)
