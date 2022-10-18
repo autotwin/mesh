@@ -34,7 +34,7 @@ bounding_box:
   ymax: 246.
   zmin: 12.
   zmax: 212.
-cell_count:
+cell_count:  # 200 len * (1/4) cell/len = 50
   nx: 50
   ny: 50
   nz: 50
