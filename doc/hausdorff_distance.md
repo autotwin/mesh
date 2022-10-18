@@ -4,9 +4,13 @@
 
 Cubit
 
+The `sphere.stl` file is located at `~/autotwin/mesh/tests/files` folder.
+
 * Import `sphere.stl`, `Cubit> vol 1 scale 10`, export `sphere_radius_5.stl`
 * Reset
 * Import `sphere.stl`, `Cubit> vol 1 scale 20`, export `sphere_radius_10.stl`
+
+Commit these two `.stl` files to `~/autotwin/mesh/tests/files` folder.
 
 MeshLab
 

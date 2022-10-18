@@ -1,7 +1,7 @@
 # User input for use with atmesh.sculpt_stl_to_inp module
 #
 # required
-version: 1.1
+version: 1.2
 cubit_path: "/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
 working_dir: "~/autotwin/mesh/tests/files"
 stl_path_file: "~/autotwin/mesh/tests/files/sphere.stl"
