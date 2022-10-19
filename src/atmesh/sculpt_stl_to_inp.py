@@ -51,7 +51,15 @@ def translate(*, path_file_input: str) -> bool:
         raise FileNotFoundError(f"{atmesh} File not found: {str(fin)}")
 
     # user_input = _yml_to_dict(yml_path_file=fin)
-    keys = ("version", "cubit_path", "working_dir", "stl_path_files", "inp_path_file")
+    keys = (
+        "version",
+        "cubit_path",
+        "working_dir",
+        "stl_path_files",
+        "inp_path_file",
+        "cell_size",
+        "bounding_box",
+    )
     user_input = translator.yml_to_dict(
         yml_path_file=fin, version=cl.yml_version(), required_keys=keys
     )
@@ -65,6 +73,7 @@ def translate(*, path_file_input: str) -> bool:
     stl_path_files = user_input["stl_path_files"]
     working_dir = user_input["working_dir"]
     working_dir_str = str(Path(working_dir).expanduser())
+    cell_size = float(user_input["cell_size"])
 
     journaling = user_input.get("journaling", False)
     n_proc = user_input.get("n_proc", 4)  # number of parallel processors
@@ -74,9 +83,12 @@ def translate(*, path_file_input: str) -> bool:
     if bounding_box_specified:
         bounding_box = user_input["bounding_box"]
 
-    cell_count_specified = "cell_count" in user_input
-    if cell_count_specified:
-        cell_count = user_input["cell_count"]
+    # cell_count_specified = "cell_count" in user_input
+    # if cell_count_specified:
+    #     cell_count = user_input["cell_count"]
+
+    if cell_size <= 0.0:
+        raise ValueError(f"cell_size {cell_size} must be positive")
 
     for item in [cubit_path, working_dir]:
         if not Path(item).expanduser().is_dir():
@@ -154,12 +166,15 @@ def translate(*, path_file_input: str) -> bool:
         # cc = f"sculpt parallel -j {n_proc}"
         cc = f"sculpt parallel processors {n_proc}"
 
-        if bounding_box_specified and cell_count_specified:
-            nx = cell_count["nx"]
-            ny = cell_count["ny"]
-            nz = cell_count["nz"]
+        # if bounding_box_specified and cell_count_specified:
+        if bounding_box_specified:
+            # nx = cell_count["nx"]
+            # ny = cell_count["ny"]
+            # nz = cell_count["nz"]
 
-            cc += f" nelx {nx} nely {ny} nelz {nz}"
+            # cc += f" nelx {nx} nely {ny} nelz {nz}"
+
+            cc += f" size {cell_size}"
 
             xmin = bounding_box["xmin"]
             xmax = bounding_box["xmax"]

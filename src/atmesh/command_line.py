@@ -22,6 +22,10 @@ def yml_version() -> float:
     1.2:
     * Allow multi-material .stl input files.
     * Change from bounding box and cell count to bounding box and cell size, for
-    interfacing with Sculpt.jJ:w
+    interfacing with Sculpt.
+
+    1.3:
+    * Deprecate cell_count, use cell_size instead.
+    * Bounding box now a required key and value.
     """
-    return 1.2
+    return 1.3
