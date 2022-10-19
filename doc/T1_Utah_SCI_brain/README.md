@@ -1,8 +1,16 @@
 # T1 Utah SCI brain
 
+## Overview
+
+* [Inputs](#inputs)
+* Output 1: [Brain](#output-1-brain)
+* Output 2: [Brain with outer](#output-2-brain-with-outer)
+
 ## Methods
 
 ### Inputs
+
+The `.stl` input files are visualized in Cubit.
 
 #### Cubit
 
@@ -52,13 +60,12 @@ axis momenta are :
 | -4330010112.000000 -4202457600.000000 -3391530496.000000 |
 ```
 
-#### atmesh
+#### Autotwin Mesh
 
 Create [input file](cell_100_100_100.yml)
 
-
 ```bash
-(atmeshenv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> sculpt_stl_to_inp cell_100_100_100.yml 
+(.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> sculpt_stl_to_inp cell_100_100_100.yml 
 ```
 
 Selected output:
@@ -79,7 +86,7 @@ Coloring Opt Iter: 6, Num Smooths: 170, Num bad: 0, Num poor: 96, Min SJ: 0.0758
 244,136 elements
 ```
 
-## Results
+## Output 1: Brain
 
 `outer.stl` | `brain.stl` 
 :--: | :--: 
@@ -139,6 +146,29 @@ The expected head volume, is between 1 and 2 L:
 
 ### Box and whisker plots
 
-Using [box_plots.py](../box_plots.py) to create
+Create the `.csv` quality files, for example:
+
+```bash
+(.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> cubit_inp_to_minsj_csv doc/T1_Utah_SCI_brain/cell_050_msj.yml
+```
+
+Using [box_plots.py](../box_plots.py) 
+
+```bash
+(.venv) ~/autotwin/mesh> python doc/box_plots.py
+n_bins: 7
+delta_bin: 0.08571428571428572
+bins: [0.4, 0.48571428571428577, 0.5714285714285714, 0.6571428571428571, 0.7428571428571429, 0.8285714285714286, 0.9142857142857143, 1.0]
+Reading file /Users/chovey/Downloads/scratch/Utah_SCI_brain/cell_050_msj.csv
+Reading file /Users/chovey/Downloads/scratch/Utah_SCI_brain/cell_100_msj.csv
+Serialized to doc/box_plots.png
+```
+
+to create
 
 ![box_whisker](figs/box_plots.png)
+
+
+## Output 2: Brain with Outer
+
+To come.
