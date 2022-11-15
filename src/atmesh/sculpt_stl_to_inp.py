@@ -1,7 +1,8 @@
-"""This module uses Cubit to convert a .stl file into a .inp file using Sculpt.
+"""This module uses Cubit to convert one or more .stl file into a .inp file
+Cubit's Sculpt functionality.
 
 Prerequisites:
-* Python 3.7.4 is required to run Cubit 16.06 and Sculpt.
+* Python 3.7.4 is required to run Cubit 16.08 and Sculpt.
 * We actually use Python 3.7.9 successfully for now.
 
 Methods:
@@ -18,13 +19,13 @@ Methods:
 > python sculpt_stl_to_inp.py <input_file>.yml > sculpt_stl_to_inp.log
 
 Example 1:
-# activate the venv atmeshenv
+# activate the atmesh virtual environment
 ~/autotwin/mesh> source atmeshenv/bin/activate.fish # (atmeshenv) uses Python 3.7
-(atmeshenv) ~/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py tests/files/sphere.yml
+(.venv) ~/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py tests/files/sphere.yml
 
 Example 2:
 # uses the same venv
-(atmeshenv) ~/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py ../data/octa/octa_loop00.yml
+(.venv) ~/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py ../data/octa/octa_loop00.yml
 """
 
 import argparse
@@ -32,9 +33,11 @@ from pathlib import Path
 import sys
 
 import atmesh.yml_to_dict as translator
+import atmesh.command_line as cl
 
 
-def translate(*, path_file_input: str):
+def translate(*, path_file_input: str) -> bool:
+    completed = False
     # from typing import Final # Final is new in Python 3.8, Cubit uses 3.7
 
     # atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
@@ -48,9 +51,17 @@ def translate(*, path_file_input: str):
         raise FileNotFoundError(f"{atmesh} File not found: {str(fin)}")
 
     # user_input = _yml_to_dict(yml_path_file=fin)
-    keys = ("version", "cubit_path", "working_dir", "stl_path_file", "inp_path_file")
+    keys = (
+        "version",
+        "cubit_path",
+        "working_dir",
+        "stl_path_files",
+        "inp_path_file",
+        "cell_size",
+        "bounding_box",
+    )
     user_input = translator.yml_to_dict(
-        yml_path_file=fin, version=1.1, required_keys=keys
+        yml_path_file=fin, version=cl.yml_version(), required_keys=keys
     )
 
     print(f"{atmesh} User input:")
@@ -59,9 +70,10 @@ def translate(*, path_file_input: str):
 
     cubit_path = user_input["cubit_path"]
     inp_path_file = user_input["inp_path_file"]
-    stl_path_file = user_input["stl_path_file"]
+    stl_path_files = user_input["stl_path_files"]
     working_dir = user_input["working_dir"]
     working_dir_str = str(Path(working_dir).expanduser())
+    cell_size = float(user_input["cell_size"])
 
     journaling = user_input.get("journaling", False)
     n_proc = user_input.get("n_proc", 4)  # number of parallel processors
@@ -71,15 +83,23 @@ def translate(*, path_file_input: str):
     if bounding_box_specified:
         bounding_box = user_input["bounding_box"]
 
-    cell_count_specified = "cell_count" in user_input
-    if cell_count_specified:
-        cell_count = user_input["cell_count"]
+    # cell_count_specified = "cell_count" in user_input
+    # if cell_count_specified:
+    #     cell_count = user_input["cell_count"]
+
+    if cell_size <= 0.0:
+        raise ValueError(f"cell_size {cell_size} must be positive")
 
     for item in [cubit_path, working_dir]:
         if not Path(item).expanduser().is_dir():
             raise OSError(f"{atmesh} Path not found: {item}")
 
-    for item in [stl_path_file]:
+    if not (isinstance(stl_path_files, list)):
+        raise TypeError(
+            f"{atmesh} stl_path_file value must be a list of one or more string paths"
+        )
+
+    for item in stl_path_files:
         if not Path(item).expanduser().is_file():
             raise OSError(f"{atmesh} File not found: {item}")
 
@@ -115,9 +135,10 @@ def translate(*, path_file_input: str):
         print(f"{atmesh} The Cubit Working Directory is set to: {working_dir_str}")
 
         print(f"{atmesh} stl import initiatied:")
-        print(f"{atmesh} Importing stl file: {stl_path_file}")
-        cc = 'import stl "' + stl_path_file + '"'
-        cubit.cmd(cc)
+        for item in stl_path_files:
+            print(f"{atmesh} Importing stl file: {item}")
+            cc = 'import stl "' + item + '"'
+            cubit.cmd(cc)
         print(f"{atmesh} stl import completed.")
 
         """Sculpt invocation
@@ -145,12 +166,15 @@ def translate(*, path_file_input: str):
         # cc = f"sculpt parallel -j {n_proc}"
         cc = f"sculpt parallel processors {n_proc}"
 
-        if bounding_box_specified and cell_count_specified:
-            nx = cell_count["nx"]
-            ny = cell_count["ny"]
-            nz = cell_count["nz"]
+        # if bounding_box_specified and cell_count_specified:
+        if bounding_box_specified:
+            # nx = cell_count["nx"]
+            # ny = cell_count["ny"]
+            # nz = cell_count["nz"]
 
-            cc += f" nelx {nx} nely {ny} nelz {nz}"
+            # cc += f" nelx {nx} nely {ny} nelz {nz}"
+
+            cc += f" size {cell_size}"
 
             xmin = bounding_box["xmin"]
             xmax = bounding_box["xmax"]
@@ -175,6 +199,9 @@ def translate(*, path_file_input: str):
 
         # print(f"{atmesh} Script: {Path(__file__).resolve()} has completed.")
         print(f"{atmesh} Done.")
+
+        completed = True
+        return completed
 
     except ModuleNotFoundError as error:
         print("unable to import cubit")

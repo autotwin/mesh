@@ -1,8 +1,16 @@
 # T1 Utah SCI brain
 
+## Overview
+
+* [Inputs](#inputs)
+* Output 1: [Brain](#output-1-brain)
+* Output 2: [Brain with outer](#output-2-brain-with-outer)
+
 ## Methods
 
 ### Inputs
+
+The `.stl` input files are visualized in Cubit.
 
 #### Cubit
 
@@ -52,13 +60,12 @@ axis momenta are :
 | -4330010112.000000 -4202457600.000000 -3391530496.000000 |
 ```
 
-#### atmesh
+#### Autotwin Mesh
 
 Create [input file](cell_100_100_100.yml)
 
-
 ```bash
-(atmeshenv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> sculpt_stl_to_inp cell_100_100_100.yml 
+(.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> sculpt_stl_to_inp cell_100_100_100.yml 
 ```
 
 Selected output:
@@ -79,7 +86,7 @@ Coloring Opt Iter: 6, Num Smooths: 170, Num bad: 0, Num poor: 96, Min SJ: 0.0758
 244,136 elements
 ```
 
-## Results
+## Output 1: Brain
 
 `outer.stl` | `brain.stl` 
 :--: | :--: 
@@ -139,6 +146,162 @@ The expected head volume, is between 1 and 2 L:
 
 ### Box and whisker plots
 
-Using [box_plots.py](../box_plots.py) to create
+Create the `.csv` quality files, for example:
+
+```bash
+(.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> cubit_inp_to_minsj_csv doc/T1_Utah_SCI_brain/cell_050_msj.yml
+```
+
+Using [box_plots.py](../box_plots.py) 
+
+```bash
+(.venv) ~/autotwin/mesh> python doc/box_plots.py
+n_bins: 7
+delta_bin: 0.08571428571428572
+bins: [0.4, 0.48571428571428577, 0.5714285714285714, 0.6571428571428571, 0.7428571428571429, 0.8285714285714286, 0.9142857142857143, 1.0]
+Reading file /Users/chovey/Downloads/scratch/Utah_SCI_brain/cell_050_msj.csv
+Reading file /Users/chovey/Downloads/scratch/Utah_SCI_brain/cell_100_msj.csv
+Serialized to doc/box_plots.png
+```
+
+to create
 
 ![box_whisker](figs/box_plots.png)
+
+## Output 2: Brain with Outer
+
+Input Files: 
+
+* [`stl_to_inp_cell_size_4.yml`](stl_to_inp_cell_size_4.yml)
+* [`stl_to_inp_cell_size_2.yml`](stl_to_inp_cell_size_2.yml)
+
+```bash
+(.venv) ~/autotwin/mesh> sculpt_stl_to_inp doc/T1_Utah_SCI_brain/stl_to_inp_cell_size_4.yml 
+```
+
+Selected output:
+
+```bash
+Begin smoothing hexes using:
+  Curve Smoothing              = SMOOTH_CURV_VFRAC
+  Surface Smoothing            = SMOOTH_SURF_HYBRID
+  Volume Smoothing             = SMOOTH_VOL_HYBRID_CAMAL
+  Boundary Buffer Improvement  = YES
+  Surface Projection Type      = LINEAR_SURFACE_PROJECTION
+  Laplacian Iterations         = 2
+  Maximum Optimization Iters   = 5
+  Optimization Threshold       = 0.600000
+  Curve Opt. Threshold         = 0.100000
+  Max Parallel Coloring Iters  = 100
+  Parallel Coloring Threshold  = 0.200000
+  Max Guaranteed Quality Iters = 0
+  Guaranteed Quality Threshold = 0.200000
+Laplacian Iter: 1
+Laplacian Iter: 2
+Smoothing 95314 hexes on 2 processors
+Jacobi Opt Iter: 1,  Num bad: 186, Num poor: 1583, Min SJ: -0.979403
+WARNING: Unconstrained curve optimization was used for at least one node.
+Some nodes may not lie on owning curves.
+(Use curve_opt_thresh = -1 to turn off behavior)
+Jacobi Opt Iter: 2,  Num bad: 80, Num poor: 1105, Min SJ: -0.795509
+Jacobi Opt Iter: 3,  Num bad: 40, Num poor: 683, Min SJ: -0.784675
+Jacobi Opt Iter: 4,  Num bad: 27, Num poor: 433, Min SJ: -0.816633
+Jacobi Opt Iter: 5,  Num bad: 19, Num poor: 311, Min SJ: -0.866516
+Begin parallel color smoothing 1559 nodes below threshold 0.200000
+Coloring Opt Iter: 0, Num Smooths: 0, Num bad: 39, Num poor: 813, Min Vol: -0.027585
+Coloring Opt Iter: 5, Num Smooths: 247, Num bad: 9, Num poor: 271, Min Vol: -0.006298
+Coloring Opt Iter: 10, Num Smooths: 301, Num bad: 5, Num poor: 270, Min Vol: -0.006298
+Coloring Opt Iter: 15, Num Smooths: 334, Num bad: 0, Num poor: 265, Min SJ: 0.008676
+Coloring Opt Iter: 20, Num Smooths: 362, Num bad: 0, Num poor: 264, Min SJ: 0.051415
+Coloring Opt Iter: 25, Num Smooths: 398, Num bad: 0, Num poor: 269, Min SJ: 0.073437
+Coloring Opt Iter: 30, Num Smooths: 448, Num bad: 0, Num poor: 257, Min SJ: 0.073437
+Coloring Opt Iter: 35, Num Smooths: 490, Num bad: 0, Num poor: 214, Min SJ: 0.073437
+WARNING: Smoothing terminated. Unable to make additional improvement.
+Coloring Opt Iter: 39, Num Smooths: 515, Num bad: 0, Num poor: 227, Min SJ: 0.073437
+building exodus mesh...
+generating global ids...
+generating parallel communication maps...
+================ MESH SUMMARY ===================
+Base Filename   sculpt_parallel.diatom_result
+Num Procs       2
+Num Nodes       102241
+Num Elements    95314
+Num Blocks      2
+Num Nodesets    0
+Num Sidesets    0
+Num Bad Qual    0
+Num Poor Qual   22
+Min Quality     0.148665
+Avg Quality     0.869348
+Min Edge Len    0.571388
+Min Qual Rank   0
+```
+
+![size_4](figs/size_4.png)
+
+```bash
+(.venv) ~/autotwin/mesh> sculpt_stl_to_inp doc/T1_Utah_SCI_brain/stl_to_inp_cell_size_2.yml 
+```
+
+Selected output:
+
+```bash
+Begin smoothing hexes using:
+  Curve Smoothing              = SMOOTH_CURV_VFRAC
+  Surface Smoothing            = SMOOTH_SURF_HYBRID
+  Volume Smoothing             = SMOOTH_VOL_HYBRID_CAMAL
+  Boundary Buffer Improvement  = YES
+  Surface Projection Type      = LINEAR_SURFACE_PROJECTION
+  Laplacian Iterations         = 2
+  Maximum Optimization Iters   = 5
+  Optimization Threshold       = 0.600000
+  Curve Opt. Threshold         = 0.100000
+  Max Parallel Coloring Iters  = 100
+  Parallel Coloring Threshold  = 0.200000
+  Max Guaranteed Quality Iters = 0
+  Guaranteed Quality Threshold = 0.200000
+Laplacian Iter: 1
+Laplacian Iter: 2
+Smoothing 647599 hexes on 2 processors
+Jacobi Opt Iter: 1,  Num bad: 191, Num poor: 4335, Min SJ: -0.525729
+Jacobi Opt Iter: 2,  Num bad: 47, Num poor: 2678, Min SJ: -0.191610
+Jacobi Opt Iter: 3,  Num bad: 18, Num poor: 1351, Min SJ: -0.093843
+Jacobi Opt Iter: 4,  Num bad: 2, Num poor: 788, Min SJ: -0.028774
+Jacobi Opt Iter: 5,  Num bad: 0, Num poor: 700, Min SJ: 0.060104
+Begin parallel color smoothing 4199 nodes below threshold 0.200000
+Coloring Opt Iter: 0, Num Smooths: 0, Num bad: 0, Num poor: 2198, Min SJ: 0.020239
+Coloring Opt Iter: 2, Num Smooths: 527, Num bad: 0, Num poor: 407, Min SJ: 0.056812
+Coloring Opt Iter: 4, Num Smooths: 592, Num bad: 0, Num poor: 306, Min SJ: 0.077682
+Coloring Opt Iter: 6, Num Smooths: 632, Num bad: 0, Num poor: 257, Min SJ: 0.078006
+Coloring Opt Iter: 8, Num Smooths: 652, Num bad: 0, Num poor: 238, Min SJ: 0.078006
+Coloring Opt Iter: 10, Num Smooths: 660, Num bad: 0, Num poor: 234, Min SJ: 0.078006
+Coloring Opt Iter: 12, Num Smooths: 662, Num bad: 0, Num poor: 234, Min SJ: 0.078006
+Coloring Opt Iter: 14, Num Smooths: 664, Num bad: 0, Num poor: 232, Min SJ: 0.078006
+Coloring Opt Iter: 16, Num Smooths: 666, Num bad: 0, Num poor: 230, Min SJ: 0.078006
+Coloring Opt Iter: 17, Num Smooths: 667, Num bad: 0, Num poor: 230, Min SJ: 0.078006
+building exodus mesh...
+generating global ids...
+generating parallel communication maps...
+================ MESH SUMMARY ===================
+Base Filename   sculpt_parallel.diatom_result
+Num Procs       2
+Num Nodes       675101
+Num Elements    647599
+Num Blocks      2
+Num Nodesets    0
+Num Sidesets    0
+Num Bad Qual    0
+Num Poor Qual   0
+Min Quality     0.216737
+Avg Quality     0.923489
+Min Edge Len    0.273492
+Min Qual Rank   0
+```
+
+![size_2](figs/size_2.png)
+
+
+Output files:
+
+* [cell_size_4.inp](https://www.dropbox.com/s/u0o8h5659r6sjme/cell_size_4.inp?dl=0)
+* [cell_size_2.inp](https://www.dropbox.com/s/c08hkyjyd35vadk/cell_size_2.inp?dl=0)

@@ -38,6 +38,7 @@ import sys
 
 
 import atmesh.yml_to_dict as translator
+import atmesh.command_line as cl
 
 
 def translate(*, path_file_input: str) -> int:
@@ -64,10 +65,10 @@ def translate(*, path_file_input: str) -> int:
         raise FileNotFoundError(f"{atmesh} File not found: {str(fin)}")
 
     # user_input = _yml_to_dict(yml_path_file=fin)
-    # keys = ("version", "cubit_path", "working_dir", "stl_path_file", "inp_path_file")
+    # keys = ("version", "cubit_path", "working_dir", "stl_path_files", "inp_path_file")
     keys = ("version", "cubit_path", "working_dir", "inp_path_file", "csv_path_file")
     user_input = translator.yml_to_dict(
-        yml_path_file=fin, version=1.1, required_keys=keys
+        yml_path_file=fin, version=cl.yml_version(), required_keys=keys
     )
 
     print(f"{atmesh} User input:")

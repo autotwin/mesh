@@ -18,7 +18,7 @@ import atmesh.yml_to_dict as translator
 
 @pytest.fixture
 def keys():
-    return ("version", "cubit_path", "working_dir", "stl_path_file", "inp_path_file")
+    return ("version", "cubit_path", "working_dir", "stl_path_files", "inp_path_file")
 
 
 def test_return_is_dict(keys):

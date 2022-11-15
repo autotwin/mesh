@@ -1,10 +1,11 @@
 # User input for use with atmesh.cubit_inp_to_minsj_csv.py module
 #
 # required
-version: 1.1
+version: 1.3
 cubit_path: "/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
 working_dir: "~/autotwin/mesh/tests/files"
-# stl_path_file: "~/autotwin/mesh/tests/files/sphere.stl"
+# stl_path_files:
+#   - "~/autotwin/mesh/tests/files/sphere.stl"
 #
 # input .inp file
 inp_path_file: "~/autotwin/mesh/tests/files/sphere_cell_0010.inp"

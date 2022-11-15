@@ -1,15 +1,17 @@
 # User input for use with atmesh.sculpt_stl_to_inp module
 #
 # required
-version: 1.1
+version: 1.3
 cubit_path: "/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
 working_dir: "~/autotwin/mesh/tests/files"
-stl_path_file: "~/autotwin/mesh/tests/files/sphere.stl"
+stl_path_files:
+  - "~/autotwin/mesh/tests/files/sphere.stl"
 inp_path_file: "~/autotwin/mesh/tests/files/sphere.inp"
 #
 # optional (with default values)
 journaling: False # boolean, True (default): Cubit writes cubit01.jou-style log files
 n_proc: 2  # int, 4 (default): number of parallel processes, minimum is 1
+cell_size: 0.1 # float
 bounding_box:
   xmin: -0.75 # float, position of the x-dimension minimum of the bounding box, etc.
   xmax: 0.75
@@ -17,7 +19,3 @@ bounding_box:
   ymax: 0.75
   zmin: -0.75
   zmax: 0.75
-cell_count:
-  nx: 10 # int, number of x-dimension cells in the bounding box, etc.
-  ny: 11
-  nz: 12

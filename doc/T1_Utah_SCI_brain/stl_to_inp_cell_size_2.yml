@@ -1,0 +1,26 @@
+# User input for use with atmesh.sculpt_stl_to_inp module
+#
+# required
+version: 1.3
+cubit_path: "/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
+working_dir: "~/Downloads/scratch/Utah_SCI_brain"
+#
+# input .stl file
+stl_path_files: 
+  - "~/Downloads/scratch/Utah_SCI_brain/T1_Utah_SCI_brain.stl"
+  - "~/Downloads/scratch/Utah_SCI_brain/T1_Utah_SCI_outer.stl"
+#
+# output .inp file
+inp_path_file: "~/Downloads/scratch/Utah_SCI_brain/cell_size_2.inp"
+#
+cell_size: 2
+bounding_box:
+  xmin: 9.5  # float, position x-dimension minimum of the bounding box, etc.
+  xmax: 277.5
+  ymin: 19.5
+  ymax: 251.5
+  zmin: -0.5
+  zmax: 227.5
+# optional (with default values)
+journaling: False  # boolean, True (default): Cubit writes cubit01.jou-style log files
+n_proc: 2  # int, 4 (default): number of parallel processes, minimum is 1

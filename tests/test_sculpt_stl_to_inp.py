@@ -98,6 +98,25 @@ def test_cubit_init():
     assert success
 
 
+@pytest.mark.skipif(
+    ("atlas" not in platform.uname().node.lower())
+    and ("1060600" not in platform.uname().node)
+    and ("1088757" not in platform.uname().node),
+    reason="Run on Atlas and local machines only.",
+)
+def test_two_spheres():
+    """Two concentric spheres with centers located at the origin, with radius
+    length scale 5 (inner) and radius length scale 10 (outer), in two
+    separate .stl files, then meshed together as an assembly in Sculpt.
+    """
+    self_path_file = Path(__file__)
+    self_path = self_path_file.resolve().parent
+    data_path = self_path.joinpath("files").resolve()
+    input_file = data_path.joinpath("two_spheres.yml")
+    completed = translator.translate(path_file_input=str(input_file))
+    assert completed
+
+
 # @pytest.mark.skipif(
 #     ("atlas" not in platform.uname().node.lower())
 #     and ("1060600" not in platform.uname().node),

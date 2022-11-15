@@ -1,16 +1,15 @@
 # User input for use with atmesh.sculpt_stl_to_inp module
 #
 # required
-version: 1.1
+version: 1.2
 cubit_path: "/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
-# working_dir: "~/autotwin/mesh/tests/files"
-# working_dir: "~/Dropbox/scratch/2022-09-17"
-# working_dir: "~/Dropbox/scratch/simic"
 working_dir: "~/Downloads/scratch/Utah_SCI_brain"
 #
 # input .stl file
 # stl_path_file: "~/Dropbox/scratch/simic/brainstem.stl"
-stl_path_file: "~/Downloads/scratch/Utah_SCI_brain/T1_Utah_SCI_brain.stl"
+# stl_path_file: "~/Downloads/scratch/Utah_SCI_brain/T1_Utah_SCI_brain.stl"
+stl_path_files: 
+  - "~/Downloads/scratch/Utah_SCI_brain/T1_Utah_SCI_brain.stl"
 #
 # output .inp file
 # inp_path_file: "~/Dropbox/scratch/simic/brainstem_22_24_27.inp"
@@ -34,7 +33,7 @@ bounding_box:
   ymax: 246.
   zmin: 12.
   zmax: 212.
-cell_count:
+cell_count:  # 200 len * (1/4) cell/len = 50
   nx: 50
   ny: 50
   nz: 50
