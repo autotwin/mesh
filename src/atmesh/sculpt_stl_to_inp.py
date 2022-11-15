@@ -191,6 +191,24 @@ def translate(*, path_file_input: str) -> bool:
         cubit.cmd(cc)
         print(f"{atmesh} Sculpt parallel completed.")
 
+        # Get all volume entities
+        # References:
+
+        # https://coreform.com/cubit_help/appendix/python/namespace_cubit_interface.htm#ad0f2fc80640e66eea7b652ea43117a32
+
+        # https://coreform.com/cubit_help/appendix/python/class_cubit_interface_1_1_entity.htm
+
+        # https://coreform.com/cubit_help/appendix/python/namespace_cubit_interface.htm
+
+        volume_ids = cubit.get_entities("volume")
+        surface_ids = cubit.get_entities("surface")
+        assert cubit.get_entity_name("volume", 1) == "Volume 1"
+
+        block_ids = cubit.get_entities("block")
+        # assert block_ids == (1,)
+        n_blocks = cubit.get_block_count()
+        n_nodesets = cubit.get_nodeset_count()
+
         print(f"{atmesh} Abaqus file export initiated:")
         print(f"{atmesh} Exporting inp file: {inp_path_file}")
         cc = 'export abaqus "' + inp_path_file + '" overwrite'
