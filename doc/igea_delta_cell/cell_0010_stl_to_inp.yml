@@ -1,0 +1,30 @@
+# User input for use with atmesh.sculpt_stl_to_inp module
+#
+# required
+version: 1.1
+cubit_path: "C:/Program Files/Cubit 16.06/bin"
+# working_dir: "~/autotwin/mesh/tests/files"
+# working_dir: "~/Dropbox/scratch/2022-09-17"
+working_dir: "C:/Users/calehma/Documents/Work_for_chad/scratch/2022-09-29"
+#
+# input .stl file
+stl_path_file: "C:/Users/calehma/Documents/Work_for_chad/scratch/igea.stl"
+#
+# output .inp file
+# inp_path_file: "~/Dropbox/scratch/2022-09-17/sphere_delta_cell/0010.inp"
+inp_path_file: "C:/Users/calehma/Documents/Work_for_chad/scratch/2022-09-29/igea_delta_cell/0010.inp"
+#
+# optional (with default values)
+journaling: False  # boolean, True (default): Cubit writes cubit01.jou-style log files
+n_proc: 4  # int, 4 (default): number of parallel processes, minimum is 1
+bounding_box:
+  xmin: -.1  # float, position of the x-dimension minimum of the bounding box, etc.
+  xmax: .1
+  ymin: -.1
+  ymax: .1
+  zmin: -.1
+  zmax: .1
+cell_count:
+  nx: 10  # int, number of x-dimension cells in the bounding box, etc.
+  ny: 10
+  nz: 10
