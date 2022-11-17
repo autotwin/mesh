@@ -16,9 +16,8 @@ We anticipate that a threshold may occur where additional increases in element c
 
 ## Methods
 
-* source [stl file](../tests/files/sphere.stl)
+* source `igea.stl` linked from the main page of the [data repo](https://github.com/autotwin/data)
 * Cubit GUI - manual assessment to get approximate sculpt input parameters to feed to the Python driver script (below)
-* ~~Python [driver script](../examples/sensitivity.py)~~
 
 ### Input `.stl` file
 
@@ -66,6 +65,7 @@ autotwin mesh module version:
 and so on for `cell_nnnn_stl_to_inp.yml` files.
 
 ## An Important Caveat to the Igea Study ##
+
 These results were produced on a Windows machine. The sphere study was carried out on MacOS. Directories are modified in the following .yml files to match the Windows environment. This study also utilizes Cubit 16.06. Ensure that your version of Cubit matches the .yml when reproducing the results.
 
 study | 0 | 1 | 2 | 3 | 4 | 5
