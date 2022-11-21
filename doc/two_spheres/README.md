@@ -63,7 +63,7 @@ nodeset 1 add  node in face in sideset 1
 
 ## Automated mesh generation
 
-Create a `.inp` file using [`stl_to_inp_cell_size_2.yml`](stl_to_inp_cell_size_2.yml):
+Create a `.inp` file using [`two_spheres.yml`](../../tests/files/two_spheres.yml)
 
 ```bash
 ().venv) $ version
@@ -82,6 +82,6 @@ all | inner | outer
 ![draw_block_all](figs/draw_block_all.png) | ![draw_block_1](figs/draw_block_1.png) | ![draw_block_2](figs/draw_block_2.png)
 1200 elements | 1048 elements | 152 elements
 **all** | **inner** | **outer**
-` ` | `draw nodeset 2` | `draw nodeset 3`
-` ` | ![draw_nodeset_2](figs/draw_nodeset_2.png) | ![draw_nodeset_3](figs/draw_nodeset_3.png)
+-- | `draw nodeset 2` | `draw nodeset 3`
+-- | ![draw_nodeset_2](figs/draw_nodeset_2.png) | ![draw_nodeset_3](figs/draw_nodeset_3.png)
 1477 total (volume) |  482 nodes (surface) | 98 nodes (surface)
