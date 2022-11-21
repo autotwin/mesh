@@ -164,7 +164,26 @@ def translate(*, path_file_input: str) -> bool:
         # cc = "sculpt parallel processors 2"
         # cc = "sculpt parallel processors "
         # cc = f"sculpt parallel -j {n_proc}"
-        cc = f"sculpt parallel processors {n_proc}"
+        # cc = f"sculpt parallel processors {n_proc}"
+        #
+        # Generate Sidesets
+        # Input file command:   gen_sidesets <arg>
+        # Command line options: -SS <arg>
+        # Argument Type:        integer (0, 1, 2, 3, 4, 5)
+        # Input arguments: off (0)
+        #                  fixed (1)
+        #                  variable (2)
+        #                  geometric_surfaces (3)
+        #                  geometric_sidesets (4)
+        #                  rve (5)
+        #                  input_mesh_and_stl (6)
+        #                  input_mesh_and_free_surfaces (7)
+        #                  rve_variable (8)
+        #                  input_mesh (9)
+        enum_variable_sidesets = 2
+        cc = (
+            f"sculpt parallel processors {n_proc} gen_sidesets {enum_variable_sidesets}"
+        )
 
         # if bounding_box_specified and cell_count_specified:
         if bounding_box_specified:
@@ -200,8 +219,22 @@ def translate(*, path_file_input: str) -> bool:
 
         # https://coreform.com/cubit_help/appendix/python/namespace_cubit_interface.htm
 
+        # https://coreform.com/cubit_help/cubithelp.htm#t=finite_element_model%2Fexodus%2Fnodesets_and_sidesets.htm
+
         # volume_ids = cubit.get_entities("volume")
         # surface_ids = cubit.get_entities("surface")
+        sideset_ids = cubit.get_entities("sideset")
+
+        for item in sideset_ids:
+            # cc = 'nodeset 1 add surface 1'
+            # cc = f"nodeset {item} add surface {item}"  # 2022-11-16 <-----
+            # create a group, then create a nodeset from that group
+            # cc = f"nodeset {item} block {item}"  # 2022-11-16
+            cc = f"nodeset {item} add node in face in sideset {item}"  # 2022-11-21
+            # nodeset 1 add  node in face in sideset 1
+            cubit.cmd(cc)
+            print(f"{atmesh} Completed: {cc}")
+
         # assert cubit.get_entity_name("volume", 1) == "Volume 1"
 
         # block_ids = cubit.get_entities("block")
