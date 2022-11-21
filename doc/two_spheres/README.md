@@ -72,7 +72,7 @@ autotwin mesh module version:
 (.venv) $ sculpt_stl_to_inp doc/two_spheres/stl_to_inp_cell_size_2.yml
 ```
 
-From Cubit, open `"~/autotwin/mesh/tests/files/two_spheres.inp"`
+From Cubit, open [`"~/autotwin/mesh/tests/files/two_spheres.inp"`](../../tests/files/two_spheres.inp).
 
 Images shown below are half-sections, with the `-x` hemisphere hidden and the `+x` hemisphere shown.
 
