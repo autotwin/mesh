@@ -300,11 +300,10 @@ Min Qual Rank   0
 
 ![size_2](figs/size_2.png)
 
-
 Output files:
 
-* [cell_size_4.inp](https://www.dropbox.com/s/u0o8h5659r6sjme/cell_size_4.inp?dl=0)
-* [cell_size_2.inp](https://www.dropbox.com/s/c08hkyjyd35vadk/cell_size_2.inp?dl=0)
+* [cell_size_4.inp](https://www.dropbox.com/s/vdox7ldvcypvghk/cell_size_4.inp?dl=0) 14 MB
+* [cell_size_2.inp](https://www.dropbox.com/s/a1pydxpnaz2o648/cell_size_2.inp?dl=0) 95 MB
 
 Hex element count:
 
