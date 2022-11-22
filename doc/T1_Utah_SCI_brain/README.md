@@ -305,3 +305,10 @@ Output files:
 
 * [cell_size_4.inp](https://www.dropbox.com/s/u0o8h5659r6sjme/cell_size_4.inp?dl=0)
 * [cell_size_2.inp](https://www.dropbox.com/s/c08hkyjyd35vadk/cell_size_2.inp?dl=0)
+
+Hex element count:
+
+file | brain | outer | total
+-- | --: | --: | --:
+`cell_size_4.inp` | 34,341 | 60,973 | 95,314
+`cell_size_2.inp` | 244,105 | 403,494 | 647,599
