@@ -69,8 +69,10 @@ Create a `.inp` file using [`two_spheres.yml`](../../tests/files/two_spheres.yml
 (.venv) $ version
 autotwin mesh module version:
 0.0.7
-(.venv) $ sculpt_stl_to_inp tests/files/two_spheres.yml 
+(.venv) $ sculpt_stl_to_inp tests/files/two_spheres.yml > tests/files/two_spheres.log
 ```
+
+See [two_spheres.log](../../tests/files/two_spheres.log) for the command line outout.
 
 From Cubit, open [`"~/autotwin/mesh/tests/files/two_spheres.inp"`](../../tests/files/two_spheres.inp).
 
