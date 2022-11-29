@@ -172,8 +172,10 @@ to create
 
 Input Files: 
 
+* [`stl_to_inp_cell_size_8.yml`](stl_to_inp_cell_size_8.yml)
 * [`stl_to_inp_cell_size_4.yml`](stl_to_inp_cell_size_4.yml)
 * [`stl_to_inp_cell_size_2.yml`](stl_to_inp_cell_size_2.yml)
+* [`stl_to_inp_cell_size_1.yml`](stl_to_inp_cell_size_1.yml)
 
 ```bash
 (.venv) ~/autotwin/mesh> sculpt_stl_to_inp doc/T1_Utah_SCI_brain/stl_to_inp_cell_size_4.yml 

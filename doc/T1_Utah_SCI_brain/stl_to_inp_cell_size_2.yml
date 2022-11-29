@@ -23,4 +23,4 @@ bounding_box:
   zmax: 227.5
 # optional (with default values)
 journaling: False  # boolean, True (default): Cubit writes cubit01.jou-style log files
-n_proc: 2  # int, 4 (default): number of parallel processes, minimum is 1
+n_proc: 3  # int, 4 (default): number of parallel processes, minimum is 1
