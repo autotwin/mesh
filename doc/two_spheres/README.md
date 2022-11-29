@@ -66,10 +66,10 @@ nodeset 1 add  node in face in sideset 1
 Create a `.inp` file using [`two_spheres.yml`](../../tests/files/two_spheres.yml)
 
 ```bash
-().venv) $ version
+(.venv) $ version
 autotwin mesh module version:
 0.0.7
-(.venv) $ sculpt_stl_to_inp doc/two_spheres/stl_to_inp_cell_size_2.yml
+(.venv) $ sculpt_stl_to_inp tests/files/two_spheres.yml 
 ```
 
 From Cubit, open [`"~/autotwin/mesh/tests/files/two_spheres.inp"`](../../tests/files/two_spheres.inp).
@@ -80,8 +80,8 @@ all | inner | outer
 :--: | :--: | :--: 
 `draw block all` | `draw block 1` | `draw block 2`
 ![draw_block_all](figs/draw_block_all.png) | ![draw_block_1](figs/draw_block_1.png) | ![draw_block_2](figs/draw_block_2.png)
-1200 elements | 1048 elements | 152 elements
+1200 elements | 152 elements | 1048 elements |
 **all** | **inner** | **outer**
--- | `draw nodeset 2` | `draw nodeset 3`
--- | ![draw_nodeset_2](figs/draw_nodeset_2.png) | ![draw_nodeset_3](figs/draw_nodeset_3.png)
-1477 total (volume) |  482 nodes (surface) | 98 nodes (surface)
+-- | `draw nodeset 3` | `draw nodeset 2`
+-- | ![draw_nodeset_3](figs/draw_nodeset_3.png) | ![draw_nodeset_2](figs/draw_nodeset_2.png)
+1477 total (volume) |  98 nodes (surface) | 482 nodes (surface)

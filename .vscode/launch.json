@@ -22,6 +22,17 @@
             ],
             "console": "integratedTerminal",
             "justMyCode": true
+        },
+        {
+            "name": "sculpt sphere",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/atmesh/sculpt_stl_to_inp.py",
+            "args": [
+                "tests/files/sphere.yml"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
         }
     ]
 }
