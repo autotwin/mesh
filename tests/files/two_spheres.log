@@ -1,0 +1,366 @@
+
+
+                   CCCCC    UU   UU   BBBBBB    IIII   TTTTTT
+                  CC   CC   UU   UU   BB   BB    II      TT
+                  CC        UU   UU   BB   BB    II      TT
+                  CC        UU   UU   BBBBBB     II      TT
+                  CC        UU   UU   BB   BB    II      TT
+                  CC   CC   UU   UU   BB   BB    II      TT
+                   CCCCC     UUUUU    BBBBBB    IIII     TT  tm
+
+                            MESH GENERATION TOOLKIT        
+                                      FOR                   
+                   PRE-PROCESSING OF FINITE ELEMENT ANALYSES
+
+                 User community mailing list: cubit@sandia.gov   
+         Report bugs and enhancement requests to cubit-help@sandia.gov
+
+
+                         Cubit Version 16.08.0 64-Bit Build 60fb885db8
+                               VTK Version 8.2.0
+                              ACIS Version 31.0.0.0
+                            Exodus API Version 8.03
+                            MeshGems Version 2.14-1
+                     Copyright 2001-2019 Sandia Corporation
+              Revised Tue Sep 27 13:41:41 2022 -0600
+                        Running 11/29/2022 09:58:09 AM
+
+                 CUBIT includes MeshGems by Spatial Inc.
+                  CUBIT includes ACIS software by Spatial Inc.
+                  CUBIT includes LP Solve by Michel Berkelaar.
+                       CUBIT includes VTK by Kitware Inc.
+           CUBIT includes Exodus II, based on netCDF by UCAR/Unidata.
+            CUBIT includes VERDICT, by Sandia National Laboratories.
+          CUBIT includes MESQUITE, by Argonne National Laboratory and
+                         Sandia National Laboratories.
+
+Machine type is Darwin 21.6.0
+Machine name is s1088757
+Working Directory: /Users/chovey/autotwin/mesh/
+
+Current directory is '/Users/chovey/autotwin/mesh/tests/files/'
+Finished Command: cd "/Users/chovey/autotwin/mesh/tests/files"
+
+Reading facets...
+  16890 facets read.
+Building facet-based geometry from 16890 facets...
+Body successfully created.
+  Number of new vertices = 0
+  Number of new curves = 0
+  Number of new surfaces = 1
+  Number of new shells = 1
+  Number of new volumes = 1
+  Number of new bodies = 1
+Geometry engine set to: Facet Geometry Engine version 10.0.0
+Finished Command: import stl "/Users/chovey/autotwin/mesh/tests/files/sphere_radius_5.stl"
+
+Reading facets...
+  16890 facets read.
+Building facet-based geometry from 16890 facets...
+Body successfully created.
+  Number of new vertices = 0
+  Number of new curves = 0
+  Number of new surfaces = 1
+  Number of new shells = 1
+  Number of new volumes = 1
+  Number of new bodies = 1
+Geometry engine set to: Facet Geometry Engine version 10.0.0
+Finished Command: import stl "/Users/chovey/autotwin/mesh/tests/files/sphere_radius_10.stl"
+
+STL file written: "sculpt_parallel_Volume_1.stl"
+STL file written: "sculpt_parallel_Volume_2.stl"
+Diatoms file written: "sculpt_parallel.diatom"
+Run file written: "sculpt_parallel.run"
+Begin execution of external Sculpt process...
+/Applications/Cubit-16.08/Cubit.app/Contents/MacOS/sculpt --cubit_launch -j 2 -x 16 -y 16 -z 16 -t -16.000000 -u -16.000000 -v -16.000000 -q 16.000000 -r 16.000000 -s 16.000000 -SS 2 -e sculpt_parallel.diatom_result -d sculpt_parallel.diatom 
+SCULPT Running on host name: s1088757
+At time: Tue Nov 29 09:58:10 2022
+
+Initializing MPI on 2 Processors: mpiexec = /Applications/Cubit-16.08/Cubit.app/Contents/MacOS/mpiexec
+
+
+/Applications/Cubit-16.08/Cubit.app/Contents/MacOS/mpiexec --mca oob_tcp_if_include lo0 --mca btl ^tcp -np 2 /Applications/Cubit-16.08/Cubit.app/Contents/MacOS/psculpt -j 2 -x 16 -y 16 -z 16 -t -16.000000 -u -16.000000 -v -16.000000 -q 16.000000 -r 16.000000 -s 16.000000 -SS 2 -e sculpt_parallel.diatom_result -d sculpt_parallel.diatom
+                 SANDIA NATIONAL LABORATORIES
+
+     SSSSS     CCCCC    UU   UU   LL        PPPPPP    TTTTTT
+    SS   SS   CC   CC   UU   UU   LL        PP   PP     TT
+    SS        CC        UU   UU   LL        PP   PP     TT
+     SSSSS    CC        UU   UU   LL        PPPPPP      TT
+         SS   CC        UU   UU   LL        PP          TT
+    SS   SS   CC   CC   UU   UU   LL        PP          TT
+     SSSSS     CCCCC     UUUUU    LLLLLLL   PP          TT
+
+                     PARALLEL HEX MESHING
+                            FROM
+                     VOLUME FRACTION DATA
+
+              SCULPT Version 16.08.0 Build 60fb885db8
+              Copyright 2015 Sandia Corporation
+      Revised Tue Sep 27 13:41:41 2022 -0600
+      User Support and Bug Reports: cubit-help@sandia.gov
+  
+     SCULPT includes CAMAL by Sandia National Laboratories
+  SCULPT includes CTH Diatoms by Sandia National Laboratories
+  SCULPT is a companion application to the CUBIT Geometry and 
+       Meshing Toolkit by Sandia National Laboratories
+
+Input: /Applications/Cubit-16.08/Cubit.app/Contents/MacOS/psculpt
+  --num_procs    -j   2                            
+  --diatom_file  -d   sculpt_parallel.diatom       
+  --exodus_file  -e   sculpt_parallel.diatom_result
+  --nelx         -x   16                           
+  --nely         -y   16                           
+  --nelz         -z   16                           
+  --xmin         -t   -16.000000                   
+  --ymin         -u   -16.000000                   
+  --zmin         -v   -16.000000                   
+  --xmax         -q   16.000000                    
+  --ymax         -r   16.000000                    
+  --zmax         -s   16.000000                    
+  --gen_sidesets -SS  2                            
+
+
+Total Cells                = 4096
+Number of Processors       = 2
+Approx. Num Cells per Proc = 2048
+
+Decomposing Cartesian grid for parallel...
+  Rank 0 Number of cells/segment in directions X 	 16
+  Rank 0 Number of cells/segment in directions Y 	 16
+  Rank 0 Number of cells/segment in directions Z 	 8
+  Global Number of grid segments in directions X 	 1
+  Global Number of grid segments in directions Y 	 1
+  Global Number of grid segments in directions Z 	 2
+
+initializing geometry...
+ Parsing diatom input
+ Finished loading diatom master buffer
+ Finished communicating diatom master buffer
+ Finished creating diatoms
+
+Broadcasting 177348 elements of stl geom data
+
+STL summary: fn=sculpt_parallel_Volume_1.stl vertices=50670 Triangles=16890
+  Bounding box:
+   xmin=-4.996644 xmax=4.995702
+   ymin=-4.994770 ymax=4.994728
+   zmin=-4.995025 zmax=4.993900
+  Side length min=0.129679 length max=0.288662
+  angle min=30.611144 angle max=107.792557 degrees
+  area min=9.447424e-03 area max=0.026294
+ Checking Triangle Side Matches Triangle Id=0
+ Checking Triangle Side Matches Triangle Id=10000
+  Diatom STL All Sides Properly matched
+
+
+Broadcasting 177348 elements of stl geom data
+
+STL summary: fn=sculpt_parallel_Volume_2.stl vertices=50670 Triangles=16890
+  Bounding box:
+   xmin=-9.993288 xmax=9.991404
+   ymin=-9.989540 ymax=9.989456
+   zmin=-9.990050 zmax=9.987800
+  Side length min=0.259358 length max=0.577324
+  angle min=30.611144 angle max=107.792557 degrees
+  area min=3.778969e-02 area max=0.105175
+ Checking Triangle Side Matches Triangle Id=0
+ Checking Triangle Side Matches Triangle Id=10000
+  Diatom STL All Sides Properly matched
+
+inserting volume fractions...
+begin SCULPT meshing...
+(1/9) computing normals...
+(2/9) classifying materials...
+(3/9) resolving non-manifolds...
+(4/9) computing dual edge intersections...
+(5/9) computing material interfaces...
+(6/9) generating geometry...
+(7/9) generating buffer hexes...
+(8/9) generating interior hexes...
+(9/9) begin smoothing...
+Begin smoothing hexes using:
+  Curve Smoothing              = SMOOTH_CURV_VFRAC
+  Surface Smoothing            = SMOOTH_SURF_HYBRID
+  Volume Smoothing             = SMOOTH_VOL_HYBRID_CAMAL
+  Boundary Buffer Improvement  = YES
+  Surface Projection Type      = LINEAR_SURFACE_PROJECTION
+  Laplacian Iterations         = 2
+  Maximum Optimization Iters   = 5
+  Optimization Threshold       = 0.600000
+  Curve Opt. Threshold         = 0.100000
+  Max Parallel Coloring Iters  = 100
+  Parallel Coloring Threshold  = 0.200000
+  Max Guaranteed Quality Iters = 0
+  Guaranteed Quality Threshold = 0.200000
+Laplacian Iter: 1
+Laplacian Iter: 2
+Smoothing 1200 hexes on 2 processors
+Jacobi Opt Iter: 1,  Num bad: 8, Num poor: 48, Min SJ: -0.320297
+Jacobi Opt Iter: 2,  Num bad: 8, Num poor: 12, Min SJ: -0.132925
+Jacobi Opt Iter: 3,  Num bad: 8, Num poor: 0, Min SJ: -0.028094
+Jacobi Opt Iter: 4,  Num bad: 0, Num poor: 8, Min SJ: 0.062977
+Jacobi Opt Iter: 5,  Num bad: 0, Num poor: 0, Min SJ: 0.236999
+Begin parallel color smoothing 0 nodes below threshold 0.200000
+No parallel color smoothing performed: min SJ > 0.200000
+Begin parallel color smoothing 0 nodes below threshold 0.200000
+No parallel color smoothing performed: min SJ > 0.200000
+building exodus mesh...
+generating global ids...
+building sidesets...
+generating parallel communication maps...
+================ MESH SUMMARY ===================
+Base Filename	sculpt_parallel.diatom_result
+Num Procs	2
+Num Nodes	1477
+Num Elements	1200
+Num Blocks	2
+Num Nodesets	0
+Num Sidesets	2
+Num Bad Qual	0
+Num Poor Qual	0
+Min Quality	0.383785
+Avg Quality	0.780289
+Min Edge Len	0.905702
+Min Qual Rank	0
+
+Job Completed Tue Nov 29 09:58:11 2022
+
+Elapsed Time		0.634781 sec. (0.010580 min.)
+Total Time on 2 Procs	1.269370 sec. (0.021156 min.)
+Slow Rank		1
+Done!
+Sculpt log file written: sculpt_parallel.log
+Begin execution of external EPU process...
+/Applications/Cubit-16.08/Cubit.app/Contents/MacOS/epu -p 2 sculpt_parallel.diatom_result
+epu --  E Pluribus Unum
+	(Out of Many One -- see http://www.greatseal.com/mottoes/unum.html)
+	ExodusII Parallel Unification Program
+	(Version: 3.38) Modified: 2012/02/14
+Input(0): './sculpt_parallel.diatom_result.e.2.0'
+...
+Input(1): './sculpt_parallel.diatom_result.e.2.1'
+
+**** READ LOCAL (GLOBAL) INFO ****
+Node map is contiguous.
+Finished reading/writing Global Info
+
+
+**** GET BLOCK INFORMATION (INCL. ELEMENT ATTRIBUTES) ****
+Global block count = 2
+
+Getting element block info.
+Element id map is contiguous.
+
+**** GET SIDE SETS *****
+
+**** GET NODE SETS *****
+
+**** BEGIN WRITING OUTPUT FILE *****
+Output:   './sculpt_parallel.diatom_result.e'
+IO Word size is 4 bytes.
+ Title: SCULPT Version 16.08.0 Build 60fb885db8
+
+ Number of coordinates per node       =        3
+ Number of nodes                      =     1477
+ Number of elements                   =     1200
+ Number of element blocks             =        2
+
+ Number of nodal point sets           =        0
+ Number of element side sets          =        2
+
+
+Reading and Writing element connectivity & attributes
+
+
+
+**** GET COORDINATE INFO ****
+Wrote coordinate names...
+Wrote coordinate information...
+
+**** GET VARIABLE INFORMATION AND NAMES ****
+
+**** GET TRANSIENT NODAL, GLOBAL, AND ELEMENT DATA VALUES ****
+
+Number of time steps on input databases = 0
+
+******* END *******
+End execution of external EPU process
+Sculpt log file written: sculpt_parallel.log
+Importing exodus mesh: sculpt_parallel.diatom_result.e
+Reading element block 1 with 152 elements of type HEX...
+Successfully read 152 elements for block 1.
+Reading element block 2 with 1048 elements of type HEX...
+Successfully read 1048 elements for block 2.
+The imported mesh entities are not owned by any geometry,
+and have been placed in free_elements (Group 2).
+Group Entity 'free_elements' (Id = 2)
+It owns/encloses 1200 entities: 1200 hexes.
+	Owned Mesh Entities:
+
+The 1200 hex(es) contained in free_elements (Group 2) are: 1 to 1200
+
+Finished Command: sculpt parallel processors 2 gen_sidesets 2 size 2 box location position -16 -16 -16 location position 16 16 16
+
+Finished Command: nodeset 1 add node in face in sideset 1
+
+Finished Command: nodeset 2 add node in face in sideset 2
+
+Writing Abaqus file
+0   |    |    |    |    50   |    |    |    |  100
+**************************************************
+
+
+Executive Abaqus summary:
+  Number of dimensions     = 3
+  Number of element blocks = 2
+  Number of sidesets       = 2
+  Number of nodesets       = 2
+  Number of bc sets        = 1
+  Number of elements       = 1200
+  Number of nodes          = 1477
+
+Finished writing /Users/chovey/autotwin/mesh/tests/files/two_spheres.inp
+Finished Command: export abaqus "/Users/chovey/autotwin/mesh/tests/files/two_spheres.inp" overwrite
+
+atmesh> This is /Users/chovey/autotwin/mesh/src/atmesh/sculpt_stl_to_inp.py
+atmesh> User input:
+  version: 1.3
+  cubit_path: /Applications/Cubit-16.08/Cubit.app/Contents/MacOS
+  working_dir: ~/autotwin/mesh/tests/files
+  stl_path_files: ['~/autotwin/mesh/tests/files/sphere_radius_5.stl', '~/autotwin/mesh/tests/files/sphere_radius_10.stl']
+  inp_path_file: ~/autotwin/mesh/tests/files/two_spheres.inp
+  journaling: False
+  n_proc: 2
+  cell_size: 2.0
+  bounding_box: {'xmin': -16.0, 'xmax': 16.0, 'ymin': -16.0, 'ymax': 16.0, 'zmin': -16.0, 'zmax': 16.0}
+atmesh> Existing sys.path:
+  /Users/chovey/autotwin/mesh/.venv/bin
+  /Library/Frameworks/Python.framework/Versions/3.7/lib/python37.zip
+  /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7
+  /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/lib-dynload
+  /Users/chovey/autotwin/mesh/.venv/lib/python3.7/site-packages
+  /Users/chovey/autotwin/mesh/src
+atmesh> Cubit path now added:
+  /Users/chovey/autotwin/mesh/.venv/bin
+  /Library/Frameworks/Python.framework/Versions/3.7/lib/python37.zip
+  /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7
+  /Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/lib-dynload
+  /Users/chovey/autotwin/mesh/.venv/lib/python3.7/site-packages
+  /Users/chovey/autotwin/mesh/src
+  /Applications/Cubit-16.08/Cubit.app/Contents/MacOS
+atmesh> Import cubit module initiatied:
+atmesh> Import cubit module completed.  Journaling is OFF.
+atmesh> The Cubit Working Directory is set to: /Users/chovey/autotwin/mesh/tests/files
+atmesh> stl import initiatied:
+atmesh> Importing stl file: ~/autotwin/mesh/tests/files/sphere_radius_5.stl
+atmesh> Importing stl file: ~/autotwin/mesh/tests/files/sphere_radius_10.stl
+atmesh> stl import completed.
+atmesh> Sculpt parallel initiated:
+atmesh> Invoking Sculpt with Cubit command: sculpt parallel processors 2 gen_sidesets 2 size 2.0 box location position -16.0 -16.0 -16.0 location position 16.0 16.0 16.0
+atmesh> Sculpt parallel completed.
+atmesh> Completed: nodeset 1 add node in face in sideset 1
+atmesh> Completed: nodeset 2 add node in face in sideset 2
+atmesh> Abaqus file export initiated:
+atmesh> Exporting inp file: ~/autotwin/mesh/tests/files/two_spheres.inp
+atmesh> Abaqus file export completed.
+atmesh> Done.
