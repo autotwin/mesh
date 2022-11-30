@@ -83,7 +83,28 @@ Begin parallel color smoothing 1084 nodes below threshold 0.200000
 Coloring Opt Iter: 0, Num Smooths: 0, Num bad: 0, Num poor: 572, Min SJ: 0.057330
 Coloring Opt Iter: 5, Num Smooths: 169, Num bad: 0, Num poor: 97, Min SJ: 0.075854
 Coloring Opt Iter: 6, Num Smooths: 170, Num bad: 0, Num poor: 96, Min SJ: 0.075854
-244,136 elements
+Begin parallel color smoothing 1084 nodes below threshold 0.200000
+Coloring Opt Iter: 0, Num Smooths: 0, Num bad: 0, Num poor: 572, Min SJ: 0.057330
+Coloring Opt Iter: 5, Num Smooths: 169, Num bad: 0, Num poor: 97, Min SJ: 0.075854
+Coloring Opt Iter: 6, Num Smooths: 170, Num bad: 0, Num poor: 96, Min SJ: 0.075854
+building exodus mesh...
+generating global ids...
+building sidesets...
+generating parallel communication maps...
+================ MESH SUMMARY ===================
+Base Filename	sculpt_parallel.diatom_result
+Num Procs	3
+Num Nodes	260669
+Num Elements	244136
+Num Blocks	1
+Num Nodesets	0
+Num Sidesets	1
+Num Bad Qual	0
+Num Poor Qual	0
+Min Quality	0.217879
+Avg Quality	0.943579
+Min Edge Len	0.294380
+Min Qual Rank	1
 ```
 
 ## Output 1: Brain
@@ -304,12 +325,62 @@ Min Qual Rank   0
 
 Output files:
 
+* cell_size_8.inp
 * [cell_size_4.inp](https://www.dropbox.com/s/vdox7ldvcypvghk/cell_size_4.inp?dl=0) 14 MB
 * [cell_size_2.inp](https://www.dropbox.com/s/a1pydxpnaz2o648/cell_size_2.inp?dl=0) 95 MB
+* cell_size_1 
 
 Hex element count:
 
 file | brain | outer | total
 -- | --: | --: | --:
+`cell_size_8.inp` | 5,185 | | 
 `cell_size_4.inp` | 34,341 | 60,973 | 95,314
 `cell_size_2.inp` | 244,105 | 403,494 | 647,599
+`cell_size_1.inp` | | | 
+free sculpt | 902,410 | | 
+
+### Command Line Cubit
+
+Bash: 
+
+```bash
+cd /Applications/Cubit-16.08
+./cubit_command
+```
+
+Cubit command line: 
+
+```bash
+cd '~/Downloads/scratch/Utah_SCI_brain'
+import stl "T1_Utah_SCI_brain.stl"
+sculpt parallel processors 3 gen_sidesets 2 size 8.0
+draw block all
+reset
+```
+
+```bash
+# manually recreate cell_100_100_100.yml
+import stl "T1_Utah_SCI_brain.stl" # 272994 facets, xxx load time
+sculpt parallel processors 3 gen_sidesets 2 size 2.0 box location position 22.0 46.0 12.0 location position 222.0 246.0 212.0
+draw block all
+export abaqus "/Users/chovey/Downloads/scratch/Utah_SCI_brain/cell_100_100_100.inp" overwrite
+
+# review ABAQUS file
+reset
+import abaqus 'cell_100_100_100.inp'
+quality block 1 scaled jacobian global draw histogram draw mesh
+```
+
+```bash
+# manually recreate cell_size_2.inp
+import stl "T1_Utah_SCI_brain.stl" # 272994 facets, xxx load time
+sculpt parallel processors 3 gen_sidesets 2 size 2.0 box location position 9.5 19.5 -0.5 location position 227.5 251.5 227.5
+draw block all
+export abaqus "/Users/chovey/Downloads/scratch/Utah_SCI_brain/cell_size_2.inp" overwrite
+
+# review ABAQUS file
+reset
+import abaqus 'cell_size_2.inp'
+quality block 1 scaled jacobian global draw histogram draw mesh
+```

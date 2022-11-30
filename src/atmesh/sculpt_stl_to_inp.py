@@ -129,7 +129,9 @@ def translate(*, path_file_input: str) -> bool:
             cubit.init(["cubit", "-nojournal"])
             print(f"{atmesh} Import cubit module completed.  Journaling is OFF.")
 
+        # Examples:
         # cubit.cmd('cd "~/sibl-dev/sculpt/tests/sphere-python"')
+        # cubit.cmd('cd "~/Downloads/scratch/Utah_SCI_brain"')
         cc = 'cd "' + working_dir_str + '"'
         cubit.cmd(cc)
         print(f"{atmesh} The Cubit Working Directory is set to: {working_dir_str}")
