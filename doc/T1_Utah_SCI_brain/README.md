@@ -62,7 +62,7 @@ axis momenta are :
 
 #### Autotwin Mesh
 
-Create [input file](cell_100_100_100.yml)
+Create input file [cell_100_100_100.yml](cell_100_100_100.yml)
 
 ```bash
 (.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> sculpt_stl_to_inp cell_100_100_100.yml 
@@ -107,7 +107,7 @@ Min Edge Len	0.294380
 Min Qual Rank	1
 ```
 
-## Output 1: Brain
+## Part 1 of 2: Brain
 
 `outer.stl` | `brain.stl` 
 :--: | :--: 
@@ -154,8 +154,8 @@ study | 1 | 2 |
 `.yml` config | [cell_050_050_050.yml](cell_050_050_050.yml) | [cell_100_100_100.yml](cell_100_100_100.yml) |
 image | ![050](figs/050.png) | ![100](figs/100.png) |
 n_cells | 50 | 100 |
-cell_size |  200 mm? / 50 cell =  4 mm/cell | 2 mm/cell |
-`.inp` file | [`cell_050_050_050.inp`](https://www.dropbox.com/s/r7vdarjv957c2jr/cell_050_050_050.inp?dl=0) | [`cell_100_100_100.inp`](https://www.dropbox.com/s/62s3ijbg3s784am/cell_100_100_100.inp?dl=0) |
+cell_size |  200 mm / 50 cell =  4 mm/cell | 2 mm/cell |
+`.inp` file | [`cell_050_050_050_v02.inp`](https://www.dropbox.com/s/zeklu8dlygnzh9r/cell_050_050_050_v02.inp?dl=0) | [`cell_100_100_100_v02.inp`](https://www.dropbox.com/s/xif58oxt3bdmses/cell_100_100_100_v02.inp?dl=0) |
 n_elements | 32,248 | 244,136  |
 volume | 1.69348e+06 mm^3 = 1.69 L | 1.69322e+06 mm^3 = 1.69 L |
 
@@ -164,13 +164,13 @@ The expected head volume, is between 1 and 2 L:
 
 > *Living humans have a cranial capacity ranging from about 950 cc to 1800 cc, with the average about 1400 cc.*
 
-
 ### Box and whisker plots
 
 Create the `.csv` quality files, for example:
 
 ```bash
-(.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> cubit_inp_to_minsj_csv doc/T1_Utah_SCI_brain/cell_050_msj.yml
+(.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> cubit_inp_to_minsj_csv cell_050_msj.yml
+(.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> cubit_inp_to_minsj_csv cell_100_msj.yml
 ```
 
 Using [box_plots.py](../box_plots.py) 
@@ -189,7 +189,7 @@ to create
 
 ![box_whisker](figs/box_plots.png)
 
-## Output 2: Brain with Outer
+## Part 2 of 2: Brain with Outer
 
 Input Files: 
 

@@ -10,7 +10,7 @@ stl_path_files:
   - "~/Downloads/scratch/Utah_SCI_brain/T1_Utah_SCI_brain.stl"
 #
 # output .inp file
-inp_path_file: "~/Downloads/scratch/Utah_SCI_brain/cell_100_100_100.inp"
+inp_path_file: "~/Downloads/scratch/Utah_SCI_brain/cell_100_100_100_v02.inp"
 #
 journaling: False  # boolean, True (default): Cubit writes cubit01.jou-style log files
 n_proc: 3  # int, 4 (default): number of parallel processes, minimum is 1
@@ -22,6 +22,7 @@ n_proc: 3  # int, 4 (default): number of parallel processes, minimum is 1
 # Mesh Bounding Box max 208.500000 235.500000 183.500000
 # center of bounding box is (122, 146, 112)
 # create plus/minus 100 length units each direction
+cell_size: 2.0
 bounding_box:
   xmin: 22.  # float, position x-dimension minimum of the bounding box, etc.
   xmax: 222.
@@ -29,7 +30,6 @@ bounding_box:
   ymax: 246.
   zmin: 12.
   zmax: 212.
-cell_size: 2.0
 # cell_count:
 #   nx: 100
 #   ny: 100
