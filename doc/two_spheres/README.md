@@ -12,12 +12,7 @@ From the `~/autotwin/mesh/tests/files` folder:
 shown together here:
 
 ![sphere_radius_5_in_sphere_radius_10](../figs/sphere_radius_5_in_sphere_radius_10.png)
-
-* Input file [`stl_to_inp_cell_size_2.yml`](stl_to_inp_cell_size_2.yml)
-
-```bash
-(.venv) ~/autotwin/mesh> sculpt_stl_to_inp doc/two_spheres/stl_to_inp_cell_size_2.yml
-```
+> *Figure 1. MeshLab visualization of the two input files listed above.*
 
 ## Manual step-by-step via Cubit GUI
 
@@ -27,6 +22,7 @@ This manual step-by-step walkthrough, using the Cubit GUI, is the manual process
 * Toggle clipping plan to visualize the surfaces of both files.
 
 ![step01](figs/step01.png)
+> *Figure 2. Cubit GUI visualizaton of the two input files listed above, with a mid-plane cut view.*
 
 Command Panel Steps | Image
 -- | --
@@ -37,10 +33,12 @@ Image: | ![step02](figs/step02.png)
 * See blue outline with dots, indicating the bounding box
 
 ![step03](figs/step03.png)
+> *Figure 3. Blue outline indicating the Sculpt domain.*
 
 * Click the Mesh button
 
 ![step04](figs/step04.png)
+> *Figure 4. Domains meshed with Sculpt.*
 
 ### Nodesets
 
@@ -87,3 +85,54 @@ all | inner | outer
 -- | `draw nodeset 3` | `draw nodeset 2`
 -- | ![draw_nodeset_3](figs/draw_nodeset_3.png) | ![draw_nodeset_2](figs/draw_nodeset_2.png)
 1477 total (volume) |  98 nodes (surface) | 482 nodes (surface)
+
+## Automation on HPC
+
+```bash
+hpc $
+python3 --version # 3.6.8, we need 3.7.x
+module avail
+module load alegra/anaconda/3.7
+python --version
+Python 3.7.11
+cd ~/autotwin/mesh
+python -m venv .venv
+source activate .venv/bin/activate
+
+(.venv) $
+(.venv) pip list
+Package    Version
+---------- -------
+pip        20.1.1
+setuptools 47.1.0
+
+# set the pypi proxy if needed
+# reference:
+# https://github.com/hovey/pipe/blob/master/pip/pip_pypi_proxy.md
+
+python -m pip install --upgrade pip
+
+python -m pip install -e .  # note: `-e .` = `--editable .`
+
+pytest -v
+
+version
+autotwin mesh module version:
+0.0.7
+```
+
+Modify the input `.yml` file line:
+
+```bash
+# from
+cubit_path: "/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
+
+# to
+cubit_path: "/projects/cubit/Cubit-16.08/cubit"
+```
+
+Run the Python script:
+
+```bash
+sculpt_stl_to_inp tests/files/two_spheres.yml
+``
