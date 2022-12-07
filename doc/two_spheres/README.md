@@ -92,12 +92,14 @@ all | inner | outer
 ssh -X <remote.hostname>
 hpc $
 python3 --version # 3.6.8, we need 3.7.x
-module avail
-module load alegra/anaconda/3.7
-python --version
-Python 3.7.11
+# module avail
+# module load alegra/anaconda/3.7
+# python --version
+# Python 3.7.11
+/projects/cubit/Cubit-16.08/bin/python3/python3.7 --version
+Python 3.7.9
 cd ~/autotwin/mesh
-python -m venv .venv
+/projects/cubit/Cubit-16.08/bin/python3/python3.7 -m venv .venv
 source activate .venv/bin/activate
 
 (.venv) $
@@ -106,6 +108,8 @@ Package    Version
 ---------- -------
 pip        20.1.1
 setuptools 47.1.0
+WARNING: You are using pip version 20.1.1; however, version 22.3.1 is available.
+You should consider upgrading via the '/home/chovey/autotwin/mesh/.venv/bin/python3.7 -m pip install --upgrade pip' command.
 
 # set the pypi proxy if needed
 # reference:
@@ -149,9 +153,18 @@ Alternatively (when graphics are desired, and with `-X` for X11 forwarding `on` 
 Load mpi modules:
 
 ```bash
-module load sierra
+module load sierra # to get openmpi-intel/4.0
 The following have been reloaded with a version change:
   1) intel/16.0 => intel/21.3.0     2) openmpi-intel/1.10 => openmpi-intel/4.0
+```
+
+or, just load the openmpi-intel/4.0 directly:
+
+```bash
+module load openmpi-intel/4.0
+
+The following have been reloaded with a version change:
+  1) openmpi-intel/1.10 => openmpi-intel/4.0
 ```
 
 Run the Python script:
