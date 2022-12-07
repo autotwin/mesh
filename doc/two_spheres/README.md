@@ -89,6 +89,7 @@ all | inner | outer
 ## Automation on HPC
 
 ```bash
+ssh -X <remote.hostname>
 hpc $
 python3 --version # 3.6.8, we need 3.7.x
 module avail
@@ -131,10 +132,18 @@ cubit_path: "/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
 cubit_path: "/projects/cubit/Cubit-16.08/bin"
 ```
 
-Make sure command line Cubit without the GUI runs:
+Make sure command line Cubit without the GUI (without graphics) runs:
 
 ```bash
 /projects/cubit/Cubit-16.08/cubit -nogui
+/projects/cubit/cubit -nogui -nographics # alternative
+/projects/cubit/Cubit-16.08/bin/cubit -nogui # alternative
+```
+
+Alternatively (when graphics are desired, and with `-X` for X11 forwarding `on` from ssh command (above):
+
+```bash
+/projects/cubit/Cubit-16.08/cubit
 ```
 
 Load mpi modules:
