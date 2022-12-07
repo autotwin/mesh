@@ -128,7 +128,21 @@ Modify the input `.yml` file line:
 cubit_path: "/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
 
 # to
-cubit_path: "/projects/cubit/Cubit-16.08/cubit"
+cubit_path: "/projects/cubit/Cubit-16.08/bin"
+```
+
+Make sure command line Cubit without the GUI runs:
+
+```bash
+/projects/cubit/Cubit-16.08/cubit -nogui
+```
+
+Load mpi modules:
+
+```bash
+module load sierra
+The following have been reloaded with a version change:
+  1) intel/16.0 => intel/21.3.0     2) openmpi-intel/1.10 => openmpi-intel/4.0
 ```
 
 Run the Python script:
