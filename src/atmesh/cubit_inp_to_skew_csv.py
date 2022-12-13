@@ -39,8 +39,9 @@ import sys
 
 import atmesh.yml_to_dict as translator
 import atmesh.command_line as cl
-#import yml_to_dict as translator
-#import command_line as cl
+
+# import yml_to_dict as translator
+# import command_line as cl
 
 
 def translate(*, path_file_input: str) -> int:
