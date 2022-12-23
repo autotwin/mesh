@@ -246,7 +246,7 @@ After:
 And in the `~/autotwin/mesh/.venv` file:
 
 ```
-PYTHONPATH="/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
+PYTHONPATH="/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
 ```
 
 which, in `some_source_file.py` Python files, allows
