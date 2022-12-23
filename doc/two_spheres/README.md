@@ -59,6 +59,43 @@ import mesh "mesh.g" no_geom
 nodeset 1 add  node in face in sideset 1
 ```
 
+### Enhanced Features
+
+Below, we explore advanced features, such as *adaptivity* and *pillowing*, on a cube and on the two spheres models.
+
+```bash
+Cubit>
+help sculpt
+brick x 20
+view iso
+draw block all
+graphics clip off
+graphics clip on location position 1 0 0 direction vector -1 0 0 # brick
+graphics clip on location position -1 0 0 direction vector 1 0 0 # sphere
+view left
+view right
+up 0 1 0
+graphics perspective off
+graphics clip manipulation off
+graphics clip manipulation on
+```
+
+description | graphics | graphics/command
+-- | -- | --
+baseline 1 | ![cube_adapt_1](figs/cube_adapt_1.png) | ![cube_adapt_1_cut](figs/cube_adapt_1_cut.png)
+-> | -> | `sculpt parallel volume all size 2 box location position -16.001 -16 -16.001 location position 15.999 16 15.999 adapt_type 1 adapt_levels 3 `
+baseline 2 | ![cube_adapt_2](figs/cube_adapt_2.png) | ![cube_adapt_2_cut](figs/cube_adapt_2_cut.png)
+-> | -> | `sculpt parallel volume all size 2 box location position -16.001 -16 -16.001 location position 15.999 16 15.999 adapt_type 2 adapt_levels 3 `
+baseline 3 | ![cube_adapt_3](figs/cube_adapt_3.png) | ![cube_adapt_3_cut](figs/cube_adapt_3_cut.png)
+-> | -> | `sculpt parallel volume all size 2 box location position -16.001 -16 -16.001 location position 15.999 16 15.999 adapt_type 3 adapt_levels 3 `
+baseline 4 | ![cube_adapt_4](figs/cube_adapt_4.png) | ![cube_adapt_4_cut](figs/cube_adapt_4_cut.png)
+-> | -> | `sculpt parallel volume all size 2 box location position -16.001 -16 -16.001 location position 15.999 16 15.999 adapt_type 4 adapt_levels 3 `
+baseline sphere | ![baseline](figs/baseline.png) | see above view `.yml` file
+pillow (layers 3, smooth) | ![pillow](figs/pillow_layer_3_smooth.png) | `sculpt parallel volume all size 2 box location position -16 -16 -16 location position 16 16 16 pillow 1`
+adapt 1 | ![adapt_1](figs/adapt_1.png) | `sculpt parallel volume all size 2 box location position -16.001 -16 -16.001 location position 15.999 16 15.999 adapt_type 1 adapt_levels 3`
+adapt 2 | ![adapt_2](figs/adapt_2.png) | `sculpt parallel volume all size 2 box location position -16.001 -16 -16.001 location position 15.999 16 15.999 adapt_type 2 adapt_levels 3`
+adapt 3 | ![adapt_3](figs/adapt_3.png) | `sculpt parallel volume all size 2 box location position -16.001 -16 -16.001 location position 15.999 16 15.999 adapt_type 3 adapt_levels 3`
+
 ## Automated mesh generation
 
 Create a `.inp` file using [`two_spheres.yml`](../../tests/files/two_spheres.yml)
