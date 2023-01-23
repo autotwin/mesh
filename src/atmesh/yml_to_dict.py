@@ -1,4 +1,4 @@
-"""This module converts a yml file into a dictionary, while
+"""This module converts a yml file into a dictionary, while also
 assuring the yml file has the correct version number and correct
 key(s) present in the file.
 """
