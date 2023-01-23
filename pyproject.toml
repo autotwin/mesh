@@ -39,6 +39,8 @@ dependencies = [
 # Entry Points
 # https://setuptools.pypa.io/en/latest/userguide/entry_point.html
 [project.scripts]
+atmesh="atmesh.command_line:atmesh"
+atmeshinfo="atmesh.command_line:atmeshinfo"
 version="atmesh.command_line:version"
 cubit_inp_to_minsj_csv="atmesh.cubit_inp_to_minsj_csv:main"
 sculpt_stl_to_inp="atmesh.sculpt_stl_to_inp:main"

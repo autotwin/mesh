@@ -386,3 +386,16 @@ draw block all
 
 ![quick_test_sculpt_003](figs/quick_test_sculpt_003.png)
 ![quick_test_sculpt_004](figs/quick_test_sculpt_004.png)
+
+## Developer Mode
+
+```bash
+Cubit> set developer on # for in-development GUI
+```
+
+## Help
+
+* Streaming [Channel](https://wp.sandia.gov/digital-ops/) channels, CompSim, Sculpt
+* CompSim [knowledge base](https://sems-atlassian-srn.sandia.gov/servicedesk/customer/portal/6)
+* Teams channel, CompSim Community, Geometry and Meshing
+* Office Hours Mondays 1530-1630 hr

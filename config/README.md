@@ -3,7 +3,9 @@
 ## Overview
 
 * Install Cubit, which contains Sculpt, a part of the workflow.  Follow the [local installation](cubit-local-installation.md) instructions.
-* Configure the local machine with a virtual environment ("venv") named `autotwin_env`.  
+* Configure the local machine with a virtual environment ("venv") named `.venv`.
+  * Some historical documents may show the virtual environment name as `atmesh_env`, which is the deprecated name.
+  * The name `.venv` is now preferred since VS Code looks for this naming patttern to automatically load the environment on VS Code start up.
 * Create a `pyproject.toml` to configure the `atmesh` package.
 * Install the `atmesh` module in developer mode (aka "editable").
 * Assess unit tests and code coverage of the `atmesh` module.
@@ -244,7 +246,7 @@ After:
 And in the `~/autotwin/mesh/.venv` file:
 
 ```
-PYTHONPATH="/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
+PYTHONPATH="/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
 ```
 
 which, in `some_source_file.py` Python files, allows
