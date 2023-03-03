@@ -1,10 +1,10 @@
 """This module is a unit test for the facet to object file translation.
 
 To run:
-(atmeshenv) ~/autotwin/mesh> pytest tests/test_fac_to_obj.py -v
+(.venv) ~/autotwin/mesh> pytest tests/test_fac_to_obj.py -v
 
 For coverage:
-(atmeshenv) ~/autotwin/mesh> pytest tests/test_fac_to_obj.py --cov=src/atmesh --cov-report term-missing
+(.venv) ~/autotwin/mesh> pytest tests/test_fac_to_obj.py --cov=src/atmesh --cov-report term-missing
 """
 
 import hashlib

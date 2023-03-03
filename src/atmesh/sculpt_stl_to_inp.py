@@ -2,25 +2,26 @@
 Cubit's Sculpt functionality.
 
 Prerequisites:
-* Python 3.7.4 is required to run Cubit 16.08 and Sculpt.
-* We actually use Python 3.7.9 successfully for now.
+* ~~Python 3.7.4 is required to run Cubit 16.08 and Sculpt.~~
+* ~~We actually use Python 3.7.9 successfully for now.~~
+* 2023-03-03: Upgrade to Sculpt 16.10, and use with Python 3.11
 
 Methods:
 > cd ~/autotwin/mesh/src/atmesh
 
 * Interactive Method
-# > /usr/local/bin/python3.7 sculpt_stl_to_inp.py <input_file>.yml
+# > /usr/local/bin/python3.11 sculpt_stl_to_inp.py <input_file>.yml
 > python --version
-  Python 3.7.9
+  Python 3.11.2
 > python sculpt_stl_to_inp.py <input_file>.yml
 
 * Log Method
-# > /usr/local/bin/python3.7 sculpt_stl_to_inp.py <input_file>.yml > sculpt_stl_to_inp.log
+# > /usr/local/bin/python3.11 sculpt_stl_to_inp.py <input_file>.yml > sculpt_stl_to_inp.log
 > python sculpt_stl_to_inp.py <input_file>.yml > sculpt_stl_to_inp.log
 
 Example 1:
 # activate the atmesh virtual environment
-~/autotwin/mesh> source atmeshenv/bin/activate.fish # (atmeshenv) uses Python 3.7
+~/autotwin/mesh> source atmeshenv/bin/activate.fish # (.venv) uses Python 3.11
 (.venv) ~/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py tests/files/sphere.yml
 
 Example 2:

@@ -2,11 +2,11 @@
 scaled Jacobian .csv file output via Cubit translation.
 
 To run:
-(atmeshenv) ~/autotwin/mesh> pytest tests/test_cubit_inp_to_minsj_csv.py -v
-(atmeshenv) ~/autotwin/mesh> pytest tests/test_cubit_inp_to_minsj_csv.py -vs  # --capture=no
+(.venv) ~/autotwin/mesh> pytest tests/test_cubit_inp_to_minsj_csv.py -v
+(.venv) ~/autotwin/mesh> pytest tests/test_cubit_inp_to_minsj_csv.py -vs  # --capture=no
 
 For coverage:
-(atmeshenv) ~/autotwin/mesh> pytest tests/test_cubit_inp_to_minsj_csv.py --cov=src/atmesh --cov-report term-missing
+(.venv) ~/autotwin/mesh> pytest tests/test_cubit_inp_to_minsj_csv.py --cov=src/atmesh --cov-report term-missing
 """
 
 

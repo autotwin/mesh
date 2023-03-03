@@ -4,7 +4,7 @@
 
 * Install Cubit, which contains Sculpt, a part of the workflow.  Follow the [local installation](cubit-local-installation.md) instructions.
 * Configure the local machine with a virtual environment ("venv") named `.venv`.
-  * Some historical documents may show the virtual environment name as `atmesh_env`, which is the deprecated name.
+  * Some historical documents may show the virtual environment name as `atmesh_env`, the deprecated name.
   * The name `.venv` is now preferred since VS Code looks for this naming patttern to automatically load the environment on VS Code start up.
 * Create a `pyproject.toml` to configure the `atmesh` package.
 * Install the `atmesh` module in developer mode (aka "editable").
@@ -20,18 +20,51 @@
   * The `atmesh` repo is cloned into that `autotwin` folder.
 * VS Code [Using Python environments in VS Code](https://code.visualstudio.com/docs/python/environments)
 
-### Within the `autotwin/mesh` folder, install the `venv`
+### Upgrade Python
+
+* 2022-03-03: Upgrade from Python version 3.7 to 3.11.  See Python [downloads](https://www.python.org/downloads/) page.
+* Accept default install location: `python3.11@ -> ../../../Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11`
 
 ```bash
 cd ~/autotwin/mesh
 
 # python3 -m pip install --upgrade pip setuptools wheel
-/usr/local/bin/python3.7 -m pip install --upgrade pip setuptools wheel
+/usr/local/bin/python3.11 -m pip install --upgrade pip setuptools wheel
 
+Looking in indexes: https://nexus.web.sandia.gov/repository/pypi-proxy/simple
+Requirement already satisfied: pip in /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages (22.3.1)
+Collecting pip
+  Using cached https://nexus.web.sandia.gov/repository/pypi-proxy/packages/pip/23.0.1/pip-23.0.1-py3-none-any.whl (2.1 MB)
+Requirement already satisfied: setuptools in /Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages (65.5.0)
+Collecting setuptools
+  Using cached https://nexus.web.sandia.gov/repository/pypi-proxy/packages/setuptools/67.4.0/setuptools-67.4.0-py3-none-any.whl (1.1 MB)
+Collecting wheel
+  Using cached https://nexus.web.sandia.gov/repository/pypi-proxy/packages/wheel/0.38.4/wheel-0.38.4-py3-none-any.whl (36 kB)
+Installing collected packages: wheel, setuptools, pip
+  WARNING: The script wheel is installed in '/Library/Frameworks/Python.framework/Versions/3.11/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 65.5.0
+    Uninstalling setuptools-65.5.0:
+      Successfully uninstalled setuptools-65.5.0
+  Attempting uninstall: pip
+    Found existing installation: pip 22.3.1
+    Uninstalling pip-22.3.1:
+      Successfully uninstalled pip-22.3.1
+  WARNING: The scripts pip, pip3 and pip3.11 are installed in '/Library/Frameworks/Python.framework/Versions/3.11/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed pip-23.0.1 setuptools-67.4.0 wheel-0.38.4
+```
+
+### Within the `autotwin/mesh` folder, install the `venv`
+
+Note: If `.venv` already exists from previous installs, then remove it with `rm -rf .venv/`.
+
+````bash
 # python3 -m venv autotwin_env  # create a virtual environment
 # VS Code docs reference:
 # https://code.visualstudio.com/docs/python/environments#_create-a-virtual-environment
-/usr/local/bin/python3.7 -m venv .venv  # create a virtual environment
+/usr/local/bin/python3.11 -m venv .venv  # create a virtual environment
 
 # activate the venv with one of the following:
 source .venv/bin/activate # for bash shell
@@ -39,32 +72,22 @@ source .venv/bin/activate.csh # for c shell
 source .venv/bin/activate.fish # for fish shell
 source .venv/bin/Activate.fish # for powershell
 
-python --version  # Python 3.7.9, which is the version required by Cubit
+python --version  # Python 3.11.2 (Cubit 16.10 supports Python 3.6 through Python 3.11)
 
 pip list
 
 Package    Version
 ---------- -------
-pip        20.1.1
-setuptools 47.1.0
-WARNING: You are using pip version 20.1.1; however, version 22.2.2 is available.
-You should consider upgrading via the '/Users/cbh/autotwin/mesh/.venv/bin/python3.7 -m pip install --upgrade pip' command.
-(.venv) cbh@atlas/Users/cbh/autotwin/mesh>
+pip        22.3.1
+setuptools 65.5.0
 
-python -m pip install --upgrade pip
+[notice] A new release of pip available: 22.3.1 -> 23.0.1
+[notice] To update, run: pip install --upgrade pip
 
-Collecting pip
-  Using cached pip-22.2.2-py3-none-any.whl (2.0 MB)
-Installing collected packages: pip
-  Attempting uninstall: pip
-    Found existing installation: pip 20.1.1
-    Uninstalling pip-20.1.1:
-      Successfully uninstalled pip-20.1.1
-Successfully installed pip-22.2.2
-(.venv) cbh@atlas/Users/cbh/autotwin/mesh>
+pip install --upgrade pip
 ```
 
-### Install `atmesh` as a developer
+### Install the `atmesh` module as a developer
 
 Reference: https://packaging.python.org/en/latest/tutorials/packaging-projects/
 
@@ -89,49 +112,45 @@ Installing from a local source tree, reference:
 
 ```bash
 # create an editable install (aka development mode)
-python -m pip install -e .  # note: `-e .` = `--editable .`
+pip install -e .  # note: `-e .` = `--editable .`
 ```
 
 At the time of this writing, the current version of `atmesh` is shown below.  Your version may be newer.  Post-install package status:
 
 ```bash
-(.venv) cbh@atlas/Users/cbh/autotwin/mesh> pip list
-Package            Version Editable project location
------------------- ------- -------------------------
-atmesh             0.0.7   /Users/cbh/autotwin/mesh
-attrs              22.1.0
-black              22.6.0
-click              8.1.3
-coverage           6.4.4
-cycler             0.11.0
-flake8             5.0.4
-fonttools          4.35.0
-importlib-metadata 4.2.0
-iniconfig          1.1.1
-kiwisolver         1.4.4
-matplotlib         3.5.3
-mccabe             0.7.0
-mypy-extensions    0.4.3
-numpy              1.21.6
-packaging          21.3
-pathspec           0.9.0
-Pillow             9.2.0
-pip                22.2.2
-platformdirs       2.5.2
-pluggy             1.0.0
-py                 1.11.0
-pycodestyle        2.9.1
-pyflakes           2.5.0
-pyparsing          3.0.9
-pytest             7.1.2
-pytest-cov         3.0.0
-python-dateutil    2.8.2
-setuptools         47.1.0
-six                1.16.0
-tomli              2.0.1
-typed-ast          1.5.4
-typing_extensions  4.3.0
-zipp               3.8.1
+pip list
+Package         Version Editable project location
+--------------- ------- ---------------------------
+atmesh          0.0.7   /Users/chovey/autotwin/mesh
+attrs           22.2.0
+black           22.6.0
+click           8.1.3
+contourpy       1.0.7
+coverage        7.2.1
+cycler          0.11.0
+flake8          6.0.0
+fonttools       4.38.0
+iniconfig       2.0.0
+kiwisolver      1.4.4
+matplotlib      3.7.0
+mccabe          0.7.0
+mypy-extensions 1.0.0
+numpy           1.24.2
+packaging       23.0
+pathspec        0.11.0
+Pillow          9.4.0
+pip             23.0.1
+platformdirs    3.0.0
+pluggy          1.0.0
+pycodestyle     2.10.0
+pyflakes        3.0.1
+pyparsing       3.0.9
+pytest          7.2.1
+pytest-cov      4.0.0
+python-dateutil 2.8.2
+PyYAML          6.0
+setuptools      65.5.0
+six             1.16.0
 ```
 
 Note that `pytest` and `pytest-cov` are already installed since they are required in the `pyproject.toml` file.
@@ -157,11 +176,8 @@ Run from the REPL:
 
 ```bash
 (.venv) cbh@atlas/Users/cbh/autotwin/mesh> python --version
-Python 3.7.9
+Python 3.11.2
 (.venv) cbh@atlas/Users/cbh/autotwin/mesh> python
-Python 3.7.9 (v3.7.9:13c94747c7, Aug 15 2020, 01:31:08)
-[Clang 6.0 (clang-600.0.57)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
 >>> from atmesh import hello as hh
 >>> dir(hh)
 ['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'add_two', 'adios', 'bubble_sort', 'hello']
@@ -170,10 +186,39 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> quit()
 ```
 
+**2022-03-03** Stop.  Hit error:
+
+```bash
+tests/test_sculpt_stl_to_inp.py:116:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src/atmesh/sculpt_stl_to_inp.py:124: in translate
+    import cubit
+/Applications/Cubit-16.10/Cubit.app/Contents/MacOS/cubit.py:6: in <module>
+    from cubit3 import *
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    # This file was automatically generated by SWIG (https://www.swig.org).
+    # Version 4.1.0
+    #
+    # Do not make changes to this file unless you know what you are doing - modify
+    # the SWIG interface file instead.
+
+    from sys import version_info as _swig_python_version_info
+    # Import the low-level C/C++ module
+    if __package__ or "." in __name__:
+        from . import _cubit3
+    else:
+>       import _cubit3
+E       ImportError: dlopen(/Applications/Cubit-16.10/Cubit.app/Contents/MacOS/_cubit3.so, 0x0002): tried: '/Applications/Cubit-16.10/Cubit.app/Contents/MacOS/_cubit3.so' (mach-o file, but is an incompatible architecture (have 'x86_64', need 'arm64')), '/System/Volumes/Preboot/Cryptexes/OS/Applications/Cubit-16.10/Cubit.app/Contents/MacOS/_cubit3.so' (no such file), '/Applications/Cubit-16.10/Cubit.app/Contents/MacOS/_cubit3.so' (mach-o file, but is an incompatible architecture (have 'x86_64', need 'arm64'))
+
+/Applications/Cubit-16.10/Cubit.app/Contents/MacOS/cubit3.py:12: ImportError
+```
+
+
 Run the tests with `pytest`:
 
 ```bash
-(.venv) cbh@atlas/Users/cbh/autotwin/mesh> pytest -v
+pytest -v
 ================================================================ test session starts =================================================================
 platform darwin -- Python 3.7.9, pytest-7.1.2, pluggy-1.0.0 -- /Users/cbh/autotwin/mesh/autotwin_env/bin/python
 cachedir: .pytest_cache
