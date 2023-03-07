@@ -42,7 +42,7 @@ Thank you for your response. I have managed to run cubit python command on M1 ma
 3. To make sure what machine platform is using: python -c "import platform;print(platform.machine())"
 ```
 
-Example:
+Use `arch -x86_64` prefix (do not use conda, as suggested above).  Example:
 
 ```bash
 Users/chovey/autotwin/mesh> source .venv/bin/activate.fish
