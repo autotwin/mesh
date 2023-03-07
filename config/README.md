@@ -25,6 +25,44 @@
 * 2022-03-03: Upgrade from Python version 3.7 to 3.11.  See Python [downloads](https://www.python.org/downloads/) page.
 * Accept default install location: `python3.11@ -> ../../../Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11`
 
+From T.H. 2023-03-06:
+
+> CUBIT 16.10 now supports Python 3.6 through Python 3.11 - apart from macs with M1 chips. This story is in the backlog.
+> Another M1 user was able to workaround as follows:
+
+```bash
+Thank you for your response. I have managed to run cubit python command on M1 mac terminal by creating a separate conda environment with x86_64 python packages. For your reference here what I have done for the installation:
+
+1. Install anaconda / miniconda / miniforge (if it is not present)
+2. On a terminal type and execute:
+   a. CONDA_SUBDIR=osx-64 conda create -n cubit_x86 python=3.7
+   b. conda activate cubit_x86
+   c. conda config --env --set subdir osx-64
+3. To make sure what machine platform is using: python -c "import platform;print(platform.machine())"
+```
+
+
+Example:
+
+```bash
+Users/chovey/autotwin/mesh> source .venv/bin/activate.fish
+
+(.venv) Users/chovey/autotwin/mesh> python --version
+Python 3.11.2
+
+(.venv) Users/chovey/autotwin/mesh> python -c "import platform; print(platform.machine())"
+arm64
+
+(.venv) Users/chovey/autotwin/mesh> python3.7 -c "import platform; print(platform.machine())"
+x86_64
+
+(.venv) Users/chovey/autotwin/mesh> arch -x86_64 python -c "import platform; print(platform.machine())"
+x86_64
+
+```
+
+Then:
+
 ```bash
 cd ~/autotwin/mesh
 
