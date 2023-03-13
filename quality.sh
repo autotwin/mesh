@@ -13,7 +13,8 @@
 # pytest --cov=geo/src/ptg  --cov-report term-missing
 
 # current context: autotwin repos, either `atmesh` or `atpixel`
-pytest --cov=atmesh --cov-report term-missing
 # pytest --cov=atpixel  --cov-report term-missing
+# pytest --cov=atmesh --cov-report term-missing
+arch -x86_64 pytest --cov=atmesh --cov-report term-missing
 
 # sleep 5
