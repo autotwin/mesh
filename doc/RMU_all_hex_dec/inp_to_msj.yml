@@ -1,0 +1,17 @@
+# User input for use with atmesh.cubit_inp_to_minsj_csv.py module
+#
+# required
+version: 1.3
+cubit_path: "/Applications/Cubit-16.10/Cubit.app/Contents/MacOS"
+working_dir: "~/Downloads/scratch/all_hex_dec"
+#
+# input .inp file
+inp_path_file: "~/Downloads/scratch/all_hex_dec/All_Hex_Dec.inp"
+#
+# output .csv file
+csv_path_file: "~/Downloads/scratch/all_hex_dec/msj.csv"
+#
+# optional (with default values)
+#
+# Cubit
+journaling: False # boolean, True (default): Cubit writes cubit01.jou-style log files

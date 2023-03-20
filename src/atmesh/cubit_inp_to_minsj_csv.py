@@ -2,13 +2,14 @@
 of minimum scaled Jacobian of the mesh.
 
 Prerequisites:
-* Cubit 16.08
-* Python 3.7.x
+* Cubit 10.10 (deprecated 2023-03-13: Cubit 16.08)
+* Python 3.11 (deprecated 2023-03-13: Python 3.7.x)
 
 Methods (example):
 > cd ~/autotwin/mesh/src/mesh
-~/autotwin/mesh> source atmeshenv/bin/activate.fish # (atmeshenv) uses Python 3.7
-(atmeshenv) ~/autotwin/mesh> python src/atmesh/cubit_inp_to_minsj_csv.py tests/files/sphere_minsj.yml
+~/autotwin/mesh> source atmeshenv/bin/activate.fish # (atmeshenv) uses Python 3.11
+# (atmeshenv) ~/autotwin/mesh> python src/atmesh/cubit_inp_to_minsj_csv.py tests/files/sphere_minsj.yml
+(atmeshenv) ~/autotwin/mesh> arch -x86_64 python src/atmesh/cubit_inp_to_minsj_csv.py tests/files/sphere_minsj.yml
 
 Reference:
 Cubit Python Interface at Corform
