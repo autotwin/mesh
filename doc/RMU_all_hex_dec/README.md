@@ -427,3 +427,9 @@ ERROR: Malformed element.
 Min. Scaled Jacobian Mesh | Min. Scaled Jacobian Histogram
 :--: | :--: 
 ![](figs/block_12_msj.png) | ![](figs/block_12_msj_histogram.png)
+
+## 2023-03-23
+
+Additional [RMU analysis](2023-03-23-Wangy-Cubit_Negative_Jacobian.pdf).
+
+
