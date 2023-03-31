@@ -430,6 +430,13 @@ Min. Scaled Jacobian Mesh | Min. Scaled Jacobian Histogram
 
 ## 2023-03-23
 
-Additional [RMU analysis](2023-03-23-Wangy-Cubit_Negative_Jacobian.pdf).
+Additional [RMU analysis](2023-03-23-Wangy-Cubit_Negative_Jacobian.pdf), by Yaohui Wang.
 
-
+```bash
+Cubit>
+import abaqus mesh geometry "/Users/chovey/Downloads/scratch/all_hex_dec/All_Hex_Dec.inp" feature_angle 135.00
+quality hex all jacobian global high 0 draw mesh
+# focus on element 772,179
+quality hex 772179 jacobian global high -0.1 draw mesh
+quality hex 772179 aspect ratio global high 100 draw mesh
+```
