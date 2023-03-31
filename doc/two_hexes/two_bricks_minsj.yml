@@ -1,0 +1,19 @@
+# User input for use with atmesh.cubit_inp_to_minsj_csv.py module
+#
+# required
+version: 1.4
+cubit_path: "/Applications/Cubit-16.10/Cubit.app/Contents/MacOS"
+working_dir: "~/autotwin/mesh/doc/two_hexes"
+# stl_path_files:
+#   - "~/autotwin/mesh/doc/two_hexes/two_bricks.stl"
+#
+# input .inp file
+inp_path_file: "~/autotwin/mesh/doc/two_hexes/two_bricks.inp"
+#
+# output .csv file
+csv_path_file: "~/autotwin/mesh/doc/two_hexes/two_bricks_msj.csv"
+#
+# optional (with default values)
+#
+# Cubit
+journaling: False # boolean, True (default): Cubit writes cubit01.jou-style log files

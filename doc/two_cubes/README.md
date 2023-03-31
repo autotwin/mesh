@@ -4,7 +4,7 @@ In Cubit, create a cube of side length 10 length units.
 
 ```bash
 Cubit> 
-create brick x 10
+brick x 10
 export stl "/Users/chovey/autotwin/mesh/doc/two_cubes/cube_side_length_10.stl"  overwrite 
 ```
 
@@ -19,7 +19,7 @@ Create a cube of side length 20 length units.
 
 ```bash
 Cubit> 
-create brick x 20
+brick x 20
 export stl "/Users/chovey/autotwin/mesh/doc/two_cubes/cube_side_length_20.stl"  overwrite 
 ```
 
