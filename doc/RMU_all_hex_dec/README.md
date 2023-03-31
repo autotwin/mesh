@@ -17,7 +17,7 @@ Create [inp_to_msj.yml](inp_to_msj.yml).
 ~/autotwin/mesh> source .venv/bin/activate.fish
 
 # convert .inp to minsj .csv
-(.venv) ~/autotwin/mesh> arch -x86_64 python src/atmesh/cubit_inp_to_minsj_csv.py doc/all_hex_dec/inp_to_msj.yml
+(.venv) ~/autotwin/mesh> arch -x86_64 python src/atmesh/cubit_inp_to_minsj_csv.py doc/RMU_all_hex_dec/inp_to_msj.yml
 ```
 
 Errors occurred in the conversion, see [output_excerpt.log](output_excerpt.log)
