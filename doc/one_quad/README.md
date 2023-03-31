@@ -40,7 +40,7 @@ test | filename | image | MSJ
 2 | [one_quad_shear.inp](one_quad_shear.inp) | ![one_quad_shear](figs/one_quad_shear.png) | `0.7071067811865476`
 3 | [one_quad_trapezoid.inp](one_quad_trapezoid.inp) | ![one_quad_trapezoid](figs/one_quad_trapezoid.png) | `0.8944271909999159`
 4 | [one_quad_extended.inp](one_quad_extended.inp) | ![one_quad_extended](figs/one_quad_extended.png) | `0.8000000000000000`
-5 | [one_quad_tri_positive.inp](one_quad_tri_positive.png) | ![one_quad_tri_positive](figs/one_quad_tri_positive.png) | `0.38461538461538486`
+5 | [one_quad_tri_positive.inp](one_quad_tri_positive.inp) | ![one_quad_tri_positive](figs/one_quad_tri_positive.png) | `0.38461538461538486`
 6 | [one_quad_tri_negative.inp](one_quad_tri_negative.inp) | ![one_quad_tri_negative](figs/one_quad_tri_negative.png) | `-0.38461538461538486`
 7 | [one_quad_near_collapse.inp](one_quad_near_collapse.inp) | ![one_quad_near_collapse](figs/one_quad_near_collapse.png) | `-0.9756097560975608`
 8 | [one_quad_bowtie.inp](one_quad_bowtie.inp) | ![one_quad_bowtie](figs/one_quad_bowtie.png) | `-0.7071067811865475`
