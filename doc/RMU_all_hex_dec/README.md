@@ -430,7 +430,10 @@ Min. Scaled Jacobian Mesh | Min. Scaled Jacobian Histogram
 
 ## 2023-03-23
 
-Additional [RMU analysis](2023-03-23-Wangy-Cubit_Negative_Jacobian.pdf), by Yaohui Wang.
+Additional RMU analysis, by Yaohui Wang
+
+* [2023-03-23](2023-03-23-Wangy-Cubit_Negative_Jacobian.pdf)
+* [2023-04-03](2023-04-03-Mesh-negative-Jacobian.pptx)
 
 ```bash
 Cubit>

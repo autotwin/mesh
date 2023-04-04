@@ -2,6 +2,8 @@
 
 ## Base Case
 
+With Cubit, we create a geometry, create a single element mesh, and export the file in the ABAQUS `.inp` file format.
+
 ```bash
 Cubit>
 create surface rectangle width 10 height 10 zplane
@@ -35,7 +37,7 @@ Based on
 
 
 test | filename | image | MSJ
-:--: | :-- | :--: | :--
+:--: | :-- | :--: | --:
 1 | [one_quad_undeformed.inp](one_quad_undeformed.inp) | ![one_quad_undeformed](figs/one_quad_undeformed.png) | `1.0000000000000000`
 2 | [one_quad_shear.inp](one_quad_shear.inp) | ![one_quad_shear](figs/one_quad_shear.png) | `0.7071067811865476`
 3 | [one_quad_trapezoid.inp](one_quad_trapezoid.inp) | ![one_quad_trapezoid](figs/one_quad_trapezoid.png) | `0.8944271909999159`
