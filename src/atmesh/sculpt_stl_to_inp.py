@@ -32,6 +32,7 @@ Example 2:
 import argparse
 from pathlib import Path
 import sys
+from typing import Final
 
 import atmesh.yml_to_dict as translator
 import atmesh.command_line as cl
@@ -41,8 +42,8 @@ def translate(*, path_file_input: str) -> bool:
     completed = False
     # from typing import Final # Final is new in Python 3.8, Cubit uses 3.7
 
-    # atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
-    atmesh: str = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
+    atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
+    # atmesh: str = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
 
     print(f"{atmesh} This is {Path(__file__).resolve()}")
 
@@ -77,7 +78,8 @@ def translate(*, path_file_input: str) -> bool:
     cell_size = float(user_input["cell_size"])
 
     journaling = user_input.get("journaling", False)
-    n_proc = user_input.get("n_proc", 4)  # number of parallel processors
+    n_proc_default: Final[int] = 4
+    n_proc = user_input.get("n_proc", n_proc_default)  # number of parallel processors
 
     # bounding_box = user_input.get("bounding_box", False)  # dict | False
     bounding_box_specified = "bounding_box" in user_input
@@ -183,7 +185,7 @@ def translate(*, path_file_input: str) -> bool:
         #                  input_mesh_and_free_surfaces (7)
         #                  rve_variable (8)
         #                  input_mesh (9)
-        enum_variable_sidesets = 2
+        enum_variable_sidesets: Final[int] = 2
         cc = (
             f"sculpt parallel processors {n_proc} gen_sidesets {enum_variable_sidesets}"
         )

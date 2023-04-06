@@ -39,8 +39,22 @@ Previous Results | New Results
 ![box_whisker](../T1_Utah_SCI_brain/figs/box_plots.png) | ![box_plots_rmu.png](box_plots_rmu.png) 
 Figure 1: Coarse (32,248 elements) and refined (244,136 elements) mesh quality minimum scaled Jacobian distribution for the Utah SCI Brain Model. | Figure 2: Comparison of Utah model (left, element count 244,136) versus the RMU model (right, element count 1,171,570) minimum scaled Jacobian.
 
+AVOID importing the geometry, it takes too long: 
+
+~~`import abaqus mesh geometry "/Users/chovey/Downloads/scratch/all_hex_dec/All_Hex_Dec.inp" feature_angle 135.00 nobcs`~~
+
+```bash
+CUBIT>
+import abaqus "/Users/chovey/Downloads/scratch/all_hex_dec/All_Hex_Dec.inp"
+
+# Reading Abaqus input file '/Users/chovey/Downloads/scratch/all_hex_dec/All_hex_dec.inp'...
+# Processing 3229156 lines the file...
+```
+
 ```bash
 CUBIT> 
+
+
 # didn't work:
 # quality hex all scaled jacobian histogram
 
@@ -75,16 +89,6 @@ Min. Scaled Jacobian Mesh | Min. Scaled Jacobian Histogram
 :--: | :--: 
 ![](figs/min_scaled_jacobian_on_mesh.png) | ![](figs/min_scaled_jacobian_histogram.png) 
 
-```bash
-CUBIT>
-import abaqus mesh geometry "/Users/chovey/Downloads/scratch/all_hex_dec/All_Hex_Dec.inp" feature_angle 135.00 nobcs
-
-# Reading Abaqus input file '/Users/chovey/Downloads/scratch/all_hex_dec/All_hex_dec.inp'...
-# Processing 3229156 lines the file...
-
-
-```
-
 ### Blocks
 
 2023-03-21
@@ -107,7 +111,7 @@ import abaqus mesh geometry "/Users/chovey/Downloads/scratch/all_hex_dec/All_Hex
 
 ```bash
 Cubit> draw block 1
-quality block scaled jacobian global draw histogram draw mesh
+quality block 1 scaled jacobian global draw histogram draw mesh
 
  Hex quality, 10375 elements:
 	Scaled Jacobian ranges from 8.375e-02 to 1.000e+00 (10375 entities)
@@ -432,8 +436,8 @@ Min. Scaled Jacobian Mesh | Min. Scaled Jacobian Histogram
 
 Additional RMU analysis, by Yaohui Wang
 
-* [2023-03-23](2023-03-23-Wangy-Cubit_Negative_Jacobian.pdf)
-* [2023-04-03](2023-04-03-Mesh-negative-Jacobian.pptx)
+* 2023-03-23 [pdf](2023-03-23-Wangy-Cubit_Negative_Jacobian.pdf) format
+* 2023-04-03 pptx format, preveiew below: [![](figs/2023-04-03-Mesh-negative-Jacobian-thumnail.jpg)](2023-04-03-Mesh-negative-Jacobian.pptx)
 
 ```bash
 Cubit>

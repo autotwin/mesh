@@ -2,7 +2,7 @@
 #
 # required
 version: 1.3
-cubit_path: "/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
+cubit_path: "/Applications/Cubit-16.10/Cubit.app/Contents/MacOS"
 working_dir: "~/Downloads/scratch/Utah_SCI_brain"
 #
 # input .stl file

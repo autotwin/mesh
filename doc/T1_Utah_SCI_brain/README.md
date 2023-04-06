@@ -3,8 +3,8 @@
 ## Overview
 
 * [Inputs](#inputs)
-* Output 1: [Brain](#output-1-brain)
-* Output 2: [Brain with outer](#output-2-brain-with-outer)
+* Output 1: [Brain](#part-1-of-2-brain)
+* Output 2: [Brain with outer](##part-2-of-2-brain-with-outer)
 
 ## Methods
 
@@ -65,7 +65,7 @@ axis momenta are :
 Create input file [cell_100_100_100.yml](cell_100_100_100.yml)
 
 ```bash
-(.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> sculpt_stl_to_inp cell_100_100_100.yml 
+(.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> arch -x86_64 sculpt_stl_to_inp cell_100_100_100.yml 
 ```
 
 Selected output:
@@ -199,7 +199,7 @@ Input Files:
 * [`stl_to_inp_cell_size_1.yml`](stl_to_inp_cell_size_1.yml)
 
 ```bash
-(.venv) ~/autotwin/mesh> sculpt_stl_to_inp doc/T1_Utah_SCI_brain/stl_to_inp_cell_size_4.yml 
+(.venv) ~/autotwin/mesh> arch -x86_64 sculpt_stl_to_inp doc/T1_Utah_SCI_brain/stl_to_inp_cell_size_4.yml 
 ```
 
 Selected output:
@@ -263,7 +263,7 @@ Min Qual Rank   0
 ![size_4](figs/size_4.png)
 
 ```bash
-(.venv) ~/autotwin/mesh> sculpt_stl_to_inp doc/T1_Utah_SCI_brain/stl_to_inp_cell_size_2.yml 
+(.venv) ~/autotwin/mesh> arch -x86_64 sculpt_stl_to_inp doc/T1_Utah_SCI_brain/stl_to_inp_cell_size_2.yml 
 ```
 
 Selected output:
