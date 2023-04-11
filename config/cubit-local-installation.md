@@ -5,10 +5,10 @@
 ## Download
 
 
-* *2022-03-03: Upgrade Cubit from version 16.08 to 16.10.**
+* *2023-03-03: Upgrade Cubit from version 16.08 to 16.10.**
   * Cubit [download](https://cubit.sandia.gov/downloads/)
   * Removed `/Applications/Cubit-16.08`
-  * Installed `Cubit-16.10.1-Mac64.dmg` (374 MB) released 2022-03-03
+  * Installed `Cubit-16.10.1-Mac64.dmg` (374 MB) released 2023-03-03
 * *2022-10-06: Upgrade Cubit from version 16.06 to 16.08.  All notes below, created for 16.06, remain relevant.*
   * Removed `/Applications/Cubit-16.06` (379.4 MB) released 2022-07-12
   * Installed `Cubit-16.08.0-Mac64.dmg` (379.5 MB) released 2022-07-12

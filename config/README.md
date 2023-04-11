@@ -8,25 +8,25 @@
   * The name `.venv` is now preferred since VS Code looks for this naming patttern to automatically load the environment on VS Code start up.
 * Create a `pyproject.toml` to configure the `atmesh` package.
 * Install the `atmesh` module in developer mode (aka "editable").
-* Assess unit tests and code coverage of the `atmesh` module.
+* Run unit tests and code coverage.
 
 ## Methods
 
 * Reference: https://packaging.python.org/en/latest/tutorials/installing-packages/
 * Instead of any `python3` install, `python3.11` is used specifically for compatibility with Cubit version 16.10.
 * ~~Instead of any `python3` install, `python3.7` is used specifically for compatibility with Cubit version 16.06.~~
-* Python 3.7.9 is available [here](https://www.python.org/downloads/release/python-379/).
+* ~~Python 3.7.9 is available [here](https://www.python.org/downloads/release/python-379/).~~
 * Prerequisites:
   * The `autotwin` directory is created within the home `~` directory, and 
-  * The `atmesh` repo is cloned into that `autotwin` folder.
+  * The `mesh` [repo](https://github.com/autotwin/mesh) is cloned into that `autotwin` folder.
 * VS Code [Using Python environments in VS Code](https://code.visualstudio.com/docs/python/environments)
 
 ### Upgrade Python
 
-* 2022-03-03: Upgrade from Python version 3.7 to 3.11.  See Python [downloads](https://www.python.org/downloads/) page.
+* 2023-03-03: Upgrade from Python version 3.7 to 3.11.  See Python [downloads](https://www.python.org/downloads/) page.
 * Accept default install location: `python3.11@ -> ../../../Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11`
 
-From T.H. in Cubit support 2023-03-06:
+From Cubit user support (T.H.) 2023-03-06:
 
 > CUBIT 16.10 now supports Python 3.6 through Python 3.11 - apart from macs with M1 chips. This story is in the backlog.
 > Another M1 user was able to workaround as follows:
@@ -337,3 +337,5 @@ import cubit
 ```
 
 to be found.
+
+Next: [Workflow](../doc/README.md)

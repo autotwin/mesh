@@ -3,8 +3,9 @@
 ## Overview
 
 * [Inputs](#inputs)
-* Output 1: [Brain](#part-1-of-2-brain)
-* Output 2: [Brain with outer](##part-2-of-2-brain-with-outer)
+* Output 1: [Brain](#brain)
+* Output 2: [Brain with outer](#brain-with-outer)
+* Output 3: [Brain with adaptivity](#brain-with-adaptivity)
 
 ## Methods
 
@@ -32,7 +33,7 @@ color vol 1 grey
 color vol 2 yellow
 ```
 
-#### MeshLab 
+#### MeshLab
 
 ```bash
 Opened mesh /Users/chovey/Downloads/scratch/Utah_SCI_brain/T1_Utah_SCI_brain.stl in 514 msec
@@ -107,7 +108,7 @@ Min Edge Len	0.294380
 Min Qual Rank	1
 ```
 
-## Part 1 of 2: Brain
+## Brain
 
 `outer.stl` | `brain.stl` 
 :--: | :--: 
@@ -189,7 +190,7 @@ to create
 
 ![box_whisker](figs/box_plots.png)
 
-## Part 2 of 2: Brain with Outer
+## Brain with Outer
 
 Input Files: 
 
@@ -384,3 +385,8 @@ reset
 import abaqus 'cell_size_2.inp'
 quality block 1 scaled jacobian global draw histogram draw mesh
 ```
+
+## Brain with Adaptivity
+
+We start from `stl_to_inp_cell_size_8.yml`, the coarsest of the four input files, because we anticipate one or two levels of apativity, which will make the small-scale elements `8 / 2 / 2 = 2`, approximately equal to the `stl_to_inp_cell_size_2.yml` file (which has no adaptivity).
+
