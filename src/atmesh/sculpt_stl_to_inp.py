@@ -211,6 +211,8 @@ def translate(*, path_file_input: str) -> bool:
 
             cc += f" box location position {xmin} {ymin} {zmin} location position {xmax} {ymax} {zmax}"
 
+        # TODO: adapativity.
+
         print(f"{atmesh} Invoking Sculpt with Cubit command: {cc}")
         cubit.cmd(cc)
         print(f"{atmesh} Sculpt parallel completed.")
