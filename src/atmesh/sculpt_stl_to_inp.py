@@ -81,15 +81,6 @@ def translate(*, path_file_input: str) -> bool:
     n_proc_default: Final[int] = 4
     n_proc = user_input.get("n_proc", n_proc_default)  # number of parallel processors
 
-    # bounding_box = user_input.get("bounding_box", False)  # dict | False
-    bounding_box_specified = "bounding_box" in user_input
-    if bounding_box_specified:
-        bounding_box = user_input["bounding_box"]
-
-    # cell_count_specified = "cell_count" in user_input
-    # if cell_count_specified:
-    #     cell_count = user_input["cell_count"]
-
     if cell_size <= 0.0:
         raise ValueError(f"cell_size {cell_size} must be positive")
 
@@ -190,8 +181,9 @@ def translate(*, path_file_input: str) -> bool:
             f"sculpt parallel processors {n_proc} gen_sidesets {enum_variable_sidesets}"
         )
 
-        # if bounding_box_specified and cell_count_specified:
-        if bounding_box_specified:
+        # if bounding_box is specified in the .yml input file
+        if "bounding_box" in user_input:
+            bounding_box = user_input["bounding_box"]
             # nx = cell_count["nx"]
             # ny = cell_count["ny"]
             # nz = cell_count["nz"]
