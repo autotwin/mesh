@@ -19,6 +19,14 @@ See [config/README.md](config/README.md)
 
 See [doc/README.md](doc/README.md)
 
+## Updates
+
+### 2023-03-03
+
+* Pyton from 3.7.9 to 3.11.2.
+* Virtual environment naming from `atmeshenv` to `.venv`.
+* `sculpt_stl_to_inp.py` input `.yml` file version from `1.3` to `1.4`.
+
 ## Future Reading
 
 * https://github.com/pyenv/pyenv

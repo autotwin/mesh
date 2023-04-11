@@ -109,13 +109,13 @@ adapt 3 | ![adapt_3](figs/adapt_3.png) | `sculpt parallel volume all size 2 box 
 
 ## Automated mesh generation
 
-Create a `.inp` file using [`two_spheres.yml`](../../tests/files/two_spheres.yml)
+Create a `.inp` file using [`tests/files/two_spheres.yml`](../../tests/files/two_spheres.yml)
 
 ```bash
 (.venv) $ version
 autotwin mesh module version:
 0.0.7
-(.venv) $ sculpt_stl_to_inp tests/files/two_spheres.yml > tests/files/two_spheres.log
+(.venv) $ arch -x86_64 sculpt_stl_to_inp tests/files/two_spheres.yml > tests/files/two_spheres.log
 ```
 
 See [two_spheres.log](../../tests/files/two_spheres.log) for the command line outout.
@@ -135,6 +135,8 @@ all | inner | outer
 1477 total (volume) |  98 nodes (surface) | 482 nodes (surface)
 
 ## Automation on HPC
+
+*This section is now historical, referencing Python 3.7.*
 
 ```bash
 ssh -X <remote.hostname>
