@@ -1,6 +1,17 @@
 # Two Spheres
 
-**See also [Hausdorff Distance](../hausdorff_distance.md)**
+The goals for this section are
+
+* Demonstrate the automatic mesh generation with [`sculpt_stl_to_inp.py`](../../src/atmesh/sculpt_stl_to_inp.py).
+
+## Contents
+
+* [Input](#input)
+* [Manual step-by-step via Cubit GUI](#manual-step-by-step-via-cubit-gui)
+  * [Nodesets](#nodesets)
+  * [Enhanced features](#enhanced-features)
+* [Automated mesh generation](#automated-mesh-generation)
+* [Automation on HPC](#automation-on-hpc)
 
 ## Input
 
@@ -209,3 +220,5 @@ Run the Python script:
 ```bash
 sculpt_stl_to_inp tests/files/two_spheres.yml
 ```
+
+**See also [Hausdorff Distance](../hausdorff_distance.md)**
