@@ -45,6 +45,9 @@ def translate(*, path_file_input: str) -> bool:
     atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
     # atmesh: str = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
 
+    # Input .yml files must be of a minimum version:
+    # mininum_yml_version: Final[float] = 1.5
+
     print(f"{atmesh} This is {Path(__file__).resolve()}")
 
     fin = Path(path_file_input).expanduser()
@@ -77,9 +80,10 @@ def translate(*, path_file_input: str) -> bool:
     working_dir_str = str(Path(working_dir).expanduser())
     cell_size = float(user_input["cell_size"])
 
-    journaling = user_input.get("journaling", False)
+    journaling: bool = user_input.get("journaling", False)
     n_proc_default: Final[int] = 4
-    n_proc = user_input.get("n_proc", n_proc_default)  # number of parallel processors
+    # number of parallel processors
+    n_proc: int = user_input.get("n_proc", n_proc_default)
 
     if cell_size <= 0.0:
         raise ValueError(f"cell_size {cell_size} must be positive")
@@ -131,9 +135,10 @@ def translate(*, path_file_input: str) -> bool:
         print(f"{atmesh} The Cubit Working Directory is set to: {working_dir_str}")
 
         print(f"{atmesh} stl import initiatied:")
-        for item in stl_path_files:
-            print(f"{atmesh} Importing stl file: {item}")
-            cc = 'import stl "' + item + '"'
+        for stl_file in stl_path_files:
+            print(f"{atmesh} Importing stl file: {stl_file}")
+            # cc = 'import stl "' + stl_file + '"' + " feature_angle 135.0 merge"
+            cc = 'import stl "' + stl_file + '" feature_angle 135.0 merge'
             cubit.cmd(cc)
         print(f"{atmesh} stl import completed.")
 
@@ -204,6 +209,19 @@ def translate(*, path_file_input: str) -> bool:
             cc += f" box location position {xmin} {ymin} {zmin} location position {xmax} {ymax} {zmax}"
 
         # TODO: adapativity.
+        # Adapt Type
+        # Input arguments:
+        #   Facet to Surface Distance (1)
+        #   Surface to Facet Distance (2)
+        #   Surface to Surface (3)
+        #   Volume Fraction Average (4)
+        #   Coarsen (5)
+        #   Volume Fraction Difference (6)
+        #   Resample (7)
+        #   Material (8)
+        # Default Threshold
+        # Theshold Distance
+        # Max Levels (Defaults to 2)
 
         print(f"{atmesh} Invoking Sculpt with Cubit command: {cc}")
         cubit.cmd(cc)
