@@ -5,7 +5,8 @@
 * [Inputs](#inputs)
 * Output 1: [Brain](#brain)
 * Output 2: [Brain with outer](#brain-with-outer)
-* Output 3: [Brain with adaptivity](#brain-with-adaptivity)
+* Output 3: [Brain parameterized](#brain-parameterized)
+* Output 4: [Brain with adaptivity](#brain-with-adaptivity)
 
 ## Methods
 
@@ -386,7 +387,16 @@ import abaqus 'cell_size_2.inp'
 quality block 1 scaled jacobian global draw histogram draw mesh
 ```
 
+##  Brain Parameterized
+
+* Create a Python script, [`brain_cell_size_param.py`](brain_cell_size_param.py), that generates two
+  * `stl_to_inp_to_msj_cell_size_8.yml` and `stl_to_inp_to_msj_cell_size_4.yml` files, named automatically with the paramter (cell size), where a single `.yml` input file has data for
+    * `stl -> inp`, and
+    * `inp -> msj`.
+  * `.pdf` MSJ histograms
+   
+
+
 ## Brain with Adaptivity
 
 We start from `stl_to_inp_cell_size_8.yml`, the coarsest of the four input files, because we anticipate one or two levels of apativity, which will make the small-scale elements `8 / 2 / 2 = 2`, approximately equal to the `stl_to_inp_cell_size_2.yml` file (which has no adaptivity).
-
