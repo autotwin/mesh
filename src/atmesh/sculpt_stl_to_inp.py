@@ -63,7 +63,7 @@ def translate(*, path_file_input: str) -> bool:
         "stl_path_files",
         "inp_path_file",
         "cell_size",
-        "bounding_box",
+        # "bounding_box",
     )
     user_input = translator.yml_to_dict(
         yml_path_file=fin, version=cl.yml_version(), required_keys=keys
@@ -186,16 +186,15 @@ def translate(*, path_file_input: str) -> bool:
             f"sculpt parallel processors {n_proc} gen_sidesets {enum_variable_sidesets}"
         )
 
+        cc += f" size {cell_size}"
+
         # if bounding_box is specified in the .yml input file
         if "bounding_box" in user_input:
             bounding_box = user_input["bounding_box"]
             # nx = cell_count["nx"]
             # ny = cell_count["ny"]
             # nz = cell_count["nz"]
-
             # cc += f" nelx {nx} nely {ny} nelz {nz}"
-
-            cc += f" size {cell_size}"
 
             xmin = bounding_box["xmin"]
             xmax = bounding_box["xmax"]

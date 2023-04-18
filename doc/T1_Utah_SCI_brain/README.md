@@ -394,7 +394,6 @@ quality block 1 scaled jacobian global draw histogram draw mesh
     * `stl -> inp`, and
     * `inp -> msj`.
   * `.pdf` MSJ histograms
-   
 
 
 ## Brain with Adaptivity

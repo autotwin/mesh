@@ -23,13 +23,16 @@ param_path_file = __file__
 yml_path_files = []
 
 # The cell size parameterizations:
-cell_sizes = (8, 4)  # start large, then smaller cell sizes
+# PARAMS = (8, 4)  # start large, then smaller cell sizes
+PARAMS = (8,)  # start large, then smaller cell sizes
 
-for cs in cell_sizes:
+for cs in PARAMS:  # for cell size in the parameter space
     temp = inp_path_file.replace("PARAM", str(cs))
 
     # time stamp
     ts = datetime.now().isoformat()
+    ts = ts.replace(":", "_").replace(".", "_")  # overwrite ":" and "." with "_"
+    # breakpoint()
 
     # The template of an input yml file in the from of a dictionary
     db = {
@@ -46,7 +49,7 @@ for cs in cell_sizes:
         "inp_path_file": inp_path_file,
         "cell_size": "PARAM",
         "bounding_box": {
-            "xmin": 9.5,
+            "xmin": 0.0,
             "xmax": 277.5,
             "ymin": 19.5,
             "ymax": 251.5,
@@ -58,11 +61,11 @@ for cs in cell_sizes:
     }
 
     # update the database
-    db["inp_path_file"] = working_dir + f"/cell_size_{cs}.inp"
+    db["inp_path_file"] = working_dir + f"/cell_size_{cs}_{ts}.inp"
     db["cell_size"] = cs
 
     # write the .yml file
-    yml_path_file = working_dir + f"/stl_to_inp_to_msj_cell_size_{cs}.yml"
+    yml_path_file = working_dir + f"/stl_to_inp_to_msj_cell_size_{cs}_{ts}.yml"
     try:
         with open(yml_path_file, "w") as stream:
             # See deprecation warning for plain yaml.load(input) at
@@ -87,5 +90,5 @@ for item in yml_path_files:
     translate(path_file_input=item)
 
 # Run the MSJ post-processor on all the .inp files that were just created above.
-breakpoint()
+# breakpoint()
 a = 4
