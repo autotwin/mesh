@@ -63,7 +63,7 @@ def translate(*, path_file_input: str) -> bool:
         "stl_path_files",
         "inp_path_file",
         "cell_size",
-        # "bounding_box",
+        "bounding_box",
     )
     user_input = translator.yml_to_dict(
         yml_path_file=fin, version=cl.yml_version(), required_keys=keys
@@ -189,8 +189,14 @@ def translate(*, path_file_input: str) -> bool:
         cc += f" size {cell_size}"
 
         # if bounding_box is specified in the .yml input file
-        if "bounding_box" in user_input:
-            bounding_box = user_input["bounding_box"]
+        # if "bounding_box" in user_input:
+        bounding_box = user_input["bounding_box"]
+        # bounding_box_auto_generated = bounding_box["auto"]
+        bounding_box_auto_generated: bool = bounding_box.get("auto", True)
+
+        # breakpoint()
+
+        if not bounding_box_auto_generated:
             # nx = cell_count["nx"]
             # ny = cell_count["ny"]
             # nz = cell_count["nz"]
@@ -206,6 +212,14 @@ def translate(*, path_file_input: str) -> bool:
             zmax = bounding_box["zmax"]
 
             cc += f" box location position {xmin} {ymin} {zmin} location position {xmax} {ymax} {zmax}"
+
+        # breakpoint()
+
+        # bounding_box_defeatured = bounding_box["defeatured"]
+        bounding_box_defeatured: bool = bounding_box.get("defeatured", False)
+
+        if bounding_box_defeatured:
+            cc += " defeature 1 defeature_bbox"
 
         # TODO: adapativity.
         # Adapt Type
