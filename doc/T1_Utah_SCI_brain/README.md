@@ -421,10 +421,11 @@ version: 1.5
 working_dir: /Users/chovey/Downloads/scratch/Utah_SCI_brain
 ```
 
-which created `cell_size_8_2023-04-24T10_01_52_556643.inp`,
+which created `cell_size_8_2023-04-24T10_01_52_556643.inp`, with MSJ quality metric as,
 
-:--: | :--:
-![](figs/cell_size_8_2023-04-24T10_01_52_556643_MSJ.png) | ![](figs/cell_size_8_2023-04-24T10_01_52_556643_MSJ_hist.png)
+iso | iso-cut | histogram
+:--: | :--: | :--:
+![](figs/cell_size_8_2023-04-24T10_01_52_556643_MSJ.png) | ![](figs/cell_size_8_2023-04-24T10_01_52_556643_MSJ_cut.png) | ![](figs/cell_size_8_2023-04-24T10_01_52_556643_MSJ_hist.png)
 
 ```bash
 Cubit>
