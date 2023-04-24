@@ -24,10 +24,10 @@ See [doc/README.md](doc/README.md)
 
 * `.yml` input version from `1.4` to `1.5`, updated keys:
   * `bounding_box: (auto, defeatured, xmin, xmax, ymin, ymax, zmin, zmax)`
-     * `auto (boolean)` *new in v1.5*
+     * `auto (boolean)` *new* in `1.5`
         * `True` (default) Sculpt chooses the $(x, y, z)_{\min}$ and $(x, y, z)_{\max}$ bounding box.
         * `False` The user input `xmin, xmax, ymin, ymax, zmin, zmax` is used for the $(x, y, z)_{\min}$ and $(x, y, z)_{\max}$ bounding box.
-     * `defeatured (boolean)` *new in v1.5*
+     * `defeatured (boolean)` *new* in `1.5`
         * maps to Sculpt `defeature_bbox` and `defeature 1` (on)
         * `True` turns on Sculpt defeature, and defeatures at boundary of the bounding box.
         * `False` (default) turns off Sculpt defeature, and no defature at the boundary of the bounding box occurs.

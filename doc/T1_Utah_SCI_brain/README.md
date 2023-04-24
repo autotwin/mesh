@@ -111,21 +111,21 @@ Min Qual Rank	1
 
 ## Brain
 
-`outer.stl` | `brain.stl` 
-:--: | :--: 
-![](figs/T1_Utah_SCI_outer_588_620.png) | ![](figs/T1_Utah_SCI_brain_588_620.png) 
+`outer.stl` | `brain.stl`
+:--: | :--:
+![](figs/T1_Utah_SCI_outer_588_620.png) | ![](figs/T1_Utah_SCI_brain_588_620.png)
 
 R | sup
 :--: | :--:
-![](figs/right.png) | ![](figs/top.png) 
+![](figs/right.png) | ![](figs/top.png)
 
 ant | L-inf-post
 :--: | :--:
-![](figs/front.png) | ![](figs/iso.png) 
+![](figs/front.png) | ![](figs/iso.png)
 
 `cell_100_100_100.inp` | Min. Scaled Jacobian
 :--: | :--: 
-![](figs/cell_100_100_100_minsj.png) | ![](figs/cell_100_100_100_minsj_hist.png) 
+![](figs/cell_100_100_100_minsj.png) | ![](figs/cell_100_100_100_minsj_hist.png)
 
 ```bash
 Cubit>quality volume 1  scaled jacobian global draw histogram draw mesh list
@@ -394,6 +394,59 @@ quality block 1 scaled jacobian global draw histogram draw mesh
     * `stl -> inp`, and
     * `inp -> msj`.
   * `.pdf` MSJ histograms
+
+Working from `.yml` (listed as of 2024-04-24 listed below),
+
+```yml
+autotwin_header:
+  created: 2023-04-24T10_01_52_556643
+  source: /Users/chovey/autotwin/mesh/doc/T1_Utah_SCI_brain/brain_cell_size_param.py
+bounding_box:
+  auto: true
+  defeatured: true
+  xmax: 234.0
+  xmin: 10.0
+  ymax: 258.0
+  ymin: 34.0
+  zmax: 208.5
+  zmin: 16.5
+cell_size: 8
+cubit_path: /Applications/Cubit-16.10/Cubit.app/Contents/MacOS
+inp_path_file: /Users/chovey/Downloads/scratch/Utah_SCI_brain/cell_size_8_2023-04-24T10_01_52_556643.inp
+journaling: false
+n_proc: 3
+stl_path_files:
+- /Users/chovey/Downloads/scratch/Utah_SCI_brain/T1_Utah_SCI_brain.stl
+version: 1.5
+working_dir: /Users/chovey/Downloads/scratch/Utah_SCI_brain
+```
+
+which created `cell_size_8_2023-04-24T10_01_52_556643.inp`,
+
+:--: | :--:
+![](figs/cell_size_8_2023-04-24T10_01_52_556643_MSJ.png) | ![](figs/cell_size_8_2023-04-24T10_01_52_556643_MSJ_hist.png)
+
+```bash
+Cubit>
+Cubit>quality hex all scaled jacobian global draw histogram draw mesh
+
+ Hex quality, 4938 elements:
+	Scaled Jacobian ranges from 2.799e-01 to 1.000e+00 (4938 entities)
+	     Red ranges from 2.799e-01 to 3.827e-01 (12 entities)
+	 Magenta ranges from 3.827e-01 to 4.856e-01 (63 entities)
+	DkYellow ranges from 4.856e-01 to 5.885e-01 (172 entities)
+	  Yellow ranges from 5.885e-01 to 6.914e-01 (421 entities)
+	   Green ranges from 6.914e-01 to 7.942e-01 (892 entities)
+	    Cyan ranges from 7.942e-01 to 8.971e-01 (576 entities)
+	    Blue ranges from 8.971e-01 to 1.000e+00 (2802 entities)
+
+ Hex quality, 4938 elements:
+------------------------------------
+   Function Name    Average      Std Dev      Minimum   (id)      Maximum   (id)
+ ---------------    ---------    ---------    ----------------    --------------
+ Scaled Jacobian    8.718e-01    1.469e-01    2.799e-01 (4179)    1.000e+00 (32)
+------------------------------------
+```
 
 
 ## Brain with Adaptivity

@@ -24,8 +24,8 @@ yml_path_files = []
 
 # The cell size parameterizations:
 # PARAMS = (8, 4)  # start large, then smaller cell sizes
-# PARAMS = (8,)  # start large, then smaller cell sizes
-PARAMS = (4,)  # start large, then smaller cell sizes
+PARAMS = (8,)  # start large, then smaller cell sizes
+# PARAMS = (4,)  # start large, then smaller cell sizes
 
 for cs in PARAMS:  # for cell size in the parameter space
     temp = inp_path_file.replace("PARAM", str(cs))
@@ -52,12 +52,12 @@ for cs in PARAMS:  # for cell size in the parameter space
         "bounding_box": {
             "auto": True,
             "defeatured": True,
-            "xmin": 0.0,
-            "xmax": 277.5,
-            "ymin": 19.5,
-            "ymax": 251.5,
-            "zmin": -0.5,
-            "zmax": 227.5,
+            "xmin": 10.0,
+            "xmax": 234.0,
+            "ymin": 34.0,
+            "ymax": 258.0,
+            "zmin": 16.5,
+            "zmax": 208.5,
         },
         "journaling": False,
         "n_proc": 3,
