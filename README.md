@@ -25,6 +25,9 @@ See [doc/README.md](doc/README.md)
 Let the bounding box be defined with two points, a minimum and a maximum, as follows:
 
 $$(x, y, z)_{\min} = \mathtt{ (xmin, ymin, zmin)}$$
+
+and
+
 $$(x, y, z)_{\max} = \mathtt{ (xmax, ymax, zmax)}$$
 
 * `.yml` input version from `1.4` to `1.5`, updated keys:
