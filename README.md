@@ -32,7 +32,7 @@ See [doc/README.md](doc/README.md)
         * `True` turns on Sculpt defeature, and defeatures at boundary of the bounding box.
         * `False` (default) turns off Sculpt defeature, and no defature at the boundary of the bounding box occurs.
 
-where the bounding box be defined with two points, a minimum and a maximum, as follows:
+where the bounding box is defined with two points, a minimum and a maximum, as follows:
 
 $$(x, y, z)_{\min} = \mathtt{ (xmin, ymin, zmin)}$$
 
