@@ -1,14 +1,28 @@
-"""This module uses Cubit to convert a .inp file to an assessment
-of minimum scaled Jacobian of the mesh.
+"""This module uses Cubit to convert an ABAQUS .inp file to an assessment
+of quality metric for one of the following:
+    "aspect ratio"
+    "scaled jacobian"
+    "skew"
 
 Prerequisites:
-* Cubit 16.08
-* Python 3.7.x
+* Cubit 10.10 (Cubit 16.08 was deprecated on 2023-03-13)
+* Python 3.11 (Python 3.7 was deprecated on 2023-03-13)
 
 Methods (example):
-> cd ~/autotwin/mesh/src/mesh
-~/autotwin/mesh> source atmeshenv/bin/activate.fish # (atmeshenv) uses Python 3.7
-(atmeshenv) ~/autotwin/mesh> python src/atmesh/cubit_inp_to_minsj_csv.py tests/files/sphere_minsj.yml
+> cd ~/autotwin/mesh
+~/autotwin/mesh> source .venv/bin/activate.fish # uses Python 3.11
+# (atmeshenv) ~/autotwin/mesh> python src/atmesh/cubit_inp_to_minsj_csv.py tests/files/sphere_minsj.yml
+(.venv) ~/autotwin/mesh> arch -x86_64 python src/atmesh/cubit_inp_to_minsj_csv.py tests/files/sphere_minsj.yml "scaled jacobian"
+
+(.venv) ~/autotwin/mesh> arch -x86_64 python src/atmesh/cubit_inp_to_quality_csv.py --help
+usage: cubit_inp_to_quality_csv.py [-h] input_file quality_metric
+
+positional arguments:
+  input_file      the .yml user input file
+  quality_metric  'aspect ratio', 'scaled jacobian', or 'skew'
+
+options:
+  -h, --help      show this help message and exit
 
 Reference:
 Cubit Python Interface at Corform
@@ -35,40 +49,40 @@ cubit.get_quality_value("hex", int(en), "Element Volume")
 import argparse
 from pathlib import Path
 import sys
-
+from typing import Final
 
 import atmesh.yml_to_dict as translator
 import atmesh.command_line as cl
 
-# import yml_to_dict as translator
-# import command_line as cl
 
-
-def translate(*, path_file_input: str) -> int:
-    """Given a fully qualified path to a .yml input file, converts
-    an the input .inp file (specified in the input file)
+def translate(*, path_file_input: str, quality_metric: str) -> int:
+    """Given a fully qualified path to a .yml input file, and a
+    quality metric string from one of the following,
+    ("aspect ratio", "scaled jacobian", "skew"),
+    converts an the input .inp file (specified in the input file)
     to the output .csv file (also specified in the input file) that
-    contains the element number and the element minimum scaled Jacobian
-    in comma separated value format.
+    contains the element number and the element quality metric
+    (e.g., minimum scaled Jacobian) in comma separated value format.
 
     Returns:
         (int) The number of elements processed.
     """
 
-    # from typing import Final # Final is new in Python 3.8, Cubit uses 3.7
-
-    # atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
-    atmesh: str = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
+    atmesh: Final[str] = "atmesh>"
 
     print(f"{atmesh} This is {Path(__file__).resolve()}")
 
-    fin = Path(path_file_input).expanduser()
+    fin: Final[Path] = Path(path_file_input).expanduser()
 
     if not fin.is_file():
         raise FileNotFoundError(f"{atmesh} File not found: {str(fin)}")
 
-    # user_input = _yml_to_dict(yml_path_file=fin)
-    # keys = ("version", "cubit_path", "working_dir", "stl_path_files", "inp_path_file")
+    known_metrics = ("aspect ratio", "scaled jacobian", "skew")
+    if quality_metric not in known_metrics:
+        raise ValueError(
+            f"{atmesh} Unknown quality_metric '{quality_metric}'. Must be one of the following: {known_metrics}."
+        )
+
     keys = ("version", "cubit_path", "working_dir", "inp_path_file", "csv_path_file")
     user_input = translator.yml_to_dict(
         yml_path_file=fin, version=cl.yml_version(), required_keys=keys
@@ -135,9 +149,8 @@ def translate(*, path_file_input: str) -> int:
 
         n_elements = cubit.get_hex_count()
         print(f"{atmesh} Number of elements: {n_elements}")
-        print(f"{atmesh} Calculating {n_elements} Skew metric.")
+        print(f"{atmesh} Calculating quality metric: '{quality_metric}'.")
 
-        quality_metric = "skew"
         qualities = []  # empty list to start
 
         with open(csv_path_file_str, "wt") as out_stream:
@@ -174,9 +187,12 @@ def main():
     """Runs the module from the command line."""
     parser = argparse.ArgumentParser()
     parser.add_argument("input_file", help="the .yml user input file")
+    parser.add_argument(
+        "quality_metric", help="'aspect ratio', 'scaled jacobian', or 'skew'"
+    )
     args = parser.parse_args()
-    input_file = args.input_file
-    translate(path_file_input=input_file)
+    # input_file = args.input_file
+    translate(path_file_input=args.input_file, quality_metric=args.quality_metric)
 
 
 if __name__ == "__main__":

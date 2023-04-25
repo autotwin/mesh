@@ -20,13 +20,13 @@ Methods:
 > python sculpt_stl_to_inp.py <input_file>.yml > sculpt_stl_to_inp.log
 
 Example 1:
-# activate the atmesh virtual environment
-~/autotwin/mesh> source atmeshenv/bin/activate.fish # (.venv) uses Python 3.11
-(.venv) ~/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py tests/files/sphere.yml
+# activate the virtual environment
+~/autotwin/mesh> source .venv/bin/activate.fish # (.venv) uses Python 3.11
+(.venv) ~/autotwin/mesh> arch -x86_64 python src/atmesh/sculpt_stl_to_inp.py tests/files/sphere.yml
 
 Example 2:
 # uses the same venv
-(.venv) ~/autotwin/mesh> python src/atmesh/sculpt_stl_to_inp.py ../data/octa/octa_loop00.yml
+(.venv) ~/autotwin/mesh> arch -x86_64 python src/atmesh/sculpt_stl_to_inp.py ../data/octa/octa_loop00.yml
 """
 
 import argparse
