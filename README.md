@@ -38,6 +38,13 @@ See [doc/README.md](doc/README.md)
 * Virtual environment naming from `atmeshenv` to `.venv`.
 * `sculpt_stl_to_inp.py` input `.yml` file version from `1.3` to `1.4`.
 
+### Equations Example
+
+From https://github.blog/2022-05-19-math-support-in-markdown/
+
+When $a \ne 0$, there are two solutions to $(ax^2 + bx + c = 0)$ and they are 
+$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
+
 ## Future Reading
 
 * https://github.com/pyenv/pyenv
