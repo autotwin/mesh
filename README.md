@@ -22,14 +22,6 @@ See [doc/README.md](doc/README.md)
 
 ### 2023-04-12
 
-Let the bounding box be defined with two points, a minimum and a maximum, as follows:
-
-$$(x, y, z)_{\min} = \mathtt{ (xmin, ymin, zmin)}$$
-
-and
-
-$$(x, y, z)_{\max} = \mathtt{ (xmax, ymax, zmax)}$$
-
 * `.yml` input version from `1.4` to `1.5`, updated keys:
   * `bounding_box: (auto, defeatured, xmin, xmax, ymin, ymax, zmin, zmax)`
      * `auto (boolean)` *new* in `1.5`
@@ -39,6 +31,15 @@ $$(x, y, z)_{\max} = \mathtt{ (xmax, ymax, zmax)}$$
         * maps to Sculpt `defeature_bbox` and `defeature 1` (on)
         * `True` turns on Sculpt defeature, and defeatures at boundary of the bounding box.
         * `False` (default) turns off Sculpt defeature, and no defature at the boundary of the bounding box occurs.
+
+where the bounding box be defined with two points, a minimum and a maximum, as follows:
+
+$$(x, y, z)_{\min} = \mathtt{ (xmin, ymin, zmin)}$$
+
+and
+
+$$(x, y, z)_{\max} = \mathtt{ (xmax, ymax, zmax)}$$
+
 
 ### 2023-03-03
 
