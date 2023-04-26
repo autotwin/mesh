@@ -21,6 +21,7 @@ inp_path_file = working_dir + "/cell_size_PARAM.inp"
 inp_path_files = []
 param_path_file = __file__
 yml_path_files = []
+quality_metrics = ("msj", "skew", "aspect")
 
 # The cell size parameterizations:
 # PARAMS = (8, 4)  # start large, then smaller cell sizes
@@ -41,14 +42,6 @@ for cs in PARAMS:  # for cell size in the parameter space
             "created": ts,
             "source": param_path_file,
         },
-        "version": 1.5,
-        "cubit_path": "/Applications/Cubit-16.10/Cubit.app/Contents/MacOS",
-        "working_dir": working_dir,
-        "stl_path_files": [
-            brain_path_file,
-        ],
-        "inp_path_file": inp_path_file,
-        "cell_size": "PARAM",
         "bounding_box": {
             "auto": True,
             "defeatured": True,
@@ -59,8 +52,17 @@ for cs in PARAMS:  # for cell size in the parameter space
             "zmin": 16.5,
             "zmax": 208.5,
         },
+        "cell_size": "PARAM",
+        "cubit_path": "/Applications/Cubit-16.10/Cubit.app/Contents/MacOS",
+        "inp_path_file": inp_path_file,
         "journaling": False,
         "n_proc": 3,
+        "qualities": ("aspect ratio", "scaled jacobian", "skew"),
+        "stl_path_files": [
+            brain_path_file,
+        ],
+        "version": 1.5,
+        "working_dir": working_dir,
     }
 
     # update the database
@@ -89,9 +91,12 @@ for cs in PARAMS:  # for cell size in the parameter space
     inp_path_files.append(inp_path_file)
 
 # Run sculpt on all the input .yml files that were just created above.
-for item in yml_path_files:
-    translate(path_file_input=item)
+# for item in yml_path_files:
+#     translate(path_file_input=item)
+for inp in inp_path_files:
+    for qm in quality_metrics:
+        print(f"Processing file {inp} with quality metric {qm}.")
 
-# Run the MSJ post-processor on all the .inp files that were just created above.
-# breakpoint()
-a = 4
+        # Run the MSJ post-processor on all the .inp files that were just created above.
+        # breakpoint()
+        a = 4

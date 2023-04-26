@@ -9,8 +9,8 @@ Outputs:
 <file_name>.obj
 
 Example:
-~/autotwin/mesh> source atmeshenv/bin/activate.fish
-(atmeshenv) ~/autotwin/mesh> python src/atmesh/fac_to_obj.py tests/files/cube.fac
+~/autotwin/mesh> source .venv/bin/activate.fish
+(.venv) ~/autotwin/mesh> arch -x86_64 python src/atmesh/fac_to_obj.py tests/files/cube.fac
 
 produces cube.obj
 """

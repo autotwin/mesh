@@ -49,15 +49,21 @@ cubit.get_quality_value("hex", int(en), "Element Volume")
 import argparse
 from pathlib import Path
 import sys
-from typing import Final
+from typing import Final, Tuple
 
 import atmesh.yml_to_dict as translator
 import atmesh.command_line as cl
 
 
-def translate(*, path_file_input: str, quality_metric: str) -> int:
+def translate(
+    *,
+    path_file_input: str,
+    quality_metrics: Tuple[
+        str,
+    ],
+) -> int:
     """Given a fully qualified path to a .yml input file, and a
-    quality metric string from one of the following,
+    tuple of quality metric strings from zero or more of the following,
     ("aspect ratio", "scaled jacobian", "skew"),
     converts an the input .inp file (specified in the input file)
     to the output .csv file (also specified in the input file) that
@@ -78,12 +84,13 @@ def translate(*, path_file_input: str, quality_metric: str) -> int:
         raise FileNotFoundError(f"{atmesh} File not found: {str(fin)}")
 
     known_metrics = ("aspect ratio", "scaled jacobian", "skew")
-    if quality_metric not in known_metrics:
-        raise ValueError(
-            f"{atmesh} Unknown quality_metric '{quality_metric}'. Must be one of the following: {known_metrics}."
-        )
+    for qm in quality_metrics:
+        if qm not in known_metrics:
+            raise ValueError(
+                f"{atmesh} Unknown quality_metric '{qm}'. Must be one of the following: {known_metrics}."
+            )
 
-    keys = ("version", "cubit_path", "working_dir", "inp_path_file", "csv_path_file")
+    keys = ("version", "cubit_path", "working_dir", "inp_path_file")
     user_input = translator.yml_to_dict(
         yml_path_file=fin, version=cl.yml_version(), required_keys=keys
     )
@@ -98,10 +105,13 @@ def translate(*, path_file_input: str, quality_metric: str) -> int:
     working_dir_str = str(Path(working_dir).expanduser())
 
     inp_path_file = user_input["inp_path_file"]
+    inp_path_file_Path: Final[Path] = Path(inp_path_file).expanduser()
+    inp_path_file_stem: Final[str] = inp_path_file_Path.stem
+    inp_path_file_Path_Parent: Final[Path] = inp_path_file_Path.parent
     inp_path_file_str = str(Path(inp_path_file).expanduser())
 
-    csv_path_file = user_input["csv_path_file"]
-    csv_path_file_str = str(Path(csv_path_file).expanduser())
+    # csv_path_file = user_input["csv_path_file"]
+    # csv_path_file_str = str(Path(csv_path_file).expanduser())
 
     journaling = user_input.get("journaling", False)
 
@@ -149,29 +159,39 @@ def translate(*, path_file_input: str, quality_metric: str) -> int:
 
         n_elements = cubit.get_hex_count()
         print(f"{atmesh} Number of elements: {n_elements}")
-        print(f"{atmesh} Calculating quality metric: '{quality_metric}'.")
 
-        qualities = []  # empty list to start
+        for qm in quality_metrics:
+            print(f"{atmesh} Processing quality metric: {qm}")
 
-        with open(csv_path_file_str, "wt") as out_stream:
-            print(f"{atmesh} Opened output file for writing: {csv_path_file_str}")
+            # csv_path_file = user_input["csv_path_file"]
+            csv_path_file_str = (
+                str(inp_path_file_Path_Parent.joinpath(inp_path_file_stem))
+                + "_"
+                + qm
+                + ".csv"
+            ).replace(" ", "_")
 
-            # for i in np.arange(10):
-            # for i in np.arange(n_elements):
-            for i in range(n_elements):
+            qualities = []  # empty list to start
 
-                en = i + 1  # element number = en, change from 0-index to 1-index
-                # print(f"Element {en}")
-                quality = cubit.get_quality_value("hex", int(en), quality_metric)
-                # breakpoint()
-                qualities.append(quality)
-                # print(f"{quality_metric} value: {quality}")
-                line_out = str(en) + ", " + str(quality) + "\n"
-                out_stream.write(line_out)
+            with open(csv_path_file_str, "wt") as out_stream:
+                print(f"{atmesh} Opened output file for writing: {csv_path_file_str}")
 
-        # If we reach this point, the input and output buffers are
-        # now closed and the function was successful.
-        print(f"{atmesh} Closed output file: {csv_path_file_str}")
+                # for i in np.arange(10):
+                # for i in np.arange(n_elements):
+                for i in range(n_elements):
+
+                    en = i + 1  # element number = en, change from 0-index to 1-index
+                    # print(f"Element {en}")
+                    quality = cubit.get_quality_value("hex", int(en), qm)
+                    # breakpoint()
+                    qualities.append(quality)
+                    # print(f"{quality_metric} value: {quality}")
+                    line_out = str(en) + ", " + str(quality) + "\n"
+                    out_stream.write(line_out)
+
+            # If we reach this point, the input and output buffers are
+            # now closed and the function was successful.
+            print(f"{atmesh} Closed output file: {csv_path_file_str}")
 
         print(f"{atmesh} Done.")
 
@@ -188,11 +208,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("input_file", help="the .yml user input file")
     parser.add_argument(
-        "quality_metric", help="'aspect ratio', 'scaled jacobian', or 'skew'"
+        "quality_metrics",
+        help="tuple of quality strings from ('aspect ratio', 'scaled jacobian', 'skew')",
     )
     args = parser.parse_args()
     # input_file = args.input_file
-    translate(path_file_input=args.input_file, quality_metric=args.quality_metric)
+    translate(path_file_input=args.input_file, quality_metrics=args.quality_metric)
 
 
 if __name__ == "__main__":
