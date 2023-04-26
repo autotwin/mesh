@@ -12,7 +12,8 @@ from pathlib import Path
 
 import yaml
 
-from atmesh.sculpt_stl_to_inp import translate
+from atmesh.sculpt_stl_to_inp import translate as step1
+from atmesh.cubit_inp_to_quality_csv import translate as step2
 
 working_dir = str(Path("~/Downloads/scratch/Utah_SCI_brain").expanduser())
 brain_path_file = working_dir + "/T1_Utah_SCI_brain.stl"
@@ -21,12 +22,13 @@ inp_path_file = working_dir + "/cell_size_PARAM.inp"
 inp_path_files = []
 param_path_file = __file__
 yml_path_files = []
-quality_metrics = ("msj", "skew", "aspect")
 
 # The cell size parameterizations:
-# PARAMS = (8, 4)  # start large, then smaller cell sizes
-PARAMS = (8,)  # start large, then smaller cell sizes
-# PARAMS = (4,)  # start large, then smaller cell sizes
+# PARAMS = (8.0, 4.0)  # start large, then smaller cell sizes
+PARAMS = (8.0,)  # start large, then smaller cell sizes
+# PARAMS = (4.0,)  # start large, then smaller cell sizes
+
+breakpoint()
 
 for cs in PARAMS:  # for cell size in the parameter space
     temp = inp_path_file.replace("PARAM", str(cs))
@@ -52,22 +54,22 @@ for cs in PARAMS:  # for cell size in the parameter space
             "zmin": 16.5,
             "zmax": 208.5,
         },
-        "cell_size": "PARAM",
+        "cell_size": cs,
         "cubit_path": "/Applications/Cubit-16.10/Cubit.app/Contents/MacOS",
         "inp_path_file": inp_path_file,
         "journaling": False,
         "n_proc": 3,
-        "qualities": ("aspect ratio", "scaled jacobian", "skew"),
+        "qualities": ["aspect ratio", "scaled jacobian", "skew"],
         "stl_path_files": [
             brain_path_file,
         ],
-        "version": 1.5,
+        "version": 1.6,
         "working_dir": working_dir,
     }
 
     # update the database
     db["inp_path_file"] = working_dir + f"/cell_size_{cs}_{ts}.inp"
-    db["cell_size"] = cs
+    # db["cell_size"] = cs
 
     # write the .yml file
     yml_path_file = working_dir + f"/stl_to_inp_to_msj_cell_size_{cs}_{ts}.yml"
@@ -90,13 +92,10 @@ for cs in PARAMS:  # for cell size in the parameter space
     # append the running list of .inp files
     inp_path_files.append(inp_path_file)
 
-# Run sculpt on all the input .yml files that were just created above.
-# for item in yml_path_files:
-#     translate(path_file_input=item)
-for inp in inp_path_files:
-    for qm in quality_metrics:
-        print(f"Processing file {inp} with quality metric {qm}.")
+breakpoint()
 
-        # Run the MSJ post-processor on all the .inp files that were just created above.
-        # breakpoint()
-        a = 4
+# Run sculpt on all the input .yml files that were just created above.
+for item in yml_path_files:
+    step1(path_file_input=item)
+    breakpoint()
+    step2(path_file_input=item)

@@ -1,5 +1,5 @@
 """This module uses Cubit to convert an ABAQUS .inp file to an assessment
-of quality metric for one of the following:
+of quality metric for one or more of the following:
     "aspect ratio"
     "scaled jacobian"
     "skew"
@@ -11,15 +11,13 @@ Prerequisites:
 Methods (example):
 > cd ~/autotwin/mesh
 ~/autotwin/mesh> source .venv/bin/activate.fish # uses Python 3.11
-# (atmeshenv) ~/autotwin/mesh> python src/atmesh/cubit_inp_to_minsj_csv.py tests/files/sphere_minsj.yml
-(.venv) ~/autotwin/mesh> arch -x86_64 python src/atmesh/cubit_inp_to_minsj_csv.py tests/files/sphere_minsj.yml "scaled jacobian"
+(.venv) ~/autotwin/mesh> arch -x86_64 python src/atmesh/cubit_inp_to_minsj_csv.py tests/files/sphere_minsj.yml
 
 (.venv) ~/autotwin/mesh> arch -x86_64 python src/atmesh/cubit_inp_to_quality_csv.py --help
-usage: cubit_inp_to_quality_csv.py [-h] input_file quality_metric
+usage: cubit_inp_to_quality_csv.py [-h] input_file
 
 positional arguments:
   input_file      the .yml user input file
-  quality_metric  'aspect ratio', 'scaled jacobian', or 'skew'
 
 options:
   -h, --help      show this help message and exit
@@ -49,22 +47,14 @@ cubit.get_quality_value("hex", int(en), "Element Volume")
 import argparse
 from pathlib import Path
 import sys
-from typing import Final, Tuple
+from typing import Final
 
 import atmesh.yml_to_dict as translator
 import atmesh.command_line as cl
 
 
-def translate(
-    *,
-    path_file_input: str,
-    quality_metrics: Tuple[
-        str,
-    ],
-) -> int:
-    """Given a fully qualified path to a .yml input file, and a
-    tuple of quality metric strings from zero or more of the following,
-    ("aspect ratio", "scaled jacobian", "skew"),
+def translate(*, path_file_input: str) -> int:
+    """Given a fully qualified path to a .yml input file,
     converts an the input .inp file (specified in the input file)
     to the output .csv file (also specified in the input file) that
     contains the element number and the element quality metric
@@ -83,17 +73,19 @@ def translate(
     if not fin.is_file():
         raise FileNotFoundError(f"{atmesh} File not found: {str(fin)}")
 
+    keys = ("cubit_path", "inp_path_file", "qualities", "version", "working_dir")
+    user_input = translator.yml_to_dict(
+        yml_path_file=fin, version=cl.yml_version(), required_keys=keys
+    )
+
+    quality_metrics = user_input["qualities"]
+
     known_metrics = ("aspect ratio", "scaled jacobian", "skew")
     for qm in quality_metrics:
         if qm not in known_metrics:
             raise ValueError(
                 f"{atmesh} Unknown quality_metric '{qm}'. Must be one of the following: {known_metrics}."
             )
-
-    keys = ("version", "cubit_path", "working_dir", "inp_path_file")
-    user_input = translator.yml_to_dict(
-        yml_path_file=fin, version=cl.yml_version(), required_keys=keys
-    )
 
     print(f"{atmesh} User input:")
     for key, value in user_input.items():
@@ -207,13 +199,15 @@ def main():
     """Runs the module from the command line."""
     parser = argparse.ArgumentParser()
     parser.add_argument("input_file", help="the .yml user input file")
-    parser.add_argument(
-        "quality_metrics",
-        help="tuple of quality strings from ('aspect ratio', 'scaled jacobian', 'skew')",
-    )
+    # parser.add_argument(
+    #     "quality_metrics",
+    #     help="tuple of quality strings from ('aspect ratio', 'scaled jacobian', 'skew')",
+    # )
     args = parser.parse_args()
     # input_file = args.input_file
-    translate(path_file_input=args.input_file, quality_metrics=args.quality_metric)
+
+    # translate(path_file_input=args.input_file, quality_metrics=args.quality_metric)
+    translate(path_file_input=args.input_file)
 
 
 if __name__ == "__main__":

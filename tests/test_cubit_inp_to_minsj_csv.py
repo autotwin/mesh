@@ -43,10 +43,10 @@ def test_known_element_count():
     self_path = self_path_file.resolve().parent
     data_path = self_path.joinpath("files").resolve()
     input_path_file = data_path.joinpath("sphere_minsj.yml")
-    qms = ("scaled jacobian",)  # quality metrics
-    found = translator.translate(
-        path_file_input=str(input_path_file), quality_metrics=qms
-    )
+    # found = translator.translate(
+    #     path_file_input=str(input_path_file), quality_metrics=qms
+    # )
+    found = translator.translate(path_file_input=str(input_path_file))
     known = 352  # number of hex elements
 
     assert known == found
@@ -56,11 +56,7 @@ def test_unknown_quality_metric():
     self_path_file = Path(__file__)
     self_path = self_path_file.resolve().parent
     data_path = self_path.joinpath("files").resolve()
-    input_path_file = data_path.joinpath("sphere_minsj.yml")
-    quality_metric_bad_input = ("foo",)
+    input_path_file = data_path.joinpath("sphere_minsj_bad_quality_metric.yml")
     with pytest.raises(ValueError) as error:
-        translator.translate(
-            path_file_input=str(input_path_file),
-            quality_metrics=quality_metric_bad_input,
-        )
+        translator.translate(path_file_input=str(input_path_file))
     assert error.typename == "ValueError"

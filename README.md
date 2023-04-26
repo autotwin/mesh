@@ -40,7 +40,7 @@ See [doc/README.md](doc/README.md)
 | `inp_path_file` | string | The full path to the ABAQUS `.inp` mesh file, e.g., "~/autotwin/mesh/tests/files/sphere.inp"
 | `journaling` | bool | `True` - turn on Cubit journaling of the process, `False` is off.
 | `n_procs` | int | The number of parallel processors uses for Sculpt
-| `qualities` | tuple(str,) | Mesh quality metrics of the `.inp` mesh specified by the `inp_path_file` key, zero or more of the following: `("aspect ratio", "scaled jacobian", "skew")`
+| `qualities` | list(str) | Mesh quality metrics of the `.inp` mesh specified by the `inp_path_file` key, one or more of the following: `["aspect ratio", "scaled jacobian", "skew"]`
 | `stl_path_files` | list(str) | A list of one or more strings.  Each string contains the path and file to an input `.stl` file given to Sculpt
 | `version` | float | The version of the `.yml` input file
 | `working_dir` | string | The path for the Cubit/Sculpt working directory, e.g., temporary files, journal files

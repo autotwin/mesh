@@ -19,7 +19,10 @@ inp_path_file: "~/autotwin/mesh/tests/files/sphere_cell_0010.inp"
 journaling: False # boolean, True (default): Cubit writes cubit01.jou-style log files
 n_procs: 2
 qualities:
+- "aspect ratio"
+- "foo"  # an invalid quality metric
 - "scaled jacobian"
+- "skew"
 stl_path_files: None
 version: 1.6
 working_dir: "~/autotwin/mesh/tests/files"
