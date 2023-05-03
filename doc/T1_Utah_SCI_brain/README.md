@@ -457,14 +457,14 @@ Cubit>quality hex all scaled jacobian global draw histogram draw mesh
 | - | --: | --:  | --: 
 || cell_size_8_2023-04-24T10_01_52_556643.inp
 | skull stiffness | 8.0E+09 | 8000 | completed
-| intermediate stiffness | `8.0E+05` | `8000` | completed
-| brain stiffness | `3.2E+03` | `8000` | `8.10E-03`
-| | `3.2E+03` | `4000` | `1.07E-02`
-| | `3.2E+03` | `800` |  completed
-|| `cell_050_050_050_v02.inp`
-| skull stiffness | `8.0E+09` | `8000` | completed
-| intermediate stiffness | `8.0E+05` | `8000` | `2.5E-02`
-| diagnostics, cutoff ratio=1000 | `8.0E+05` | `8000` |
+| intermediate stiffness | 8.0E+05 | 8000 | completed
+| brain stiffness | 3.2E+03 | 8000 | 8.10E-03
+| | 3.2E+03 | 4000 | 1.07E-02
+| | 3.2E+03 | 800 |  completed
+|| cell_050_050_050_v02.inp
+| skull stiffness | 8.0E+09 | 8000 | completed
+| intermediate stiffness | 8.0E+05 | 8000 | 2.5E-02
+| diagnostics, cutoff ratio=1000 | 8.0E+05 | 8000 |
 
 ## Brain with Adaptivity
 
