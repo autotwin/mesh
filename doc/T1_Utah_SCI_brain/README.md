@@ -462,7 +462,6 @@ Cubit>quality hex all scaled jacobian global draw histogram draw mesh
 | | `3.2E+03` | `4000` | `1.07E-02`
 | | `3.2E+03` | `800` |  completed
 || `cell_050_050_050_v02.inp`
-|| <td colspan=4> `cell_050_050_050_v02.inp`
 | skull stiffness | `8.0E+09` | `8000` | completed
 | intermediate stiffness | `8.0E+05` | `8000` | `2.5E-02`
 | diagnostics, cutoff ratio=1000 | `8.0E+05` | `8000` |
