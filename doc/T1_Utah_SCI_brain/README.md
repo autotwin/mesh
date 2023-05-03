@@ -466,8 +466,6 @@ Cubit>quality hex all scaled jacobian global draw histogram draw mesh
 | intermediate stiffness | `8.0E+05` | `8000` | `2.5E-02`
 | diagnostics, cutoff ratio=1000 | `8.0E+05` | `8000` |
 
-
-
 ## Brain with Adaptivity
 
 We start from `stl_to_inp_cell_size_8.yml`, the coarsest of the four input files, because we anticipate one or two levels of apativity, which will make the small-scale elements `8 / 2 / 2 = 2`, approximately equal to the `stl_to_inp_cell_size_2.yml` file (which has no adaptivity).
