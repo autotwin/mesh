@@ -451,7 +451,12 @@ Cubit>quality hex all scaled jacobian global draw histogram draw mesh
 
 ### Simulations
 
-2023-05-03: Data from Anu Tripathy:
+
+| nodeset | sideset 
+| :--: | :--:
+| ![](figs/cell_size_8_2023-04-24T10_01_52_556643_nodeset.png) | ![](figs/cell_size_8_2023-04-24T10_01_52_556643_sideset.png)
+
+### 2023-05-03: Data from Anu Tripathy
 
 | Simulation | Brain Stiffness (Pa) | Peak Acc (rad/s2) | Failure Time (s)
 | - | --: | --:  | --: 
@@ -462,9 +467,48 @@ Cubit>quality hex all scaled jacobian global draw histogram draw mesh
 | | 3.2E+03 | 4000 | 1.07E-02
 | | 3.2E+03 | 800 |  completed
 || cell_050_050_050_v02.inp
-| skull stiffness | 8.0E+09 | 8000 | completed
-| intermediate stiffness | 8.0E+05 | 8000 | 2.5E-02
-| diagnostics, cutoff ratio=1000 | 8.0E+05 | 8000 |
+| skull stiffness cutoff ratio=1 | 8.0E+09 | 8000 | completed
+| intermediate stiffness cutoff ratio=1 | 8.0E+05 | 8000 | 7.33E-03
+| intermediate stiffness cutoff ratio=1000 | 8.0E+05 | 8000 | 2.5E-02
+
+### 2023-05-04: Hovey and Tripathy discussion
+
+* 128 cores, simulation runs in seconds (less than one minute).
+* Mesh
+  * nnp = 5851
+  * nel = 4938
+* Loading: 
+  * peak is 8000 rad/s^2, approaching concussion, seen clinically and in sports (e.g., American football)
+  * duration: about 8.5 ms (less than 10 ms), peak of 8000 rad/s^2, given peak angular velocity of 40 rad/s.
+  * Both sidesets and nodesets are present in the `.inp` file from Cubit, Anu used the sidesets (did not use the nodesets).
+* Material Model (SI units)
+  * HGO
+    * Anisotropic neo-Hookean model - brain material material
+    * density = 1040.0 kg/m^3 (identical to Terpsma 2020 SAND report)
+    * neo-Hookean 
+      * shear: long term modulus (shear stiffness) 3200.0 Pa (aka G_infinity)
+        * Terpma G_0 GM 3.4E4 Pa, and G_0 WM 4.1E4 Pa
+        * Terpams G_infy GM 640 Pa, beta = 40 1/s, G_infy WM 780 Pa, beta = 40 1/s
+      * bulk: 9.132e-10 (1/Pa) = 1.095E9 Pa, ABAQUS input is the inverse of bulk modulus.
+        * ABABUS says this is too low, recommend lowest as 1E-8.
+        * Terpsma: Bulk was 2.371E9, thus 1/K = 4.218E-10 (Anu model about 1/2 of bulk stiffness as Terpsma model)
+      * viscoelastic, operates only in the shear, time=PRONY `0.8118, 0.0, 0.0014` which is just one time constant
+* Single point of failure with element connectivity `947, 942, 939, 941, 472, 473, 464, 463`, what element number is this?
+  * This is element 8
+
+**Path Forward**
+
+* Anu
+  * Check viscoelastic properties, compare with literature, compare with Terpsma SAND report
+  * Does ABAQUS have a Swanson viscoelastic model?
+  * Loading condition (realistic), e.g., 800 rad/s^2 is realistic impact for soccer
+  * Send Chad the Python script that inputs `.odb` file and outputs strain and strain rate per element `.csv` file.
+* Chad
+  * Revist the Python scripts for the strain and strain rate brain cloud plots, with SSR injury metric atop
+    * Refactor the scripts
+    * Commit the scripts to the `autotwin/mesh` repo
+    * y-axis of 1E3, 1E4, 1E5, 1E6 element count, demonstrate (hopefully) convergence of mesh refinement
+  * ABAQUS output for strain and strain rate for each element in `.odb` file (binary)
 
 ## Brain with Adaptivity
 
