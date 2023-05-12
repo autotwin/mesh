@@ -45,4 +45,5 @@ test | filename | image | MSJ </br> Skew </br> AR
 5 | [one_quad_tri_positive.inp](one_quad_tri_positive.inp) | ![one_quad_tri_positive](figs/one_quad_tri_positive.png) | `0.38461538461538486` </br> `0.4706` </br> `1.000`
 6 | [one_quad_tri_negative.inp](one_quad_tri_negative.inp) | ![one_quad_tri_negative](figs/one_quad_tri_negative.png) | `-0.38461538461538486` </br> `0.7241` </br> `1.000`
 7 | [one_quad_near_collapse.inp](one_quad_near_collapse.inp) | ![one_quad_near_collapse](figs/one_quad_near_collapse.png) | `-0.9756097560975608` </br> `0.9802` </br> `1.000`
-8 | [one_quad_bowtie.inp](one_quad_bowtie.inp) | ![one_quad_bowtie](figs/one_quad_bowtie.png) | `-0.7071067811865475` </br> `0.000` </br> `0.000`
+8 | [one_quad_bowtie.inp](one_quad_bowtie.inp) | ![one_quad_bowtie](figs/one_quad_bowtie.png) | `-0.7071067811865475` </br> `nan` (Cubit: `0.000`) </br> `nan` (Cubit: `0.000`)
+
