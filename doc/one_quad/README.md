@@ -36,13 +36,13 @@ Based on
 * CIVL 7/8111, *2-D Boundary Value Problems - Quadrilateral Elements (Q4)*, http://www.ce.memphis.edu/7111/notes/notes.html and http://www.ce.memphis.edu/7111/notes/class_notes/chapter_03c_slides.pdf, accessed 2023-03-31.
 
 
-test | filename | image | MSJ
+test | filename | image | MSJ </br> Skew </br> AR
 :--: | :-- | :--: | --:
-1 | [one_quad_undeformed.inp](one_quad_undeformed.inp) | ![one_quad_undeformed](figs/one_quad_undeformed.png) | `1.0000000000000000`
-2 | [one_quad_shear.inp](one_quad_shear.inp) | ![one_quad_shear](figs/one_quad_shear.png) | `0.7071067811865476`
-3 | [one_quad_trapezoid.inp](one_quad_trapezoid.inp) | ![one_quad_trapezoid](figs/one_quad_trapezoid.png) | `0.8944271909999159`
-4 | [one_quad_extended.inp](one_quad_extended.inp) | ![one_quad_extended](figs/one_quad_extended.png) | `0.8000000000000000`
-5 | [one_quad_tri_positive.inp](one_quad_tri_positive.inp) | ![one_quad_tri_positive](figs/one_quad_tri_positive.png) | `0.38461538461538486`
-6 | [one_quad_tri_negative.inp](one_quad_tri_negative.inp) | ![one_quad_tri_negative](figs/one_quad_tri_negative.png) | `-0.38461538461538486`
-7 | [one_quad_near_collapse.inp](one_quad_near_collapse.inp) | ![one_quad_near_collapse](figs/one_quad_near_collapse.png) | `-0.9756097560975608`
-8 | [one_quad_bowtie.inp](one_quad_bowtie.inp) | ![one_quad_bowtie](figs/one_quad_bowtie.png) | `-0.7071067811865475`
+1 | [one_quad_undeformed.inp](one_quad_undeformed.inp) | ![one_quad_undeformed](figs/one_quad_undeformed.png) | `1.0000000000000000` </br> `0.000` </br> `1.000`
+2 | [one_quad_shear.inp](one_quad_shear.inp) | ![one_quad_shear](figs/one_quad_shear.png) | `0.7071067811865476` </br> `0.707` </br> `1.414`
+3 | [one_quad_trapezoid.inp](one_quad_trapezoid.inp) | ![one_quad_trapezoid](figs/one_quad_trapezoid.png) | `0.8944271909999159` </br> `0.000` </br> `1.000`
+4 | [one_quad_extended.inp](one_quad_extended.inp) | ![one_quad_extended](figs/one_quad_extended.png) | `0.8000000000000000` </br> `0.3846` </br> `1.000`
+5 | [one_quad_tri_positive.inp](one_quad_tri_positive.inp) | ![one_quad_tri_positive](figs/one_quad_tri_positive.png) | `0.38461538461538486` </br> `0.4706` </br> `1.000`
+6 | [one_quad_tri_negative.inp](one_quad_tri_negative.inp) | ![one_quad_tri_negative](figs/one_quad_tri_negative.png) | `-0.38461538461538486` </br> `0.7241` </br> `1.000`
+7 | [one_quad_near_collapse.inp](one_quad_near_collapse.inp) | ![one_quad_near_collapse](figs/one_quad_near_collapse.png) | `-0.9756097560975608` </br> `0.9802` </br> `1.000`
+8 | [one_quad_bowtie.inp](one_quad_bowtie.inp) | ![one_quad_bowtie](figs/one_quad_bowtie.png) | `-0.7071067811865475` </br> `0.000` </br> `0.000`
