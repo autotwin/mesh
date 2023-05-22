@@ -28,14 +28,20 @@ yml_path_files = []
 PARAMS = (8.0,)  # start large, then smaller cell sizes
 # PARAMS = (4.0,)  # start large, then smaller cell sizes
 
-breakpoint()
-
 for cs in PARAMS:  # for cell size in the parameter space
     temp = inp_path_file.replace("PARAM", str(cs))
 
     # time stamp
-    ts = datetime.now().isoformat()
+    # ref: https://docs.python.org/3/library/datetime.html#datetime.datetime.astimezone
+    # Date and time objects may be categorized as "aware" or "naive" depending on
+    # whether or not they include timezone information.
+    # Example: Albuquerque NM is Mountain Standard Time (MST) and is Coordinated
+    # Universal Time (UTC) + (-6).
+    # Concretion: This note was writtten at 11:23 MST, which is 17:23 UTC, a 6-hour difference.
+    # ts = datetime.now().isoformat()  # This was a "naive" object in local time.
+    ts = datetime.utcnow().isoformat()  # This is a "naive" object in UTC.
     ts = ts.replace(":", "_").replace(".", "_")  # overwrite ":" and "." with "_"
+    ts = ts.replace("T", "_UTC_")  # overwrite the T with UTC time zone indication
     # breakpoint()
 
     # The template of an input yml file in the from of a dictionary

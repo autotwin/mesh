@@ -390,12 +390,12 @@ quality block 1 scaled jacobian global draw histogram draw mesh
 ##  Brain Parameterized
 
 * Create a Python script, [`brain_cell_size_param.py`](brain_cell_size_param.py), that generates two
-  * `stl_to_inp_to_msj_cell_size_8.yml` and `stl_to_inp_to_msj_cell_size_4.yml` files, named automatically with the paramter (cell size), where a single `.yml` input file has data for
+  * `stl_to_inp_to_msj_cell_size_8.yml` and `stl_to_inp_to_msj_cell_size_4.yml` files, named automatically with the parameter (cell size), where a single `.yml` input file has data for
     * `stl -> inp`, and
     * `inp -> msj`.
   * `.pdf` MSJ histograms
 
-Working from `.yml` (listed as of 2024-04-24 listed below),
+Working from `.yml` (listed version below is as of 2024-04-24),
 
 ```yml
 autotwin_header:
