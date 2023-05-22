@@ -12,11 +12,12 @@ from pathlib import Path
 
 import yaml
 
-from atmesh.sculpt_stl_to_inp import translate as step1
-from atmesh.cubit_inp_to_quality_csv import translate as step2
+# from atmesh.sculpt_stl_to_inp import translate as step1
+# from atmesh.cubit_inp_to_quality_csv import translate as step2
 
 working_dir = str(Path("~/Downloads/scratch/Utah_SCI_brain").expanduser())
-brain_path_file = working_dir + "/T1_Utah_SCI_brain.stl"
+# brain_path_file = working_dir + "/T1_Utah_SCI_brain.stl"
+brain_path_file = working_dir + "/T1_Utah_SCI_brain_5_16_2023_20_25.stl"
 # outer_path_file = working_dir + "/T1_Utah_SCI_outer.stl"
 inp_path_file = working_dir + "/cell_size_PARAM.inp"
 inp_path_files = []
@@ -24,9 +25,14 @@ param_path_file = __file__
 yml_path_files = []
 
 # The cell size parameterizations:
-# PARAMS = (8.0, 4.0)  # start large, then smaller cell sizes
-PARAMS = (8.0,)  # start large, then smaller cell sizes
+# PARAMS = (8.0,)  # start large, then smaller cell sizes
 # PARAMS = (4.0,)  # start large, then smaller cell sizes
+# PARAMS = (8.0, 4.0,)  # start large, then smaller cell sizes
+PARAMS = (
+    8.0,
+    4.0,
+    2.0,
+)  # start large, then smaller cell sizes
 
 for cs in PARAMS:  # for cell size in the parameter space
     temp = inp_path_file.replace("PARAM", str(cs))
@@ -78,13 +84,14 @@ for cs in PARAMS:  # for cell size in the parameter space
     # db["cell_size"] = cs
 
     # write the .yml file
-    yml_path_file = working_dir + f"/stl_to_inp_to_msj_cell_size_{cs}_{ts}.yml"
+    yml_path_file = working_dir + f"/cell_size_{cs}_{ts}.yml"
     try:
         with open(yml_path_file, "w") as stream:
             # See deprecation warning for plain yaml.load(input) at
             # https://github.com/yaml/pyyaml/wiki/PyYAML-yaml.load(input)-Deprecation
             # db = yaml.load(stream, Loader=yaml.SafeLoader)
             db = yaml.dump(data=db, stream=stream)
+            print(f"Serialized file {yml_path_file}")
     except yaml.YAMLError as error:
         print(f"Error with YAML file: {error}")
         # print(f"Could not open: {self.self.path_file_in}")
@@ -98,10 +105,10 @@ for cs in PARAMS:  # for cell size in the parameter space
     # append the running list of .inp files
     inp_path_files.append(inp_path_file)
 
-breakpoint()
-
-# Run sculpt on all the input .yml files that were just created above.
-for item in yml_path_files:
-    step1(path_file_input=item)
-    breakpoint()
-    step2(path_file_input=item)
+# breakpoint()
+#
+# # Run sculpt on all the input .yml files that were just created above.
+# for item in yml_path_files:
+#     step1(path_file_input=item)
+#     breakpoint()
+#     step2(path_file_input=item)

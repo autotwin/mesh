@@ -451,7 +451,6 @@ Cubit>quality hex all scaled jacobian global draw histogram draw mesh
 
 ### Simulations
 
-
 | nodeset | sideset 
 | :--: | :--:
 | ![](figs/cell_size_8_2023-04-24T10_01_52_556643_nodeset.png) | ![](figs/cell_size_8_2023-04-24T10_01_52_556643_sideset.png)
@@ -509,6 +508,33 @@ Cubit>quality hex all scaled jacobian global draw histogram draw mesh
     * Commit the scripts to the `autotwin/mesh` repo
     * y-axis of 1E3, 1E4, 1E5, 1E6 element count, demonstrate (hopefully) convergence of mesh refinement
   * ABAQUS output for strain and strain rate for each element in `.odb` file (binary)
+
+### 2023-05-22: Path Forward
+
+* Isosurface (unit normal bug fix) to mesh (three sizes)
+
+```bash
+(.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> arch -x86_64 python brain_cell_size_param.py
+```
+
+Artifacts (copied from `~/Downloads/scratch/Utah_SCI_brain/`):
+
+Cell Size | File (# elements) | Image | MSJ
+--: | -- | -- | ---
+8 | [cell_size_8.0_2023-05-22_UTC_20_50_44_794153.yml](cell_size_8.0_2023-05-22_UTC_20_50_44_794153.yml) | ![](figs/cell_size_8.0_2023-05-22_UTC_20_50_44_794153.png) `nel = 4,938` | ![](figs/cell_size_8.0_2023-05-22_UTC_20_50_44_794153_msj.png)
+4 | [cell_size_4.0_2023-05-22_UTC_20_50_44_795467.yml](cell_size_4.0_2023-05-22_UTC_20_50_44_795467.yml) | ![](figs/cell_size_4.0_2023-05-22_UTC_20_50_44_795467.png) `nel = 33,926` | ![](figs/cell_size_4.0_2023-05-22_UTC_20_50_44_795467_msj.png)
+2 | [cell_size_2.0_2023-05-22_UTC_20_50_44_796321.yml](cell_size_2.0_2023-05-22_UTC_20_50_44_796321.yml) | ![](figs/cell_size_2.0_2023-05-22_UTC_20_50_44_796321.png) `nel = 242,860` | ![](figs/cell_size_2.0_2023-05-22_UTC_20_50_44_796321_msj.png)
+
+```bash
+# cell size 8
+(.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> arch -x86_64 sculpt_stl_to_inp cell_size_8.0_2023-05-22_UTC_20_50_44_794153.yml
+
+# cell size 4
+(.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> arch -x86_64 sculpt_stl_to_inp cell_size_4.0_2023-05-22_UTC_20_50_44_795467.yml
+
+# cell size 2
+(.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> arch -x86_64 sculpt_stl_to_inp cell_size_2.0_2023-05-22_UTC_20_50_44_796321.yml
+```
 
 ## Brain with Adaptivity
 
