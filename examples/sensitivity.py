@@ -20,6 +20,7 @@ To run:
 # from os import system  # unused import
 import sys
 from pathlib import Path
+from typing import Final
 
 import matplotlib.pyplot as plt
 from matplotlib import rc
@@ -48,8 +49,8 @@ def main():
         working_dir_str + "/octa_loop04.stl",
     ]
 
-    # atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
-    atmesh: str = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
+    # atmesh: str = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
+    atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
     # append the cubit path to the system Python path
     print(f"{atmesh} Existing sys.path:")
     for item in sys.path:

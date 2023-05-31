@@ -18,6 +18,7 @@ produces cube.obj
 import argparse
 from pathlib import Path
 import sys
+from typing import Final
 
 
 def translate(*, path_file_input: str) -> bool:
@@ -38,7 +39,7 @@ def translate(*, path_file_input: str) -> bool:
     """
     success = False
 
-    atmesh: str = "atmesh>"  # Final is new in Python 3.8, we use 3.7 fcurrently
+    atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, we use 3.7 fcurrently
 
     print(f"{atmesh} This is {Path(__file__).resolve()}")
 
@@ -49,7 +50,7 @@ def translate(*, path_file_input: str) -> bool:
 
     input_path = fin.parent
     input_file_no_ext = fin.stem
-    output_file_ext: str = ".obj"  # update to Final[str] once we move to Python 3.8
+    output_file_ext: Final[str] = ".obj"
     output_file = input_file_no_ext + output_file_ext
     output_path_file = input_path.joinpath(output_file)
 

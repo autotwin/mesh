@@ -199,6 +199,8 @@ def main():
     """Runs the module from the command line."""
     parser = argparse.ArgumentParser()
     parser.add_argument("input_file", help="the .yml user input file")
+    # Deprecate quality as a command line input.  Instead, quality is an input
+    # in the yml input file:
     # parser.add_argument(
     #     "quality_metrics",
     #     help="tuple of quality strings from ('aspect ratio', 'scaled jacobian', 'skew')",

@@ -19,18 +19,17 @@ To run:
 """
 import sys
 from pathlib import Path
+from typing import Final
 
 import matplotlib.pyplot as plt
 from matplotlib import rc
 import numpy as np
 
 
-
 def main():
 
     plt.style.use("bmh")
     # plt.style.use("ggplot")
-
 
     # Original reference:
     # https://stackoverflow.com/questions/48391568/matplotlib-creating-plot-for-black-background-presentation-slides
@@ -49,28 +48,29 @@ def main():
     #     "savefig.facecolor": "black",
     #     "savefig.edgecolor": "black"})
 
-    hdarkgrayblack = tuple(map(lambda x: x / 256.0, (35.0,35.0,35.0)))  # RGB triple
+    hdarkgrayblack = tuple(map(lambda x: x / 256.0, (35.0, 35.0, 35.0)))  # RGB triple
 
-    plt.rcParams.update({
-        "lines.color": "whitesmoke",
-        "patch.edgecolor": "dimgray",
-        "text.color": "darkorange",  # title color
-        "axes.facecolor": "dimgray",
-        "axes.edgecolor": "lightgray",
-        "axes.labelcolor": "red",  # axes label color
-        "xtick.color": "whitesmoke",
-        "ytick.color": "whitesmoke",
-        "grid.color": "lightgray",
-        "figure.facecolor": hdarkgrayblack,
-        "figure.edgecolor": hdarkgrayblack,
-        "savefig.facecolor": hdarkgrayblack,
-        "savefig.edgecolor": hdarkgrayblack
-    })
+    plt.rcParams.update(
+        {
+            "lines.color": "whitesmoke",
+            "patch.edgecolor": "dimgray",
+            "text.color": "darkorange",  # title color
+            "axes.facecolor": "dimgray",
+            "axes.edgecolor": "lightgray",
+            "axes.labelcolor": "red",  # axes label color
+            "xtick.color": "whitesmoke",
+            "ytick.color": "whitesmoke",
+            "grid.color": "lightgray",
+            "figure.facecolor": hdarkgrayblack,
+            "figure.edgecolor": hdarkgrayblack,
+            "savefig.facecolor": hdarkgrayblack,
+            "savefig.edgecolor": hdarkgrayblack,
+        }
+    )
 
     cubit_path = "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
     # working_dir_str = str(Path("~/autotwin/data/octa").expanduser())
     working_dir_str = str(Path("~/Dropbox/scratch/octa_subset").expanduser())
-
 
     """
 <<<<<<< main
@@ -87,8 +87,6 @@ def main():
 >>>>>>> main
     """
 
-
-
     # we will loop over and process the following input files
     stl_path_files = [
         # "~/autotwin/data/octa/octa_loop03.stl",
@@ -97,8 +95,8 @@ def main():
         "~/Dropbox/scratch/octa_subset/octa_loop04.stl",
     ]
 
-    # atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
-    atmesh: str = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
+    # atmesh: str = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
+    atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
     # append the cubit path to the system Python path
     print(f"{atmesh} Existing sys.path:")
     for item in sys.path:

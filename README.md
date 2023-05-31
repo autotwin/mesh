@@ -20,6 +20,9 @@ See [doc/README.md](doc/README.md)
 
 ## Schema
 
+* `version 1.6`
+* [Updates](#updates)
+
 | `key` | type | description |
 | --- | --- | --- |
 | `autotwin_header` | dict | Header used for pedigree and tracking purposes
@@ -27,7 +30,7 @@ See [doc/README.md](doc/README.md)
 | - `source`        | string | The person, machine, or script that generated the `.yml` input
 `bounding_box` | dict | 
 | - `auto`     | bool | `True` - Sculpt autogenerates the bounding box, and `xmin` through `zmax` parameters are ignored </br>`False` - User `xmin` through `zmax` paramters are used for the bounding box.
-| - `defeatured` | bool | `True` turns on defeaturing near the bounding box boundary.</br>`False` turns off defeaturing near the bounding box boundary.
+| - `defeatured` | bool | `True` turns on defeaturing near the bounding box boundary. </br>*True eliminated "horns" and "projections" in past investigations.  Recommended as True for brain models.*</br>`False` turns off defeaturing near the bounding box boundary.
 | - `xmin` | float | The `x-coordinate` minimum of the bounding box.
 | - `ymin` | float | The `y-coordinate` minimum of the bounding box.
 | - `zmin` | float | The `z-coordinate` minimum of the bounding box.

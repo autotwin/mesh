@@ -1,8 +1,14 @@
 import pkg_resources  # part of setup tools
 from itertools import repeat
 
-# module_name: Final[str] = "atmesh"  # postpone Final until 3.9 is required
-module_name: str = "atmesh"  # be D.R.Y.
+# from typing import Final, NamedTuple
+from typing import Final
+
+# from atmesh.constants import Constants as constants
+import atmesh.constants as constants
+
+# module_name: str = "atmesh"  # be D.R.Y.
+module_name: Final[str] = "atmesh"  # postpone Final until 3.9 is required
 underline: str = "".join(repeat("-", len(module_name)))
 
 
@@ -12,7 +18,8 @@ def say_hello() -> str:
 
 def version() -> str:
     ver = pkg_resources.require("atmesh")[0].version
-    print("autotwin mesh module version:")
+    print(f"yml input file schema version: {yml_version()}")
+    print(f"autotwin mesh module version: {ver}")
     return ver
 
 
@@ -27,13 +34,15 @@ def atmesh() -> None:  # This is an entry point in pyproject.toml
     print("Available commands:")
     print("atmesh      (this command) Lists the module CLI.")
     print("atmeshinfo  Prints the distribution dependencies.")
-    print("cubit_inp_to_minsj_csv <file.inp>")
-    print("            Converts ABAQUS .inp file into a minimum scaled Jacobian file")
-    print("            in comma separate value (.csv) format.")
+    print("cubit_inp_to_quality_csv <file.inp>")
+    print("            Converts ABAQUS .inp file to a quality metric, e.g.,")
+    print("            minimum scaled Jacobian file, in comma separated value")
+    print("            (.csv) format.")
     print("sculpt_stl_to_inp <file.stl>")
-    print("            Converts a STL file, containing an isosurface, into an")
+    print("            Converts a STL file, containing an isosurface, to an")
     print("            all-hex solid in ABAQUS mesh format.")
-    print("version     Prints the semantic version of the current installation.")
+    print("version     Prints the version of the yml input file schema, and")
+    print("            prints the semantic version of the autotwin mesh module.")
 
     #     print("commands           (this command)")
     #     print("autotwin mesh module available commands:")
@@ -74,8 +83,8 @@ def atmeshinfo() -> None:
 
 
 def yml_version() -> float:
-    """Returns (float) the current version of the .yml input file that is supported
-    throughout the engine.
+    """Returns (float) the current version of the .yml input file that is
+    supported by the mesh engine.
 
     1.1:
     * First well-tested version.
@@ -89,5 +98,10 @@ def yml_version() -> float:
     1.3:
     * Deprecate cell_count, use cell_size instead.
     * Bounding box now a required key and value.
+
+    For additional version history, see
+    https://github.com/autotwin/mesh/tree/main#updates
     """
-    return 1.3
+    # return 1.6
+    aa = constants.Constants().yml_schema_version
+    return aa

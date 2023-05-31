@@ -45,9 +45,6 @@ def translate(*, path_file_input: str) -> bool:
     atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
     # atmesh: str = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
 
-    # Input .yml files must be of a minimum version:
-    # mininum_yml_version: Final[float] = 1.5
-
     print(f"{atmesh} This is {Path(__file__).resolve()}")
 
     fin = Path(path_file_input).expanduser()

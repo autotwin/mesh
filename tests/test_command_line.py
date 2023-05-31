@@ -14,6 +14,6 @@ def test_version():
 
 
 def test_yml_version():
-    known = 1.3
+    known = 1.6
     found = cl.yml_version()
     assert known == found
