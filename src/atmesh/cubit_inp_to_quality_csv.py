@@ -51,6 +51,7 @@ from typing import Final
 
 import atmesh.yml_to_dict as translator
 import atmesh.command_line as cl
+import atmesh.constants as cs
 
 
 def translate(*, path_file_input: str) -> int:
@@ -64,7 +65,7 @@ def translate(*, path_file_input: str) -> int:
         (int) The number of elements processed.
     """
 
-    atmesh: Final[str] = "atmesh>"
+    atmesh: Final[str] = cs.Constants.module_prompt
 
     print(f"{atmesh} This is {Path(__file__).resolve()}")
 

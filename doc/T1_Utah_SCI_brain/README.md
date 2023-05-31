@@ -529,11 +529,17 @@ Cell Size | File (# elements) | Image | MSJ
 # cell size 8
 (.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> arch -x86_64 sculpt_stl_to_inp cell_size_8.0_2023-05-22_UTC_20_50_44_794153.yml
 
+(.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> arch -x86_64 cubit_inp_to_quality_csv cell_size_8.0_2023-05-22_UTC_20_50_44_794153.yml
+
 # cell size 4
 (.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> arch -x86_64 sculpt_stl_to_inp cell_size_4.0_2023-05-22_UTC_20_50_44_795467.yml
 
+(.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> arch -x86_64 cubit_inp_to_quality_csv cell_size_4.0_2023-05-22_UTC_20_50_44_795467.yml
+
 # cell size 2
 (.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> arch -x86_64 sculpt_stl_to_inp cell_size_2.0_2023-05-22_UTC_20_50_44_796321.yml
+
+(.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> arch -x86_64 cubit_inp_to_quality_csv cell_size_2.0_2023-05-22_UTC_20_50_44_796321.yml
 ```
 
 ## Brain with Adaptivity

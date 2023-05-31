@@ -121,7 +121,7 @@ setuptools 65.5.0
 [notice] A new release of pip available: 22.3.1 -> 23.0.1
 [notice] To update, run: pip install --upgrade pip
 
-pip install --upgrade pip
+pip install --upgrade pip setuptools
 ```
 
 ### Install the `atmesh` module as a developer

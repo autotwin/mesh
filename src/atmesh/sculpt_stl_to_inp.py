@@ -36,14 +36,14 @@ from typing import Final
 
 import atmesh.yml_to_dict as translator
 import atmesh.command_line as cl
+import atmesh.constants as cs
 
 
 def translate(*, path_file_input: str) -> bool:
     completed = False
     # from typing import Final # Final is new in Python 3.8, Cubit uses 3.7
 
-    atmesh: Final[str] = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
-    # atmesh: str = "atmesh>"  # Final is new in Python 3.8, Cubit uses 3.7
+    atmesh: Final[str] = cs.Constants.module_prompt
 
     print(f"{atmesh} This is {Path(__file__).resolve()}")
 

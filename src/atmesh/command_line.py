@@ -1,15 +1,11 @@
 import pkg_resources  # part of setup tools
 from itertools import repeat
 
-# from typing import Final, NamedTuple
 from typing import Final
 
-# from atmesh.constants import Constants as constants
-import atmesh.constants as constants
+import atmesh.constants as cs
 
-# module_name: str = "atmesh"  # be D.R.Y.
-module_name: Final[str] = "atmesh"  # postpone Final until 3.9 is required
-underline: str = "".join(repeat("-", len(module_name)))
+underline: Final[str] = "".join(repeat("-", len(cs.Constants.module_name)))
 
 
 def say_hello() -> str:
@@ -26,6 +22,7 @@ def version() -> str:
 def atmesh() -> None:  # This is an entry point in pyproject.toml
     """Echos available command line entry points to the terminal."""
     print(underline)
+    module_name = cs.Constants.module_name
     print(f"{module_name}")
     print(underline)
     print(
@@ -103,5 +100,5 @@ def yml_version() -> float:
     https://github.com/autotwin/mesh/tree/main#updates
     """
     # return 1.6
-    aa = constants.Constants().yml_schema_version
+    aa = cs.Constants.yml_schema_version
     return aa
