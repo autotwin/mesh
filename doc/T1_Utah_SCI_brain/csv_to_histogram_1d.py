@@ -23,7 +23,7 @@ def filename_to_xlabel(filename: str) -> str:
     elif "skew" in filename:
         xlabel = "Skew"  # overwrite
     elif "aspect" in filename:
-        xlabel = "Aspect Ratio"  # overwrite
+        xlabel = "1 / (Aspect Ratio)"  # overwrite
 
     return xlabel
 
@@ -53,7 +53,7 @@ def main():
         "n_bins": 7,
         "height": 4.0,
         "width": 6.0,
-        "dpi": 200,
+        "dpi": 600,
         "serialize": True,
         "output_file_ext": "png",
         "figure_shown": False,
@@ -68,7 +68,7 @@ def main():
     """User input end"""
 
     # script_name = Path(__file__).stem
-    script_path = Path(__file__).parent
+    # script_path = Path(__file__).parent
 
     # file io
     for item in files:
