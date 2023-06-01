@@ -56,7 +56,7 @@ def main():
         "dpi": 200,
         "serialize": True,
         "output_file_ext": "png",
-        "figure_shown": True,
+        "figure_shown": False,
         "latex": False,
     }
     histogram_dict = {
@@ -173,7 +173,8 @@ def main():
 
         if fig_dict["serialize"]:
             filename = fin_stem + "." + fig_dict["output_file_ext"]
-            pathfilename = str(script_path.joinpath(filename))
+            # pathfilename = str(script_path.joinpath(filename))
+            pathfilename = str(Path(path_to_files + filename).expanduser())
             fig.savefig(pathfilename, bbox_inches="tight", pad_inches=0)
             print(f"Serialized to {pathfilename}")
 
