@@ -41,7 +41,6 @@ import atmesh.constants as cs
 
 def translate(*, path_file_input: str) -> bool:
     completed = False
-    # from typing import Final # Final is new in Python 3.8, Cubit uses 3.7
 
     atmesh: Final[str] = cs.Constants.module_prompt
 

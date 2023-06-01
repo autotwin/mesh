@@ -10,11 +10,8 @@ Prerequisites:
 
 To run:
 > cd ~/autotwin/mesh
-
-# activate the venv at meshenv
-> source atmeshenv/bin/activate  # or activate.fish if using fish shell
-> python doc/box_plots.py
-
+~/autotwin/mesh> source .venv/bin/activate.fish
+(.venv) ~/autotwin/mesh> python doc/box_plots.py
 """
 from pathlib import Path
 

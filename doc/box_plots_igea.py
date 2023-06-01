@@ -10,11 +10,8 @@ Prerequisites:
 
 To run:
 > cd ~/autotwin/mesh
-
-# activate the venv at meshenv
-> source atmeshenv/bin/activate  # or activate.fish if using fish shell
-> python doc/box_plots.py
-
+~/autotwin/mesh> source .venv/bin/activate.fish
+(.venv) ~/autotwin/mesh> python doc/box_plots_igea.py
 """
 from pathlib import Path
 
@@ -117,7 +114,7 @@ def main():
         # pathfilename = Path.cwd().joinpath(filename)
         # fig.savefig(pathfilename, bbox_inches="tight", pad_inches=0)
         fig.savefig(figure_path_file_str, bbox_inches="tight", pad_inches=0.25)
-        #fig.show()
+        # fig.show()
         print(f"Serialized to {figure_path_file_str}")
 
 
