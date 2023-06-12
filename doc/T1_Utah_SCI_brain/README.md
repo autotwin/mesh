@@ -511,7 +511,12 @@ Cubit>quality hex all scaled jacobian global draw histogram draw mesh
 
 ### 2023-05-22: Path Forward
 
-* Isosurface (unit normal bug fix) to mesh (three sizes)
+* Isosurface (unit normal bug fix ` /Users/chovey/Downloads/scratch/Utah_SCI_brain/T1_Utah_SCI_brain_5_16_2023_20_25.stl`)
+* to mesh (three sizes: cell size 8, 4, 2)
+
+`view front` | `view top` | `view left`
+:--: | :--: | :--:
+![view_front](figs/T1_Utah_SCI_brain_5_16_2023_20_25_stl_view_front.png) | ![view top](figs/T1_Utah_SCI_brain_5_16_2023_20_25_stl_view_top.png) | ![view_left](figs/T1_Utah_SCI_brain_5_16_2023_20_25_stl_view_left.png)
 
 ```bash
 (.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> arch -x86_64 python brain_cell_size_param.py
