@@ -223,4 +223,32 @@ Run the Python script:
 sculpt_stl_to_inp tests/files/two_spheres.yml
 ```
 
+## Verification and Validation Test Case
+
+Attributes:
+
+* Geometry: sphere
+* Material: linearized small strain elasticity
+* Boundary condition: time-varying displacement boundary condition at the outer radius about the center
+
+```bash
+Cubit>
+import stl "/Users/chovey/autotwin/mesh/tests/files/sphere_radius_10.stl" feature_angle 135.00 merge
+sculpt volume 1 size 4 pillow_surfaces pillow_curves pillow_curve_layers 4 adapt_type 3
+export abaqus "/Users/chovey/Downloads/scratch/two_spheres/cell_size_4_pillow_adapt_10cm.inp"  overwrite  everything 
+# view front # for standard xyz axes view
+# element count: 1488
+```
+
+xyz | cut | iso
+:--: | :--: | :--: 
+![](figs/cell_size_4_pillow_adapt_10cm_xyz.png) | ![](figs/cell_size_4_pillow_adapt_10cm_cut.png) | ![](figs/cell_size_4_pillow_adapt_10cm_iso.png)
+
+```bash
+(.venv) cd ~/Downloads/scratch/two_spheres/
+
+```
+
+## References
+
 **See also [Hausdorff Distance](../hausdorff_distance.md)**
