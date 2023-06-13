@@ -1,0 +1,25 @@
+autotwin_header:
+  created: 2023-06-13-1621-MST
+  source: cbh-manual-generated-snl-mac
+bounding_box:
+  auto: true
+  defeatured: false
+  xmax: float
+  xmin: float
+  ymax: float
+  ymin: float
+  zmax: float
+  zmin: float
+cell_size: 4.0
+cubit_path: /Applications/Cubit-16.10/Cubit.app/Contents/MacOS
+inp_path_file: /Users/chovey/Downloads/scratch/two_spheres/cell_size_4_pillow_adapt_10cm.inp
+journaling: false
+n_proc: 3
+qualities:
+- aspect ratio
+- scaled jacobian
+- skew
+stl_path_files:
+- /Users/chovey/autotwin/mesh/test/files/sphere_radius_10.stl
+version: 1.6
+working_dir: /Users/chovey/Downloads/scratch/two_spheres

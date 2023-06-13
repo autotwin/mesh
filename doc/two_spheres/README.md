@@ -241,13 +241,52 @@ export abaqus "/Users/chovey/Downloads/scratch/two_spheres/cell_size_4_pillow_ad
 ```
 
 xyz | cut | iso
-:--: | :--: | :--: 
+:--: | :--: | :--:
 ![](figs/cell_size_4_pillow_adapt_10cm_xyz.png) | ![](figs/cell_size_4_pillow_adapt_10cm_cut.png) | ![](figs/cell_size_4_pillow_adapt_10cm_iso.png)
 
-```bash
-(.venv) cd ~/Downloads/scratch/two_spheres/
+Create [cell_size_4_pillow_adapt_10cm.yml](cell_size_4_pillow_adapt_10cm.yml).
 
+```bash
+(.venv) /Users/chovey/autotwin/mesh> arch -x86_64 cubit_inp_to_quality_csv doc/two_spheres/cell_size_4_pillow_adapt_10cm.yml
+...
+atmesh> inp import completed.
+atmesh> Number of elements: 1488
+atmesh> Processing quality metric: aspect ratio
+atmesh> Opened output file for writing: /Users/chovey/Downloads/scratch/two_spheres/cell_size_4_pillow_adapt_10cm_aspect_ratio.csv
+atmesh> Closed output file: /Users/chovey/Downloads/scratch/two_spheres/cell_size_4_pillow_adapt_10cm_aspect_ratio.csv
+atmesh> Processing quality metric: scaled jacobian
+atmesh> Opened output file for writing: /Users/chovey/Downloads/scratch/two_spheres/cell_size_4_pillow_adapt_10cm_scaled_jacobian.csv
+atmesh> Closed output file: /Users/chovey/Downloads/scratch/two_spheres/cell_size_4_pillow_adapt_10cm_scaled_jacobian.csv
+atmesh> Processing quality metric: skew
+atmesh> Opened output file for writing: /Users/chovey/Downloads/scratch/two_spheres/cell_size_4_pillow_adapt_10cm_skew.csv
+atmesh> Closed output file: /Users/chovey/Downloads/scratch/two_spheres/cell_size_4_pillow_adapt_10cm_skew.csv
+atmesh> Done.
 ```
+
+Create histogram quality outputs:
+
+```bash
+(.venv) chovey@s1088757/Users/chovey/autotwin/mesh/doc/two_spheres> python csv_to_histogram_1d.py 
+Reading file /Users/chovey/Downloads/scratch/two_spheres/cell_size_4_pillow_adapt_10cm_aspect_ratio.csv
+n_bins: 7
+delta_bin: 0.14285714285714285
+bins: [0.0, 0.14285714285714285, 0.2857142857142857, 0.42857142857142855, 0.5714285714285714, 0.7142857142857142, 0.8571428571428571, 1.0]
+Serialized to /Users/chovey/Downloads/scratch/two_spheres/cell_size_4_pillow_adapt_10cm_aspect_ratio.png
+Reading file /Users/chovey/Downloads/scratch/two_spheres/cell_size_4_pillow_adapt_10cm_scaled_jacobian.csv
+n_bins: 7
+delta_bin: 0.14285714285714285
+bins: [0.0, 0.14285714285714285, 0.2857142857142857, 0.42857142857142855, 0.5714285714285714, 0.7142857142857142, 0.8571428571428571, 1.0]
+Serialized to /Users/chovey/Downloads/scratch/two_spheres/cell_size_4_pillow_adapt_10cm_scaled_jacobian.png
+Reading file /Users/chovey/Downloads/scratch/two_spheres/cell_size_4_pillow_adapt_10cm_skew.csv
+n_bins: 7
+delta_bin: 0.14285714285714285
+bins: [0.0, 0.14285714285714285, 0.2857142857142857, 0.42857142857142855, 0.5714285714285714, 0.7142857142857142, 0.8571428571428571, 1.0]
+Serialized to /Users/chovey/Downloads/scratch/two_spheres/cell_size_4_pillow_adapt_10cm_skew.png
+```
+
+MSJ | skew | 1 / AR
+:--: | :--: | :--:
+![](figs/cell_size_4_pillow_adapt_10cm_scaled_jacobian.png) | ![](figs/cell_size_4_pillow_adapt_10cm_skew.png) | ![](figs/cell_size_4_pillow_adapt_10cm_aspect_ratio.png)
 
 ## References
 

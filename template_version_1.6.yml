@@ -1,0 +1,26 @@
+autotwin_header:
+  created: string
+  source: string
+bounding_box:
+  auto: bool
+  defeatured: bool 
+  xmax: float
+  xmin: float
+  ymax: float
+  ymin: float
+  zmax: float
+  zmin: float
+cell_size: float
+cubit_path: string
+inp_path_file: string
+journaling: bool
+n_proc: int
+qualities:
+- aspect ratio
+- scaled jacobian
+- skew
+stl_path_files:
+- string
+version: 1.6
+working_dir: string
+

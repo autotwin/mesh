@@ -20,8 +20,8 @@ See [doc/README.md](doc/README.md)
 
 ## Schema
 
-* `version 1.6`
-* [Updates](#updates)
+* `version 1.6` (see [updates](#updates) section)
+* [template_version_1.6.yml](template_version_1.6.yml)
 
 | `key` | type | description |
 | --- | --- | --- |
