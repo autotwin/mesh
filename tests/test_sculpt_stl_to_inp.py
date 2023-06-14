@@ -2,11 +2,12 @@
 Cubit and Sculpt for translation.
 
 To run:
-(atmeshenv) ~/autotwin/mesh> pytest tests/test_sculpt_stl_to_inp -v
-(atmeshenv) ~/autotwin/mesh> pytest tests/test_sculpt_stl_to_inp -vs  # --capture=no
+(.ven) ~/autotwin/mesh> arch -x86_64 pytest tests/test_sculpt_stl_to_inp -v
+(.ven) ~/autotwin/mesh> arch -x86_64 pytest tests/test_sculpt_stl_to_inp -vs  # --capture=no
+(.ven) ~/autotwin/mesh> arch -x86_64 pytest tests/test_sculpt_stl_to_inp.py::test_two_spheres -v
 
 For coverage:
-(atmeshenv) ~/autotwin/mesh> pytest tests/test_sculpt_stl_to_inp.py --cov=src/atmesh --cov-report term-missing
+(.venv) ~/autotwin/mesh> arch -x86_64 pytest tests/test_sculpt_stl_to_inp.py --cov=src/atmesh --cov-report term-missing
 """
 
 
@@ -110,6 +111,7 @@ def test_two_spheres():
     separate .stl files, then meshed together as an assembly in Sculpt.
     """
     self_path_file = Path(__file__)
+    # breakpoint()
     self_path = self_path_file.resolve().parent
     data_path = self_path.joinpath("files").resolve()
     input_file = data_path.joinpath("two_spheres.yml")

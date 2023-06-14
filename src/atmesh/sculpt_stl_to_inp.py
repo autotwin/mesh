@@ -268,11 +268,22 @@ def translate(*, path_file_input: str) -> bool:
         # n_blocks = cubit.get_block_count()
         # n_nodesets = cubit.get_nodeset_count()
 
-        print(f"{atmesh} Abaqus file export initiated:")
-        print(f"{atmesh} Exporting inp file: {inp_path_file}")
+        print(f"{atmesh} Abaqus mesh file export initiated:")
+        print(f"{atmesh} Exporting .inp file: {inp_path_file}")
         cc = 'export abaqus "' + inp_path_file + '" overwrite'
         cubit.cmd(cc)
-        print(f"{atmesh} Abaqus file export completed.")
+        print(f"{atmesh} Abaqus mesh file export completed.")
+
+        # breakpoint()
+
+        # Remove the .inp file extension, replace with .g extension
+        inp_path_file_genesis = inp_path_file.replace(".inp", ".g")
+
+        print(f"{atmesh} Genesis mesh file export initiated:")
+        print(f"{atmesh} Exporting .g file: {inp_path_file_genesis}")
+        cc = 'export mesh "' + inp_path_file_genesis + '" overwrite'
+        cubit.cmd(cc)
+        print(f"{atmesh} Genesis mesh file export completed.")
 
         # print(f"{atmesh} Script: {Path(__file__).resolve()} has completed.")
         print(f"{atmesh} Done.")
