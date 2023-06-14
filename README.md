@@ -40,7 +40,7 @@ See [doc/README.md](doc/README.md)
 | `cell_size` | float | The Sculpt cell size, in units of the `.stl` input file for the Sculpt baseline mesh size. | 1.4
 | ~~`csv_path_file`~~ | string | **deprecated** in version 1.6, superceded by `qualities` | 1.6
 | `cubit_path` | string | The full path to the Cubit executable, e.g., `"/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"` | 1.4
-| `inp_path_file` | string | The full path to the ABAQUS `.inp` mesh file, e.g., "~/autotwin/mesh/tests/files/sphere.inp" | 1.4
+| `inp_path_file` | string | The full path to the ABAQUS `.inp` mesh file, e.g., `"~/autotwin/mesh/tests/files/sphere.inp"`</br>A Genesis `.g` mesh file is automatically generated too, with the corresponding path and file name, e.g., `"~/autotwin/mesh/tests/files/sphere.g"` | 1.4
 | `journaling` | bool | `True` - turn on Cubit journaling of the process, `False` is off. | 1.4
 | `n_procs` | int | The number of parallel processors uses for Sculpt | 1.4
 | `qualities` | list(str) | Mesh quality metrics of the `.inp` mesh specified by the `inp_path_file` key, one or more of the following: `["aspect ratio", "scaled jacobian", "skew"]` | 1.6
