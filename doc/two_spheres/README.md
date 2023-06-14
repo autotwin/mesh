@@ -240,6 +240,8 @@ export abaqus "/Users/chovey/Downloads/scratch/two_spheres/cell_size_4_pillow_ad
 # element count: 1488
 ```
 
+> *Note:  We select `adapt_type` as `3` because it appears, based on testing [above](#enhanced-features), to produce the least amount of directional bias.*
+
 xyz | cut | iso
 :--: | :--: | :--:
 ![](figs/cell_size_4_pillow_adapt_10cm_xyz.png) | ![](figs/cell_size_4_pillow_adapt_10cm_cut.png) | ![](figs/cell_size_4_pillow_adapt_10cm_iso.png)
