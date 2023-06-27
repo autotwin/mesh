@@ -121,7 +121,8 @@ def test_two_spheres():
 
 # @pytest.mark.skipif(
 #     ("atlas" not in platform.uname().node.lower())
-#     and ("1060600" not in platform.uname().node),
+#     and ("1060600" not in platform.uname().node)
+#     and ("1088757" not in platform.uname().node),
 #     reason="Run on Atlas and local machines only.",
 # )
 @pytest.mark.skip("work in progress")

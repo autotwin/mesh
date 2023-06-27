@@ -53,13 +53,13 @@ def translate(*, path_file_input: str) -> bool:
 
     # user_input = _yml_to_dict(yml_path_file=fin)
     keys = (
-        "version",
-        "cubit_path",
-        "working_dir",
-        "stl_path_files",
-        "inp_path_file",
-        "cell_size",
         "bounding_box",
+        "cell_size",
+        "cubit_path",
+        "inp_path_file",
+        "stl_path_files",
+        "working_dir",
+        "version",
     )
     user_input = translator.yml_to_dict(
         yml_path_file=fin, version=cl.yml_version(), required_keys=keys
@@ -217,29 +217,67 @@ def translate(*, path_file_input: str) -> bool:
         if bounding_box_defeatured:
             cc += " defeature 1 defeature_bbox"
 
-        # TODO: Mesh Improvement
-        # pillow_surfaces
-        # pillow_curves
-        # pillow_curve_layers 3 (int, default=3)
-        # pillow_curve_thresh 0.3 (float, default=0.3)
-        # Cubit>sculpt volume all processors 3 pillow_surfaces pillow_curves pillow_curve_layers 10 pillow_curve_thresh 0.32
+        # breakpoint()
+
+        if user_input["version"] >= 1.7:
+            if (
+                (user_input.get("mesh_adaptivity"), False)
+                and user_input["mesh_adaptivity"].get("adapt_levels", False)
+                and user_input["mesh_adaptivity"].get("adapt_type", False)
+            ):
+                print("Version 1.7 or greater with mesh_adaptivity")
+                cc += " adapt_levels " + str(
+                    user_input["mesh_adaptivity"]["adapt_levels"]
+                )
+                cc += " adapt_type " + str(user_input["mesh_adaptivity"]["adapt_type"])
+                # Adaptive Meshing
+                # Adapt Mesh Size: Boolean, default to False
+                #   True:
+                #     Adapt Type:
+                #       Facet to Surface Distance (1)
+                #       Surface to Facet Distance (2)
+                #       Surface to Surface (3)
+                #       Volume Fraction Average (4)
+                #       Coarsen (5)
+                #       Volume Fraction Difference (6)
+                #       Resample (7)
+                #       Material (8)
+                #     Default Threshold: Boolean, default to True - maintain as True for now.
+                #       If False, then Threshold Distance (float?)
+                #     Theshold Distance
+                #     Max Levels (Defaults to 2) (int)
+
+            if user_input.get("mesh_improvement", False) and user_input.get(
+                "pillow_surfaces", False
+            ):
+                print("Version 1.7 or greater with pillow_surfaces")
+                cc += " pillow_surfaces"
+
+            if (
+                (user_input.get("mesh_improvement"), False)
+                and user_input["mesh_improvement"].get("pillow_curves", False)
+                and user_input["mesh_improvement"].get("pillow_curve_layers", False)
+                and user_input["mesh_improvement"].get("pillow_curve_thresh", False)
+            ):
+                print("Version 1.7 or greater with pillow_curves")
+                cc += " pillow_curves"
+                cc += " pillow_curve_layers " + str(
+                    user_input["mesh_improvement"]["pillow_curve_layers"]
+                )
+                cc += " pillow_curve_thresh " + str(
+                    user_input["mesh_improvement"]["pillow_curve_thresh"]
+                )
+
+                # breakpoint()
+
+                # TODO: Mesh Improvement
+                # pillow_surfaces
+                # pillow_curves
+                # pillow_curve_layers 3 (int, default=3)
+                # pillow_curve_thresh 0.3 (float, default=0.3)
+                # Cubit>sculpt volume all processors 3 pillow_surfaces pillow_curves pillow_curve_layers 10 pillow_curve_thresh 0.32
+
         #
-        # TODO: Adaptive Meshing
-        # Adapt Mesh Size: Boolean, default to False
-        #   True:
-        #     Adapt Type:
-        #       Facet to Surface Distance (1)
-        #       Surface to Facet Distance (2)
-        #       Surface to Surface (3)
-        #       Volume Fraction Average (4)
-        #       Coarsen (5)
-        #       Volume Fraction Difference (6)
-        #       Resample (7)
-        #       Material (8)
-        #     Default Threshold: Boolean, default to True - maintain as True for now.
-        #       If False, then Threshold Distance (float?)
-        #     Theshold Distance
-        #     Max Levels (Defaults to 2) (int)
         #
         # TODO:
         # Examples:
