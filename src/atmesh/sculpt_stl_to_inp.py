@@ -217,20 +217,37 @@ def translate(*, path_file_input: str) -> bool:
         if bounding_box_defeatured:
             cc += " defeature 1 defeature_bbox"
 
-        # TODO: adapativity.
-        # Adapt Type
-        # Input arguments:
-        #   Facet to Surface Distance (1)
-        #   Surface to Facet Distance (2)
-        #   Surface to Surface (3)
-        #   Volume Fraction Average (4)
-        #   Coarsen (5)
-        #   Volume Fraction Difference (6)
-        #   Resample (7)
-        #   Material (8)
-        # Default Threshold
-        # Theshold Distance
-        # Max Levels (Defaults to 2)
+        # TODO: Mesh Improvement
+        # pillow_surfaces
+        # pillow_curves
+        # pillow_curve_layers 3 (int, default=3)
+        # pillow_curve_thresh 0.3 (float, default=0.3)
+        # Cubit>sculpt volume all processors 3 pillow_surfaces pillow_curves pillow_curve_layers 10 pillow_curve_thresh 0.32
+        #
+        # TODO: Adaptive Meshing
+        # Adapt Mesh Size: Boolean, default to False
+        #   True:
+        #     Adapt Type:
+        #       Facet to Surface Distance (1)
+        #       Surface to Facet Distance (2)
+        #       Surface to Surface (3)
+        #       Volume Fraction Average (4)
+        #       Coarsen (5)
+        #       Volume Fraction Difference (6)
+        #       Resample (7)
+        #       Material (8)
+        #     Default Threshold: Boolean, default to True - maintain as True for now.
+        #       If False, then Threshold Distance (float?)
+        #     Theshold Distance
+        #     Max Levels (Defaults to 2) (int)
+        #
+        # TODO:
+        # Examples:
+        # Cubit>Sculpt volume all adapt_type 1 adapt_levels 3
+        # Cubit>Sculpt volume all processors 3 adapt_type 3 adapt_levels 3
+        # Cubit>sculpt volume all processors 3 pillow_surfaces pillow_curves adapt_type 3 adapt_levels 3
+        # Cubit>sculpt volume all processors 3 pillow_surfaces pillow_curves pillow_curve_layers 4 pillow_curve_thresh 0.32 adapt_type 3 adapt_levels 3
+        # Cubit>sculpt volume all processors 3 pillow_surfaces pillow_curves pillow_curve_layers 5 pillow_curve_thresh 0.32 adapt_type 3 adapt_levels 3
 
         print(f"{atmesh} Invoking Sculpt with Cubit command: {cc}")
         cubit.cmd(cc)

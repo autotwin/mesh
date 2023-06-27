@@ -1,0 +1,34 @@
+autotwin_header:
+  created: string
+  source: string
+bounding_box:
+  auto: bool
+  defeatured: bool 
+  xmax: float
+  xmin: float
+  ymax: float
+  ymin: float
+  zmax: float
+  zmin: float
+cell_size: float
+cubit_path: string
+inp_path_file: string
+journaling: bool
+mesh_adaptivity:
+  adapt_type: 3
+  adapt_levels: 2
+mesh_improvement:
+  pillow_surfaces: True
+  pillow_curves: True
+  pillow_curve_layers: 4
+  pillow_curve_thresh: 0.31
+n_proc: int
+qualities:
+- aspect ratio
+- scaled jacobian
+- skew
+stl_path_files:
+- string
+version: 1.7
+working_dir: string
+

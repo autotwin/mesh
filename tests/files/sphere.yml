@@ -16,11 +16,19 @@ cell_size: 0.1
 cubit_path: "/Applications/Cubit-16.10/Cubit.app/Contents/MacOS"
 inp_path_file: "~/autotwin/mesh/tests/files/sphere.inp"
 journaling: False # boolean, True (default): Cubit writes cubit01.jou-style log files
+mesh_adaptivity:
+  adapt_levels: 2
+  adapt_type: 3
+mesh_improvement:
+  pillow_surfaces: True
+  pillow_curves: True
+  pillow_curve_layers: 4
+  pillow_curve_thresh: 0.31
 n_proc: 2  # int, 4 (default): number of parallel processes, minimum is 1
 qualities: ("scaled jacobian",)
 stl_path_files:
   - "~/autotwin/mesh/tests/files/sphere.stl"
 #
 # optional (with default values)
-version: 1.6
+version: 1.7
 working_dir: "~/autotwin/mesh/tests/files"
