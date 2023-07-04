@@ -15,13 +15,13 @@ cubit_path: string
 inp_path_file: string
 journaling: bool
 mesh_adaptivity:
-  adapt_type: 3
   adapt_levels: 2
+  adapt_type: 3
 mesh_improvement:
-  pillow_surfaces: True
   pillow_curves: True
   pillow_curve_layers: 4
   pillow_curve_thresh: 0.31
+  pillow_surfaces: True
 n_proc: int
 qualities:
 - aspect ratio

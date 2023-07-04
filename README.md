@@ -50,6 +50,7 @@ See [doc/README.md](doc/README.md)
 | - `pillow_curves`  | bool | `True` requires `pillow_curve_layers` and `pillow_curve_thresh`. | 1.7
 | - `pillow_curve_layers` | int   | Default is `3`. | 1.7
 | - `pillow_curve_thresh` | float | Default is `0.3`.  Curve pillow SJ threshold. | 1.7
+| - `pillow_surfaces` | bool | `True` turns on surface pillowing. | 1.7
 | `n_procs` | int | The number of parallel processors uses for Sculpt | 1.4
 | `qualities` | list(str) | Mesh quality metrics of the `.inp` mesh specified by the `inp_path_file` key, one or more of the following: `["aspect ratio", "scaled jacobian", "skew"]` | 1.6
 | `stl_path_files` | list(str) | A list of one or more strings.  Each string contains the path and file to an input `.stl` file given to Sculpt. | 1.4

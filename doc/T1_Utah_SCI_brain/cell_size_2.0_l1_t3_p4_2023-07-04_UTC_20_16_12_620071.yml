@@ -1,0 +1,33 @@
+autotwin_header:
+  created: 2023-07-04_UTC_20_16_12_620071
+  source: /Users/chovey/autotwin/mesh/doc/T1_Utah_SCI_brain/brain_cell_size_param.py
+bounding_box:
+  auto: false
+  defeatured: true
+  xmax: 256.0
+  xmin: -12.0
+  ymax: 280.0
+  ymin: 12.0
+  zmax: 230.0
+  zmin: -6.0
+cell_size: 2.0
+cubit_path: /Applications/Cubit-16.10/Cubit.app/Contents/MacOS
+inp_path_file: /Users/chovey/Downloads/scratch/Utah_SCI_brain/cell_size_2.0_l1_t3_p4_2023-07-04_UTC_20_16_12_620071.inp
+journaling: false
+mesh_adaptivity:
+  adapt_levels: 1
+  adapt_type: 3
+mesh_improvement:
+  pillow_curve_layers: 4
+  pillow_curve_thresh: 0.3
+  pillow_curves: true
+  pillow_surfaces: true
+n_proc: 3
+qualities:
+- aspect ratio
+- scaled jacobian
+- skew
+stl_path_files:
+- /Users/chovey/Downloads/scratch/Utah_SCI_brain/T1_Utah_SCI_brain_5_16_2023_20_25.stl
+version: 1.7
+working_dir: /Users/chovey/Downloads/scratch/Utah_SCI_brain

@@ -57,34 +57,52 @@ for cs in PARAMS:  # for cell size in the parameter space
             "source": param_path_file,
         },
         "bounding_box": {
-            "auto": True,
+            "auto": False,  # True for non-adaptive versions, False for adaptive versions
             "defeatured": True,
-            "xmin": 10.0,
-            "xmax": 234.0,
-            "ymin": 34.0,
-            "ymax": 258.0,
-            "zmin": 16.5,
-            "zmax": 208.5,
+            "xmin": -12.0,
+            "xmax": 256.0,
+            "ymin": 12.0,
+            "ymax": 280.0,
+            "zmin": -6.0,
+            "zmax": 230.0,
         },
         "cell_size": cs,
         "cubit_path": "/Applications/Cubit-16.10/Cubit.app/Contents/MacOS",
         "inp_path_file": inp_path_file,
         "journaling": False,
+        "mesh_adaptivity": {
+            "adapt_levels": 1,
+            "adapt_type": 3,
+        },
+        "mesh_improvement": {
+            "pillow_curves": True,
+            "pillow_curve_layers": 4,
+            "pillow_curve_thresh": 0.3,
+            "pillow_surfaces": True,
+        },
         "n_proc": 3,
         "qualities": ["aspect ratio", "scaled jacobian", "skew"],
         "stl_path_files": [
             brain_path_file,
         ],
-        "version": 1.6,
+        "version": 1.7,
         "working_dir": working_dir,
     }
 
-    # update the database
-    db["inp_path_file"] = working_dir + f"/cell_size_{cs}_{ts}.inp"
-    # db["cell_size"] = cs
-
     # write the .yml file
-    yml_path_file = working_dir + f"/cell_size_{cs}_{ts}.yml"
+    if db.get("mesh_adaptivity", False) and db.get("mesh_improvement", False):
+        # if mesh adaptivity and mesh improvement
+        ma = "l" + str(db["mesh_adaptivity"]["adapt_levels"])
+        ma += "_t" + str(db["mesh_adaptivity"]["adapt_type"])
+        ma += "_p" + str(db["mesh_improvement"]["pillow_curve_layers"])
+        yml_path_file = working_dir + f"/cell_size_{cs}_{ma}_{ts}.yml"
+        db["inp_path_file"] = working_dir + f"/cell_size_{cs}_{ma}_{ts}.inp"
+    else:
+        # else no adaptivity and mesh improvement
+        yml_path_file = working_dir + f"/cell_size_{cs}_{ts}.yml"
+        # update the database
+        db["inp_path_file"] = working_dir + f"/cell_size_{cs}_{ts}.inp"
+
     try:
         with open(yml_path_file, "w") as stream:
             # See deprecation warning for plain yaml.load(input) at
