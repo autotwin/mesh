@@ -547,6 +547,24 @@ Cell Size | File (# elements) | Image | MSJ
 (.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> arch -x86_64 cubit_inp_to_quality_csv cell_size_2.0_2023-05-22_UTC_20_50_44_796321.yml
 ```
 
+### 2023-06-26: Scaled from `mm` to `m`, smaller cell sizes
+
+Anu discovered the bug causing the excessive deformation in prior simulations: *All material properties were in SI units (m, kg, s), but the meshes had a native length scale of millimeters*  
+
+Anu adjusted the density to make the millimeter length scale meshes with simulations that ran successfully.  
+
+Henceforth, we implement a new `.yml` input `stl_scale_factor` and use `stl_scale_factor = 0.001` to change length units from millimeters to meters.
+
+Anu also requests smaller mesh length sizes:
+
+* Existing (see above) cell sizes (8, 4, 2)
+* New cell sizes (1.5, 1.0)
+
+Cell Size | File (# elements) | Image | MSJ
+--: | -- | -- | ---
+1.5 | to come: [cell_size_1.5_2023-07-26_UTC_xxx.yml](cell_size_1.5_2023-07-26_UTC_xxx.yml) | ![](figs/cell_size_1.5_2023-05-22_UTC_xxx.png) `nel = x,xxx` | ![](figs/cell_size_1.5_2023-07-26_UTC_xxx_msj.png)
+1.0 | to come: [cell_size_1.0_2023-07-26_UTC_xxx.yml](cell_size_1.0_2023-07-26_UTC_xxx.yml) | ![](figs/cell_size_1.0_2023-05-22_UTC_xxx.png) `nel = xx,xxx` | ![](figs/cell_size_1.0_2023-07-26_UTC_xxx_msj.png)
+
 ## Brain with Adaptivity
 
 We start from `stl_to_inp_cell_size_8.yml`, the coarsest of the four input files, because we anticipate one or two levels of apativity, which will make the small-scale elements `8 / 2 / 2 = 2`, approximately equal to the `stl_to_inp_cell_size_2.yml` file (which has no adaptivity).

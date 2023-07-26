@@ -54,6 +54,7 @@ See [doc/README.md](doc/README.md)
 | `n_procs` | int | The number of parallel processors uses for Sculpt | 1.4
 | `qualities` | list(str) | Mesh quality metrics of the `.inp` mesh specified by the `inp_path_file` key, one or more of the following: `["aspect ratio", "scaled jacobian", "skew"]` | 1.6
 | `stl_path_files` | list(str) | A list of one or more strings.  Each string contains the path and file to an input `.stl` file given to Sculpt. | 1.4
+| `stl_scale_factor` | int | Scales the input `stl` geometry by the `stl_scale_factor`.  Allows geometries to be made smaller/larger prior to meshing.  *Optional.*  Defaults to `1.0` if not specified. | 1.7
 | `version` | float | The version of the `.yml` input file | 1.4
 | `working_dir` | string | The path for the Cubit/Sculpt working directory, e.g., temporary files, journal files | 1.4
 
