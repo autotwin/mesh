@@ -1,0 +1,26 @@
+autotwin_header:
+  created: 2023-07-26_UTC_22_20_10_281341
+  source: CBH manual update cell_size_8.0_2023-05-22_UTC_20_50_44_794153.yml
+bounding_box:
+  auto: true
+  defeatured: true
+  xmax: 234.0
+  xmin: 10.0
+  ymax: 258.0
+  ymin: 34.0
+  zmax: 208.5
+  zmin: 16.5
+cell_size: 1.5
+cubit_path: /Applications/Cubit-16.10/Cubit.app/Contents/MacOS
+inp_path_file: /Users/chovey/Downloads/scratch/Utah_SCI_brain/cell_size_1.5_2023-07-26_UTC_22_20_10_281341.inp
+journaling: false
+n_proc: 3
+qualities:
+- aspect ratio
+- scaled jacobian
+- skew
+stl_path_files:
+- /Users/chovey/Downloads/scratch/Utah_SCI_brain/T1_Utah_SCI_brain_5_16_2023_20_25.stl
+stl_scale_factor: 0.001
+version: 1.7
+working_dir: /Users/chovey/Downloads/scratch/Utah_SCI_brain

@@ -562,8 +562,8 @@ Anu also requests smaller mesh length sizes:
 
 Cell Size | File (# elements) | Image | MSJ
 --: | -- | -- | ---
-1.5 | to come: [cell_size_1.5_2023-07-26_UTC_xxx.yml](cell_size_1.5_2023-07-26_UTC_xxx.yml) | ![](figs/cell_size_1.5_2023-05-22_UTC_xxx.png) `nel = x,xxx` | ![](figs/cell_size_1.5_2023-07-26_UTC_xxx_msj.png)
-1.0 | to come: [cell_size_1.0_2023-07-26_UTC_xxx.yml](cell_size_1.0_2023-07-26_UTC_xxx.yml) | ![](figs/cell_size_1.0_2023-05-22_UTC_xxx.png) `nel = xx,xxx` | ![](figs/cell_size_1.0_2023-07-26_UTC_xxx_msj.png)
+1.5 | to come: [cell_size_1.5_2023-07-26_UTC_22_20_10_281341.yml](cell_size_1.5_2023-07-26_UTC_22_20_10_281341.yml) | ![](figs/cell_size_1.5_2023-05-22_UTC_22_20_10_281341.png) to come: `nel = xx,xxx` | ![](figs/cell_size_1.5_2023-07-26_UTC_22_20_10_281341_msj.png)
+1.0 | to come: [cell_size_1.0_2023-07-26_UTC_22_21_19_128992.yml](cell_size_1.0_2023-07-26_UTC_22_21_19_128992.yml) | ![](figs/cell_size_1.0_2023-05-22_UTC_22_21_19_128992.png) to come: `nel = xx,xxx` | ![](figs/cell_size_1.0_2023-07-26_UTC_22_21_19_128992_msj.png)
 
 ## Brain with Adaptivity
 
