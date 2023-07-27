@@ -10,7 +10,8 @@ bounding_box:
   ymin: 34.0
   zmax: 208.5
   zmin: 16.5
-cell_size: 1.5
+# cell_size: 1.5
+cell_size: 0.0015  # 1.5 mm
 cubit_path: /Applications/Cubit-16.10/Cubit.app/Contents/MacOS
 inp_path_file: /Users/chovey/Downloads/scratch/Utah_SCI_brain/cell_size_1.5_2023-07-26_UTC_22_20_10_281341.inp
 journaling: false
