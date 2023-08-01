@@ -76,10 +76,16 @@ def translate(*, path_file_input: str) -> bool:
     working_dir_str = str(Path(working_dir).expanduser())
     cell_size = float(user_input["cell_size"])
 
-    journaling: bool = user_input.get("journaling", False)
     n_proc_default: Final[int] = 4
     # number of parallel processors
     n_proc: int = user_input.get("n_proc", n_proc_default)
+
+    # If 'jounnaling is present, then echo the commands to a journal file.
+    journaling: bool = user_input.get("journaling", False)
+
+    # If the 'stl_scale_factor' is present, scale the stl objects
+    # by that amount, otherwise, do nothing.
+    stl_scale_factor: float = user_input.get("stl_scale_factor", 1.0)
 
     if cell_size <= 0.0:
         raise ValueError(f"cell_size {cell_size} must be positive")
@@ -134,9 +140,18 @@ def translate(*, path_file_input: str) -> bool:
         for stl_file in stl_path_files:
             print(f"{atmesh} Importing stl file: {stl_file}")
             # cc = 'import stl "' + stl_file + '"' + " feature_angle 135.0 merge"
-            cc = 'import stl "' + stl_file + '" feature_angle 135.0 merge'
+            cc = 'import stl "' + stl_file + '" feature_angle 135.0 merge'  # overwrite
             cubit.cmd(cc)
         print(f"{atmesh} stl import completed.")
+
+        print(f"{atmesh} Scale up/down applied to the STL file")
+        if stl_scale_factor == 1.0:
+            print(f"{atmesh} is none (equalivalent to scaleing of 1.0).")
+        else:
+            print(f"{atmesh} as 'stl_scale_factor' is {stl_scale_factor}")
+            cc = "volume all scale " + str(stl_scale_factor)
+            cubit.cmd(cc)
+            print("f{atmesh} finished STL scaling.")
 
         """Sculpt invocation
         Default:
@@ -217,15 +232,28 @@ def translate(*, path_file_input: str) -> bool:
         if bounding_box_defeatured:
             cc += " defeature 1 defeature_bbox"
 
-        # breakpoint()
+        breakpoint()
 
         if user_input["version"] >= 1.7:
-            if (
-                (user_input.get("mesh_adaptivity"), False)
-                and user_input["mesh_adaptivity"].get("adapt_levels", False)
-                and user_input["mesh_adaptivity"].get("adapt_type", False)
-            ):
-                print("Version 1.7 or greater with mesh_adaptivity")
+            print(f"{atmesh} Version 1.7 or greater input file specified.")
+
+            # journaling: bool = user_input.get("journaling", False)
+            b_mesh_adaptivity: bool = user_input.get("mesh_adaptivity", False)
+
+            if b_mesh_adaptivity:
+                b_adapt_levels: bool = user_input["mesh_adaptivity"].get(
+                    "adapt_levels", False
+                )
+                b_adapt_type: bool = user_input["mesh_adaptivity"].get(
+                    "adapt_type", False
+                )
+            else:
+                b_adapt_levels = False
+                b_adapt_type = False
+
+            if b_mesh_adaptivity and b_adapt_levels and b_adapt_type:
+                print(f"{atmesh} Mesh adaptivity specified.")
+
                 cc += " adapt_levels " + str(
                     user_input["mesh_adaptivity"]["adapt_levels"]
                 )
@@ -247,19 +275,70 @@ def translate(*, path_file_input: str) -> bool:
                 #     Theshold Distance
                 #     Max Levels (Defaults to 2) (int)
 
-            if user_input.get("mesh_improvement", False) and user_input.get(
-                "pillow_surfaces", False
-            ):
-                print("Version 1.7 or greater with pillow_surfaces")
-                cc += " pillow_surfaces"
+            else:
+                print(f"{atmesh} Mesh adaptivity not specified; or,")
+                print(f"{atmesh} one or more missing keys/value pairs.  Required keys")
+                print(f"{atmesh} for adaptivity: 'mesh_adaptivity', 'adapt_levels',")
+                print(f"{atmesh} and 'adapt_type'.")
+
+            # if (
+            #     (user_input.get("mesh_adaptivity"), False)
+            #     and user_input["mesh_adaptivity"].get("adapt_levels", False)
+            #     and user_input["mesh_adaptivity"].get("adapt_type", False)
+            # ):
+            #     print("Version 1.7 or greater with mesh_adaptivity")
+            #     cc += " adapt_levels " + str(
+            #         user_input["mesh_adaptivity"]["adapt_levels"]
+            #     )
+            #     cc += " adapt_type " + str(user_input["mesh_adaptivity"]["adapt_type"])
+            #     # Adaptive Meshing
+            #     # Adapt Mesh Size: Boolean, default to False
+            #     #   True:
+            #     #     Adapt Type:
+            #     #       Facet to Surface Distance (1)
+            #     #       Surface to Facet Distance (2)
+            #     #       Surface to Surface (3)
+            #     #       Volume Fraction Average (4)
+            #     #       Coarsen (5)
+            #     #       Volume Fraction Difference (6)
+            #     #       Resample (7)
+            #     #       Material (8)
+            #     #     Default Threshold: Boolean, default to True - maintain as True for now.
+            #     #       If False, then Threshold Distance (float?)
+            #     #     Theshold Distance
+            #     #     Max Levels (Defaults to 2) (int)
+
+            # journaling: bool = user_input.get("journaling", False)
+            b_mesh_improvement: bool = user_input.get("mesh_improvement", False)
+
+            if b_mesh_improvement:
+                b_pillow_curves: bool = user_input["mesh_improvement"].get(
+                    "pillow_curves", False
+                )
+                b_pillow_curve_layers: bool = user_input["mesh_improvement"].get(
+                    "pillow_curve_layers", False
+                )
+                b_pillow_curve_thresh: bool = user_input["mesh_improvement"].get(
+                    "pillow_curve_thresh", False
+                )
+                b_pillow_surfaces: bool = user_input["mesh_improvement"].get(
+                    "pillow_surfaces", False
+                )
+            else:
+                b_pillow_curves = False
+                b_pillow_curve_layers = False
+                b_pillow_curve_thresh = False
+                b_pillow_surfaces = False
 
             if (
-                (user_input.get("mesh_improvement"), False)
-                and user_input["mesh_improvement"].get("pillow_curves", False)
-                and user_input["mesh_improvement"].get("pillow_curve_layers", False)
-                and user_input["mesh_improvement"].get("pillow_curve_thresh", False)
+                b_mesh_improvement
+                and b_pillow_curves
+                and b_pillow_curve_layers
+                and b_pillow_curve_thresh
+                and b_pillow_surfaces
             ):
-                print("Version 1.7 or greater with pillow_curves")
+                print(f"{atmesh} Mesh improvement specified.")
+
                 cc += " pillow_curves"
                 cc += " pillow_curve_layers " + str(
                     user_input["mesh_improvement"]["pillow_curve_layers"]
@@ -276,6 +355,43 @@ def translate(*, path_file_input: str) -> bool:
                 # pillow_curve_layers 3 (int, default=3)
                 # pillow_curve_thresh 0.3 (float, default=0.3)
                 # Cubit>sculpt volume all processors 3 pillow_surfaces pillow_curves pillow_curve_layers 10 pillow_curve_thresh 0.32
+
+            else:
+                print(f"{atmesh} Mesh improvement not specified; or,.")
+                print(f"{atmesh} one or more missing key/value pairs.  Required keys")
+                print(f"{atmesh} for improvement: 'mesh_improvement', 'pillow_curves',")
+                print(f"{atmesh} 'pillow_curve_layers', 'pillow_curve_thresh', .")
+                print(f"{atmesh} and 'pillow_surfaces'.")
+
+            # if user_input.get("mesh_improvement", False) and user_input.get(
+            #     "pillow_surfaces", False
+            # ):
+            #     print("Version 1.7 or greater with pillow_surfaces")
+            #     cc += " pillow_surfaces"
+
+            # if (
+            #     (user_input.get("mesh_improvement"), False)
+            #     and user_input["mesh_improvement"].get("pillow_curves", False)
+            #     and user_input["mesh_improvement"].get("pillow_curve_layers", False)
+            #     and user_input["mesh_improvement"].get("pillow_curve_thresh", False)
+            # ):
+            #     print("Version 1.7 or greater with pillow_curves")
+            #     cc += " pillow_curves"
+            #     cc += " pillow_curve_layers " + str(
+            #         user_input["mesh_improvement"]["pillow_curve_layers"]
+            #     )
+            #     cc += " pillow_curve_thresh " + str(
+            #         user_input["mesh_improvement"]["pillow_curve_thresh"]
+            #     )
+
+            #     # breakpoint()
+
+            #     # TODO: Mesh Improvement
+            #     # pillow_surfaces
+            #     # pillow_curves
+            #     # pillow_curve_layers 3 (int, default=3)
+            #     # pillow_curve_thresh 0.3 (float, default=0.3)
+            #     # Cubit>sculpt volume all processors 3 pillow_surfaces pillow_curves pillow_curve_layers 10 pillow_curve_thresh 0.32
 
         #
         #
