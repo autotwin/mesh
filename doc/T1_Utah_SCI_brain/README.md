@@ -547,6 +547,12 @@ Cell Size | File (# elements) | Image | MSJ
 (.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> arch -x86_64 cubit_inp_to_quality_csv cell_size_2.0_2023-05-22_UTC_20_50_44_796321.yml
 ```
 
+```bash
+# .csv to post-processing histogram and box plots
+> python csv_to_histogram_1d.py
+```
+
+
 ### 2023-06-26: Scaled from `mm` to `m`, smaller cell sizes
 
 Anu discovered the bug causing the excessive deformation in prior simulations: *All material properties were in SI units (m, kg, s), but the meshes had a native length scale of millimeters*  
