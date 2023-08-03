@@ -5,7 +5,7 @@ population data.
 To run:
 > cd ~/autotwin/mesh
 ~/autotwin/mesh> source .venv/bin/activate.fish
-(.venv) ~/autotwin/mesh> python doc/T1_Utah_SCI_brain/histogram_1d.py
+(.venv) ~/autotwin/mesh> python doc/T1_Utah_SCI_brain/csv_to_histogram_1d.py
 """
 
 from pathlib import Path
@@ -31,18 +31,22 @@ def filename_to_xlabel(filename: str) -> str:
 def main():
     """User input begin"""
     path_to_files = "~/Downloads/scratch/Utah_SCI_brain/"
-    files = (
-        "cell_size_8.0_2023-05-22_UTC_20_50_44_794153_scaled_jacobian.csv",
-        "cell_size_8.0_2023-05-22_UTC_20_50_44_794153_skew.csv",
-        "cell_size_8.0_2023-05-22_UTC_20_50_44_794153_aspect_ratio.csv",
-        "cell_size_4.0_2023-05-22_UTC_20_50_44_795467_scaled_jacobian.csv",
-        "cell_size_4.0_2023-05-22_UTC_20_50_44_795467_skew.csv",
-        "cell_size_4.0_2023-05-22_UTC_20_50_44_795467_aspect_ratio.csv",
-        "cell_size_2.0_2023-05-22_UTC_20_50_44_796321_scaled_jacobian.csv",
-        "cell_size_2.0_2023-05-22_UTC_20_50_44_796321_skew.csv",
-        "cell_size_2.0_2023-05-22_UTC_20_50_44_796321_aspect_ratio.csv",
-    )
+    # files = (
+    #     "cell_size_8.0_2023-05-22_UTC_20_50_44_794153_scaled_jacobian.csv",
+    #     "cell_size_8.0_2023-05-22_UTC_20_50_44_794153_skew.csv",
+    #     "cell_size_8.0_2023-05-22_UTC_20_50_44_794153_aspect_ratio.csv",
+    #     "cell_size_4.0_2023-05-22_UTC_20_50_44_795467_scaled_jacobian.csv",
+    #     "cell_size_4.0_2023-05-22_UTC_20_50_44_795467_skew.csv",
+    #     "cell_size_4.0_2023-05-22_UTC_20_50_44_795467_aspect_ratio.csv",
+    #     "cell_size_2.0_2023-05-22_UTC_20_50_44_796321_scaled_jacobian.csv",
+    #     "cell_size_2.0_2023-05-22_UTC_20_50_44_796321_skew.csv",
+    #     "cell_size_2.0_2023-05-22_UTC_20_50_44_796321_aspect_ratio.csv",
+    # )
     # files = ("cell_size_8.0_2023-05-22_UTC_20_50_44_794153_scaled_jacobian.csv",)
+    files = (
+        "cell_size_1.5_2023-07-26_UTC_22_20_10_281341_scaled_jacobian.csv",
+        "cell_size_1.0_2023-07-26_UTC_22_21_19_128992_scaled_jacobian.csv",
+    )
     fig_dict = {
         "title": "Utah SCI Brain Mesh Quality Metric",
         "xlabel": "",
