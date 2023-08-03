@@ -547,11 +547,28 @@ Cell Size | File (# elements) | Image | MSJ
 (.venv) ~/autotwin/mesh/doc/T1_Utah_SCI_brain> arch -x86_64 cubit_inp_to_quality_csv cell_size_2.0_2023-05-22_UTC_20_50_44_796321.yml
 ```
 
+**Quality**
+
 ```bash
 # .csv to post-processing histogram and box plots
 > python csv_to_histogram_1d.py
 ```
 
+**Similarity**
+
+```bash
+Cubit> import abaqus mesh geometry "/Users/cbh/Downloads/0010.inp" feature_angle 135
+skin volume 1 make block
+delete block 1
+# block 2 contains 192 SHELL4 elements with 194 nodes
+export stl "/Users/cbh/Downloads/0010_shell.stl" overwrite
+MeshLab> open mesh /Users/chovey/Downloads/ (cont.)
+scratch/Utah_SCI_brain/T1_Utah_SCI_brain_5_16_2023_20_25.stl
+
+Filters, Sampling, Hausdorff distance, sampled mesh 
+cell_size_8.0_2023-05-22_UTC_20_50_44_794153.stl
+target mesh T1_Utah_SCI_brain_5_16_2023_20_25.stl
+```
 
 ### 2023-06-26: Scaled from `mm` to `m`, smaller cell sizes
 
