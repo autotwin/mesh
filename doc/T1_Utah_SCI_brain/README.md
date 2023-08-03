@@ -562,10 +562,16 @@ skin volume 1 make block
 delete block 1
 # block 2 contains 192 SHELL4 elements with 194 nodes
 export stl "/Users/cbh/Downloads/0010_shell.stl" overwrite
-MeshLab> open mesh /Users/chovey/Downloads/ (cont.)
+
+MeshLab> 
+
+open mesh /Users/chovey/Downloads/ (cont.)
 scratch/Utah_SCI_brain/T1_Utah_SCI_brain_5_16_2023_20_25.stl
 
-Filters, Sampling, Hausdorff distance, sampled mesh 
+open mesh /Users/chovey/Downloads/ (cont.)
+scratch/Utah_SCI_brain/cell_size_4.0_2023-05-22_UTC_20_50_44_795467.stl
+
+# Filters, Sampling, Hausdorff distance, sampled mesh 
 cell_size_8.0_2023-05-22_UTC_20_50_44_794153.stl
 target mesh T1_Utah_SCI_brain_5_16_2023_20_25.stl
 ```
