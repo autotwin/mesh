@@ -95,7 +95,13 @@ Successfully installed pip-23.0.1 setuptools-67.4.0 wheel-0.38.4
 
 ### Within the `autotwin/mesh` folder, install the `venv`
 
-Note: If `.venv` already exists from previous installs, then remove it with `rm -rf .venv/`.
+Note: If `.venv` already exists from previous installs, then remove it as follows:
+
+```bash
+(.venv) $ deactivate            # if the virtual environment is currently active
+$ pip uninstall .venv           # uninstall
+$ rm -rf ~/autotwin/mesh/.venv  # remove the virtual environment folder with `rm -rf .venv/`.
+```
 
 ```bash
 # python3 -m venv autotwin_env  # create a virtual environment
