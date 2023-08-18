@@ -23,5 +23,5 @@ qualities:
 stl_path_files:
   - "~/autotwin/mesh/tests/files/sphere_radius_5.stl"
   - "~/autotwin/mesh/tests/files/sphere_radius_10.stl"
-version: 1.6
+version: 1.8
 working_dir: "~/autotwin/mesh/tests/files"
