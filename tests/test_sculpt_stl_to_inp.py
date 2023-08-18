@@ -21,15 +21,55 @@ import pytest
 import atmesh.sculpt_stl_to_inp as translator
 
 
-def test_when_io_fails():
-    """Given a file name or a path that does not exist, checks that the
-    function raises a FileNotFoundError."""
+@pytest.fixture
+def tests_files_path():
+    """Given the 'test_sculpt_stl_to_inp.py' file relative location, navigates
+    up a directly and then down into the 'files' directory, and returns this
+    as a Path object."""
     self_path_file = Path(__file__)
     self_path = self_path_file.resolve().parent
-    data_path = self_path.joinpath("files").resolve()
+    return self_path.joinpath("files").resolve()
+
+
+def test_version_not_supported(tests_files_path):
+    """Given an input file of a version that is no longer supported, verify that
+    a value error is raised.
+    """
+
+    # self_path_file = Path(__file__)
+    # self_path = self_path_file.resolve().parent
+    # data_path = self_path.joinpath("files").resolve()
+
+    with pytest.raises(ValueError) as error:
+        input_file = tests_files_path.joinpath("sphere_minsj.yml")
+        translator.translate(path_file_input=str(input_file))
+    assert error.typename == "ValueError"
+
+
+# def test_version_not_supported():
+#     """Given an input file of a version that is no longer supported, verify that
+#     a value error is raised.
+#     """
+#
+#     self_path_file = Path(__file__)
+#     self_path = self_path_file.resolve().parent
+#     data_path = self_path.joinpath("files").resolve()
+#
+#     with pytest.raises(ValueError) as error:
+#         input_file = data_path.joinpath("sphere_minsj.yml")
+#         translator.translate(path_file_input=str(input_file))
+#     assert error.typename == "ValueError"
+
+
+def test_when_io_fails(tests_files_path):
+    """Given a file name or a path that does not exist, checks that the
+    function raises a FileNotFoundError."""
+    # self_path_file = Path(__file__)
+    # self_path = self_path_file.resolve().parent
+    # data_path = self_path.joinpath("files").resolve()
 
     with pytest.raises(FileNotFoundError) as error:
-        input_file = data_path.joinpath("this_file_does_not_exist.yml")
+        input_file = tests_files_path.joinpath("this_file_does_not_exist.yml")
         translator.translate(path_file_input=str(input_file))
     assert error.typename == "FileNotFoundError"
 
@@ -37,7 +77,7 @@ def test_when_io_fails():
     # then check that a TypeError is raised.
 
     with pytest.raises(TypeError) as error:
-        input_file = data_path.joinpath("sculpt_stl_to_inp_filetype.txt")
+        input_file = tests_files_path.joinpath("sculpt_stl_to_inp_filetype.txt")
         translator.translate(path_file_input=str(input_file))
     assert error.typename == "TypeError"
 
@@ -45,7 +85,7 @@ def test_when_io_fails():
     # curently implemented, then check that a ValueError is raised.
 
     with pytest.raises(ValueError) as error:
-        input_file = data_path.joinpath("sculpt_stl_to_inp_bad_version.yml")
+        input_file = tests_files_path.joinpath("sculpt_stl_to_inp_bad_version.yml")
         translator.translate(path_file_input=str(input_file))
     assert error.typename == "ValueError"
 
@@ -53,13 +93,13 @@ def test_when_io_fails():
     # does not have the correct keys, then test that a KeyError is raised.
 
     with pytest.raises(KeyError) as error:
-        input_file = data_path.joinpath("sculpt_stl_to_inp_bad_keys.yml")
+        input_file = tests_files_path.joinpath("sculpt_stl_to_inp_bad_keys.yml")
         translator.translate(path_file_input=str(input_file))
     assert error.typename == "KeyError"
 
     """If the yaml cannot be loaded, then test that an OSError is raised."""
     with pytest.raises(OSError) as error:
-        input_file = data_path.joinpath("sculpt_stl_to_inp_bad_yaml_load.yml")
+        input_file = tests_files_path.joinpath("sculpt_stl_to_inp_bad_yaml_load.yml")
         translator.translate(path_file_input=str(input_file))
     assert error.typename == "OSError"
 
@@ -105,16 +145,16 @@ def test_cubit_init():
     and ("1088757" not in platform.uname().node),
     reason="Run on Atlas and local machines only.",
 )
-def test_two_spheres():
+def test_two_spheres(tests_files_path):
     """Two concentric spheres with centers located at the origin, with radius
     length scale 5 (inner) and radius length scale 10 (outer), in two
     separate .stl files, then meshed together as an assembly in Sculpt.
     """
-    self_path_file = Path(__file__)
-    # breakpoint()
-    self_path = self_path_file.resolve().parent
-    data_path = self_path.joinpath("files").resolve()
-    input_file = data_path.joinpath("two_spheres.yml")
+    # self_path_file = Path(__file__)
+    # # breakpoint()
+    # self_path = self_path_file.resolve().parent
+    # data_path = self_path.joinpath("files").resolve()
+    input_file = tests_files_path.joinpath("two_spheres.yml")
     completed = translator.translate(path_file_input=str(input_file))
     assert completed
 
@@ -126,14 +166,14 @@ def test_two_spheres():
 #     reason="Run on Atlas and local machines only.",
 # )
 @pytest.mark.skip("work in progress")
-def test_import_cubit_fails():
+def test_import_cubit_fails(tests_files_path):
     """Currently with CI/CD, we have no way to test Cubit and Sculpt, so test
     that a ModuleNotFoundError is raised."""
-    self_path_file = Path(__file__)
-    self_path = self_path_file.resolve().parent
-    data_path = self_path.joinpath("files").resolve()
+    # self_path_file = Path(__file__)
+    # self_path = self_path_file.resolve().parent
+    # data_path = self_path.joinpath("files").resolve()
 
     with pytest.raises(ModuleNotFoundError) as error:
-        input_file = data_path.joinpath("sphere.yml")
+        input_file = tests_files_path.joinpath("sphere.yml")
         translator.translate(path_file_input=str(input_file))
     assert error.typename == "ModuleNotFoundError"

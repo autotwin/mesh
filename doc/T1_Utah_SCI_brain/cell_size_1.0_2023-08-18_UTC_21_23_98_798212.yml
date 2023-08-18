@@ -1,0 +1,29 @@
+autotwin_header:
+  created: 2023-08-18_UTC_21_23_98_798212
+  source: CBH manual update cell_size_8.0_2023-05-22_UTC_20_50_44_794153.yml, stair-step (voxelized)
+bounding_box:
+  auto: True
+  defeatured: True
+  xmax: 234.0
+  xmin: 10.0
+  ymax: 258.0
+  ymin: 34.0
+  zmax: 208.5
+  zmin: 16.5
+# cell_size: 1.0
+# cell_size: 0.0080  # 8.0 mm
+cell_size: 0.0010  # 1.0 mm
+cubit_path: /Applications/Cubit-16.10/Cubit.app/Contents/MacOS
+inp_path_file: /Users/chovey/Downloads/scratch/Utah_SCI_brain/cell_size_1.0_voxel_2023-08-18_UTC_21_23_98_798212.inp
+journaling: False
+n_proc: 3
+qualities:
+- aspect ratio
+- scaled jacobian
+- skew
+stair_step: True
+stl_path_files:
+- /Users/chovey/Downloads/scratch/Utah_SCI_brain/T1_Utah_SCI_brain_5_16_2023_20_25.stl
+stl_scale_factor: 0.001
+version: 1.8
+working_dir: /Users/chovey/Downloads/scratch/Utah_SCI_brain

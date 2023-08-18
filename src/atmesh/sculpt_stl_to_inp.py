@@ -13,11 +13,11 @@ Methods:
 # > /usr/local/bin/python3.11 sculpt_stl_to_inp.py <input_file>.yml
 > python --version
   Python 3.11.2
-> python sculpt_stl_to_inp.py <input_file>.yml
+> arch -x86_64 python sculpt_stl_to_inp.py <input_file>.yml
 
 * Log Method
 # > /usr/local/bin/python3.11 sculpt_stl_to_inp.py <input_file>.yml > sculpt_stl_to_inp.log
-> python sculpt_stl_to_inp.py <input_file>.yml > sculpt_stl_to_inp.log
+> arch -x86_64 python sculpt_stl_to_inp.py <input_file>.yml > sculpt_stl_to_inp.log
 
 Example 1:
 # activate the virtual environment
@@ -65,6 +65,14 @@ def translate(*, path_file_input: str) -> bool:
         yml_path_file=fin, version=cl.yml_version(), required_keys=keys
     )
 
+    # Support input files of version 1.7 or later only.
+    min_input_version: Final[float] = 1.7
+
+    if user_input["version"] < min_input_version:
+        raise ValueError(
+            f"{atmesh} Error: Input file must be of version {min_input_version} or greater."
+        )
+
     print(f"{atmesh} User input:")
     for key, value in user_input.items():
         print(f"  {key}: {value}")
@@ -82,6 +90,10 @@ def translate(*, path_file_input: str) -> bool:
 
     # If 'jounnaling is present, then echo the commands to a journal file.
     journaling: bool = user_input.get("journaling", False)
+
+    # Version 1.8 implements a stair-step mesh.  For backward compatibility with
+    # version 1.7, make the default value for star_step = False.
+    stair_step: bool = user_input.get("stair_step", False)
 
     # If the 'stl_scale_factor' is present, scale the stl objects
     # by that amount, otherwise, do nothing.
@@ -232,10 +244,17 @@ def translate(*, path_file_input: str) -> bool:
         if bounding_box_defeatured:
             cc += " defeature 1 defeature_bbox"
 
-        breakpoint()
+        # breakpoint()
 
-        if user_input["version"] >= 1.7:
-            print(f"{atmesh} Version 1.7 or greater input file specified.")
+        if stair_step:
+
+            # Build an all voxel-style mesh (aka "sugar cube" mesh).
+            # This is a Lagrangian mesh in Eulerian form.
+            cc += " stair 1"
+
+        else:
+            # Not a voxelized mesh, rather a standard Lagrangian mesh that
+            # follows the curvature of a body.
 
             # journaling: bool = user_input.get("journaling", False)
             b_mesh_adaptivity: bool = user_input.get("mesh_adaptivity", False)

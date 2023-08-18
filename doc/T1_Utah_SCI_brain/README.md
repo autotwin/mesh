@@ -594,7 +594,6 @@ Cell Size | File (# elements) | Image | MSJ
 1.5 | [cell_size_1.5_2023-07-26_UTC_22_20_10_281341.yml](cell_size_1.5_2023-07-26_UTC_22_20_10_281341.yml) | ![](figs/cell_size_1.5_2023-05-22_UTC_22_20_10_281341.png) to come: `nel = 558,060` | ![](figs/cell_size_1.5_2023-05-22_UTC_22_20_10_281341_msj.png)
 1.0 | [cell_size_1.0_2023-07-26_UTC_22_21_19_128992.yml](cell_size_1.0_2023-07-26_UTC_22_21_19_128992.yml) | ![](figs/cell_size_1.0_2023-05-22_UTC_22_21_19_128992.png) to come: `nel = 1,821,787` | ![](figs/cell_size_1.0_2023-05-22_UTC_22_21_19_128992_msj.png)
 
-
 ## Brain with Adaptivity
 
 We start from `stl_to_inp_cell_size_8.yml`, the coarsest of the four input files, because we anticipate one or two levels of apativity, which will make the small-scale elements `8 / 2 / 2 = 2`, approximately equal to the `stl_to_inp_cell_size_2.yml` file (which has no adaptivity).
