@@ -12,7 +12,7 @@ bounding_box:
   zmin: -16.
   zmax: 16.
 cell_size: 2.0
-cubit_path: "/Applications/Cubit-16.10/Cubit.app/Contents/MacOS"
+cubit_path: "/Applications/Cubit-16.14/Cubit.app/Contents/MacOS"
 inp_path_file: "~/autotwin/mesh/tests/files/two_spheres.inp"
 journaling: False # boolean, True (default): Cubit writes cubit01.jou-style log files
 n_proc: 2  # int, 4 (default): number of parallel processes, minimum is 1
