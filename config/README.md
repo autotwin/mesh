@@ -110,10 +110,10 @@ $ rm -rf ~/autotwin/mesh/.venv  # remove the virtual environment folder with `rm
 /usr/local/bin/python3.11 -m venv .venv  # create a virtual environment
 
 # activate the venv with one of the following:
-source .venv/bin/activate # for bash shell
-source .venv/bin/activate.csh # for c shell
-source .venv/bin/activate.fish # for fish shell
-source .venv/bin/Activate.fish # for powershell
+source .venv/bin/activate       # for bash shell
+source .venv/bin/activate.csh   # for c shell
+source .venv/bin/activate.fish  # for fish shell
+.\.venv\Scripts/activate        # for powershell
 
 python --version  # Python 3.11.2 (Cubit 16.10 supports Python 3.6 through Python 3.11)
 
