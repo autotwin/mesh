@@ -4,7 +4,7 @@
 
 ## Download
 
-* *2023-03-03: Upgrade Cubit from version 16.08, 16.10 (used in 2023), and 16.14 (used in 2024).**
+* *2024-02-26: Upgrade Cubit from version 16.08, 16.10 (used in 2023, upgraded 2023-03-03), and 16.14 (used in 2024, upgraded 2024-02-26).**
   * Cubit [download](https://cubit.sandia.gov/downloads/)
   * The [public Cubit page](https://cubit.sandia.gov/downloads/) directs Sandia users to download the latest version of Cubit [here](https://sharepoint.sandia.gov/sites/meshing).
   * Removed `/Applications/Cubit-16.08`
