@@ -1,4 +1,6 @@
-# Configuration HPC
+# Configuration HPC and CEE
+
+## HPC
 
 Getting started with Sculpt application on the Chewie HPC machines.  
 
@@ -104,4 +106,39 @@ chovey@chewie-login6:~$ cd sibl-dev/
 chovey@chewie-login6:~/sibl-dev$ ls
 admin  cya  mathematica  notes  present  README.md  refs
 chovey@chewie-login6:~/sibl-dev$
+```
+
+## CEE
+
+```bash
+# This template is intended for a blade machine on the CEE lan
+cd ${remote.dir}
+source /etc/bashrc
+
+export NO_SUBMIT=true
+
+# If input deck was created on Windows, hidden characaters might break the awk command
+dos2unix ${input.deck.name}
+
+# If required, decompose input mesh
+if grep -q input_mesh "${input.deck.name}"; then
+   module load sierra
+   input_mesh=$(awk -F'input_mesh = ' '{print $2}' ${input.deck.name})
+   decomp -p ${num.processors} ${input_mesh}
+fi
+
+/projects/cubit/sculpt64-beta  -j ${num.processors} -i ${input.deck.name} > ${timestamp}.log
+
+# The exodus_file base name might be different to input file base name,
+# so grab the name and use it for epu
+exodus_file=$(awk -F 'exodus_file = ' '{print $2}' ${input.deck.name})
+
+if [ "${num.processors}" == "1" ]
+then
+   mv ${exodus_file}.e.1.0 ${exodus_file}.e
+else
+   module load sierra
+   epu -p ${num.processors} ${exodus_file}
+   rm -rf ${exodus_file}.e.*
+fi
 ```
