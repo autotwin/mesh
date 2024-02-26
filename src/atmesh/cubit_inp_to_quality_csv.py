@@ -172,7 +172,6 @@ def translate(*, path_file_input: str) -> int:
                 # for i in np.arange(10):
                 # for i in np.arange(n_elements):
                 for i in range(n_elements):
-
                     en = i + 1  # element number = en, change from 0-index to 1-index
                     # print(f"Element {en}")
                     quality = cubit.get_quality_value("hex", int(en), qm)

@@ -13,7 +13,8 @@
 ## Methods
 
 * Reference: https://packaging.python.org/en/latest/tutorials/installing-packages/
-* Instead of any `python3` install, `python3.11` is used specifically for compatibility with Cubit version 16.10.
+* Instead of any `python3` install, `python3.11` is used specifically for compatibility with Cubit version 16.14.
+* ~~Instead of any `python3` install, `python3.11` is used specifically for compatibility with Cubit version 16.10.~~
 * ~~Instead of any `python3` install, `python3.7` is used specifically for compatibility with Cubit version 16.06.~~
 * ~~Python 3.7.9 is available [here](https://www.python.org/downloads/release/python-379/).~~
 * Prerequisites:

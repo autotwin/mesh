@@ -4,7 +4,7 @@
 
 ## Download
 
-* *2023-03-03: Upgrade Cubit from version 16.08 to 16.10.**
+* *2023-03-03: Upgrade Cubit from version 16.08, 16.10 (used in 2023), and 16.14 (used in 2024).**
   * Cubit [download](https://cubit.sandia.gov/downloads/)
   * The [public Cubit page](https://cubit.sandia.gov/downloads/) directs Sandia users to download the latest version of Cubit [here](https://sharepoint.sandia.gov/sites/meshing).
   * Removed `/Applications/Cubit-16.08`
@@ -112,6 +112,16 @@ Displaying using:
 Now in Volume picking mode.
 CUBIT>
 ```
+
+## Set Writable Working Directory for GUI
+
+In the Cubit GUI, change the working directory from `/`, which is the default and has write protection, which will prevent sculpt from running, so one's home directory, e.g., `/Users/chovey`, which allows writing.
+
+* File menu
+  * Set Directory menu item
+    * Choose Working Directory dialog box
+      * A writable path, e.g., `/Users/chovey`, and
+      * [x] Restore Working Directory on Startup (checked item).
 
 ## Test Installation
 
@@ -388,6 +398,87 @@ draw block all
 
 ![quick_test_sculpt_003](figs/quick_test_sculpt_003.png)
 ![quick_test_sculpt_004](figs/quick_test_sculpt_004.png)
+
+
+## Command Line Sculpt
+
+### Input
+
+* `sculpt.diatom`
+* `sculpt.i`
+* `sculpt.run*` (chmod +x)
+* `sculpt_Volume_1.stl`
+
+The `sculpt.diatom` file contains:
+
+```bash
+  diatoms
+    package 'Volume_1'
+      material 1
+      insert stl
+        FILE = 'sculpt_Volume_1.stl'
+      endinsert
+    endp
+  enddia
+````
+
+The `sculpt.i` file contains:
+
+```bash
+$ Input file created: Mon Feb 26 15:50:31 2024
+
+BEGIN SCULPT
+
+  xmin = -11.250942
+  ymin = -11.250042
+  zmin = -11.251125
+  xmax = 11.249058
+  ymax = 11.249958
+  zmax = 11.248875
+  cell_size = 0.500000
+  stair = full
+  gen_sidesets = variable
+  exodus_file = sculpt.diatom_result
+  diatom_file = sculpt.diatom
+
+END SCULPT
+```
+
+The `sculpt_Volume_1.stl` file contains:
+
+```bash
+solid Volume_1
+  facet normal 1.259654e-01 9.611645e-01 2.455512e-01
+    outer loop
+      vertex 1.355226e+00 9.642606e+00 2.216244e+00
+      vertex 9.780558e-01 9.725248e+00 2.086242e+00
+      vertex 1.057382e+00 9.620792e+00 2.454422e+00
+    endloop
+  endfacet
+  facet normal 1.440759e-01 9.694937e-01 1.983030e-01
+    outer loop
+      vertex 1.307024e+00 9.728552e+00 1.831079e+00
+      vertex 9.780558e-01 9.725248e+00 2.086242e+00
+      vertex 1.355226e+00 9.642606e+00 2.216244e+00
+    endloop
+  endfacet
+
+  ... // snip //
+
+  facet normal 8.399346e-02 9.632378e-01 2.551825e-01
+    outer loop
+      vertex 6.286438e-01 9.682890e+00 2.361140e+00
+      vertex 1.057382e+00 9.620792e+00 2.454422e+00
+      vertex 9.780558e-01 9.725248e+00 2.086242e+00
+    endloop
+  endfacet
+endsolid Volume_1
+```
+
+### Output
+
+* `sculpt.diatom_result.e.2.0`
+* `sculpt.diatom_result.e.2.0`
 
 ## Developer Mode
 
