@@ -146,7 +146,8 @@ Then run sculpt:
 ```bash
 sculpt parallel # (a macOS dialog will appear, click "Accept")
 
-CUBIT> sculpt parallel
+# CUBIT> sculpt parallel # 2024-02-26 deprecated, must now specify volume numbers
+CUBIT> sculpt parallel vol all
 STL file written: "sculpt_parallel_Volume_1.stl"
 Diatoms file written: "sculpt_parallel.diatom"
 Run file written: "sculpt_parallel.run"
@@ -358,7 +359,7 @@ It owns/encloses 6832 entities: 6832 hexes.
 
 The 6832 hex(es) contained in free_elements (Group 2) are: 1 to 6832
 
-Journaled Command: sculpt parallel
+Journaled Command: sculpt parallel vol all
 
 CUBIT>
 ```
@@ -381,7 +382,7 @@ Next, clip the original geometry using a bounding box, and mesh the void srround
 ```bash
 CUBIT>
 delete mesh
-sculpt parallel size 0.1 box location position -1.5 0 -1.5 location position 1 1.5 0
+sculpt parallel vol all size 0.1 box location position -1.5 0 -1.5 location position 1 1.5 0
 draw block all
 ```
 
@@ -390,7 +391,7 @@ draw block all
 ```bash
 CUBIT>
 delete mesh
-sculpt parallel size 0.1 box location position -1.5 0 -1.5 location position 1 1.5 0 void 1
+sculpt parallel vol all size 0.1 box location position -1.5 0 -1.5 location position 1 1.5 0 void 1
 draw block all
 ```
 
