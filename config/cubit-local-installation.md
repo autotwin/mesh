@@ -444,6 +444,12 @@ BEGIN SCULPT
 END SCULPT
 ```
 
+The `sculpt_run*` file contains:
+
+```bash
+/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt -j 2 -t -11.250942 -u -11.250042 -v -11.251125 -q 11.249058 -r 11.249958 -s 11.248875 -cs 0.500000 -str full -SS 2 -e sculpt.diatom_result -d sculpt.diatom
+```
+
 The `sculpt_Volume_1.stl` file contains:
 
 ```bash
