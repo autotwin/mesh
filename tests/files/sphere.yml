@@ -13,7 +13,8 @@ bounding_box:
   zmin: -0.75
   zmax: 0.75
 cell_size: 0.1
-cubit_path: "/Applications/Cubit-16.10/Cubit.app/Contents/MacOS"
+# cubit_path: "/Applications/Cubit-16.10/Cubit.app/Contents/MacOS"
+cubit_path: "/Applications/Cubit-16.14/Cubit.app/Contents/MacOS"
 inp_path_file: "~/autotwin/mesh/tests/files/sphere.inp"
 journaling: False # boolean, True (default): Cubit writes cubit01.jou-style log files
 mesh_adaptivity:
