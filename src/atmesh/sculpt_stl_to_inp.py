@@ -204,10 +204,18 @@ def translate(*, path_file_input: str) -> bool:
         #                  input_mesh_and_free_surfaces (7)
         #                  rve_variable (8)
         #                  input_mesh (9)
+
+        # 2024-02-26: Discovered with Sculpt in Cubit 16.14, the 'volume all'
+        # (or specific volume number) must now be specified; use 'volume all'
+        # for now.
+        #
+        # Examples:
+        #   Cubit> Sculpt parallel volume all processors 2 size 1.0 gen_sidesets 2
+        #   Cubit> delete hex all
+        #   Cubit> Sculpt volume all processors 2 size 0.5 stair 1 gen_sidesets 2
+
         enum_variable_sidesets: Final[int] = 2
-        cc = (
-            f"sculpt parallel processors {n_proc} gen_sidesets {enum_variable_sidesets}"
-        )
+        cc = f"sculpt parallel volume all processors {n_proc} gen_sidesets {enum_variable_sidesets}"
 
         cc += f" size {cell_size}"
 
