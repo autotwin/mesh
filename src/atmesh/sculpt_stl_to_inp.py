@@ -158,7 +158,7 @@ def translate(*, path_file_input: str) -> bool:
 
         print(f"{atmesh} Scale up/down applied to the STL file")
         if stl_scale_factor == 1.0:
-            print(f"{atmesh} is none (equalivalent to scaleing of 1.0).")
+            print(f"{atmesh} is none (equalivalent to scaling of 1.0).")
         else:
             print(f"{atmesh} as 'stl_scale_factor' is {stl_scale_factor}")
             cc = "volume all scale " + str(stl_scale_factor)
