@@ -10,7 +10,6 @@ For coverage:
 (.venv) ~/autotwin/mesh> arch -x86_64 pytest tests/test_sculpt_stl_to_inp.py --cov=src/atmesh --cov-report term-missing
 """
 
-
 # import os
 from pathlib import Path
 import platform
@@ -19,6 +18,7 @@ import sys
 import pytest
 
 import atmesh.sculpt_stl_to_inp as translator
+import atmesh.constants as cs
 
 
 @pytest.fixture
@@ -104,18 +104,14 @@ def test_when_io_fails(tests_files_path):
     assert error.typename == "OSError"
 
 
-@pytest.mark.skipif(
-    ("atlas" not in platform.uname().node.lower())
-    and ("1060600" not in platform.uname().node)
-    and ("1088757" not in platform.uname().node),
-    reason="Run on Atlas and local machines only.",
-)
+@cs.run_on_cubit_machine
 def test_cubit_init():
     """Given a path to the Cubit/Sculpt binary, check that cubit.init and the
     current working directory can be set to the path of the test script.
     """
     # cubit_path = "/Applications/Cubit-16.06/Cubit.app/Contents/MacOS"
-    cubit_path = "/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
+    # cubit_path = "/Applications/Cubit-16.08/Cubit.app/Contents/MacOS"
+    cubit_path = "/Applications/Cubit-16.14/Cubit.app/Contents/MacOS"
     sys.path.append(cubit_path)
 
     print("Import cubit module initiatied:")
@@ -139,12 +135,7 @@ def test_cubit_init():
     assert success
 
 
-@pytest.mark.skipif(
-    ("atlas" not in platform.uname().node.lower())
-    and ("1060600" not in platform.uname().node)
-    and ("1088757" not in platform.uname().node),
-    reason="Run on Atlas and local machines only.",
-)
+@cs.run_on_cubit_machine
 def test_two_spheres(tests_files_path):
     """Two concentric spheres with centers located at the origin, with radius
     length scale 5 (inner) and radius length scale 10 (outer), in two
@@ -159,12 +150,7 @@ def test_two_spheres(tests_files_path):
     assert completed
 
 
-# @pytest.mark.skipif(
-#     ("atlas" not in platform.uname().node.lower())
-#     and ("1060600" not in platform.uname().node)
-#     and ("1088757" not in platform.uname().node),
-#     reason="Run on Atlas and local machines only.",
-# )
+# @cs.run_on_cubit_machine
 @pytest.mark.skip("work in progress")
 def test_import_cubit_fails(tests_files_path):
     """Currently with CI/CD, we have no way to test Cubit and Sculpt, so test
