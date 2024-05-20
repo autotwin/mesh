@@ -21,7 +21,7 @@ authors = [
 description = "autotwin workflow, mesh functionality"
 readme = "README.md"
 license = { file="LICENSE" }
-requires-python = ">=3.7"
+requires-python = ">=3.11"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -31,6 +31,7 @@ dependencies = [
     "black==22.6.0",
     "flake8",
     "matplotlib",
+    "numpy",
     "pytest",
     "pytest-cov",
     "pyyaml"

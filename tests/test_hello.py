@@ -21,3 +21,21 @@ def test_adios():
     found = hh.adios()
 
     assert found == known
+
+
+def test_origin():
+    """Test the origin is at (0.0, 0.0, 0.0)."""
+    origin = hh.Origin()
+    assert type(origin).__name__ == "Origin"
+    assert origin.x0 == 0.0
+    assert origin.y0 == 0.0
+    assert origin.z0 == 0.0
+
+
+def test_centroid():
+    """Tests that the Centroid data type is as expected."""
+    centroid = hh.Centroid(cx=1.0, cy=2.0, cz=3.0)
+    assert type(centroid).__name__ == "Centroid"
+    assert centroid.cx == 1.0
+    assert centroid.cy == 2.0
+    assert centroid.cz == 3.0
