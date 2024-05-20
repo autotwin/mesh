@@ -289,3 +289,37 @@ Slow Rank		0
 Done!
 (.venv)  chovey@s1088757/Users/chovey/Downloads/spn>
 ```
+
+Help on the `spn-order`
+
+```bash
+(.venv)  (main) chovey@s1088757/Users/chovey/autotwin/mesh/tests/files> /Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help --spn_xyz_order
+SCULPT Running on host name: s1088757
+At time: Mon May 20 18:40:45 2024
+
+================================= SCULPT HELP =====================================
+XYZ ordering of cells in SPN File
+Command: spn_xyz_order     Ordering of cells in spn file
+
+Input file command:   spn_xyz_order <arg>
+Command line options: -spo <arg>
+Argument Type:        integer (0 to 5)
+Input arguments: xyz (0)
+                 xzy (1)
+                 yxz (2)
+                 yzx (3)
+                 zxy (4)
+                 zyx (5)
+Command Description:
+    This option is valid with the 'input_spn' option. The default
+    order of the cells in the spn input file will be read according to the
+    following schema:
+
+        for (i=0; i<nx; i++)
+          for (j=0; j<ny; j++)
+            for (k=0; k<nz; k++)
+               // read next value from file
+
+    If the spn file has the cells in a different order, use this option to
+    specify the order.  0 (xyz) is the default.
+```
