@@ -16,8 +16,8 @@ See [config/README.md](config/README.md)
 
 ## Workflows
 
-* `cubit_inp_to_quality_csv` Documentation to come.
-* [`sculpt_stl_to_inp.py`](doc/README.md)
+* [`sculpt_stl_to_inp`](doc/README.md)
+   * `cubit_inp_to_quality_csv` *Documentation to come.*
 * [`npy_to_mesh`](doc/npy_to_mesh.md)
 
 ## Schema

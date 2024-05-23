@@ -48,8 +48,7 @@ The ``[z, y, x]`` visualization of the solid volume letter ``F`` with base layer
 
 The solid volume has the ``[4 x 5 x 3]`` voxel representation, composed of 4 slice matrices:
 
-.. code-block:: python
-
+```python
       [[[1, 1, 1],
         [1, 1, 1],
         [1, 1, 1],
@@ -73,6 +72,7 @@ The solid volume has the ``[4 x 5 x 3]`` voxel representation, composed of 4 sli
         [1, 1, 0],
         [1, 0, 0],
         [1, 0, 0]]]
+```
 
 In numpy, in three dimensions, the ``z`` axis is the ``axis 0`` (the first axis),
 the ``y`` axis is the ``axis 1`` (the second axis), and the ``x`` axis is the
