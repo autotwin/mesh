@@ -171,6 +171,10 @@ The `autotwin/mesh/tests/files/letter_f.spn` file, consisting of 60 lines, one l
 0
 ```
 
+The `.spn` array is annotated below to illustrate the `[z, y, x]` ordering:
+
+![](figs/letter_f_spn_annotated.png)
+
 ## Sculpt run
 
 ```bash
