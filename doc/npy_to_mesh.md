@@ -177,11 +177,26 @@ The `.spn` array is annotated below to illustrate the `[z, y, x]` ordering:
 
 ## Sculpt run
 
+The `tests/files/letter_f.i` file:
+
+```bash
+BEGIN SCULPT
+  nelx = 3
+  nely = 5
+  nelz = 4
+  stair = 1
+  input_spn = letter_f.spn
+  exodus_file = letter_f
+  spn_xyz_order = 5
+END SCULPT
+```
+
+Then,
+
 ```bash
 cd ~/autotwin/mesh/tests/files
 
-/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/scu
-lpt -i letter_f.i
+/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/scu lpt -i letter_f.i
 
 SCULPT Running on host name: s1088757
 At time: Wed May 22 17:12:32 2024
