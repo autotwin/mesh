@@ -1,0 +1,14 @@
+
+cubit:
+  binary: /Applications/Cubit-16.14/Cubit.app/Contents/MacOS
+  input_spn: letter_f.spn
+  journaling: True
+  nelx: 3
+  nely: 5
+  nelz: 4
+  output_abaqus_mesh: letter_f_abaqus
+  output_exodus_mesh: letter_f_exodus
+  scratch: ~/scratch
+  spn_xyz_order: 5
+  stair: 1
+yml_schema_version: 1.8

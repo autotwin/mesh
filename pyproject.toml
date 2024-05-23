@@ -44,6 +44,7 @@ atmesh="atmesh.command_line:atmesh"
 atmeshinfo="atmesh.command_line:atmeshinfo"
 version="atmesh.command_line:version"
 cubit_inp_to_quality_csv="atmesh.cubit_inp_to_quality_csv:main"
+npy_to_mesh="atmesh.npy_to_mesh:main"
 sculpt_stl_to_inp="atmesh.sculpt_stl_to_inp:main"
 
 [project.urls]

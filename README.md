@@ -14,9 +14,11 @@ Mesh data types
 
 See [config/README.md](config/README.md)
 
-## Workflow
+## Workflows
 
-See [doc/README.md](doc/README.md)
+* `cubit_inp_to_quality_csv` Documentation to come.
+* [`sculpt_stl_to_inp.py`](doc/README.md)
+* [`npy_to_mesh`](doc/npy_to_mesh.md)
 
 ## Schema
 
