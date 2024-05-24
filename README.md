@@ -34,10 +34,10 @@ See [config/README.md](config/README.md)
 
 ## Workflows
 
-* isosurface $\mapsto$ mesh
+* isosurface -> mesh
   * [`sculpt_stl_to_inp`](doc/README.md)
     * [schema](doc/sculpt_stl_to_inp_schema.md)
   * `cubit_inp_to_quality_csv` *Documentation to come.*
-* voxel $\mapsto$ mesh
+* voxel -> mesh
   * [`npy_to_mesh`](doc/npy_to_mesh.md)
     * [sculpt spn help](doc/sculpt_spn_help.md
