@@ -27,10 +27,14 @@ See [config/README.md](config/README.md)
   * [T1 Utah SCI brain](doc/T1_Utah_SCI_brain/README.md)
 * Quality
   * [One Quad](doc/one_quad/README.md)
+  * [Quadrilateral Quality](https://github.com/sandialabs/sibl/blob/master/geo/doc/mesh/quad_quality.pdf)
   * [Quality Assessment RMU model](doc/RMU_all_hex_dec/README.md)
   * [Sphere Mesh Refinement](doc/sphere_mesh_refinement.md) (Igea mesh refinement)
   * [Bunny Mesh Refinement](doc/bunny_mesh_refinement.md)
   * [Hausdorff Distance](doc/hausdorff_distance.md)
+  * Laplacian smoothing
+    * Mesh Smoothing LaTeX [.pdf](https://github.com/sandialabs/sibl/blob/master/geo/doc/mesh/smoothing.pdf)
+    * [Lesson 04b: Mesh Smoothing](https://github.com/sandialabs/sibl/blob/master/geo/doc/dual/lesson_04b.md)
 
 ## Workflows
 
