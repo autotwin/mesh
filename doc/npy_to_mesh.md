@@ -671,7 +671,6 @@ BEGIN SCULPT
   nelx = 3
   nely = 5
   nelz = 4
-  stair = 1
   # xtranslate = -1.5
   # ytranslate = -2.5
   # ztranslate = -2.0
@@ -681,8 +680,10 @@ BEGIN SCULPT
   xtranslate = -15.0
   ytranslate = -25.0
   ztranslate = -20.0
+  gen_sidesets = variable
+  stair = 1
   input_spn = letter_f.spn
-  exodus_file = letter_f
+  exodus_file = letter_f_translate_scale
   spn_xyz_order = 5
 END SCULPT
 ```
