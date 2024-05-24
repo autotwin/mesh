@@ -52,17 +52,15 @@ def test_numpy_io():
         dtype=np.uint8,
     )
 
-    letter_f = files.joinpath("letter_f.npy")
+    letter_f = files.joinpath("letter_f_fiducial.npy")
     np.save(file=letter_f, arr=letter_f_encode)
 
     flattened = letter_f_encode.flatten()  # overwrite structure
 
-    letter_f_ascii = files.joinpath("letter_f.spn")
+    letter_f_ascii = files.joinpath("letter_f_fiducial.spn")
     np.savetxt(fname=letter_f_ascii, X=flattened, fmt="%s")
 
     sb.numpy_io(path_input=letter_f)
-
-    breakpoint()
 
     # ixi = files.joinpath("IXI012-HH-1211-T1_small.npy")
     # sb.numpy_io(path_input=ixi)

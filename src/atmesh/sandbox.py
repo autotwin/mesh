@@ -5,7 +5,7 @@ from typing import NamedTuple
 import platform
 from pathlib import Path
 
-# import pytest
+import pytest
 import numpy as np
 
 
@@ -38,11 +38,9 @@ def numpy_io(path_input: Path):
         raise FileNotFoundError(f"Path not found: {path_input}")
 
     aa = np.array((0, 0, 0, 1, 2, 3, 0, 2, 1, 0))
-    bb = np.trim_zeros(aa)
+    _ = np.trim_zeros(aa)
 
-    db = np.load(str(path_input))
-
-    breakpoint()
+    _ = np.load(str(path_input))
 
 
 def main():

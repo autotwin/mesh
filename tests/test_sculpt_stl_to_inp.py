@@ -12,7 +12,8 @@ For coverage:
 
 # import os
 from pathlib import Path
-import platform
+
+# import platform
 import sys
 
 import pytest

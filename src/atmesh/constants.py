@@ -1,9 +1,16 @@
 """This module stores constants values in a single location for the module."""
 
-from typing import NamedTuple
+from typing import NamedTuple, Final
 import platform
 
 import pytest
+
+BANNER: Final[
+    str
+] = """--------------------
+autotwin/mesh module
+--------------------
+"""
 
 
 class Constants(NamedTuple):
