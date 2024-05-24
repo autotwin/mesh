@@ -1,8 +1,13 @@
 # `npy_to_mesh`
 
 ```mermaid
-  graph LR;
-    .npy -- npy_to_mesh.py --> .e
+  flowchart LR
+    subgraph voxel
+      .npy
+    end
+    subgraph mesh
+      .npy -- npy_to_mesh.py --> .e
+    end
 ```
 
 ## Manual process

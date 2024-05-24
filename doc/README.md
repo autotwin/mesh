@@ -8,10 +8,13 @@ The goals for this section are
 ## stl to inp
 
 ```mermaid
-  graph LR;
-    isosurface -- sculpt_stl_to_inp.py --> mesh
-  graph LR;
-    .stl -- sculpt_stl_to_inp.py --> .inp
+  flowchart LR
+    subgraph isosurface
+      .stl
+    end
+    subgraph mesh
+      .stl -- sculpt_stl_to_inp.py --> .inp/.g/.e
+    end
 ```
 
 | `sphere.stl`                   | to  | `sphere.inp`                                 |
