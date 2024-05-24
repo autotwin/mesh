@@ -40,4 +40,4 @@ See [config/README.md](config/README.md)
   * `cubit_inp_to_quality_csv` *Documentation to come.*
 * voxel -> mesh
   * [`npy_to_mesh`](doc/npy_to_mesh.md)
-    * [sculpt spn help](doc/sculpt_spn_help.md
+    * [sculpt spn help](doc/sculpt_spn_help.md)

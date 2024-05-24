@@ -201,7 +201,7 @@ Then,
 ```bash
 cd ~/autotwin/mesh/tests/files
 
-/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/scu lpt -i letter_f.i
+/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt -i letter_f.i
 
 SCULPT Running on host name: s1088757
 At time: Wed May 22 17:12:32 2024
@@ -314,6 +314,350 @@ a | b
 :---: | :---:
 ![](figs/letter_f_xy_plane.png) | ![](figs/letter_f_block_1_and_2.png)
 ![](figs/letter_f_block_1.png) | ![](figs/letter_f_block_2.png)
+
+## Mesh modification via Sculpt
+
+In this section, we tranlate and scale the mesh created above.
+Review the Sculpt online help for translation and scale operations:
+
+```bash
+# overview of API via Sculpt help
+
+chovey@s1088757/Users/chovey/autotwin/mesh/tests/files> /Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt
+
+SCULPT Running on host name: s1088757
+At time: Fri May 24 08:53:48 2024
+Usage: /Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt -j <nprocs> [-mpi <path/to/mpiexec>] [psculpt [options]]
+Usage: /Applications/Cubit-16.14/Cubit.app/Contents/MacOS/psculpt [options]
+
+Sculpt: All-hex parallel mesh generation from volume fractions.
+
+Following is a listing of the available input commands to either sculpt
+or psculpt. When used from the unix command line, commands may be issued
+using the short form argument, designated with a single dash(-), or with the
+longer form, designated with two dashes (--). When used in an input file, only
+the long form may be used, omitting the two dashes (--)
+
+  --help,		-h <args>	Displays this information
+
+Process Control 	--process 	-pc
+  --num_procs                -j    <arg> Number of processors requested
+  --input_file               -i    <arg> File containing user input data
+  --debug_processor          -D    <arg> Sleep to attach to processor for debug
+  --debug_flag               -dbf  <arg> Dump debug info based on flag
+  --quiet                    -qt         Suppress output
+  --print_input              -pi         Print input values and defaults then stop
+  --version                  -vs         Print version number and exit
+  --threads_process          -tpp  <arg> Number of threads per process
+  --iproc                    -ip   <arg> Number of processors in I direction
+  --jproc                    -jp   <arg> Number of processors in J direction
+  --kproc                    -kp   <arg> Number of processors in K direction
+  --build_ghosts             -bg         Write ghost layers to exodus files for debug
+  --vfrac_method             -vm   <arg> Set method for computing volume fractions
+
+Input Data Files 	--input 	-inp
+  --stl_file                 -stl  <arg> Input STL file
+  --diatom_file              -d    <arg> Input Diatom description file
+  --input_vfrac              -ivf  <arg> Input from Volume Fraction file base name
+  --input_micro              -ims  <arg> Input from Microstructure file
+  --input_cart_exo           -ice  <arg> Input from Cartesian Exodus file
+  --input_spn                -isp  <arg> Input from Microstructure spn file
+  --spn_xyz_order            -spo  <arg> Ordering of cells in spn file
+  --compress_spn_ids         -csp  <arg> Compress IDs from SPN file
+  --input_stitch             -ist  <arg> Input from Stitch file
+  --stitch_timestep          -stt  <arg> Timestep in Stitch file to read
+  --stitch_timestep_id       -stn  <arg> Timestep ID in Stitch file to read
+  --stitch_field             -stf  <arg> Field in Stitch file to read
+  --stitch_info              -sti        List header info for Stitch file
+  --lattice                  -l    <arg> STL Lattice Template File
+
+Output 	--output 	-out
+  --exodus_file              -e    <arg> Output Exodus file base name
+  --large_exodus             -le   <arg> Output large Exodus file(s)
+  --volfrac_file             -vf   <arg> Output Volume Fraction file base name
+  --quality                  -Q    <arg> Dump quality metrics to file
+  --export_comm_maps         -C          Export parallel comm maps to debug exo files
+  --write_geom               -G          Write geometry associativity file
+  --write_mbg                -M          Write mesh based geometry file <beta>
+  --compare_volume           -cv         Report vfrac and mesh volume comparison
+  --compute_ss_stats         -css        Report sideset statistics
+
+Overlay Grid Specification 	--overlay 	-ovr
+  --nelx                     -x    <arg> Num cells in X in overlay Cartesian grid
+  --nely                     -y    <arg> Num cells in Y in overlay Cartesian grid
+  --nelz                     -z    <arg> Num cells in Z in overlay Cartesian grid
+  --xmin                     -t    <arg> Min X coord of overlay Cartesian grid
+  --ymin                     -u    <arg> Min Y coord of overlay Cartesian grid
+  --zmin                     -v    <arg> Min Z coord of overlay Cartesian grid
+  --xmax                     -q    <arg> Max X coord of overlay Cartesian grid
+  --ymax                     -r    <arg> Max Y coord of overlay Cartesian grid
+  --zmax                     -s    <arg> Max Z coord of overlay Cartesian grid
+  --cell_size                -cs   <arg> Cell size (nelx, nely, nelz ignored)
+  --align                    -a          Automatically align geometry to grid
+  --bbox_expand              -be   <arg> Expand tight bbox by percent
+  --input_mesh               -im   <arg> Input Base Exodus mesh
+  --input_mesh_blocks        -imb  <arg> Block ids of Input Base Exodus mesh
+  --input_mesh_material      -imm  <arg> Material definition with input mesh
+  --input_mesh_pamgen        -imp  <arg> Input Base mesh defined by Pamgen
+  --join_parallel            -jp   <arg> Join parallel files
+
+Mesh Type 	--type 	-typ
+  --stair                    -str  <arg> Generate Stair-step mesh
+  --mesh_void                -V    <arg> Mesh void
+  --trimesh                  -tri        Generate tri mesh of geometry surfaces
+  --tetmesh                  -tet  <arg> Under Development
+  --deg_threshold            -dg   <arg> Convert hexes below threshold to degenerates
+  --max_deg_iters            -dgi  <arg> Maximum number of degenerate iterations
+  --htet                     -ht   <arg> Convert hexes below quality threshold to tets
+  --htet_method              -hti  <arg> Method used for splitting hexes to tets
+  --htet_material            -htm  <arg> Convert hexes in given materials to tets
+  --htet_transition          -htt  <arg> Transition method between hexes and tets
+  --htet_pyramid             -htp  <arg> Local transition pyramid
+  --htet_tied_contact        -htc  <arg> Local transition tied contact
+  --htet_no_interface        -htn  <arg> Local transition none
+  --periodic                 -per        Generate periodic mesh
+  --check_periodic           -cp   <arg> Check for periodic geometry
+  --check_periodic_tol       -cpt  <arg> Tolerance for checking periodicity
+  --periodic_axis            -pax  <arg> Axis periodicity is about
+  --periodic_nodesets        -pns  <arg> Nodesets ids of master/slave nodesets
+
+Boundary Conditions 	--boundary_condition 	-bc
+  --void_mat                 -VM   <arg> Void material ID (when mesh_void=true)
+  --separate_void_blocks     -SVB        Separate void into unique block IDs
+  --material_name            -mn   <arg> Label Material (Block) with Name
+  --sideset_name             -sn   <arg> Label Sideset with Name
+  --nodeset_name             -nn   <arg> Label Nodeset with Name
+  --sideset                  -sid  <arg> User Defined Sideset
+  --nodeset                  -nid  <arg> User Defined Nodeset
+  --gen_sidesets             -SS   <arg> Generate sidesets
+  --free_surface_sideset     -FS   <arg> Free Surface Sideset
+  --match_sidesets           -mss  <arg> Sidesets ids of matching pairs
+  --match_sidesets_nodeset   -msn  <arg> Nodeset defining match_sidesets
+
+Adaptive Meshing 	--adapt 	-adp
+  --adapt_type               -A    <arg> Adaptive meshing type
+  --adapt_threshold          -AT   <arg> Threshold for adaptive meshing
+  --adapt_levels             -AL   <arg> Number of levels of adaptive refinement
+  --adapt_material           -AM   <arg> Info for adapting material
+  --adapt_export             -AE         Export exodus mesh of refined grid
+  --adapt_non_manifold       -ANM        Refine at non-manifold conditions
+  --adapt_load_balance       -ALB        Adaptive parallel load balancing
+  --adapt_memory_stats       -AMS        Write memory usage stats for adaptivity
+
+Smoothing 	--smoothing 	-smo
+  --smooth                   -S    <arg> Smoothing method
+  --csmooth                  -CS   <arg> Curve smoothing method
+  --laplacian_iters          -LI   <arg> Number of Laplacian smoothing iterations
+  --max_opt_iters            -OI   <arg> Max. number of parallel Jacobi opt. iters.
+  --opt_threshold            -OT   <arg> Stopping criteria for Jacobi opt. smoothing
+  --curve_opt_thresh         -COT  <arg> Min metric at which curves won't be honored
+  --max_pcol_iters           -CI   <arg> Max. number of parallel coloring smooth iters.
+  --pcol_threshold           -CT   <arg> Stopping criteria for parallel color smooth
+  --max_gq_iters             -GQI  <arg> Max. number of guaranteed quality smooth iters.
+  --gq_threshold             -GQT  <arg> Guaranteed quality minimum SJ threshold
+  --geo_smooth_max_deviation -GSM  <arg> Geo Smoothing Maximum Deviation
+
+Mesh Improvement 	--improve 	-imp
+  --pillow                   -p    <arg> Set pillow criteria (1=surfaces)
+  --pillow_surfaces          -ps         Turn on pillowing for all surfaces
+  --pillow_curves            -pcv        Turn on pillowing for bad quality at curves
+  --pillow_boundaries        -pb         Turn on pillowing at domain boundaries
+  --pillow_curve_layers      -pcl  <arg> Number of elements to buffer at curves
+  --pillow_curve_thresh      -pct  <arg> S.J. threshold to pillow hexes at curves
+  --pillow_smooth_off        -pso        Turn off smoothing following pillow operations
+  --capture                  -c    <arg> Project to facet geometry <beta>
+  --capture_angle            -ca   <arg> Angle at which to split surfaces <beta>
+  --capture_side             -sc   <arg> Project to facet geometry with surface ID
+  --defeature                -df   <arg> Apply automatic defeaturing
+  --min_vol_cells            -mvs  <arg> Minimum number of cells in a volume
+  --defeature_bbox           -dbb        Defeature Filtering at Bounding Box
+  --defeature_iters          -dfi  <arg> Maximum Number of Defeaturing Iterations
+  --thicken_material         -thm  <arg> Expand a given material into surrounding cells
+  --thicken_void             -thv  <arg> Insert void material to remove overlap
+  --micro_expand             -me   <arg> Expand Microstructure grid by N layers
+  --micro_shave              -ms         Remove isolated cells at micro. boundaries
+  --remove_bad               -rb   <arg> Remove hexes with Scaled Jacobian < threshold
+  --wear_method              -wm   <arg> Method for removing void at free surface
+  --crack_min_elem_thickness -cmet <arg> Minimum element thickness in crack
+  --min_num_layers           -mnl  <arg> Minimum number of layers to keep using wear_method=2
+
+Mesh Transformation 	--transform 	-tfm
+  --xtranslate               -xtr  <arg> Translate final mesh coordinates in X
+  --ytranslate               -ytr  <arg> Translate final mesh coordinates in Y
+  --ztranslate               -ztr  <arg> Translate final mesh coordinates in Z
+  --xscale                   -xsc  <arg> Scale final mesh coordinates in X
+  --yscale                   -ysc  <arg> Scale final mesh coordinates in Y
+  --zscale                   -zsc  <arg> Scale final mesh coordinates in Z
+
+Boundary Layers 	--boundary_layer 	-bly
+  --begin                    -beg  <arg> Begin specification blayer or blayer_block
+  --end                      -zzz  <arg> End specification blayer or blayer_block
+  --material                 -mat  <arg> Boundary layer material specification
+  --num_elem_layers          -nel  <arg> Number of element layers in blayer block
+  --thickness                -th   <arg> Thickness of first element layer in block
+  --bias                     -bi   <arg> Bias of element thicknesses in blayer block
+
+Use --help <args> or -h <args> to display detailed help on any option.
+Use "all" argument to display help for all options.
+```
+
+On the `.spn` file input:
+
+```bash
+chovey@s1088757/Applications/Cubit-16.14/Cubit.app/Contents/MacOS> /Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help --input_spn
+SCULPT Running on host name: s1088757
+At time: Fri May 24 09:05:25 2024
+
+================================= SCULPT HELP =====================================
+Input Microstructure SPN File
+Command: input_spn     Input from Microstructure spn file
+
+Input file command:   input_spn <arg>
+Command line options: -isp <arg>
+Argument Type:        file name with path
+Command Description:
+    A .spn file is an optional method for importing volume fraction data into
+    sculpt for meshing. This format is a simple ascii text file containing one
+    integer per cell of a Cartesian grid. Each integer represents a unique
+    material identifier. Any number of materials may be used, however for
+    practical purposes, the number of unique materials should not exceed more than
+    about 50 for reasonable performance.
+    An example file containing a 3 x 3 x 3 grid with 2 materials may be defined
+    as follows:
+
+        1 1 2 1 2 1 1 1 1
+        1 2 2 1 2 2 1 1 2
+        2 1 1 1 2 1 1 2 2
+
+    Any unique integer may be used to identify a material. All cells with the
+    same ID will be defined as a continuous block with the same exodus block ID
+    in the final mesh. All integers should be separated by a space or newline.
+    The number of integers in the file should exactly correspond to the size of
+    the Cartesian grid. The dimensions of the Cartesian grid must be specified
+    on the command line as part of the input. The following is an example:
+
+        sculpt -j 8 -x 10 -y 24 -z 15 -isp "my_spn_file.spn" -p 1
+
+    The default order of the cells in the input file will be read according to the
+    following schema:
+
+        for (i=0; i<nx; i++)
+          for (j=0; j<ny; j++)
+            for (k=0; k<nz; k++)
+               // read next value from file
+
+    Where nx, ny, nz are the number of cells in each Cartesian direction. This
+    ordering can be changed to nz, ny, nx using the spn_xyz_order option.  The
+    initial size of the Cartesian grid will be exactly nx X ny X nz with the
+    minimum coordinate at (0.0, 0.0, 0.0). If a size other than the default is
+    required, consider using the scale and/or translate options.
+
+    Smoothing: Sculpt will set automatic defaults for smoothing if user options
+    have not been defined. These include:
+
+    --smooth 9 (surface smoothing option - no surface projection)
+    --csmooth 2 (curve smoothing option - hermite interpolation)
+
+    These options will generally provide a smoother curve and surface representation
+    but may not adhere strictly to the volume fraction geometric definition. To
+    over-ride the defaults, consider using the following options:
+
+    --smooth 8 (surface smoothing option - projection to interpolated surface)
+    --csmooth 5 (curve smoothing option - projection to interpolated curve)
+
+    Pillowing: For most 3D models it is recommended using pillowing since
+    triple junctions (curves with at least 3 adjacent materials) will typically
+    be defined where malformed hex elements would otherwise be generated.
+    Surface pillowing (option 1) is usually sufficient to remove poor quality
+    elements at triple junctions.
+```
+
+On the `spn_xyz_order`:
+
+```bash
+# help on spn_xyz_order
+
+chovey@s1088757/Users/chovey/autotwin/mesh/tests/files> /Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help --spn_xyz_order
+
+SCULPT Running on host name: s1088757
+At time: Fri May 24 08:57:38 2024
+
+================================= SCULPT HELP =====================================
+XYZ ordering of cells in SPN File
+Command: spn_xyz_order     Ordering of cells in spn file
+
+Input file command:   spn_xyz_order <arg>
+Command line options: -spo <arg>
+Argument Type:        integer (0 to 5)
+Input arguments: xyz (0)
+                 xzy (1)
+                 yxz (2)
+                 yzx (3)
+                 zxy (4)
+                 zyx (5)
+Command Description:
+    This option is valid with the 'input_spn' option. The default
+    order of the cells in the spn input file will be read according to the
+    following schema:
+
+        for (i=0; i<nx; i++)
+          for (j=0; j<ny; j++)
+            for (k=0; k<nz; k++)
+               // read next value from file
+
+    If the spn file has the cells in a different order, use this option to
+    specify the order.  0 (xyz) is the default.
+```
+
+Translation is done on a per-axis basis, for example, the x-axis:
+
+```bash
+chovey@s1088757/Applications/Cubit-16.14/Cubit.app/Contents/MacOS> /Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help --xtranslate
+SCULPT Running on host name: s1088757
+At time: Fri May 24 09:01:17 2024
+
+================================= SCULPT HELP =====================================
+Translate Mesh Coordinates in X
+Command: xtranslate     Translate final mesh coordinates in X
+
+Input file command:   xtranslate <arg>
+Command line options: -xtr <arg>
+Argument Type:        floating point value
+Command Description:
+    Translate all mesh coordinates written to Exodus file by X delta distance.
+```
+
+Scaling is done on a per-axis basis, for example, the y-axis:
+
+```bash
+chovey@s1088757/Applications/Cubit-16.14/Cubit.app/Contents/MacOS> /Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help --yscale
+SCULPT Running on host name: s1088757
+At time: Fri May 24 09:03:42 2024
+
+================================= SCULPT HELP =====================================
+Scale Y Mesh Coordinates
+Command: yscale     Scale final mesh coordinates in Y
+
+Input file command:   yscale <arg>
+Command line options: -ysc <arg>
+Argument Type:        floating point value
+Command Description:
+    Scale all mesh Y coordinates written to Exodus file by given factor
+```
+
+Copy `tests/files/letter_f.i` to `tests/files/letter_f_translate_scale.i`.
+
+```bash
+BEGIN SCULPT
+  nelx = 3
+  nely = 5
+  nelz = 4
+  stair = 1
+  input_spn = letter_f.spn
+  exodus_file = letter_f
+  spn_xyz_order = 5
+END SCULPT
+```
 
 ## References
 
