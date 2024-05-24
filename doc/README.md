@@ -9,6 +9,8 @@ The goals for this section are
 
 ```mermaid
   graph LR;
+    isosurface -- sculpt_stl_to_inp.py --> mesh
+  graph LR;
     .stl -- sculpt_stl_to_inp.py --> .inp
 ```
 
