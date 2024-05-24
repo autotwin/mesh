@@ -318,12 +318,25 @@ a | b
 ## Mesh modification via Sculpt
 
 In this section, we tranlate and scale the mesh created above.
+We also generate side sets with `variable` (also known as magic number `2`), which
+is described in the only help (`sculpt --help --gen_sidesets`) as 
+
+```bash
+variable (2): A variable number of sidesets will be generated with the
+            following characteristics:
+
+                -  Surfaces at the domain boundary
+                -  Exterior material surfaces
+                -  Interfaces between materials
+```
+
 Review the Sculpt online help for translation and scale operations:
 
 ```bash
 # overview of API via Sculpt help
 
-chovey@s1088757/Users/chovey/autotwin/mesh/tests/files> /Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt
+chovey@s1088757/Users/chovey/autotwin/mesh/tests/files>
+/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt
 
 SCULPT Running on host name: s1088757
 At time: Fri May 24 08:53:48 2024
@@ -504,7 +517,8 @@ Use "all" argument to display help for all options.
 On the `.spn` file input:
 
 ```bash
-chovey@s1088757/Applications/Cubit-16.14/Cubit.app/Contents/MacOS> /Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help --input_spn
+chovey@s1088757/Applications/Cubit-16.14/Cubit.app/Contents/MacOS>
+/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help --input_spn
 SCULPT Running on host name: s1088757
 At time: Fri May 24 09:05:25 2024
 
@@ -577,7 +591,8 @@ On the `spn_xyz_order`:
 ```bash
 # help on spn_xyz_order
 
-chovey@s1088757/Users/chovey/autotwin/mesh/tests/files> /Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help --spn_xyz_order
+chovey@s1088757/Users/chovey/autotwin/mesh/tests/files>
+/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help --spn_xyz_order
 
 SCULPT Running on host name: s1088757
 At time: Fri May 24 08:57:38 2024
@@ -609,10 +624,11 @@ Command Description:
     specify the order.  0 (xyz) is the default.
 ```
 
-Translation is done on a per-axis basis, for example, the x-axis:
+Translation (e.g., `xtranslate`) is done on a per-axis basis, for example, the x-axis:
 
 ```bash
-chovey@s1088757/Applications/Cubit-16.14/Cubit.app/Contents/MacOS> /Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help --xtranslate
+chovey@s1088757/Applications/Cubit-16.14/Cubit.app/Contents/MacOS>
+/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help --xtranslate
 SCULPT Running on host name: s1088757
 At time: Fri May 24 09:01:17 2024
 
@@ -627,10 +643,11 @@ Command Description:
     Translate all mesh coordinates written to Exodus file by X delta distance.
 ```
 
-Scaling is done on a per-axis basis, for example, the y-axis:
+Scaling (e.g., `xscale`) is done on a per-axis basis, for example, the y-axis:
 
 ```bash
-chovey@s1088757/Applications/Cubit-16.14/Cubit.app/Contents/MacOS> /Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help --yscale
+chovey@s1088757/Applications/Cubit-16.14/Cubit.app/Contents/MacOS>
+/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help --yscale
 SCULPT Running on host name: s1088757
 At time: Fri May 24 09:03:42 2024
 
@@ -647,17 +664,151 @@ Command Description:
 
 Copy `tests/files/letter_f.i` to `tests/files/letter_f_translate_scale.i`.
 
+**NOTE: From experimentation, we observe Sculpt does the scaling first, and then the translation second.  So, the tranlation values should in the scaled units, not the original units!**
+
 ```bash
 BEGIN SCULPT
   nelx = 3
   nely = 5
   nelz = 4
   stair = 1
+  # xtranslate = -1.5
+  # ytranslate = -2.5
+  # ztranslate = -2.0
+  xscale = 10
+  yscale = 10
+  zscale = 10
+  xtranslate = -15.0
+  ytranslate = -25.0
+  ztranslate = -20.0
   input_spn = letter_f.spn
   exodus_file = letter_f
   spn_xyz_order = 5
 END SCULPT
 ```
+
+Then run Sculpt:
+
+```bash
+chovey@s1088757/Users/chovey/autotwin/mesh/tests/files>
+/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt -i letter_f_translate_scale.i
+
+SCULPT Running on host name: s1088757
+At time: Fri May 24 09:40:59 2024
+
+Initializing MPI on 1 Processors: mpiexec = /Applications/Cubit-16.14/Cubit.app/Contents/MacOS/mpiexec
+
+
+/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/mpiexec --mca oob_tcp_if_include lo0 --mca btl ^tcp -n 1 /Applications/Cubit-16.14/Cubit.app/Contents/MacOS/psculpt -i letter_f_translate_scale.i
+
+Reading input file letter_f_translate_scale.i...
+Finished reading input file...
+
+                 SANDIA NATIONAL LABORATORIES
+
+     SSSSS     CCCCC    UU   UU   LL        PPPPPP    TTTTTT
+    SS   SS   CC   CC   UU   UU   LL        PP   PP     TT
+    SS        CC        UU   UU   LL        PP   PP     TT
+     SSSSS    CC        UU   UU   LL        PPPPPP      TT
+         SS   CC        UU   UU   LL        PP          TT
+    SS   SS   CC   CC   UU   UU   LL        PP          TT
+     SSSSS     CCCCC     UUUUU    LLLLLLL   PP          TT
+
+                     PARALLEL HEX MESHING
+                            FROM
+                     VOLUME FRACTION DATA
+
+              SCULPT Version 16.14.7 Build bf6ed33e6b
+              Copyright 2015 Sandia Corporation
+      Revised Fri Dec 15 08:36:16 2023 -0700
+      User Support and Bug Reports: cubit-help@sandia.gov
+
+     SCULPT includes CAMAL by Sandia National Laboratories
+  SCULPT includes CTH Diatoms by Sandia National Laboratories
+  SCULPT is a companion application to the CUBIT Geometry and
+       Meshing Toolkit by Sandia National Laboratories
+
+Input: /Applications/Cubit-16.14/Cubit.app/Contents/MacOS/psculpt
+  --input_file      -i    letter_f_translate_scale.i
+  --input_spn       -isp  letter_f.spn
+  --spn_xyz_order   -spo  5
+  --exodus_file     -e    letter_f_translate_scale
+  --nelx            -x    3
+  --nely            -y    5
+  --nelz            -z    4
+  --stair           -str  ON (1)
+  --gen_sidesets    -SS   2
+  --smooth          -S    3
+  --csmooth         -CS   2
+  --laplacian_iters -LI   10
+  --xtranslate      -xtr  -15.000000
+  --ytranslate      -ytr  -25.000000
+  --ztranslate      -ztr  -20.000000
+  --xscale          -xsc  10.000000
+  --yscale          -ysc  10.000000
+  --zscale          -zsc  10.000000
+
+Decomposing Cartesian grid for parallel...
+  Rank 0 Number of cells/segment in directions X 	 3
+  Rank 0 Number of cells/segment in directions Y 	 5
+  Rank 0 Number of cells/segment in directions Z 	 4
+  Global Number of grid segments in directions X 	 1
+  Global Number of grid segments in directions Y 	 1
+  Global Number of grid segments in directions Z 	 1
+
+Summary of imported Microstructures spn file grid parameters
+  Name of spn file  = letter_f.spn
+  Num. Cartesian grid intervals = 3  5  4
+  Cartesian Grid Bounds (Min.)  = 0.000000  0.000000  0.000000
+  Cartesian Grid Bounds (Max.)  = 3.000000  5.000000  4.000000
+  Expanded initial Cartesian grid by 0 layers
+  Number of Materials           = 2
+
+Total Cells                = 60
+Number of Processors       = 1
+Approx. Num Cells per Proc = 60
+
+begin SCULPT meshing...
+(1/9) computing normals...
+(2/9) classifying materials...
+(3/9) resolving non-manifolds...
+(4/9) computing dual edge intersections...
+(5/9) computing material interfaces...
+(6/9) generating geometry...
+(7/9) generating buffer hexes...
+(8/9) generating interior hexes...
+(9/9) begin smoothing...
+building exodus mesh...
+generating global ids...
+building sidesets...
+================ MESH SUMMARY ===================
+Base Filename	letter_f_translate_scale
+Num Procs	1
+Num Nodes	120
+Num Elements	60
+Num Blocks	2
+Num Nodesets	0
+Num Sidesets	10
+Num Bad Qual	0
+Num Poor Qual	0
+Min Quality	1.000000
+Avg Quality	1.000000
+Min Edge Len	10.000000
+Min Qual Rank	0
+
+Job Completed Fri May 24 09:41:00 2024
+
+Elapsed Time		0.007119 sec. (0.000119 min.)
+Total Time on 1 Procs	0.007119 sec. (0.000119 min.)
+Slow Rank		0
+Done!
+```
+
+The mesh output file, `letter_f_translate_scale.e.1.0` (7 kB), is shown below:
+
+SideSet2 highlighted | SideSet3 highlighted
+:---: | :---:
+![](figs/letter_f_translate_scale_sideset_2.png) | ![](figs/letter_f_translate_scale_sideset_3.png)
 
 ## References
 
