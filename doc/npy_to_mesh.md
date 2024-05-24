@@ -111,7 +111,7 @@ BEGIN SCULPT
 END SCULPT
 ```
 
-The `autotwin/mesh/tests/files/letter_f.spn` file, consisting of 60 lines, one line for each of the voxels in the (4 x 5 x 3) voxel volume:
+The [`autotwin/mesh/tests/files/letter_f.spn`](../tests/files/letter_f.spn) file, consisting of 60 lines, one line for each of the voxels in the (4 x 5 x 3) voxel volume:
 
 ```bash
 1
@@ -182,7 +182,7 @@ The `.spn` array is annotated below to illustrate the `[z, y, x]` ordering:
 
 ## Sculpt run
 
-The `tests/files/letter_f.i` file:
+The [`tests/files/letter_f.i`](../tests/files/letter_f.i) file:
 
 ```bash
 BEGIN SCULPT
