@@ -32,10 +32,12 @@ cubit_inp_to_quality_csv <input_file.yml>
     separated value (.csv) format.
 
 npy_to_mesh <input_file.yml>
-    Given a semantic segmentation consisiting of non-zero
-    integers to designate a unique material, saved in .npy format,
-    converts the recipe in <input_file.yml> to a finite element
-    mesh.
+
+    Given a semantic segmentation consisiting of non-zero integers
+    to designate a unique material (and integer 0 to denote
+    void surrounding the materials), saved in .npy format,
+    converts the recipe in <input_file.yml> to an all-hexahedral
+    finite element mesh in the Exodus .e format.
 
 sculpt_stl_to_inp <input_file.yml>
 

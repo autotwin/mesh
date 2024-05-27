@@ -27,6 +27,8 @@ import yaml
 # import atmesh.command_line as cl
 import atmesh.constants as cs
 
+ATMESH_PROMPT: Final[str] = cs.Constants.module_prompt
+
 
 class Recipe(NamedTuple):
     """The user input yml recipe as a NamedTuple."""
@@ -36,14 +38,11 @@ class Recipe(NamedTuple):
     yml_schema_version: float
 
 
-ATMESH_PROMPT: Final[str] = cs.Constants.module_prompt
-
-
 def npy_to_spn(*, input_file: Path) -> Path:
     """Converts a .npy 3D semantic segmentation file into a .spn file.
 
     Arguments:
-        input_file:  The .npy 3D semantic segementation
+        input_file: The .npy 3D semantic segmentation
 
     Returns:
         Path of the output .spn file.
@@ -63,14 +62,65 @@ def npy_to_spn(*, input_file: Path) -> Path:
     return output_file
 
 
+def npy_to_sculpt_input_file(*, input_file: Path) -> Path:
+    """Converts a .npy file 3D semantic segmentation file into a Sculpt input
+    .i file.
+
+    Arguments:
+        input_file: The .npy 3D semantic segmentation
+
+    Returns:
+        Path of the output .i file.
+    """
+    print(f"{ATMESH_PROMPT} This is {Path(__file__).resolve()}")
+
+    fin = input_file.expanduser()
+
+    if not fin.is_file():
+        raise FileNotFoundError(f"{ATMESH_PROMPT} File not found: {str(fin)}")
+
+    db = np.load(file=fin)
+    z, y, x = db.shape
+
+    # build the Sculpt input file line by line
+    si = "BEGIN SCULPT\n"
+    si += f"  nelx = {x}\n"
+    si += f"  nely = {y}\n"
+    si += f"  nelz = {z}\n"
+    si += "  stair = 1\n"
+    spn_file = input_file.parent.joinpath(input_file.stem + ".spn")
+    si += f"  input_spn = {spn_file}\n"
+    exo_file = input_file.parent.joinpath(input_file.stem)
+    si += f"  exodus_file = {exo_file}\n"
+    si += "  spn_xyz_order = 5\n"
+    si += "END SCULPT\n"
+
+    output_file = input_file.parent.joinpath(input_file.stem + ".i")
+
+    with open(output_file, mode="wt", encoding="utf=8") as fo:
+        fo.write(si)
+
+    return output_file
+
+
 def process(*, input_file: Path) -> int:
     """Converts the semantic segmentation saved in a .npy file into a
     finite element mesh.  A .yml recipe is required.
+
+    * Given the <file>.npy specified in the yml, creates a <file>.spn.
+    * Given the <file>.npy specified in the yml and the created <file>.spn file,
+        creates a <file>.i Sculpt input file.
+    * Runs Sculpt via the command: sculpt -i <file>.i
+
+    process(yml(npy)->spn, yml(npy)->i) -> .e
+
 
     Arguments:
         input_file: The .yml recipe that specifies path variables.
             See the schema in the `Recipe(NamedTuple)` for key values
             and types.
+
+    process(yml(npy)->spn, yml(npy)->i) -> .e
 
     Returns:
         The error code from the subprocess call, which is 0 if successful.
