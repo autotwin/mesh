@@ -1,31 +1,17 @@
 """This module tests input of voxels to a finite element mesh.
 
+Example:
+    cd ~/autotwin/mesh
+    source .venv/bin/activate.fish
+    pytest tests/test_npy_to_mesh.py -v
 """
 
 from pathlib import Path
 
 import numpy as np
-import pytest
 
 import atmesh.npy_to_mesh as npm
 import atmesh.utility as ut
-
-
-@pytest.fixture
-def letter_f_path():
-    """Returns the path to the letter_f.yml input file."""
-    return Path(__file__).parent.joinpath("files", "letter_f.yml")
-
-
-def test_npy_to_mesh(letter_f_path):
-    """Tests that the .yml recipe with an existing .spn file can be converted
-    to a mesh.
-    """
-    recipe = letter_f_path
-
-    result = npm.process(input_file=recipe)
-
-    assert result == 0  # no errors
 
 
 def test_npy_to_spn():
@@ -57,13 +43,24 @@ def test_npy_to_spn():
     # create another test file identical to the fiducial npy file
     # as the stem name of the test npy file becomes the name of the test
     # spn file.
-    input_npy = files.joinpath("letter_f_test.npy")
+    input_npy = files.joinpath("letter_f_temp.npy")
     np.save(file=input_npy, arr=letter_f_encode)
 
-    result = npm.npy_to_spn(input_file=input_npy)
+    result = npm.npy_to_spn(npy_input_file=input_npy)
 
     assert ut.compare_files(letter_f_fiducial_spn, result, [])
 
     # remove at end of test
     input_npy.unlink()
     result.unlink()
+
+
+def test_npy_to_mesh():
+    """Tests that the .yml recipe with an existing .spn file can be converted
+    to a mesh.
+    """
+    recipe = Path(__file__).parent.joinpath("files", "letter_f_autotwin.yml")
+
+    result = npm.process(yml_input_file=recipe)
+
+    assert result == 0  # no errors

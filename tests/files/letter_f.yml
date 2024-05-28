@@ -1,5 +1,0 @@
-
-sculpt_binary: /Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt
-sculpt_input: ~/autotwin/mesh/tests/files/letter_f.i
-# sculpt_input: ~/autotwin/mesh/tests/files/letter_f_translate_scale.i
-yml_schema_version: 1.8
