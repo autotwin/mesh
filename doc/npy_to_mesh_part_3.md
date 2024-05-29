@@ -35,7 +35,6 @@ The `npy_to_mesh.py` module must:
 * Ouptut
   * Run Sculpt to create an Exodus `.e` mesh file output.
 
-
 ```bash
 cd ~/autotwin/mesh
 source .venv/bin/activate.fish
@@ -45,5 +44,6 @@ source .venv/bin/activate.fish
 
 * [EXODUS: A Finite Element Data Model](https://sandialabs.github.io/seacas-docs/exodusII-new.pdf)
 * [Exomerge](https://github.com/sandialabs/exomerge)
+* [Network Common Data Form (NetCDF)](https://www.unidata.ucar.edu/software/netcdf/)
 * [SEACAS GitHub](https://github.com/sandialabs/seacas)
 * [SEACAS documentation](https://sandialabs.github.io/seacas-docs/sphinx/html/index.html)
