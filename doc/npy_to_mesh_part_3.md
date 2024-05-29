@@ -44,6 +44,7 @@ source .venv/bin/activate.fish
 
 * [EXODUS: A Finite Element Data Model](https://sandialabs.github.io/seacas-docs/exodusII-new.pdf)
 * [Exomerge](https://github.com/sandialabs/exomerge)
+* [h5py](https://docs.h5py.org/en/stable/) for postprocessing Exodus files
 * [Network Common Data Form (NetCDF)](https://www.unidata.ucar.edu/software/netcdf/)
 * [SEACAS GitHub](https://github.com/sandialabs/seacas)
 * [SEACAS documentation](https://sandialabs.github.io/seacas-docs/sphinx/html/index.html)
