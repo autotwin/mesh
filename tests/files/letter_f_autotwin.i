@@ -11,6 +11,6 @@ BEGIN SCULPT
   gen_sidesets = variable
   stair = 1
   input_spn = /Users/chovey/autotwin/mesh/tests/files/letter_f_autotwin.spn
-  exodus_file = tests/files/letter_f_autotwin
+  exodus_file = /Users/chovey/autotwin/mesh/tests/files/letter_f_autotwin
   spn_xyz_order = 5
 END SCULPT
