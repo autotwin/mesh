@@ -12,16 +12,22 @@
 
 ## Manual process
 
-Below is the manual process that is automated with the autotwin `npy_to_mesh` module.
+Below is an manual process illustration that is automated with the autotwin
+`npy_to_mesh` module.
 
-Consider a solid letter `F` shown in the (x, y) plane, and extruded along the z-axis, as shown below:
+Consider a solid letter `F` shown in the (x, y) plane, and extruded along the
+z-axis, as shown below:
 
 ![](figs/letter_f_slice_pixel.png)
 
-  The ``(x, y)`` image slice of the solid volume letter ``F``.  The solid phase is shown in yellow.  The void phase is shown in purple.  The width is 3 pixels.  The height is 5 pixels.
+  The ``(x, y)`` image slice (unit voxel depth) of the solid volume letter
+  ``F``.  There are two *phases*, also called *materials* or *classes*.
+  The solid phase (the letter ``F``) is shown in yellow.  The void phase
+  (the volume filling in around the letter ``F``) is shown in purple.  The
+  slice domain has width of 3 pixels, height of 5 pixels, and depth of 1 pixel.
 
-All the pixels in the slice can be classified as ``1`` for solid and ``0`` for void.  
-The slice has the ``[y, x]`` representation as a ``(5 x 3)`` matrix:
+All the pixels in the slice can be classified as ``1`` for solid and ``0`` for
+void.  The slice has the ``[y, x]`` representation as a ``(5 x 3)`` matrix:
 
 ```python
 import numpy as np
@@ -37,21 +43,21 @@ array([[1, 1, 1],
 
 In numpy, in two dimensions, the ``y`` axis is the ``axis 0`` (the first axis)
 and the ``x`` axis is the ``axis 1`` (the second axis).  In this 2D example, the
-y-axis data has length of 5 and indices ``0..4``, the x-axis data has length 
+y-axis data has length of 5 and indices ``0..4``, the x-axis data has length
 of 3 and indices ``0..2``.
 
-A volumetric voxel representation of the letter ``F`` is created by
-stacking the image in the ``z`` axis three times.
-To assist with visualization, an all-solid base layer is placed as the first layer;
-the letter ``F`` slices are placed as subsequent layers.
-The ``[z, y, x]`` volumetric representation of the letter ``F`` with base layer appears below:
+A volumetric voxel representation of the letter ``F`` is created by stacking
+the image in the ``z`` axis three times.  To assist with visualization, an
+all-solid base layer is placed as the first layer; the letter ``F`` slices
+are placed as subsequent layers.  The ``[z, y, x]`` volumetric representation
+of the letter ``F`` with base layer appears below:
 
 ![](figs/letter_f_voxel.png)
 
 The ``[z, y, x]`` visualization of the solid volume letter ``F`` with base layer.  The solid phase is shown in yellow.  The void is shown in purple.  The width (``x``) is 3 voxels.  The height (``y``) is 5 voxels.  The depth (``z``) is 4 voxels (equivalent to the number of slices and number of images).
 
-
-The solid volume has the ``[4 x 5 x 3]`` voxel representation, composed of 4 slice matrices:
+The solid volume has the ``[4 x 5 x 3]`` voxel representation, composed of 4
+slice matrices:
 
 ```python
       [[[1, 1, 1],
@@ -79,18 +85,18 @@ The solid volume has the ``[4 x 5 x 3]`` voxel representation, composed of 4 sli
         [1, 0, 0]]]
 ```
 
-In numpy, in three dimensions, the ``z`` axis is the ``axis 0`` (the first axis),
-the ``y`` axis is the ``axis 1`` (the second axis), and the ``x`` axis is the
-``axis 2`` (the third axis).  In this 3D example, the z-axis data has length of
-4 and indices ``0..3``, the y-axis data has length of 5 and indices ``0..4``,
-and the x-axis data has length of 3 and indices ``0..2``.
+In numpy, in three dimensions, the ``z`` axis is the ``axis 0`` (the first
+axis), the ``y`` axis is the ``axis 1`` (the second axis), and the ``x`` axis
+is the ``axis 2`` (the third axis).  In this 3D example, the z-axis data has
+length of 4 and indices ``0..3``, the y-axis data has length of 5 and indices
+``0..4``, and the x-axis data has length of 3 and indices ``0..2``.
 
-See the ``recon3d/examples/voxel_letter_f.py`` script, used to create the
-pixel visualization, voxel visualization, and ``.tif`` image stack files,
-saved to ``~/scratch``.
-The ``.tif`` images are also included included with the module at ``recon3d/data/letter_f``.
+See the [``atmesh/examples/voxel_letter_f.py``](../examples/voxel_letter_f.py)
+script, used to create the pixel visualization, voxel visualization, and
+``.tif`` image stack files, saved to ``~/scratch``.  The ``.tif`` images are
+also included included with the module at ``recon3d/data/letter_f``.
 
-Thumbnail images of the ``.tif`` images appear below:
+Thumbnail images of the ``.tif`` image slices appear below:
 
 ![](figs/letter_f_slice_thumbnails.png)
 
@@ -111,7 +117,9 @@ BEGIN SCULPT
 END SCULPT
 ```
 
-The [`autotwin/mesh/tests/files/letter_f.spn`](../tests/files/letter_f.spn) file, consisting of 60 lines, one line for each of the voxels in the (4 x 5 x 3) voxel volume:
+The [`autotwin/mesh/tests/files/letter_f.spn`](../tests/files/letter_f.spn)
+file, consisting of 60 lines, one line for each of the voxels in the
+(4 x 5 x 3) voxel volume:
 
 ```bash
 1
@@ -196,12 +204,25 @@ BEGIN SCULPT
 END SCULPT
 ```
 
+
+> *Note:* Hereinafter, `sculpt` is used for the full path `/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt`).  Consider setting the following in the `~/bash_profile`:
+
+```bash
+# ~/.bash_profile
+
+# Cubit/Sculpt path begin
+# Setting PATH for Sculpt
+PATH="/Applications/Cubit-16.14/Cubit.app/Contents/MacOS:${PATH}"
+export PATH
+# 2024-05-22 Cubit/Sculpt path end
+````
+
 Then,
 
 ```bash
 cd ~/autotwin/mesh/tests/files
 
-/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt -i letter_f.i
+sculpt -i letter_f.i
 
 SCULPT Running on host name: s1088757
 At time: Wed May 22 17:12:32 2024
@@ -310,33 +331,37 @@ Done!
 
 The mesh output file, `letter_f.e.1.0` (7 kB), is shown below:
 
-a | b
+(a) | (b)
 :---: | :---:
 ![](figs/letter_f_xy_plane.png) | ![](figs/letter_f_block_1_and_2.png)
 ![](figs/letter_f_block_1.png) | ![](figs/letter_f_block_2.png)
 
 ## Mesh modification via Sculpt
 
-In this section, we tranlate and scale the mesh created above.
-We also generate side sets with `variable` (also known as magic number `2`), which
-is described in the only help (`sculpt --help --gen_sidesets`) as 
+In this section, we modify the mesh created above by two transformations:
+translation and scaling.  We also generate side sets with `variable`
+(also known as magic number `2`), which is described in the online help
+(`sculpt --help --gen_sidesets`) as 
 
 ```bash
+# --snip--
 variable (2): A variable number of sidesets will be generated with the
             following characteristics:
 
                 -  Surfaces at the domain boundary
                 -  Exterior material surfaces
                 -  Interfaces between materials
+# --snip--
 ```
 
-Review the Sculpt online help for translation and scale operations:
+Review the Sculpt online help (in particular for translation and scale
+operations, e.g., `sculpt --help --xtranslate`, `sculpt --help --yscale`
+below).
 
 ```bash
 # overview of API via Sculpt help
 
-chovey@s1088757/Users/chovey/autotwin/mesh/tests/files>
-/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt
+sculpt --help
 
 SCULPT Running on host name: s1088757
 At time: Fri May 24 08:53:48 2024
@@ -517,8 +542,8 @@ Use "all" argument to display help for all options.
 On the `.spn` file input:
 
 ```bash
-chovey@s1088757/Applications/Cubit-16.14/Cubit.app/Contents/MacOS>
-/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help --input_spn
+sculpt --help --input_spn
+
 SCULPT Running on host name: s1088757
 At time: Fri May 24 09:05:25 2024
 
@@ -590,9 +615,7 @@ On the `spn_xyz_order`:
 
 ```bash
 # help on spn_xyz_order
-
-chovey@s1088757/Users/chovey/autotwin/mesh/tests/files>
-/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help --spn_xyz_order
+sculpt --help --spn_xyz_order
 
 SCULPT Running on host name: s1088757
 At time: Fri May 24 08:57:38 2024
@@ -627,8 +650,7 @@ Command Description:
 Translation (e.g., `xtranslate`) is done on a per-axis basis, for example, the x-axis:
 
 ```bash
-chovey@s1088757/Applications/Cubit-16.14/Cubit.app/Contents/MacOS>
-/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help --xtranslate
+sculpt --help --xtranslate
 SCULPT Running on host name: s1088757
 At time: Fri May 24 09:01:17 2024
 
@@ -646,8 +668,7 @@ Command Description:
 Scaling (e.g., `xscale`) is done on a per-axis basis, for example, the y-axis:
 
 ```bash
-chovey@s1088757/Applications/Cubit-16.14/Cubit.app/Contents/MacOS>
-/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help --yscale
+sculpt --help --yscale
 SCULPT Running on host name: s1088757
 At time: Fri May 24 09:03:42 2024
 
@@ -691,8 +712,7 @@ END SCULPT
 Then run Sculpt:
 
 ```bash
-chovey@s1088757/Users/chovey/autotwin/mesh/tests/files>
-/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt -i letter_f_translate_scale.i
+sculpt -i letter_f_translate_scale.i
 
 SCULPT Running on host name: s1088757
 At time: Fri May 24 09:40:59 2024
@@ -810,13 +830,5 @@ The mesh output file, `letter_f_translate_scale.e.1.0` (7 kB), is shown below:
 SideSet2 highlighted | SideSet3 highlighted
 :---: | :---:
 ![](figs/letter_f_translate_scale_sideset_2.png) | ![](figs/letter_f_translate_scale_sideset_3.png)
-
-## References
-
-The sculpt help is accessed via
-
-```bash
-/Applications/Cubit-16.14/Cubit.app/Contents/MacOS/sculpt --help
-```
 
 Next: [npy_to_mesh_part_2.md](npy_to_mesh_part_2.md)

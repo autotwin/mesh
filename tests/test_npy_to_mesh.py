@@ -61,6 +61,6 @@ def test_npy_to_mesh():
     """
     recipe = Path(__file__).parent.joinpath("files", "letter_f_autotwin.yml")
 
-    result = npm.process(yml_input_file=recipe)
+    result = npm.npy_to_mesh(yml_input_file=recipe)
 
     assert result == 0  # no errors

@@ -6,4 +6,5 @@ scale_z: 0.1
 translate_x: -0.15 # float
 translate_y: -0.25
 translate_z: -0.20
+spn_xyz_order: 5 # int
 yml_schema_version: 1.8 # float
