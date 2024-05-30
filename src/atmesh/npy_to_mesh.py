@@ -45,6 +45,36 @@ class Recipe(NamedTuple):
     yml_schema_version: float
 
 
+def _validate_recipe(*, recipe: Recipe) -> bool:
+    """Given a recipe defined by the Recipe type, assure that all values
+    are valid.
+
+    Arguments:
+        recipe: The Recipie NamedTuple populated with items from the user input
+            .yml file.
+
+    Returns:
+        True if the recipe is valid, False otherwise.
+    """
+    assert recipe.sculpt_binary.is_file(), f"Cannot find {recipe.sculpt_binary}"
+    assert recipe.npy_input.is_file(), f"Cannot find {recipe.npy_input}"
+
+    assert recipe.scale_x > 0.0, f"{recipe.scale_x} must be greater than 0.0"
+    assert recipe.scale_y > 0.0, f"{recipe.scale_y} must be greater than 0.0"
+    assert recipe.scale_z > 0.0, f"{recipe.scale_z} must be greater than 0.0"
+
+    assert recipe.spn_xyz_order in np.arange(
+        0, 6
+    ), f"{recipe.spn_xyz_order} must be [0, 1, ... 5]"
+
+    min_version = cs.Constants.yml_schema_version
+    assert (
+        recipe.yml_schema_version >= min_version
+    ), f"{recipe.yml_schema_version} must be >= {min_version}"
+
+    return True
+
+
 def npy_to_spn(*, npy_input_file: Path) -> Path:
     """Converts a .npy 3D semantic segmentation file into a .spn file.
 
@@ -167,10 +197,6 @@ def npy_to_mesh(*, yml_input_file: Path) -> int:
 
     print(f"{ATMESH_PROMPT} Success: database created from file: {yml_input_file}")
     print(yml_db)
-    # print("key, value, type")
-    # print("---, -----, ----")
-    # for key, value in yml_db.items():
-    #     print(f"{key}, {value}, {type(value)}")
 
     recipe = Recipe(
         sculpt_binary=Path(yml_db["sculpt_binary"]).expanduser(),
@@ -185,12 +211,30 @@ def npy_to_mesh(*, yml_input_file: Path) -> int:
         yml_schema_version=yml_db["yml_schema_version"],
     )
 
+    _validate_recipe(recipe=recipe)
+
     # create the .spn file
     path_spn = npy_to_spn(npy_input_file=recipe.npy_input)
 
     # create the Sculpt input .i file
     db = np.load(file=recipe.npy_input)
-    z, y, x = db.shape
+
+    # Python 3.10 now supports pattern matching
+    match recipe.spn_xyz_order:
+        case 0:
+            x, y, z = db.shape
+        case 1:
+            x, z, y = db.shape
+        case 2:
+            y, x, z = db.shape
+        case 3:
+            y, z, x = db.shape
+        case 4:
+            z, x, y = db.shape
+        case 5:
+            z, y, x = db.shape
+        case _:  # wildcard
+            raise ValueError(f"{recipe.spn_xyz_order} must be in [0, 5] inclusive.")
 
     # build the Sculpt input ("si") .i file line by line
     si = "BEGIN SCULPT\n"
@@ -215,13 +259,14 @@ def npy_to_mesh(*, yml_input_file: Path) -> int:
     path_sculpt_i = yml_input_file.parent.joinpath(
         yml_input_file.stem + ".i"
     ).expanduser()
-    assert path_sculpt_i.is_file(), f"{ATMESH_PROMPT} Could not find {path_sculpt_i}"
 
     with open(path_sculpt_i, mode="wt", encoding="utf=8") as fo:
         fo.write(si)
+
     print(f"{ATMESH_PROMPT} Saved Sculpt input .i file: {path_sculpt_i}")
 
-    for item in [recipe.sculpt_binary, recipe.npy_input, path_spn, path_sculpt_i]:
+    # for item in [recipe.sculpt_binary, recipe.npy_input, path_spn, path_sculpt_i]:
+    for item in [path_spn, path_sculpt_i]:
         assert item.is_file(), f"{ATMESH_PROMPT} Could not find {item}"
 
     # https://docs.python.org/3/library/subprocess.html#using-the-subprocess-module

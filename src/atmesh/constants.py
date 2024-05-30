@@ -16,7 +16,7 @@ autotwin/mesh module
 class Constants(NamedTuple):
     """Creates all constants used in this module."""
 
-    yml_schema_version = 1.6
+    yml_schema_version = 1.8
     module_name = "atmesh"
     module_prompt = module_name + ">"
     test_machines = ["atlas", "s1060600", "s1088757", "skybridge"]

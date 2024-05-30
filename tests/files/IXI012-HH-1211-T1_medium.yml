@@ -7,4 +7,5 @@ translate_x: 0.0 # float
 translate_y: 0.0
 translate_z: 0.0
 spn_xyz_order: 5 # int
+# spn_xyz_order: 0 # int
 yml_schema_version: 1.8 # float
