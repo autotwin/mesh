@@ -200,11 +200,15 @@ def process(*, yml_input_file: Path) -> int:
     si += "  gen_sidesets = variable\n"
     si += "  stair = 1\n"
     si += f"  input_spn = {path_spn}\n"
-    si += f"  exodus_file = {yml_input_file.parent.joinpath(yml_input_file.stem)}\n"
+    si += f"  exodus_file = {yml_input_file.parent.joinpath(yml_input_file.stem).expanduser()}\n"
     si += "  spn_xyz_order = 5\n"
     si += "END SCULPT\n"
 
-    path_sculpt_i = yml_input_file.parent.joinpath(yml_input_file.stem + ".i")
+    path_sculpt_i = yml_input_file.parent.joinpath(
+        yml_input_file.stem + ".i"
+    ).expanduser()
+    assert path_sculpt_i.is_file(), f"{ATMESH_PROMPT} Could not find {path_sculpt_i}"
+
     with open(path_sculpt_i, mode="wt", encoding="utf=8") as fo:
         fo.write(si)
     print(f"{ATMESH_PROMPT} Saved Sculpt input .i file: {path_sculpt_i}")
@@ -222,7 +226,8 @@ def process(*, yml_input_file: Path) -> int:
 
 
 # quick testing:
-# process(input_file=Path("~/autotwin/mesh/tests/files/letter_f.yml"))
+II = "~/autotwin/mesh/tests/files/letter_f_autotwin.yml"
+process(yml_input_file=Path(II))
 
 
 def main():
