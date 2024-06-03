@@ -1,5 +1,7 @@
 # `npy_to_mesh` part 3
 
+Previous: [npy_to_mesh_part_2.md](npy_to_mesh_part_2.md)
+
 We develop the manual workflow with a single subject `IXI012-HH-1211-T1`.
 From the `ensemble` worflow, we generated for this patient three resolutions
 (see `autotwin/mesh/tests/files` folder),

@@ -1,5 +1,7 @@
 # `npy_to_mesh` part 2
 
+Previous: [npy_to_mesh.md](npy_to_mesh.md)
+
 Now we automatic the manual workflow presented in [npy_to_mesh.md](npy_to_mesh.md).
 
 ```mermaid
