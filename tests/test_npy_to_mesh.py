@@ -4,6 +4,9 @@ Example:
     cd ~/autotwin/mesh
     source .venv/bin/activate.fish
     pytest tests/test_npy_to_mesh.py -v
+
+    # To test a single function:
+    pytest tests/test_npy_to_mesh.py::test_npy_to_spn -s
 """
 
 from pathlib import Path
@@ -64,3 +67,27 @@ def test_npy_to_mesh():
     result = npm.npy_to_mesh(yml_input_file=recipe)
 
     assert result == 0  # no errors
+
+
+def test_npy_to_spn_and_mesh_ixi():
+    """Tests the npy_to_mesh workflow on the 'tiny' version of a single IXI
+    patient data."""
+    tests = Path(__file__).parent
+    files = tests.joinpath("files")
+
+    input_npy = files.joinpath("IXI012-HH-1211-T1_tiny_test.npy")
+    result = npm.npy_to_spn(npy_input_file=input_npy)
+
+    fiducial_spn = files.joinpath("IXI012-HH-1211-T1_tiny_test_fiducial.spn")
+    assert fiducial_spn.is_file()
+
+    assert ut.compare_files(fiducial_spn, result, [])
+
+    # remove at end of test
+    result.unlink()
+
+    recipe = files.joinpath("IXI012-HH-1211-T1_tiny_test.yml")
+    assert recipe.is_file()
+
+    result_exodus = npm.npy_to_mesh(yml_input_file=recipe)
+    assert result_exodus == 0  # no errors

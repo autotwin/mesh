@@ -21,10 +21,10 @@ options:
   -h, --help       show this help message and exit
 """
 
-
 # import os
 from pathlib import Path
-import platform
+
+# import platform
 
 import pytest
 
@@ -32,12 +32,18 @@ import pytest
 import atmesh.cubit_inp_to_quality_csv as translator
 
 
-@pytest.mark.skipif(
-    ("atlas" not in platform.uname().node.lower())
-    and ("1060600" not in platform.uname().node)
-    and ("1088757" not in platform.uname().node),
-    reason="Run on Atlas and local machines only.",
-)
+# @pytest.mark.skipif(
+#     ("atlas" not in platform.uname().node.lower())
+#     and ("1060600" not in platform.uname().node)
+#     and ("1088757" not in platform.uname().node),
+#     reason="Run on Atlas and local machines only.",
+# )
+#
+# TODO: refactor so that cubit is run as a subprocess instead of using the
+# Python API
+
+
+@pytest.mark.skip("work in progress")
 def test_known_element_count():
     self_path_file = Path(__file__)
     self_path = self_path_file.resolve().parent
