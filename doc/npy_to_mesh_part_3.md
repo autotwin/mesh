@@ -14,7 +14,7 @@ From the `ensemble` worflow, we generated for this patient three resolutions
 
 and one initial visizualization,
 
-![](figs/IXI012-HH-1211-T1_visualize.png)
+![](figs/IXI012-HH-1211-T1_visualize_mid-sagittal.png)
 
 From the `.npy` inputs, we wish to produce an Exodus mesh file with the
 `npy_to_mesh.py` workflow:
