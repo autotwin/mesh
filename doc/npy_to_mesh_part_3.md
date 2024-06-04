@@ -197,6 +197,14 @@ element count | mesh | block 4 (void) | block 1 (bone) | block 2 (csf) | block 3
 614,304 | IXI012-HH-1211-T1_medium.e.1.0 (32 MB) | ![](figs/IXI012-HH-1211-T1_medium_void.png) 341,033 | ![](figs/IXI012-HH-1211-T1_medium_bone.png) 60,991 | ![](figs/IXI012-HH-1211-T1_medium_csf.png) 60,991 | ![](figs/IXI012-HH-1211-T1_small_brain.png) 126,311
 4,329,925 | IXI012-HH-1211-T1_large.e.1.0 (220 MB) | ![](figs/IXI012-HH-1211-T1_large_void.png) 2,389,783 | ![](figs/IXI012-HH-1211-T1_large_bone.png) 240,895 | ![](figs/IXI012-HH-1211-T1_large_csf.png) 448,654 | ![](figs/IXI012-HH-1211-T1_large_brain.png) 1,250,593
 
+## Test
+
+The `tiny` version, above, is included in automated testing:
+
+* [/tests/files/IXI012-HH-1211-T1_tiny_test.npy](/tests/files/IXI012-HH-1211-T1_tiny_test.npy)
+* [/tests/files/IXI012-HH-1211-T1_tiny_test_fiducial.spn](/tests/files/IXI012-HH-1211-T1_tiny_test_fiducial.spn)
+* [/tests/files/IXI012-HH-1211-T1_tiny_test.yml](/tests/files/IXI012-HH-1211-T1_tiny_test.yml)
+
 ## References
 
 * [Emma's Google Drive link to 100+ segmentations](https://drive.google.com/drive/folders/158MXz03QCuockuRoSBpY-YuO4fni3RVD?usp=drive_link)
