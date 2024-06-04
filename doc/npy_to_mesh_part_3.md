@@ -190,7 +190,7 @@ view up 0 0 1
 view from 100 -100 100
 ```
 
-# elements | mesh | block 4 (void) | block 1 (bone) | block 2 (csf) | block 3 (brain)
+element count | mesh | block 4 (void) | block 1 (bone) | block 2 (csf) | block 3 (brain)
 --- | --- | --- | --- | --- | ---
 1,848 | IXI012-HH-1211-T1_tiny.e.1.0 (138 kB) | ![](figs/IXI012-HH-1211-T1_tiny_void.png) 1,216 | ![](figs/IXI012-HH-1211-T1_tiny_bone.png) 207 | ![](figs/IXI012-HH-1211-T1_tiny_csf.png) 286 | ![](figs/IXI012-HH-1211-T1_tiny_brain.png) 139
 98,384 | IXI012-HH-1211-T1_small.e.1.0 (5.3 MB) | ![](figs/IXI012-HH-1211-T1_small_void.png) 55,821 | ![](figs/IXI012-HH-1211-T1_small_bone.png) 16,009 | ![](figs/IXI012-HH-1211-T1_small_csf.png) 16,680 | ![](figs/IXI012-HH-1211-T1_small_brain.png) 9,874
