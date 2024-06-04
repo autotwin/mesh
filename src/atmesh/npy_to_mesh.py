@@ -40,7 +40,6 @@ class Recipe(NamedTuple):
     translate_x: float
     translate_y: float
     translate_z: float
-    # spn_xyz_order: int # to come [0..5]
     spn_xyz_order: int  # [0..5]
     yml_schema_version: float
 
@@ -98,50 +97,6 @@ def npy_to_spn(*, npy_input_file: Path) -> Path:
     return output_file
 
 
-# deprecated
-# def npy_to_sculpt_input_file(*, npy_input_file: Path) -> Path:
-#     """Converts a .npy 3D semantic segmentation file into a Sculpt input
-#     .i file.
-#
-#     Arguments:
-#         npy_input_file: The path to the .npy 3D semantic segmentation file.
-#
-#     Returns:
-#         Path of the output .i file.
-#     """
-#     print(f"{ATMESH_PROMPT} This is {Path(__file__).resolve()}")
-#
-#     fin = npy_input_file.expanduser()
-#
-#     if not fin.is_file():
-#         raise FileNotFoundError(f"{ATMESH_PROMPT} File not found: {str(fin)}")
-#
-#     db = np.load(file=fin)
-#     z, y, x = db.shape
-#
-#     # build the Sculpt input file line by line
-#     si = "BEGIN SCULPT\n"
-#     si += f"  nelx = {x}\n"
-#     si += f"  nely = {y}\n"
-#     si += f"  nelz = {z}\n"
-#     si += "  stair = 1\n"
-#     spn_file = npy_input_file.parent.joinpath(npy_input_file.stem + ".spn")
-#     si += f"  input_spn = {spn_file}\n"
-#     exo_file = npy_input_file.parent.joinpath(npy_input_file.stem)
-#     si += f"  exodus_file = {exo_file}\n"
-#     # TODO: eliminate spn_xyz_order hard code
-#     si += "  spn_xyz_order = 5\n"
-#     si += "END SCULPT\n"
-#
-#     output_file = npy_input_file.parent.joinpath(npy_input_file.stem + ".i")
-#
-#     with open(output_file, mode="wt", encoding="utf=8") as fo:
-#         fo.write(si)
-#
-#     return output_file
-
-
-# def process(*, yml_input_file: Path) -> int:  # rename to npy_to_mesh
 def npy_to_mesh(*, yml_input_file: Path) -> int:
     """Given a yml recipe input file that specifies a path to a semantic
     segmentation .npy file, creates a intermediate .spn and Sculpt .i files,
@@ -251,8 +206,6 @@ def npy_to_mesh(*, yml_input_file: Path) -> int:
     si += "  stair = 1\n"
     si += f"  input_spn = {path_spn}\n"
     si += f"  exodus_file = {yml_input_file.parent.joinpath(yml_input_file.stem).expanduser()}\n"
-    # TODO: move the spn_xyz_order to input .yml file and eliminate this hardcode
-    # si += "  spn_xyz_order = 5\n"
     si += f"  spn_xyz_order = {recipe.spn_xyz_order}\n"
     si += "END SCULPT\n"
 
@@ -282,10 +235,10 @@ def npy_to_mesh(*, yml_input_file: Path) -> int:
     return result.returncode
 
 
-# quick testing:
-II = "~/autotwin/mesh/tests/files/letter_f_autotwin.yml"
-# process(yml_input_file=Path(II))
-npy_to_mesh(yml_input_file=Path(II))
+# # quick testing:
+# II = "~/autotwin/mesh/tests/files/letter_f_autotwin.yml"
+# # process(yml_input_file=Path(II))
+# npy_to_mesh(yml_input_file=Path(II))
 
 
 def main():
@@ -297,7 +250,6 @@ def main():
     input_file = args.input_file
     input_file = Path(input_file).expanduser()
 
-    # process(yml_input_file=input_file)
     npy_to_mesh(yml_input_file=input_file)
 
 
