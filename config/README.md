@@ -1,5 +1,7 @@
 # Configuration
 
+This is the configuration for a local installation.  See also the [HPC configuration](config-hpc.md).
+
 ## Overview
 
 * Install Cubit, which contains Sculpt, a part of the workflow.  Follow the [local installation](cubit-local-installation.md) instructions.
