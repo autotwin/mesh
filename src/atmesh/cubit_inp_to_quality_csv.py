@@ -5,7 +5,7 @@ of quality metric for one or more of the following:
     "skew"
 
 Prerequisites:
-* Cubit 10.10 (Cubit 16.08 was deprecated on 2023-03-13)
+* Cubit 16.10 (Cubit 16.08 was deprecated on 2023-03-13)
 * Python 3.11 (Python 3.7 was deprecated on 2023-03-13)
 
 Methods (example):
@@ -23,7 +23,7 @@ options:
   -h, --help      show this help message and exit
 
 Reference:
-Cubit Python Interface at Corform
+Cubit Python Interface at Coreform
 https://coreform.com/cubit_help/cubithelp.htm?#t=appendix%2Fpython%2Fnamespace_cubit_interface.htm
 get_elem_quality_stats()
 std::vector<double> CubitInterface::get_elem_quality_stats(const std::string& entity_type,
@@ -129,6 +129,7 @@ def translate(*, path_file_input: str) -> int:
 
     try:
         print(f"{atmesh} Import cubit module initiatied:")
+
         import cubit
 
         if journaling:

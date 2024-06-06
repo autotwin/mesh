@@ -11,7 +11,9 @@ spn_xyz_order: 0 # int
 yml_schema_version: 1.8 # float
 
 # additional keys and values for cubit_delete_blocks.py
-exodus_input_mesh: ~/autotwin/mesh/tests/files/IXI012-HH-1211-T1_tiny_test.e.1.0 # Path
+cubit_path: /Applications/Cubit-16.14/Cubit.app/Contents/MacOS # Path
 delete_blocks:
   - 2
   - 4
+exodus_input_mesh: ~/autotwin/mesh/tests/files/IXI012-HH-1211-T1_tiny_test.e.1.0 # Path
+working_dir: ~/scratch
