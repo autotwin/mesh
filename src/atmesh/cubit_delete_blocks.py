@@ -129,11 +129,34 @@ def cubit_delete_blocks(*, yml_input_file: Path) -> int:
         cc = 'cd "' + str(recipe.working_dir) + '"'
         cubit.cmd(cc)
         print(f"{AT} Set Cubit working directory: {recipe.working_dir}")
-        # ===============
 
-        # ===============
+        # delete blocks
+        # cc = f'import mesh "{recipe.exodus_input_mesh}" feature_angle 135.00  merge'
+        # cc = f'import mesh "{recipe.exodus_input_mesh}" lite'
+        cc = f'import mesh "{recipe.exodus_input_mesh}" no_geom'
+        cubit.cmd(cc)
+        print(f"{AT} Cubit opened: {recipe.exodus_input_mesh}")
+
+        for item in recipe.delete_blocks:
+            cc = f"delete block {item}"
+            print(f"Processed Cubit command: {cc}")
+
+        # output new mesh
+        ff = recipe.exodus_input_mesh.stem
+        # gg = ff.replace(".e", "_v2.e")
+        gg = ff.split(".")[0] + "_v2.e"
+        exodus_output = recipe.exodus_input_mesh.parent.joinpath(gg)
+
+        cubit.cmd("set exodus netcdf4 off")
+        cubit.cmd("set large exodus file on")
+
+        cc = f'export mesh "{exodus_output}" overwrite'
+        cubit.cmd(cc)
+        print(f"{AT} Cubit saved: {exodus_output}")
+
         print(f"{AT} Done.")
         return 0  # 0 is a success
+
     except ModuleNotFoundError as error:
         print(f"{AT} Failed to import Cubit Python interface.")
         print(f"{AT} {error}")

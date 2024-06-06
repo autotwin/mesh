@@ -16,4 +16,4 @@ delete_blocks:
   - 2
   - 4
 exodus_input_mesh: ~/autotwin/mesh/tests/files/IXI012-HH-1211-T1_tiny_test.e.1.0 # Path
-working_dir: ~/scratch
+working_dir: ~/scratch/ixi

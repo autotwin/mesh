@@ -28,8 +28,6 @@ def test_cubit_delete_blocks():
     # cubit.init  # journaling is ON
     cubit.init(["cubit", "-nojournal"])  # journaling is OFF
 
-    breakpoint()
-
     result = cdb.cubit_delete_blocks(yml_input_file=yml_input_file)
 
     assert result == 0  # success, no error codes
