@@ -6,6 +6,8 @@ Previous | Next
 
 ## Exomerge
 
+Note: Pause Exomerge approach, as it may not be sufficient to cover all of our export needs, e.g., exporting to an ABAQUS mesh format.  So, pivot to use of Cubit instead.
+
 Goals:
 
 * Use `exomerge` to remove the outer void block.
