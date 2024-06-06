@@ -2,6 +2,8 @@
 example the UTC date/time stamp.
 """
 
+from datetime import datetime
+from itertools import repeat
 from pathlib import Path
 
 
@@ -52,3 +54,20 @@ def compare_files(file1: Path, file2: Path, ignore_words: list[str]) -> bool:
                 return False
 
     return True  # files are the same
+
+
+def date_time_utc() -> str:
+    """Returns the date and time stamp in ISO format in UTC time zone."""
+    # will be deprecated in Python 3.12
+    # see https://docs.python.org/3/library/datetime.html#datetime.datetime.utcnow
+    ts = datetime.utcnow().isoformat()  # The "naive object in UTC"
+    ts = ts.replace(":", "_").replace(".", "_")  # Overwrite ":", "." with "_"
+    ts = ts.replace("T", "_UTC_")  # Overwrite T with UTC time zone indication
+    return ts
+
+
+def underline() -> str:
+    """Returns a `#` commented underline composed of 78 dashes ('-') and a
+    newline character ('\n').
+    """
+    return "# " + "".join(repeat("-", 78)) + "\n"

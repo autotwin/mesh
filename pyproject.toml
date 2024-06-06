@@ -32,6 +32,7 @@ dependencies = [
     "flake8",
     "matplotlib",
     "numpy",
+    "pdbp",
     "pytest",
     "pytest-cov",
     "pyyaml"
