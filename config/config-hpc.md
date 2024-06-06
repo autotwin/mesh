@@ -108,6 +108,85 @@ admin  cya  mathematica  notes  present  README.md  refs
 chovey@chewie-login6:~/sibl-dev$
 ```
 
+## Autotwin/mesh
+
+```bash
+cd ~/autotwin
+git clone git@github.com:autotwin/mesh.git
+
+cd mesh
+python -m venv .venv
+source .venv/bin/activate       # for bash shell
+
+module load aue/anaconda3 # loads Python 3.11.5
+pip install -e .  # install in dev mode, with editable
+
+<-- snip -->
+  WARNING: The script pygmentize is installed in '/ascldap/users/chovey/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The scripts atmesh, atmeshinfo, cubit_inp_to_quality_csv, npy_to_mesh, sculpt_stl_to_inp and version are installed in '/ascldap/users/chovey/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+<-- snip -->
+```
+
+Update paths:
+
+```bash
+(.venv) ~/autotwin/mesh $ PATH="/ascldap/users/chovey/.local/bin:${PATH}"
+(.venv) ~/autotwin/mesh $ export PATH
+(.venv) ~/autotwin/mesh $ PATH="/ascldap/users/chovey/.local/bin:${PATH}"
+(.venv) ~/autotwin/mesh $ export PATH
+(.venv) ~/autotwin/mesh $ echo $PATH
+```
+
+Test the installation was successful by echoing the command line interface
+documentation:
+
+```bash
+atmesh
+
+------
+atmesh
+------
+
+This is the command line interface help.
+
+atmesh
+
+    (this command) Echos the command line interface.
+
+atmeshinfo
+
+    Prints the module's dependencies.
+
+cubit_inp_to_quality_csv <input_file.yml>
+
+    Given an input file with schema of version 1.6,
+    converts ABAQUS .inp file to a quality metric,
+    e.g., minimum scaled Jacobian file, in comma
+    separated value (.csv) format.
+
+npy_to_mesh <input_file.yml>
+
+    Given a semantic segmentation consisiting of non-zero integers
+    to designate a unique material (and integer 0 to denote
+    void surrounding the materials), saved in .npy format,
+    converts the recipe in <input_file.yml> to an all-hexahedral
+    finite element mesh in the Exodus .e format.
+
+sculpt_stl_to_inp <input_file.yml>
+
+    Given an input file with schema of version 1.6,
+    converts a STL file, containing an isosurface, to an
+    all-hex solid in ABAQUS mesh format.
+
+version
+
+    Prints the version of the yml input file schema, and
+    prints the semantic version of the autotwin mesh module.
+
+```
+
 ## CEE
 
 ```bash
