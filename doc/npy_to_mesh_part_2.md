@@ -1,6 +1,8 @@
 # `npy_to_mesh` part 2
 
-Previous: [npy_to_mesh.md](npy_to_mesh.md)
+Previous | Next
+:---: | :---:
+[npy_to_mesh_part.md](npy_to_mesh_part.md) | [npy_to_mesh_part_3.md](npy_to_mesh_part_3.md)
 
 Now we automatic the manual workflow presented in [npy_to_mesh.md](npy_to_mesh.md).
 
@@ -171,4 +173,6 @@ The mesh file visualized in Cubit is as expected:
 
 ![letter_f_autotwin.png](figs/letter_f_autotwin.png)
 
-Next: [npy_to_mesh_part_3.md](npy_to_mesh_part_3.md)
+Previous | Next
+:---: | :---:
+[npy_to_mesh_part.md](npy_to_mesh_part.md) | [npy_to_mesh_part_3.md](npy_to_mesh_part_3.md)

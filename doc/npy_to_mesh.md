@@ -1,5 +1,9 @@
 # `npy_to_mesh`
 
+Previous | Next
+:---: | :---:
+None | [npy_to_mesh_part_2.md](npy_to_mesh_part_2.md)
+
 ```mermaid
   flowchart LR
     subgraph voxel
@@ -831,4 +835,7 @@ SideSet2 highlighted | SideSet3 highlighted
 :---: | :---:
 ![](figs/letter_f_translate_scale_sideset_2.png) | ![](figs/letter_f_translate_scale_sideset_3.png)
 
-Next: [npy_to_mesh_part_2.md](npy_to_mesh_part_2.md)
+Previous | Next
+:---: | :---:
+None | [npy_to_mesh_part_2.md](npy_to_mesh_part_2.md)
+

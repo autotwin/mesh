@@ -1,6 +1,8 @@
 # `npy_to_mesh` part 3
 
-Previous: [npy_to_mesh_part_2.md](npy_to_mesh_part_2.md)
+Previous | Next
+:---: | :---:
+[npy_to_mesh_part_2.md](npy_to_mesh_part_2.md) | None
 
 We exercise the autotwin meshing workflow with a
 single subject `IXI012-HH-1211-T1`.
@@ -290,4 +292,9 @@ Traceback (most recent call last):
     self._handle = _dlopen(self._name, mode)
                    ^^^^^^^^^^^^^^^^^^^^^^^^^
 OSError: dlopen(@ACCESSDIR@/@SEACAS_LIBDIR@/libexodus.dylib, 0x0006):
-``
+```
+
+Previous | Next
+:---: | :---:
+[npy_to_mesh_part_2.md](npy_to_mesh_part_2.md) | None
+
