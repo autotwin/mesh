@@ -192,9 +192,9 @@ view up 0 0 1
 view from 100 -100 100
 ```
 
-element count | mesh | block 4 (void) | block 1 (bone) | block 2 (csf) | block 3 (brain)
+element count | mesh | all blocks *predominantly showing block 4 (void)* | block 4 removed *predominantly showing block 1 (bone)* | block 1 removed *predominantly showing block 2 (csf)* | block 2 removed *predominantly showing block 3 (brain)*
 ---: | ---: | ---: | ---: | ---: | ---:
-1,848 | IXI012-HH-1211-T1_tiny.e.1.0 (138 kB) | ![](figs/IXI012-HH-1211-T1_tiny_void.png) 1,216 | ![](figs/IXI012-HH-1211-T1_tiny_bone.png) 207 | ![](figs/IXI012-HH-1211-T1_tiny_csf.png) 286 | ![](figs/IXI012-HH-1211-T1_tiny_brain.png) 139
+1,848 | IXI012-HH-1211-T1_tiny.e.1.0 (138 kB) | ![](figs/IXI012-HH-1211-T1_tiny_void.png) block 4: 1,216 elements | ![](figs/IXI012-HH-1211-T1_tiny_bone.png) block 1: 207 elements | ![](figs/IXI012-HH-1211-T1_tiny_csf.png) block 2: 286 elements | ![](figs/IXI012-HH-1211-T1_tiny_brain.png) block 3: 139 elements
 98,384 | IXI012-HH-1211-T1_small.e.1.0 (5.3 MB) | ![](figs/IXI012-HH-1211-T1_small_void.png) 55,821 | ![](figs/IXI012-HH-1211-T1_small_bone.png) 16,009 | ![](figs/IXI012-HH-1211-T1_small_csf.png) 16,680 | ![](figs/IXI012-HH-1211-T1_small_brain.png) 9,874
 614,304 | IXI012-HH-1211-T1_medium.e.1.0 (32 MB) | ![](figs/IXI012-HH-1211-T1_medium_void.png) 341,033 | ![](figs/IXI012-HH-1211-T1_medium_bone.png) 60,991 | ![](figs/IXI012-HH-1211-T1_medium_csf.png) 85,969 | ![](figs/IXI012-HH-1211-T1_small_brain.png) 126,311
 4,329,925 | IXI012-HH-1211-T1_large.e.1.0 (220 MB) | ![](figs/IXI012-HH-1211-T1_large_void.png) 2,389,783 | ![](figs/IXI012-HH-1211-T1_large_bone.png) 240,895 | ![](figs/IXI012-HH-1211-T1_large_csf.png) 448,654 | ![](figs/IXI012-HH-1211-T1_large_brain.png) 1,250,593
