@@ -689,7 +689,7 @@ Command Description:
 
 Copy [`tests/files/letter_f.i`](../tests/files/letter_f.i) to [`tests/files/letter_f_translate_scale.i`](../tests/files/letter_f_translate_scale.i).
 
-**NOTE: From experimentation, we observe Sculpt does the scaling first, and then the translation second.  So, the tranlation values should in the scaled units, not the original units!**
+**NOTE: From experimentation, we observe Sculpt does the scaling first, and then the translation second.  So, the translation values should in the scaled units, not the original units!**
 
 ```bash
 BEGIN SCULPT
