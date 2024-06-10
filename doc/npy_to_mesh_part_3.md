@@ -215,3 +215,5 @@ The `tiny` version, above, is included in automated testing:
 Previous | Next
 :---: | :---:
 [npy_to_mesh_part_2.md](npy_to_mesh_part_2.md) | [npy_to_mesh_part_4.md](npy_to_mesh_part_4.md) 
+
+See also the [Autotwin/ssm](https://github.com/autotwin/ssm) repo, which contains a SSM simulation of the highest resolution model shown above.
