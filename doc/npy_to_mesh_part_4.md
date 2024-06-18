@@ -9,7 +9,7 @@ Previous | Next
 See the [ssm](https://github.com/autotwin/ssm) repo for an illustration of this
 workflow on a large data set.
 
-### Next steps
+## Next steps
 
 * Given:
   * Semantic segmentation (as a `.spn` file)
