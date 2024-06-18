@@ -15,7 +15,7 @@ workflow on a large data set.
   * Semantic segmentation (as a `.spn` file)
   * Configuration recipie (as a `.yml` file)
 * Create:
-  * Rust command line application that outputs equivalent Sculpt outputs as
+  * Rust command line application that outputs equivalent Sculpt outputs, without void as a mesh constituent, as
     * ABAQUS ascii mesh file (as a `.inp` file)
     * SSM-ready mesh file (as a `.e` file, Genesis/Exodus NetCDF binary format)
     * ascii neutral mesh file (as a file type that is currently to be determined)
