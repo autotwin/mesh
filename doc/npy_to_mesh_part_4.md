@@ -4,6 +4,22 @@ Previous | Next
 :---: | :---:
 [npy_to_mesh_part_3.md](npy_to_mesh_part_3.md) | None
 
+## Example of workflow use
+
+See the [ssm](https://github.com/autotwin/ssm) repo for an illustration of this
+workflow on a large data set.
+
+### Next steps
+
+* Given:
+  * Semantic segmentation (as a `.spn` file)
+  * Configuration recipie (as a `.yml` file)
+* Create:
+  * Rust command line application that outputs equivalent Sculpt outputs as
+    * ABAQUS ascii mesh file (as a `.inp` file)
+    * SSM-ready mesh file (as a `.e` file, Genesis/Exodus NetCDF binary format)
+    * ascii neutral mesh file (as a file type that is currently to be determined)
+
 ## Exomerge
 
 Note: Pause Exomerge approach, as it may not be sufficient to cover all of our export needs, e.g., exporting to an ABAQUS mesh format.  So, pivot to use of Cubit instead.

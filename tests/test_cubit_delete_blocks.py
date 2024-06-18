@@ -31,4 +31,3 @@ def test_cubit_delete_blocks():
     result = cdb.cubit_delete_blocks(yml_input_file=yml_input_file)
 
     assert result == 0  # success, no error codes
-    aa = 4
