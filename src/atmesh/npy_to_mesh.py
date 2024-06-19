@@ -91,6 +91,7 @@ def npy_to_spn(*, npy_input_file: Path) -> Path:
         raise FileNotFoundError(f"{ATMESH_PROMPT} File not found: {str(fin)}")
 
     db = np.load(file=fin)
+    # db = np.load(file=fin, allow_pickle=True)
 
     flattened = db.flatten()
     output_file = npy_input_file.parent.joinpath(npy_input_file.stem + ".spn")
