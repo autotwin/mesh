@@ -9,11 +9,15 @@ Previous | Next
 See the [ssm](https://github.com/autotwin/ssm) repo for an illustration of this
 workflow on a large data set.
 
+## IXI Segmentations
+
+* [IXI segmentations](https://drive.google.com/drive/folders/158MXz03QCuockuRoSBpY-YuO4fni3RVD?usp=share_link) 100+ semantic segmentations
+
 ## Next steps
 
 * Given:
   * Semantic segmentation (as a `.spn` file)
-  * Configuration recipe (as a `.yml` file)
+  * Configuration recipie (as a `.yml` file)
 * Create:
   * Rust command line application that outputs equivalent Sculpt outputs, without void as a mesh constituent, as
     * ABAQUS ascii mesh file (as a `.inp` file)
