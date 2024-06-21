@@ -17,7 +17,7 @@ workflow on a large data set.
 
 * Given:
   * Semantic segmentation (as a `.spn` file)
-  * Configuration recipie (as a `.yml` file)
+  * Configuration recipe (as a `.yml` file)
 * Create:
   * Rust command line application that outputs equivalent Sculpt outputs, without void as a mesh constituent, as
     * ABAQUS ascii mesh file (as a `.inp` file)
