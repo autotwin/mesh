@@ -28,7 +28,8 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-    "black==22.6.0",
+    # "black==22.6.0",
+    "black",
     "flake8",
     "matplotlib",
     "numpy",
